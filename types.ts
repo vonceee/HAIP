@@ -12,7 +12,13 @@ export interface QuizQuestion {
 
 export interface TocItem {
   title: string;
+  sectionIndex: number; // Changed from id to sectionIndex for pagination
+}
+
+export interface LectureSection {
   id: string;
+  title: string;
+  content: string; // HTML content for this specific section
 }
 
 export interface Lecture {
@@ -21,12 +27,11 @@ export interface Lecture {
   description: string;
   topic: HazardTopic;
   imageUrl: string;
-  content: string; // HTML content
   readTime: number; // minutes
   difficulty: 'Beginner' | 'Intermediate' | 'Advanced';
   objectives: string[];
   competencies: string[];
-  tableOfContents: TocItem[];
+  sections: LectureSection[]; // Replaced 'content' string with sections
   quiz?: QuizQuestion[];
   gameType: GameType;
 }

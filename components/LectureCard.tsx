@@ -1,78 +1,90 @@
-
 import React from 'react';
 import { Lecture } from '../types';
-import { Clock, BarChart, ChevronRight, Gamepad2, Award } from 'lucide-react';
+import { Clock, BarChart, ChevronRight, Gamepad2, PlayCircle } from 'lucide-react';
 
 interface LectureCardProps {
   lecture: Lecture;
   onClick: (id: string) => void;
 }
 
-const TOPIC_COLORS: Record<string, string> = {
-  'Earthquake': 'bg-orange-100 text-orange-800',
-  'Flood': 'bg-blue-100 text-blue-800',
-  'Volcano': 'bg-red-100 text-red-800',
-  'General': 'bg-slate-100 text-slate-800',
+const TOPIC_STYLES: Record<string, string> = {
+  'Earthquake': 'bg-orange-500',
+  'Flood': 'bg-blue-500',
+  'Volcano': 'bg-red-500',
+  'General': 'bg-slate-500',
 };
 
 export const LectureCard: React.FC<LectureCardProps> = ({ lecture, onClick }) => {
   return (
     <div 
       onClick={() => onClick(lecture.id)}
-      className="group bg-white rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-slate-200 overflow-hidden cursor-pointer flex flex-col h-full"
+      className="group relative bg-white rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-300 border border-slate-200 overflow-hidden cursor-pointer flex flex-col h-full transform hover:-translate-y-2"
     >
-      <div className="relative h-48 overflow-hidden">
+      {/* Tactical Header Bar */}
+      <div className={`h-1.5 w-full ${TOPIC_STYLES[lecture.topic] || TOPIC_STYLES.General}`} />
+
+      {/* Image Container */}
+      <div className="relative h-48 overflow-hidden bg-slate-900">
         <img 
           src={lecture.imageUrl} 
           alt={lecture.title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          className="w-full h-full object-cover opacity-90 group-hover:opacity-60 group-hover:scale-110 transition-all duration-700"
         />
+        
+        {/* Play Overlay (Visible on Hover) */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div className="bg-white/20 backdrop-blur-sm p-3 rounded-full border border-white/50">
+             <PlayCircle className="w-10 h-10 text-white fill-current" />
+          </div>
+        </div>
+
+        {/* Topic Badge */}
         <div className="absolute top-4 left-4">
-          <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide ${TOPIC_COLORS[lecture.topic] || TOPIC_COLORS.General}`}>
+          <span className="bg-black/80 backdrop-blur-md text-white px-3 py-1 rounded text-[10px] font-bold uppercase tracking-widest border border-white/10">
             {lecture.topic}
           </span>
         </div>
+
+        {/* Game Indicator */}
         {lecture.gameType !== 'none' && (
-          <div className="absolute bottom-4 right-4 bg-black/70 backdrop-blur-sm text-white p-1.5 rounded-full" title="Interactive Game Included">
+          <div className="absolute bottom-4 right-4 bg-emerald-500 text-white p-1.5 rounded shadow-lg animate-pulse" title="Simulation Active">
             <Gamepad2 className="w-4 h-4" />
           </div>
         )}
       </div>
       
-      <div className="p-6 flex-1 flex flex-col">
-        <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-brand-600 transition-colors">
-          {lecture.title}
-        </h3>
-        <p className="text-slate-500 text-sm mb-4 line-clamp-2">
-          {lecture.description}
-        </p>
+      <div className="p-6 flex-1 flex flex-col relative">
+        <div className="flex-1">
+           <h3 className="text-xl font-black text-slate-900 mb-2 leading-tight group-hover:text-brand-600 transition-colors uppercase">
+            {lecture.title}
+          </h3>
+          <p className="text-slate-500 text-sm mb-6 line-clamp-2 font-medium">
+            {lecture.description}
+          </p>
+        </div>
         
-        {/* Competencies Preview */}
-        {lecture.competencies.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-4 mt-auto">
-             {lecture.competencies.slice(0, 2).map((comp, i) => (
-               <span key={i} className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-medium bg-slate-100 text-slate-600">
-                 <Award className="w-3 h-3 mr-1" /> {comp}
-               </span>
-             ))}
-             {lecture.competencies.length > 2 && (
-               <span className="text-[10px] text-slate-400 py-0.5">+ {lecture.competencies.length - 2} more</span>
-             )}
-          </div>
-        )}
-        
-        <div className="flex items-center justify-between pt-4 border-t border-slate-100">
-          <div className="flex space-x-4 text-xs text-slate-400 font-medium">
-            <div className="flex items-center text-slate-600">
-              <Clock className="w-3.5 h-3.5 mr-1" />
-              {lecture.readTime} min
+        {/* Tech Stats */}
+        <div className="grid grid-cols-2 gap-2 pt-4 border-t border-slate-100">
+          <div className="flex flex-col">
+            <span className="text-[10px] text-slate-400 uppercase tracking-wider font-bold">Duration</span>
+            <div className="flex items-center text-slate-700 font-bold text-sm">
+              <Clock className="w-3.5 h-3.5 mr-1.5 text-brand-500" />
+              {lecture.readTime}m
             </div>
-            <div className="flex items-center">
-              <BarChart className="w-3.5 h-3.5 mr-1" />
+          </div>
+          <div className="flex flex-col">
+            <span className="text-[10px] text-slate-400 uppercase tracking-wider font-bold">Difficulty</span>
+            <div className="flex items-center text-slate-700 font-bold text-sm">
+              <BarChart className="w-3.5 h-3.5 mr-1.5 text-brand-500" />
               {lecture.difficulty}
             </div>
           </div>
-          <ChevronRight className="w-5 h-5 text-slate-300 group-hover:text-brand-500 transition-colors" />
+        </div>
+        
+        {/* Hover "Start" Call to Action */}
+        <div className="absolute bottom-0 left-0 w-full bg-slate-900 text-white py-3 px-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 flex justify-between items-center">
+          <span className="text-xs font-bold uppercase tracking-widest">Deploy</span>
+          <ChevronRight className="w-4 h-4" />
         </div>
       </div>
     </div>
