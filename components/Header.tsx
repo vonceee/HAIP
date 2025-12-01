@@ -1,0 +1,36 @@
+import React from 'react';
+import { ShieldAlert } from 'lucide-react';
+
+interface HeaderProps {
+  onHomeClick: () => void;
+}
+
+export const Header: React.FC<HeaderProps> = ({ onHomeClick }) => {
+  return (
+    <header className="bg-white border-b border-slate-200 sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <div 
+          onClick={onHomeClick} 
+          className="flex items-center cursor-pointer group"
+        >
+          <div className="bg-brand-600 p-2 rounded-lg group-hover:bg-brand-700 transition-colors">
+            <ShieldAlert className="w-6 h-6 text-white" />
+          </div>
+          <span className="ml-3 text-xl font-bold text-slate-800 tracking-tight">
+            HAIP <span className="text-slate-400 font-normal hidden sm:inline">| Hazard Awareness</span>
+          </span>
+        </div>
+        <nav className="flex space-x-4">
+          <button 
+            onClick={onHomeClick} 
+            className="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors"
+          >
+            Library
+          </button>
+          <span className="text-slate-300">|</span>
+          <span className="text-sm font-medium text-slate-400 cursor-not-allowed">About</span>
+        </nav>
+      </div>
+    </header>
+  );
+};
