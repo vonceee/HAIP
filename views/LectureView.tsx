@@ -146,14 +146,14 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => 
   // --- MISSION BRIEFING SCREEN ---
   if (showStartMenu) {
     // Dynamic styling for long titles
-    const titleSize = lecture.title.length > 20 ? "text-4xl md:text-6xl" : "text-5xl md:text-7xl";
+    const titleSize = lecture.title.length > 20 ? "text-3xl sm:text-4xl md:text-6xl" : "text-4xl sm:text-5xl md:text-7xl";
     
     return (
-      <div className={`fixed inset-0 z-50 flex flex-col items-center justify-center bg-gradient-to-br ${theme.bgGradient} text-white overflow-hidden`} ref={containerRef}>
+      <div className={`fixed inset-0 z-50 overflow-y-auto bg-gradient-to-br ${theme.bgGradient} text-white`} ref={containerRef}>
         {/* Fullscreen Toggle for Start Menu */}
         <button 
           onClick={toggleFullscreen} 
-          className="absolute top-6 right-6 z-50 p-3 bg-black/40 border border-white/10 rounded-full text-slate-300 hover:text-white hover:bg-white/10 backdrop-blur-md transition-all shadow-lg group"
+          className="fixed top-4 right-4 sm:top-6 sm:right-6 z-50 p-3 bg-black/40 border border-white/10 rounded-full text-slate-300 hover:text-white hover:bg-white/10 backdrop-blur-md transition-all shadow-lg group"
           title={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
         >
            {isFullscreen ? (
@@ -163,76 +163,79 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => 
            )}
         </button>
 
-        <div className="absolute inset-0 opacity-30">
+        <div className="fixed inset-0 opacity-30 pointer-events-none">
           <img src={lecture.imageUrl} alt="Background" className="w-full h-full object-cover filter blur-sm scale-110 animate-pulse" style={{ animationDuration: '10s' }}/>
         </div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_black_90%)]" />
+        <div className="fixed inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_black_90%)] pointer-events-none" />
 
-        <div className="relative z-10 max-w-6xl w-full px-6 flex flex-col lg:flex-row gap-8 lg:gap-16 items-center animate-in fade-in zoom-in duration-500">
-          
-          {/* Mission Details (Left) */}
-          <div className="flex-1 text-center lg:text-left space-y-6 w-full">
-            <div className={`inline-flex items-center px-4 py-1.5 rounded-full border border-white/20 bg-black/40 backdrop-blur-md ${theme.accentColor} font-mono text-xs md:text-sm tracking-widest uppercase mb-2 shadow-lg`}>
-              <TopicIcon className="w-4 h-4 mr-2" />
-              Mission Protocol: {lecture.topic}
-            </div>
+        {/* Content Wrapper for Scroll */}
+        <div className="relative min-h-full flex items-center justify-center p-6">
+          <div className="relative z-10 max-w-6xl w-full flex flex-col lg:flex-row gap-8 lg:gap-16 items-center animate-in fade-in zoom-in duration-500 py-10 lg:py-0">
             
-            <h1 className={`${titleSize} font-black uppercase tracking-tighter leading-none drop-shadow-[0_0_25px_rgba(0,0,0,0.8)]`}>
-              {lecture.title}
-            </h1>
-            
-            <p className="text-slate-200 text-lg md:text-xl font-light leading-relaxed border-l-4 border-white/20 pl-6 bg-gradient-to-r from-black/40 to-transparent p-2 rounded-r-lg backdrop-blur-sm">
-              {lecture.description}
-            </p>
+            {/* Mission Details (Left) */}
+            <div className="flex-1 text-center lg:text-left space-y-6 w-full">
+              <div className={`inline-flex items-center px-4 py-1.5 rounded-full border border-white/20 bg-black/40 backdrop-blur-md ${theme.accentColor} font-mono text-xs md:text-sm tracking-widest uppercase mb-2 shadow-lg`}>
+                <TopicIcon className="w-4 h-4 mr-2" />
+                Mission Protocol: {lecture.topic}
+              </div>
+              
+              <h1 className={`${titleSize} font-black uppercase tracking-tighter leading-none drop-shadow-[0_0_25px_rgba(0,0,0,0.8)]`}>
+                {lecture.title}
+              </h1>
+              
+              <p className="text-slate-200 text-base md:text-xl font-light leading-relaxed border-l-4 border-white/20 pl-6 bg-gradient-to-r from-black/40 to-transparent p-2 rounded-r-lg backdrop-blur-sm">
+                {lecture.description}
+              </p>
 
-            <div className="flex flex-wrap gap-4 justify-center lg:justify-start pt-2">
-              <div className="bg-black/40 border border-white/10 px-6 py-3 rounded-xl backdrop-blur-md flex flex-col items-center lg:items-start min-w-[120px]">
-                <div className="text-slate-400 text-[10px] uppercase tracking-wider mb-1 font-bold">Duration</div>
-                <div className="text-xl font-bold flex items-center text-white">
-                  <Clock className="w-4 h-4 mr-2 text-slate-400" />
-                  {lecture.readTime}:00
+              <div className="flex flex-wrap gap-4 justify-center lg:justify-start pt-2">
+                <div className="bg-black/40 border border-white/10 px-6 py-3 rounded-xl backdrop-blur-md flex flex-col items-center lg:items-start min-w-[120px]">
+                  <div className="text-slate-400 text-[10px] uppercase tracking-wider mb-1 font-bold">Duration</div>
+                  <div className="text-xl font-bold flex items-center text-white">
+                    <Clock className="w-4 h-4 mr-2 text-slate-400" />
+                    {lecture.readTime}:00
+                  </div>
+                </div>
+                <div className="bg-black/40 border border-white/10 px-6 py-3 rounded-xl backdrop-blur-md flex flex-col items-center lg:items-start min-w-[120px]">
+                  <div className="text-slate-400 text-[10px] uppercase tracking-wider mb-1 font-bold">Difficulty</div>
+                  <div className={`text-xl font-bold ${theme.accentColor}`}>
+                    {lecture.difficulty.toUpperCase()}
+                  </div>
                 </div>
               </div>
-              <div className="bg-black/40 border border-white/10 px-6 py-3 rounded-xl backdrop-blur-md flex flex-col items-center lg:items-start min-w-[120px]">
-                <div className="text-slate-400 text-[10px] uppercase tracking-wider mb-1 font-bold">Difficulty</div>
-                <div className={`text-xl font-bold ${theme.accentColor}`}>
-                  {lecture.difficulty.toUpperCase()}
-                </div>
-              </div>
             </div>
-          </div>
 
-          {/* Mission Card (Right) */}
-          <div className="w-full max-w-md bg-black/60 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-2xl relative overflow-hidden group">
-            <div className={`absolute top-0 left-0 w-full h-1 ${theme.buttonBg}`} />
-            
-            <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6 flex items-center">
-              <Target className="w-4 h-4 mr-2" /> 
-              Mission Objectives
-            </h3>
-            
-            <ul className="space-y-4 mb-10">
-              {lecture.objectives.slice(0, 3).map((obj, i) => (
-                <li key={i} className="flex items-start text-sm text-slate-200">
-                  <div className={`mt-1.5 mr-3 w-1.5 h-1.5 rounded-full ${theme.buttonBg} shadow-[0_0_8px_currentColor] flex-shrink-0`} />
-                  <span className="leading-snug">{obj}</span>
-                </li>
-              ))}
-            </ul>
-            
-            <button
-              onClick={() => setShowStartMenu(false)}
-              className={`w-full group/btn relative overflow-hidden ${theme.buttonBg} ${theme.buttonHover} text-white font-black uppercase tracking-wider py-5 px-8 rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] flex items-center justify-center`}
-            >
-              <span className="relative z-10 flex items-center">
-                Initialize <Play className="w-5 h-5 ml-2 fill-current" />
-              </span>
-              <div className="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-[-200%] transition-transform duration-700 ease-in-out" />
-            </button>
-            
-            <button onClick={onBack} className="w-full mt-4 text-[10px] text-slate-500 hover:text-white uppercase tracking-widest transition-colors font-bold">
-              Abort Mission
-            </button>
+            {/* Mission Card (Right) */}
+            <div className="w-full max-w-md bg-black/60 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-2xl relative overflow-hidden group">
+              <div className={`absolute top-0 left-0 w-full h-1 ${theme.buttonBg}`} />
+              
+              <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6 flex items-center">
+                <Target className="w-4 h-4 mr-2" /> 
+                Mission Objectives
+              </h3>
+              
+              <ul className="space-y-4 mb-10">
+                {lecture.objectives.slice(0, 3).map((obj, i) => (
+                  <li key={i} className="flex items-start text-sm text-slate-200">
+                    <div className={`mt-1.5 mr-3 w-1.5 h-1.5 rounded-full ${theme.buttonBg} shadow-[0_0_8px_currentColor] flex-shrink-0`} />
+                    <span className="leading-snug">{obj}</span>
+                  </li>
+                ))}
+              </ul>
+              
+              <button
+                onClick={() => setShowStartMenu(false)}
+                className={`w-full group/btn relative overflow-hidden ${theme.buttonBg} ${theme.buttonHover} text-white font-black uppercase tracking-wider py-5 px-8 rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] flex items-center justify-center`}
+              >
+                <span className="relative z-10 flex items-center">
+                  Initialize <Play className="w-5 h-5 ml-2 fill-current" />
+                </span>
+                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-[-200%] transition-transform duration-700 ease-in-out" />
+              </button>
+              
+              <button onClick={onBack} className="w-full mt-4 text-[10px] text-slate-500 hover:text-white uppercase tracking-widest transition-colors font-bold">
+                Abort Mission
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -243,16 +246,17 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => 
   return (
     <div 
       ref={containerRef}
-      className={`h-screen w-full flex flex-col bg-gradient-to-br ${theme.bgGradient} text-white font-sans overflow-hidden`}
+      className={`h-screen supports-[height:100dvh]:h-[100dvh] w-full flex flex-col bg-gradient-to-br ${theme.bgGradient} text-white font-sans overflow-hidden`}
     >
         {/* TOP BAR */}
         {!isFullscreen && (
-          <div className="flex-none flex items-center justify-between px-6 py-4 bg-black/20 border-b border-white/5 backdrop-blur-sm z-20">
+          <div className="flex-none flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 bg-black/20 border-b border-white/5 backdrop-blur-sm z-20">
             <button onClick={onBack} className="group flex items-center text-slate-400 hover:text-white transition-colors font-medium">
-              <div className="p-1.5 bg-white/5 rounded-lg border border-white/10 shadow-sm mr-3 group-hover:bg-white/10">
+              <div className="p-1.5 bg-white/5 rounded-lg border border-white/10 shadow-sm mr-2 sm:mr-3 group-hover:bg-white/10">
                 <ArrowLeft className="w-4 h-4" />
               </div>
-              <span className="text-xs uppercase tracking-wide">Exit Mission</span>
+              <span className="text-xs uppercase tracking-wide hidden sm:inline">Exit Mission</span>
+              <span className="text-xs uppercase tracking-wide sm:hidden">Exit</span>
             </button>
 
             <div className="flex items-center space-x-3">
@@ -260,7 +264,7 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => 
                  <Maximize className="w-4 h-4" />
                </button>
               <div className={`px-3 py-1 bg-black/40 border border-white/10 rounded text-[10px] font-bold uppercase tracking-wider ${theme.accentColor}`}>
-                {lecture.topic} Protocol
+                {lecture.topic} <span className="hidden sm:inline">Protocol</span>
               </div>
             </div>
           </div>
@@ -268,45 +272,45 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => 
 
         {/* FULLSCREEN CONTROLS */}
         {isFullscreen && (
-           <button onClick={toggleFullscreen} className="fixed top-6 right-6 z-50 p-3 bg-black/60 border border-white/20 rounded-full text-white hover:bg-black/80 backdrop-blur-md transition-all shadow-lg group">
+           <button onClick={toggleFullscreen} className="fixed top-4 right-4 sm:top-6 sm:right-6 z-50 p-3 bg-black/60 border border-white/20 rounded-full text-white hover:bg-black/80 backdrop-blur-md transition-all shadow-lg group">
              <Minimize className="w-5 h-5 group-hover:scale-90 transition-transform" />
            </button>
         )}
 
         {/* MAIN STAGE - FLEX 1 to fill remaining height */}
-        <div className="flex-1 relative flex flex-col justify-center items-center p-4 md:p-6 overflow-hidden">
+        <div className="flex-1 relative flex flex-col justify-center items-center p-2 sm:p-4 md:p-6 overflow-hidden">
           
           <div className="w-full h-full flex flex-col bg-black/30 backdrop-blur-xl shadow-2xl rounded-2xl border border-white/10 relative overflow-hidden transition-all duration-300">
              
              {/* HEADER BAR INSIDE CARD */}
-             <div className="flex-none p-6 flex justify-between items-center border-b border-white/5 bg-white/5 relative">
+             <div className="flex-none p-4 sm:p-6 flex justify-between items-center border-b border-white/5 bg-white/5 relative">
                 {/* PROGRESS BAR */}
                 <div className="absolute bottom-0 left-0 w-full h-0.5 bg-white/10">
                    <div className={`${theme.buttonBg} h-full transition-all duration-500 ease-out shadow-[0_0_10px_currentColor]`} style={{ width: `${progressPercent}%` }} />
                 </div>
                 
-                <h2 className="text-xl md:text-2xl font-bold text-white flex items-center truncate">
+                <h2 className="text-lg md:text-2xl font-bold text-white flex items-center truncate">
                    <span className={`mr-3 w-8 h-8 rounded-lg ${theme.buttonBg} text-white flex items-center justify-center text-sm shadow-lg flex-shrink-0`}>
                      {activeSlideIndex + 1}
                    </span>
-                   {activeSlide.title}
+                   <span className="truncate">{activeSlide.title}</span>
                 </h2>
-                <span className="text-xs font-mono text-slate-500 uppercase flex-shrink-0 ml-4">
+                <span className="text-xs font-mono text-slate-500 uppercase flex-shrink-0 ml-4 hidden sm:inline">
                    SEC {activeSlideIndex + 1} / {slides.length}
                 </span>
              </div>
 
              {/* CONTENT AREA */}
-             <div className="flex-1 overflow-hidden p-6 relative">
+             <div className="flex-1 overflow-hidden p-4 sm:p-6 relative">
                 <div className="animate-in fade-in slide-in-from-right-4 duration-500 h-full">
                   
                   {/* DASHBOARD SLIDE (OBJECTIVES + GAME + REFRESHER QUIZ) */}
                   {activeSlide.type === 'dashboard' && (
-                    <div className="h-full grid grid-cols-1 lg:grid-cols-2 gap-6 overflow-y-auto lg:overflow-hidden">
+                    <div className="h-full grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 overflow-y-auto lg:overflow-hidden">
                       {/* Left Column: Objectives + Game */}
-                      <div className="flex flex-col gap-6 h-full min-h-[600px] lg:min-h-0">
+                      <div className="flex flex-col gap-4 sm:gap-6 h-full min-h-[500px] lg:min-h-0">
                          {/* Objectives - Top Left */}
-                         <div className={`flex-1 bg-white/5 rounded-xl border border-white/10 p-6 overflow-y-auto custom-scrollbar ${lecture.gameType === 'none' ? 'h-full' : ''}`}>
+                         <div className={`flex-1 bg-white/5 rounded-xl border border-white/10 p-4 sm:p-6 overflow-y-auto custom-scrollbar ${lecture.gameType === 'none' ? 'h-full' : ''}`}>
                             <div className="prose prose-sm prose-invert max-w-none text-slate-300">
                                <div dangerouslySetInnerHTML={{ __html: activeSlide.data.content }} />
                             </div>
@@ -314,7 +318,7 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => 
                          
                          {/* Simulation - Bottom Left */}
                          {lecture.gameType !== 'none' && (
-                           <div className="flex-1 bg-white/5 rounded-xl border border-white/10 overflow-hidden flex flex-col relative min-h-[300px]">
+                           <div className="flex-1 bg-white/5 rounded-xl border border-white/10 overflow-hidden flex flex-col relative min-h-[250px] sm:min-h-[300px]">
                               <div className={`absolute top-0 left-0 px-3 py-1 bg-black/40 border-b border-r border-white/10 rounded-br-lg z-10 text-[10px] font-bold uppercase tracking-wider ${theme.accentColor}`}>
                                 <Gamepad2 className="w-3 h-3 inline-block mr-1" />
                                 Interactive Simulation
@@ -345,14 +349,14 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => 
                   {/* STANDARD CONTENT SLIDE */}
                   {activeSlide.type === 'content' && (
                     <div className="prose prose-lg prose-invert max-w-none text-slate-300 leading-relaxed h-full overflow-y-auto flex flex-col items-center">
-                      <div className="w-full max-w-[90%] xl:max-w-[1600px]" dangerouslySetInnerHTML={{ __html: activeSlide.data.content }} />
+                      <div className="w-full max-w-[100%] sm:max-w-[90%] xl:max-w-[1600px]" dangerouslySetInnerHTML={{ __html: activeSlide.data.content }} />
                     </div>
                   )}
 
                   {/* FINAL QUIZ SLIDE */}
                   {activeSlide.type === 'final-quiz' && (
                      <div className="h-full flex flex-col items-center justify-center max-w-4xl mx-auto">
-                        <div className="w-full h-full bg-white/5 rounded-xl border border-white/10 p-6 shadow-2xl">
+                        <div className="w-full h-full bg-white/5 rounded-xl border border-white/10 p-4 sm:p-6 shadow-2xl">
                            <QuizComponent questions={activeSlide.data} title="Final Certification Exam" />
                         </div>
                      </div>
@@ -362,30 +366,30 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => 
              </div>
 
              {/* FOOTER NAV CONTROLS */}
-             <div className="flex-none p-6 border-t border-white/5 flex items-center justify-between bg-black/20">
+             <div className="flex-none p-4 sm:p-6 border-t border-white/5 flex items-center justify-between bg-black/20">
                 <button
                     onClick={handlePrev}
                     disabled={isFirstSlide}
-                    className={`flex items-center px-6 py-3 rounded-lg text-sm font-bold uppercase tracking-wide transition-all ${
+                    className={`flex items-center px-4 sm:px-6 py-2 sm:py-3 rounded-lg text-xs sm:text-sm font-bold uppercase tracking-wide transition-all ${
                       isFirstSlide 
                       ? 'text-slate-700 cursor-not-allowed' 
                       : 'text-slate-400 hover:bg-white/5 hover:text-white'
                     }`}
                 >
-                    <ChevronLeft className="w-4 h-4 mr-2" />
-                    Prev
+                    <ChevronLeft className="w-4 h-4 mr-1 sm:mr-2" />
+                    <span className="hidden sm:inline">Prev</span>
                 </button>
 
                 <button
                     onClick={handleNext}
-                    className={`flex items-center px-8 py-4 rounded-xl text-sm font-bold uppercase tracking-widest transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 ${
+                    className={`flex items-center px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-widest transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 ${
                       isLastSlide
                       ? 'bg-emerald-600 text-white hover:bg-emerald-500'
                       : `${theme.buttonBg} text-white ${theme.buttonHover}`
                     }`}
                 >
-                    {isLastSlide ? 'Complete Mission' : 'Next Sector'}
-                    <ChevronRight className="w-4 h-4 ml-2" />
+                    {isLastSlide ? 'Complete' : 'Next Sector'}
+                    <ChevronRight className="w-4 h-4 ml-1 sm:ml-2" />
                 </button>
              </div>
           </div>

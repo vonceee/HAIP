@@ -56,10 +56,11 @@ export const EarthquakeGame: React.FC = () => {
 
   return (
     <div className="w-full h-full flex flex-col p-2">
-      <div className="flex flex-col md:flex-row gap-4 h-full">
+      {/* Switch to row layout on SM screens (landscape mobile) */}
+      <div className="flex flex-col sm:flex-row gap-4 h-full">
         
         {/* Controls Panel */}
-        <div className="w-full md:w-1/3 flex flex-col justify-between space-y-2">
+        <div className="w-full sm:w-1/3 flex flex-col justify-between space-y-2">
           <div>
             <div className="bg-black/20 p-3 rounded-lg border border-white/5 shadow-inner">
               <div className="flex justify-between mb-1">
@@ -73,7 +74,7 @@ export const EarthquakeGame: React.FC = () => {
                 step="0.1"
                 value={magnitude}
                 onChange={(e) => setMagnitude(parseFloat(e.target.value))}
-                className="w-full h-1.5 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-orange-500"
+                className="w-full h-4 sm:h-1.5 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-orange-500"
               />
             </div>
             
@@ -87,7 +88,7 @@ export const EarthquakeGame: React.FC = () => {
 
           <button
             onClick={() => setIsShaking(!isShaking)}
-            className={`w-full py-2 rounded-lg font-bold text-white text-sm flex items-center justify-center transition-all shadow-lg ${
+            className={`w-full py-3 sm:py-2 rounded-lg font-bold text-white text-sm flex items-center justify-center transition-all shadow-lg ${
               isShaking 
                 ? 'bg-red-600 hover:bg-red-500' 
                 : 'bg-orange-600 hover:bg-orange-500'
@@ -102,7 +103,7 @@ export const EarthquakeGame: React.FC = () => {
         </div>
 
         {/* Visual Stage */}
-        <div className="w-full md:w-2/3 bg-slate-900 rounded-xl overflow-hidden relative shadow-inner border border-slate-700 min-h-[180px]">
+        <div className="w-full sm:w-2/3 bg-slate-900 rounded-xl overflow-hidden relative shadow-inner border border-slate-700 min-h-[180px] sm:h-auto">
           
           {/* Room Container */}
           <div 
@@ -126,7 +127,7 @@ export const EarthquakeGame: React.FC = () => {
             </div>
 
             {/* Window (Hidden on small screens inside small containers) */}
-            <div className="absolute top-8 left-4 w-16 h-20 bg-sky-900 border-2 border-slate-600 shadow-sm overflow-hidden opacity-50 hidden sm:block">
+            <div className="absolute top-8 left-4 w-16 h-20 bg-sky-900 border-2 border-slate-600 shadow-sm overflow-hidden opacity-50 hidden md:block">
                <div className="w-full h-full grid grid-cols-2 grid-rows-2 gap-0.5 bg-slate-600">
                  <div className="bg-sky-950"></div>
                  <div className="bg-sky-950"></div>
@@ -137,7 +138,7 @@ export const EarthquakeGame: React.FC = () => {
 
             {/* Picture Frame */}
             <div 
-              className="absolute top-10 right-10 w-12 h-14 bg-slate-200 border-2 border-amber-900 shadow-md flex items-center justify-center overflow-hidden"
+              className="absolute top-10 right-10 w-12 h-14 bg-slate-200 border-2 border-amber-900 shadow-md flex items-center justify-center overflow-hidden hidden sm:flex"
               style={{ transform: `rotate(${roomTransform.rot * 1.5}deg)` }}
             >
                <div className="w-full h-full bg-slate-300 flex items-center justify-center text-[6px] text-slate-500 font-bold">HAIP</div>

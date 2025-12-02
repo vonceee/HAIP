@@ -14,11 +14,20 @@ const TOPIC_STYLES: Record<string, string> = {
   'General': 'bg-slate-500',
 };
 
+const TOPIC_HOVER_STYLES: Record<string, string> = {
+  'Earthquake': 'hover:shadow-[0_20px_40px_-5px_rgba(249,115,22,0.3)] hover:border-orange-300/50',
+  'Flood': 'hover:shadow-[0_20px_40px_-5px_rgba(59,130,246,0.3)] hover:border-blue-300/50',
+  'Volcano': 'hover:shadow-[0_20px_40px_-5px_rgba(239,68,68,0.3)] hover:border-red-300/50',
+  'General': 'hover:shadow-[0_20px_40px_-5px_rgba(100,116,139,0.3)] hover:border-slate-300/50',
+};
+
 export const LectureCard: React.FC<LectureCardProps> = ({ lecture, onClick }) => {
+  const hoverStyle = TOPIC_HOVER_STYLES[lecture.topic] || TOPIC_HOVER_STYLES.General;
+
   return (
     <div 
       onClick={() => onClick(lecture.id)}
-      className="group relative bg-white rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-300 border border-slate-200 overflow-hidden cursor-pointer flex flex-col h-full transform hover:-translate-y-2"
+      className={`group relative bg-white rounded-2xl shadow-sm transition-all duration-300 border border-slate-200 overflow-hidden cursor-pointer flex flex-col h-full transform hover:-translate-y-2 ${hoverStyle}`}
     >
       {/* Tactical Header Bar */}
       <div className={`h-1.5 w-full ${TOPIC_STYLES[lecture.topic] || TOPIC_STYLES.General}`} />
@@ -33,7 +42,7 @@ export const LectureCard: React.FC<LectureCardProps> = ({ lecture, onClick }) =>
         
         {/* Play Overlay (Visible on Hover) */}
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <div className="bg-white/20 backdrop-blur-sm p-3 rounded-full border border-white/50">
+          <div className="bg-white/20 backdrop-blur-sm p-3 rounded-full border border-white/50 shadow-lg">
              <PlayCircle className="w-10 h-10 text-white fill-current" />
           </div>
         </div>

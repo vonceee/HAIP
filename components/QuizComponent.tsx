@@ -46,7 +46,7 @@ export const QuizComponent: React.FC<QuizProps> = ({ questions, title = "Refresh
 
   if (showScore) {
     return (
-      <div className="bg-white/5 p-8 rounded-xl shadow-lg text-center border border-white/10 backdrop-blur-sm w-full h-full flex flex-col items-center justify-center">
+      <div className="bg-white/5 p-6 sm:p-8 rounded-xl shadow-lg text-center border border-white/10 backdrop-blur-sm w-full h-full flex flex-col items-center justify-center">
         <h3 className="text-2xl font-bold text-white mb-4">Quiz Completed!</h3>
         <p className="text-lg text-slate-300 mb-6">
           You scored <span className="font-bold text-emerald-400">{score}</span> out of {questions.length}
@@ -65,23 +65,23 @@ export const QuizComponent: React.FC<QuizProps> = ({ questions, title = "Refresh
   const currentQuestion = questions[currentQuestionIndex];
 
   return (
-    <div className="bg-white/5 p-6 rounded-xl shadow-lg border border-white/10 backdrop-blur-sm w-full h-full flex flex-col">
-      <div className="flex justify-between items-center mb-6 border-b border-white/10 pb-4">
-        <h3 className="text-lg font-bold text-slate-200 flex items-center uppercase tracking-wide">
-          <BrainCircuit className="w-5 h-5 mr-2 text-emerald-400" />
+    <div className="bg-white/5 p-4 sm:p-6 rounded-xl shadow-lg border border-white/10 backdrop-blur-sm w-full h-full flex flex-col">
+      <div className="flex justify-between items-center mb-4 sm:mb-6 border-b border-white/10 pb-3 sm:pb-4">
+        <h3 className="text-sm sm:text-lg font-bold text-slate-200 flex items-center uppercase tracking-wide">
+          <BrainCircuit className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-emerald-400" />
           {title}
         </h3>
-        <span className="text-xs font-mono bg-white/10 px-2 py-1 rounded text-slate-400">
+        <span className="text-[10px] sm:text-xs font-mono bg-white/10 px-2 py-1 rounded text-slate-400">
           {currentQuestionIndex + 1} / {questions.length}
         </span>
       </div>
 
       <div className="flex-1 overflow-y-auto pr-2 custom-scrollbar">
-        <h4 className="text-lg font-medium text-white mb-6 leading-relaxed">{currentQuestion.question}</h4>
+        <h4 className="text-base sm:text-lg font-medium text-white mb-4 sm:mb-6 leading-relaxed">{currentQuestion.question}</h4>
 
-        <div className="space-y-3">
+        <div className="space-y-2 sm:space-y-3">
           {currentQuestion.options.map((option, index) => {
-            let buttonClass = "w-full text-left p-4 rounded-lg border transition-all text-sm ";
+            let buttonClass = "w-full text-left p-3 sm:p-4 rounded-lg border transition-all text-xs sm:text-sm ";
             
             if (isAnswered) {
                if (index === currentQuestion.correctAnswer) {
@@ -104,8 +104,8 @@ export const QuizComponent: React.FC<QuizProps> = ({ questions, title = "Refresh
               >
                 <div className="flex items-center justify-between">
                   <span>{option}</span>
-                  {isAnswered && index === currentQuestion.correctAnswer && <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 ml-2" />}
-                  {isAnswered && index === selectedAnswer && index !== currentQuestion.correctAnswer && <XCircle className="w-5 h-5 text-red-400 flex-shrink-0 ml-2" />}
+                  {isAnswered && index === currentQuestion.correctAnswer && <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 flex-shrink-0 ml-2" />}
+                  {isAnswered && index === selectedAnswer && index !== currentQuestion.correctAnswer && <XCircle className="w-4 h-4 sm:w-5 sm:h-5 text-red-400 flex-shrink-0 ml-2" />}
                 </div>
               </button>
             );
@@ -114,10 +114,10 @@ export const QuizComponent: React.FC<QuizProps> = ({ questions, title = "Refresh
       </div>
 
       {isAnswered && (
-        <div className="mt-6 pt-4 border-t border-white/10 flex justify-end">
+        <div className="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-white/10 flex justify-end">
           <button
             onClick={handleNextQuestion}
-            className="px-6 py-2 bg-emerald-600 text-white font-bold rounded-lg hover:bg-emerald-500 transition-colors shadow-lg"
+            className="px-4 sm:px-6 py-2 bg-emerald-600 text-white font-bold rounded-lg hover:bg-emerald-500 transition-colors shadow-lg text-sm"
           >
             {currentQuestionIndex === questions.length - 1 ? "Finish Quiz" : "Next Question"}
           </button>
