@@ -60,7 +60,7 @@ function ActivityIcon(props: any) {
   );
 }
 
-type SlideType = 'content' | 'game' | 'quiz';
+type SlideType = 'content' | 'dashboard';
 
 interface Slide {
   type: SlideType;
@@ -76,25 +76,12 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => 
 
   // Construct Virtual Slides Array
   const slides = useMemo(() => {
-    const s: Slide[] = lecture.sections.map(section => ({
-      type: 'content',
+    const s: Slide[] = lecture.sections.map((section, index) => ({
+      type: index === 0 ? 'dashboard' : 'content',
       title: section.title,
       data: section
     }));
-
-    if (lecture.gameType !== 'none') {
-      s.push({
-        type: 'game',
-        title: 'Simulation Protocol',
-      });
-    }
-
-    if (lecture.quiz && lecture.quiz.length > 0) {
-      s.push({
-        type: 'quiz',
-        title: 'Knowledge Certification',
-      });
-    }
+    // Note: Game and Quiz are now embedded in the first 'dashboard' slide
     return s;
   }, [lecture]);
 
@@ -238,10 +225,10 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => 
         {/* MAIN STAGE - FLEX 1 to fill remaining height */}
         <div className="flex-1 relative flex flex-col justify-center items-center p-4 md:p-6 overflow-hidden">
           
-          <div className="w-full max-w-5xl h-full max-h-full flex flex-col bg-black/30 backdrop-blur-xl shadow-2xl rounded-2xl border border-white/10 relative overflow-hidden">
+          <div className="w-full h-full flex flex-col bg-black/30 backdrop-blur-xl shadow-2xl rounded-2xl border border-white/10 relative overflow-hidden transition-all duration-300">
              
              {/* HEADER BAR INSIDE CARD */}
-             <div className="flex-none p-6 md:p-8 flex justify-between items-center border-b border-white/5 bg-white/5 relative">
+             <div className="flex-none p-6 flex justify-between items-center border-b border-white/5 bg-white/5 relative">
                 {/* PROGRESS BAR */}
                 <div className="absolute bottom-0 left-0 w-full h-0.5 bg-white/10">
                    <div className={`${theme.buttonBg} h-full transition-all duration-500 ease-out shadow-[0_0_10px_currentColor]`} style={{ width: `${progressPercent}%` }} />
@@ -258,49 +245,59 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => 
                 </span>
              </div>
 
-             {/* SCROLLABLE CONTENT AREA */}
-             <div className="flex-1 overflow-y-auto p-6 md:p-8 relative">
-                <div className="animate-in fade-in slide-in-from-right-4 duration-500 h-full flex flex-col">
+             {/* CONTENT AREA */}
+             <div className="flex-1 overflow-hidden p-6 relative">
+                <div className="animate-in fade-in slide-in-from-right-4 duration-500 h-full">
                   
-                  {/* CONTENT SLIDE */}
-                  {activeSlide.type === 'content' && (
-                    <div className="prose prose-lg prose-invert max-w-none text-slate-300 leading-relaxed flex-1 flex flex-col justify-center">
-                      <div dangerouslySetInnerHTML={{ __html: activeSlide.data.content }} />
-                    </div>
-                  )}
-
-                  {/* GAME SLIDE */}
-                  {activeSlide.type === 'game' && (
-                    <div className="flex-1 flex flex-col justify-center">
-                       <div className="rounded-xl p-4 bg-gradient-to-b from-white/5 to-transparent h-full flex flex-col">
-                        <div className={`flex items-center ${theme.accentColor} mb-6 font-bold uppercase tracking-wider text-sm`}>
-                          <Gamepad2 className="w-5 h-5 mr-2" />
-                          Interactive Scenario
-                        </div>
-                        <div className="flex-1 flex items-center justify-center">
-                          {lecture.gameType === 'earthquake-sim' && <div className="w-full"><EarthquakeGame /></div>}
-                          {lecture.gameType === 'flood-choice' && <div className="w-full"><FloodGame /></div>}
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* QUIZ SLIDE */}
-                  {activeSlide.type === 'quiz' && (
-                    <div className="flex-1 flex flex-col justify-center">
-                      <div className="rounded-xl p-4 border-l-4 border-emerald-500 h-full flex flex-col">
-                        <div className="flex items-center text-emerald-400 mb-6 font-bold uppercase tracking-wider text-sm">
-                          <BrainCircuit className="w-5 h-5 mr-2" />
-                          Knowledge Certification
-                        </div>
-                         <div className="flex-1 flex items-center justify-center w-full">
-                           <div className="w-full max-w-2xl">
-                             <QuizComponent questions={lecture.quiz!} />
+                  {/* DASHBOARD SLIDE (OBJECTIVES + GAME + QUIZ) */}
+                  {activeSlide.type === 'dashboard' && (
+                    <div className="h-full grid grid-cols-1 lg:grid-cols-2 gap-6 overflow-y-auto lg:overflow-hidden">
+                      {/* Left Column: Objectives + Game */}
+                      <div className="flex flex-col gap-6 h-full min-h-[600px] lg:min-h-0">
+                         {/* Objectives - Top Left */}
+                         <div className={`flex-1 bg-white/5 rounded-xl border border-white/10 p-6 overflow-y-auto custom-scrollbar ${lecture.gameType === 'none' ? 'h-full' : ''}`}>
+                            <div className="prose prose-sm prose-invert max-w-none text-slate-300">
+                               <div dangerouslySetInnerHTML={{ __html: activeSlide.data.content }} />
+                            </div>
+                         </div>
+                         
+                         {/* Simulation - Bottom Left */}
+                         {lecture.gameType !== 'none' && (
+                           <div className="flex-1 bg-white/5 rounded-xl border border-white/10 overflow-hidden flex flex-col relative min-h-[300px]">
+                              <div className={`absolute top-0 left-0 px-3 py-1 bg-black/40 border-b border-r border-white/10 rounded-br-lg z-10 text-[10px] font-bold uppercase tracking-wider ${theme.accentColor}`}>
+                                <Gamepad2 className="w-3 h-3 inline-block mr-1" />
+                                Interactive Simulation
+                              </div>
+                              <div className="flex-1 p-2 flex items-center justify-center overflow-y-auto">
+                                {lecture.gameType === 'earthquake-sim' && <div className="w-full h-full flex items-center"><EarthquakeGame /></div>}
+                                {lecture.gameType === 'flood-choice' && <div className="w-full h-full flex items-center"><FloodGame /></div>}
+                              </div>
                            </div>
+                         )}
+                      </div>
+
+                      {/* Right Column: Refresher Quiz */}
+                      <div className="h-full min-h-[400px] lg:min-h-0 bg-white/5 rounded-xl border border-white/10 overflow-hidden flex flex-col">
+                         <div className="flex-1 p-2">
+                            {lecture.quiz && lecture.quiz.length > 0 ? (
+                               <QuizComponent questions={lecture.quiz} />
+                            ) : (
+                               <div className="flex items-center justify-center h-full text-slate-500">
+                                 No Quiz Available
+                               </div>
+                            )}
                          </div>
                       </div>
                     </div>
                   )}
+
+                  {/* STANDARD CONTENT SLIDE */}
+                  {activeSlide.type === 'content' && (
+                    <div className="prose prose-lg prose-invert max-w-none text-slate-300 leading-relaxed h-full overflow-y-auto flex flex-col items-center">
+                      <div className="w-full max-w-4xl" dangerouslySetInnerHTML={{ __html: activeSlide.data.content }} />
+                    </div>
+                  )}
+
                 </div>
              </div>
 

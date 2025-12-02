@@ -47,82 +47,78 @@ export const FloodGame: React.FC = () => {
 
   if (gameOver) {
     return (
-      <div className="bg-red-500/10 p-8 rounded-xl border border-red-500/20 text-center backdrop-blur-sm max-w-lg mx-auto">
-        <Waves className="w-16 h-16 text-red-500 mx-auto mb-4" />
-        <h3 className="text-2xl font-bold text-red-200 mb-2">Flooded!</h3>
-        <p className="text-red-300 mb-6">The water level got too high. Remember, safety choices matter.</p>
-        <button onClick={resetGame} className="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-500">Try Again</button>
+      <div className="w-full h-full flex flex-col items-center justify-center text-center p-4">
+        <Waves className="w-12 h-12 text-red-500 mb-2" />
+        <h3 className="text-lg font-bold text-red-200 mb-1">Flooded!</h3>
+        <p className="text-xs text-red-300 mb-4">Water level too high.</p>
+        <button onClick={resetGame} className="bg-red-600 text-white px-4 py-2 rounded text-sm hover:bg-red-500">Retry</button>
       </div>
     );
   }
 
   if (gameWon) {
     return (
-      <div className="bg-green-500/10 p-8 rounded-xl border border-green-500/20 text-center backdrop-blur-sm max-w-lg mx-auto">
-        <ThumbsUp className="w-16 h-16 text-green-500 mx-auto mb-4" />
-        <h3 className="text-2xl font-bold text-green-200 mb-2">You Survived!</h3>
-        <p className="text-green-300 mb-6">Excellent decision making. You stayed dry and safe.</p>
-        <button onClick={resetGame} className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-500">Play Again</button>
+      <div className="w-full h-full flex flex-col items-center justify-center text-center p-4">
+        <ThumbsUp className="w-12 h-12 text-green-500 mb-2" />
+        <h3 className="text-lg font-bold text-green-200 mb-1">Survived!</h3>
+        <p className="text-xs text-green-300 mb-4">Excellent work.</p>
+        <button onClick={resetGame} className="bg-green-600 text-white px-4 py-2 rounded text-sm hover:bg-green-500">Replay</button>
       </div>
     );
   }
 
   return (
-    <div className="bg-white/5 rounded-xl shadow-lg border border-white/10 overflow-hidden relative backdrop-blur-sm w-full max-w-2xl mx-auto">
+    <div className="w-full h-full relative overflow-hidden flex flex-col">
       {/* Water Level Indicator */}
-      <div className="absolute left-0 bottom-0 w-2 h-full bg-slate-800">
+      <div className="absolute left-0 bottom-0 w-1.5 h-full bg-slate-800/50">
         <div 
           className="absolute bottom-0 w-full bg-cyan-500 transition-all duration-500 ease-in-out shadow-[0_0_10px_rgba(6,182,212,0.8)]" 
           style={{ height: `${waterLevel}%` }}
         />
       </div>
 
-      <div className="pl-6 p-6">
-        <div className="flex justify-between items-start mb-6">
-          <h3 className="text-lg font-bold text-white flex items-center">
-            <Waves className="w-5 h-5 text-cyan-400 mr-2" />
-            Flood Survival Challenge
-          </h3>
-          <span className="text-xs font-mono bg-white/10 px-2 py-1 rounded text-slate-300">
-            Level {currentIndex + 1}/{FLOOD_SCENARIOS.length}
+      <div className="pl-4 pr-2 py-2 flex-1 flex flex-col">
+        <div className="flex justify-between items-center mb-2">
+          <span className="text-[10px] font-mono bg-black/20 px-2 py-0.5 rounded text-slate-400">
+            {currentIndex + 1}/{FLOOD_SCENARIOS.length}
           </span>
         </div>
 
-        <div className="bg-black/20 p-6 rounded-lg border border-white/5 mb-6 text-center min-h-[100px] flex items-center justify-center">
-          <p className="text-lg font-medium text-slate-100">{currentScenario.text}</p>
+        <div className="bg-black/20 p-3 rounded-lg border border-white/5 mb-3 text-center flex-grow flex items-center justify-center">
+          <p className="text-sm font-medium text-slate-100 leading-tight">{currentScenario.text}</p>
         </div>
 
         {!feedback ? (
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-2 mt-auto">
             <button 
               onClick={() => handleChoice(true)}
-              className="flex flex-col items-center justify-center p-4 rounded-lg border border-white/10 bg-white/5 hover:bg-green-500/20 hover:border-green-500/50 transition-all text-slate-200 hover:text-green-300 group"
+              className="flex flex-col items-center justify-center p-2 rounded-lg border border-white/10 bg-white/5 hover:bg-green-500/20 hover:border-green-500/50 transition-all text-slate-200 hover:text-green-300 group"
             >
-              <ThumbsUp className="w-8 h-8 mb-2 group-hover:scale-110 transition-transform" />
-              <span className="font-bold">Safe Action</span>
+              <ThumbsUp className="w-5 h-5 mb-1 group-hover:scale-110 transition-transform" />
+              <span className="text-xs font-bold">Safe</span>
             </button>
             <button 
               onClick={() => handleChoice(false)}
-              className="flex flex-col items-center justify-center p-4 rounded-lg border border-white/10 bg-white/5 hover:bg-red-500/20 hover:border-red-500/50 transition-all text-slate-200 hover:text-red-300 group"
+              className="flex flex-col items-center justify-center p-2 rounded-lg border border-white/10 bg-white/5 hover:bg-red-500/20 hover:border-red-500/50 transition-all text-slate-200 hover:text-red-300 group"
             >
-              <AlertTriangle className="w-8 h-8 mb-2 group-hover:scale-110 transition-transform" />
-              <span className="font-bold">Unsafe / Dangerous</span>
+              <AlertTriangle className="w-5 h-5 mb-1 group-hover:scale-110 transition-transform" />
+              <span className="text-xs font-bold">Unsafe</span>
             </button>
           </div>
         ) : (
-          <div className={`p-4 rounded-lg border mb-4 animate-in fade-in slide-in-from-bottom-2 ${feedback.correct ? 'bg-green-500/20 border-green-500/30 text-green-200' : 'bg-red-500/20 border-red-500/30 text-red-200'}`}>
-            <div className="flex items-start">
-              {feedback.correct ? <ThumbsUp className="w-5 h-5 mr-3 mt-1 flex-shrink-0" /> : <ThumbsDown className="w-5 h-5 mr-3 mt-1 flex-shrink-0" />}
+          <div className={`p-3 rounded-lg border mt-auto animate-in fade-in slide-in-from-bottom-2 ${feedback.correct ? 'bg-green-500/20 border-green-500/30 text-green-200' : 'bg-red-500/20 border-red-500/30 text-red-200'}`}>
+            <div className="flex items-start mb-2">
+              {feedback.correct ? <ThumbsUp className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" /> : <ThumbsDown className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />}
               <div>
-                <p className="font-bold">{feedback.correct ? 'Good Job!' : 'Watch Out!'}</p>
-                <p className="text-sm mt-1 text-white/90">{feedback.text}</p>
+                <p className="text-xs font-bold">{feedback.correct ? 'Good Job!' : 'Watch Out!'}</p>
+                <p className="text-[10px] mt-0.5 text-white/90 leading-tight">{feedback.text}</p>
               </div>
             </div>
             <button 
               onClick={nextScenario}
-              className="mt-4 w-full flex items-center justify-center bg-white text-slate-900 py-2 rounded-lg hover:bg-slate-200 transition font-bold"
+              className="w-full flex items-center justify-center bg-white text-slate-900 py-1.5 rounded text-xs font-bold hover:bg-slate-200 transition"
             >
-              Continue <ArrowRight className="w-4 h-4 ml-2" />
+              Next <ArrowRight className="w-3 h-3 ml-1" />
             </button>
           </div>
         )}

@@ -62,12 +62,55 @@ export const LECTURES: Lecture[] = [
         id: 'intro',
         title: 'Introduction',
         content: `
-          <h3>I. INTRODUCTION</h3>
-          <p class="mb-6 text-lg">Earthquakes are among the most destructive natural hazards on Earth. Their impacts go beyond ground shaking—they can trigger multiple secondary hazards that pose threats to human life, infrastructure, and the environment.</p>
-          <p class="mb-8 text-lg">Analyzing these effects helps communities <strong>predict secondary hazards</strong>, <strong>minimize casualties</strong>, and <strong>strengthen disaster resilience</strong>.</p>
-          
-          <div class="bg-blue-500/10 border-l-4 border-blue-500 p-4 text-sm text-blue-200">
-            <strong>Reference:</strong> Philippine Institute of Volcanology and Seismology (PHIVOLCS, 2023). <em>Earthquake Hazards</em>.
+          <div class="flex flex-col items-center text-center space-y-6 animate-in fade-in slide-in-from-bottom-8 duration-700 py-10">
+            
+            <!-- Animated Visual -->
+            <div class="relative group cursor-pointer mb-8">
+              <div class="absolute inset-0 bg-orange-500/20 blur-3xl rounded-full group-hover:bg-orange-500/40 transition-all duration-500"></div>
+              <svg class="w-32 h-32 md:w-48 md:h-48 text-orange-500 transform group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500 drop-shadow-[0_0_25px_rgba(249,115,22,0.6)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+              <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-orange-300 text-xs font-bold tracking-[0.2em] whitespace-nowrap uppercase">
+                Seismic Event
+              </div>
+            </div>
+
+            <h3 class="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-red-500 to-orange-400 bg-[length:200%_auto] animate-gradient uppercase tracking-tighter hover:tracking-wide transition-all duration-700 cursor-default">
+              Earthquakes
+            </h3>
+
+            <p class="text-2xl md:text-3xl text-slate-200 leading-normal font-light max-w-4xl">
+              Are among the most <span class="inline-block font-black text-red-500 hover:scale-110 hover:text-red-400 transition-all cursor-pointer border-b-4 border-red-500/30 hover:border-red-500">DESTRUCTIVE</span> natural hazards on Earth.
+            </p>
+
+            <div class="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm hover:bg-white/10 transition-all max-w-4xl text-left mt-8 shadow-xl">
+              <p class="text-lg md:text-xl text-slate-300 leading-relaxed">
+                Their impacts go beyond ground shaking—they can trigger <strong class="text-orange-400">multiple secondary hazards</strong> that pose threats to human life, infrastructure, and the environment.
+              </p>
+              <div class="h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent my-6"></div>
+              <p class="text-lg md:text-xl text-slate-300 leading-relaxed">
+                Analyzing these effects helps communities:
+              </p>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+                 <div class="flex items-center space-x-3 text-slate-200 font-bold bg-black/20 p-3 rounded-lg border border-white/5 hover:border-green-500/50 hover:text-green-400 transition-colors">
+                    <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                    <span>Predict Hazards</span>
+                 </div>
+                 <div class="flex items-center space-x-3 text-slate-200 font-bold bg-black/20 p-3 rounded-lg border border-white/5 hover:border-blue-500/50 hover:text-blue-400 transition-colors">
+                    <div class="w-2 h-2 rounded-full bg-blue-500"></div>
+                    <span>Minimize Casualties</span>
+                 </div>
+                 <div class="flex items-center space-x-3 text-slate-200 font-bold bg-black/20 p-3 rounded-lg border border-white/5 hover:border-purple-500/50 hover:text-purple-400 transition-colors">
+                    <div class="w-2 h-2 rounded-full bg-purple-500"></div>
+                    <span>Strengthen Resilience</span>
+                 </div>
+              </div>
+            </div>
+            
+            <div class="mt-8 opacity-60 hover:opacity-100 transition-opacity text-xs text-slate-400 font-mono">
+              Reference: PHIVOLCS, 2023
+            </div>
+
           </div>
         `
       },
@@ -250,11 +293,35 @@ export const LECTURES: Lecture[] = [
         id: 'flood-intro',
         title: 'The Power of Water',
         content: `
-          <h2 class="text-xl font-bold text-slate-200 mb-4">Moving Water is Deadly</h2>
-          <p class="mb-4">Flooding is the most common natural disaster. It can happen anywhere, but is most common in low-lying areas or near bodies of water.</p>
-          
-          <h3 class="text-lg font-semibold text-cyan-400 mt-6 mb-2">Turn Around, Don't Drown!</h3>
-          <p>Never drive through flooded roadways. Just 12 inches of moving water can carry away a small car, and 6 inches can knock an adult off their feet.</p>
+          <div class="flex flex-col items-center text-center space-y-6 animate-in fade-in slide-in-from-bottom-8 duration-700 py-10">
+            
+            <!-- Animated Visual -->
+            <div class="relative group cursor-pointer mb-4">
+              <div class="absolute inset-0 bg-cyan-500/20 blur-3xl rounded-full group-hover:bg-cyan-500/40 transition-all duration-1000"></div>
+              <svg class="w-40 h-40 text-cyan-400 transform group-hover:translate-y-2 transition-transform duration-1000 ease-in-out drop-shadow-[0_0_20px_rgba(34,211,238,0.8)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+              <div class="absolute inset-0 flex items-center justify-center">
+                 <svg class="w-16 h-16 text-white/50 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                   <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                 </svg>
+              </div>
+            </div>
+
+            <h3 class="text-7xl md:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-b from-cyan-300 to-blue-700 uppercase tracking-tighter drop-shadow-lg">
+              Flood
+            </h3>
+
+            <p class="text-3xl md:text-5xl text-white font-bold max-w-3xl leading-tight transform hover:scale-105 transition-transform duration-300">
+              "Turn Around, <br/> <span class="text-red-500 inline-block">Don't Drown!</span>"
+            </p>
+            
+            <div class="bg-blue-900/30 border border-blue-500/30 p-8 rounded-3xl backdrop-blur-sm max-w-3xl mt-8 hover:bg-blue-900/40 transition-colors">
+              <p class="text-xl text-slate-200 leading-relaxed">
+                 Flooding is the most common natural disaster. Just <span class="text-cyan-400 font-black text-3xl mx-2 inline-block animate-pulse">6 inches</span> of moving water can knock you off your feet.
+              </p>
+            </div>
+          </div>
         `
       },
       {
@@ -323,8 +390,41 @@ export const LECTURES: Lecture[] = [
         id: 'volcano-intro',
         title: 'Volcanic Hazards',
         content: `
-          <h2 class="text-xl font-bold text-slate-200 mb-4">Nature's Fury</h2>
-          <p class="mb-4">Volcanoes spew hot, dangerous gases, ash, lava, and rock that are powerfully destructive. Eruptions can be explosive or effusive (flowing).</p>
+          <div class="flex flex-col items-center text-center space-y-6 animate-in fade-in slide-in-from-bottom-8 duration-700 py-10">
+            
+            <div class="relative group cursor-pointer hover:animate-pulse">
+               <div class="absolute inset-0 bg-red-600/30 blur-3xl rounded-full group-hover:bg-red-500/50 transition-all duration-300"></div>
+               <svg class="w-48 h-48 text-red-500 group-hover:text-yellow-500 transition-colors duration-500 drop-shadow-[0_0_35px_rgba(239,68,68,0.8)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                 <path d="m2 22 1-1h3l9-9"/>
+                 <path d="M14 10l4-1 2 2-2 7h-3l-1 1H9l-2-6"/>
+                 <path d="m14 10-3-4-1 2-2-2-4 3 0 12"/>
+               </svg>
+            </div>
+
+            <h3 class="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-t from-red-600 via-orange-500 to-yellow-300 uppercase tracking-tighter hover:tracking-widest transition-all duration-500 cursor-default shadow-red-500/50">
+              Volcanoes
+            </h3>
+
+            <p class="text-3xl text-slate-200 font-thin tracking-wide uppercase mt-4">
+              Nature's <span class="font-black text-red-500 text-5xl inline-block transform hover:scale-125 hover:rotate-6 transition-transform cursor-pointer shadow-black drop-shadow-md">EXPLOSIVE</span> Fury.
+            </p>
+
+            <div class="grid grid-cols-3 gap-4 mt-12 w-full max-w-2xl">
+              <div class="bg-red-950/40 border border-red-500/30 p-6 rounded-2xl flex flex-col items-center hover:bg-red-900/60 transition-colors group cursor-crosshair">
+                 <span class="text-4xl mb-2 group-hover:-translate-y-2 transition-transform">🌫️</span>
+                 <span class="text-red-200 font-bold uppercase tracking-widest">Ash</span>
+              </div>
+              <div class="bg-orange-950/40 border border-orange-500/30 p-6 rounded-2xl flex flex-col items-center hover:bg-orange-900/60 transition-colors group cursor-crosshair">
+                 <span class="text-4xl mb-2 group-hover:-translate-y-2 transition-transform">🌋</span>
+                 <span class="text-orange-200 font-bold uppercase tracking-widest">Lava</span>
+              </div>
+              <div class="bg-yellow-950/40 border border-yellow-500/30 p-6 rounded-2xl flex flex-col items-center hover:bg-yellow-900/60 transition-colors group cursor-crosshair">
+                 <span class="text-4xl mb-2 group-hover:-translate-y-2 transition-transform">💨</span>
+                 <span class="text-yellow-200 font-bold uppercase tracking-widest">Gas</span>
+              </div>
+            </div>
+
+          </div>
         `
       },
       {
