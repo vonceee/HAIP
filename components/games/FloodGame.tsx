@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { FLOOD_SCENARIOS } from '../../data';
 import { Waves, ThumbsUp, ThumbsDown, AlertTriangle, ArrowRight } from 'lucide-react';
@@ -46,7 +47,7 @@ export const FloodGame: React.FC = () => {
 
   if (gameOver) {
     return (
-      <div className="bg-red-500/10 p-8 rounded-xl border border-red-500/20 text-center backdrop-blur-sm">
+      <div className="bg-red-500/10 p-8 rounded-xl border border-red-500/20 text-center backdrop-blur-sm max-w-lg mx-auto">
         <Waves className="w-16 h-16 text-red-500 mx-auto mb-4" />
         <h3 className="text-2xl font-bold text-red-200 mb-2">Flooded!</h3>
         <p className="text-red-300 mb-6">The water level got too high. Remember, safety choices matter.</p>
@@ -57,7 +58,7 @@ export const FloodGame: React.FC = () => {
 
   if (gameWon) {
     return (
-      <div className="bg-green-500/10 p-8 rounded-xl border border-green-500/20 text-center backdrop-blur-sm">
+      <div className="bg-green-500/10 p-8 rounded-xl border border-green-500/20 text-center backdrop-blur-sm max-w-lg mx-auto">
         <ThumbsUp className="w-16 h-16 text-green-500 mx-auto mb-4" />
         <h3 className="text-2xl font-bold text-green-200 mb-2">You Survived!</h3>
         <p className="text-green-300 mb-6">Excellent decision making. You stayed dry and safe.</p>
@@ -67,7 +68,7 @@ export const FloodGame: React.FC = () => {
   }
 
   return (
-    <div className="bg-white/5 rounded-xl shadow-lg border border-white/10 overflow-hidden relative backdrop-blur-sm">
+    <div className="bg-white/5 rounded-xl shadow-lg border border-white/10 overflow-hidden relative backdrop-blur-sm w-full max-w-2xl mx-auto">
       {/* Water Level Indicator */}
       <div className="absolute left-0 bottom-0 w-2 h-full bg-slate-800">
         <div 
@@ -87,8 +88,8 @@ export const FloodGame: React.FC = () => {
           </span>
         </div>
 
-        <div className="bg-black/20 p-6 rounded-lg border border-white/5 mb-6 text-center min-h-[120px] flex items-center justify-center">
-          <p className="text-xl font-medium text-slate-100">{currentScenario.text}</p>
+        <div className="bg-black/20 p-6 rounded-lg border border-white/5 mb-6 text-center min-h-[100px] flex items-center justify-center">
+          <p className="text-lg font-medium text-slate-100">{currentScenario.text}</p>
         </div>
 
         {!feedback ? (

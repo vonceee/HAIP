@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { QuizQuestion } from '../types';
 import { CheckCircle, XCircle, RefreshCw } from 'lucide-react';
@@ -44,7 +45,7 @@ export const QuizComponent: React.FC<QuizProps> = ({ questions }) => {
 
   if (showScore) {
     return (
-      <div className="bg-white/5 p-8 rounded-xl shadow-lg text-center border border-white/10 backdrop-blur-sm">
+      <div className="bg-white/5 p-8 rounded-xl shadow-lg text-center border border-white/10 backdrop-blur-sm w-full max-w-lg mx-auto">
         <h3 className="text-2xl font-bold text-white mb-4">Quiz Completed!</h3>
         <p className="text-lg text-slate-300 mb-6">
           You scored <span className="font-bold text-emerald-400">{score}</span> out of {questions.length}
@@ -63,7 +64,7 @@ export const QuizComponent: React.FC<QuizProps> = ({ questions }) => {
   const currentQuestion = questions[currentQuestionIndex];
 
   return (
-    <div className="bg-white/5 p-6 rounded-xl shadow-lg border border-white/10 backdrop-blur-sm">
+    <div className="bg-white/5 p-6 rounded-xl shadow-lg border border-white/10 backdrop-blur-sm w-full">
       <div className="flex justify-between items-center mb-4">
         <h3 className="text-lg font-semibold text-slate-200">Knowledge Check</h3>
         <span className="text-sm text-slate-400">Question {currentQuestionIndex + 1} / {questions.length}</span>

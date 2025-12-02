@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { Lecture, HazardTopic } from '../types';
 import { ArrowLeft, BrainCircuit, Gamepad2, Clock, ChevronRight, ChevronLeft, Target, Shield, Play, AlertTriangle, Zap, Waves, Maximize, Minimize } from 'lucide-react';
 import { QuizComponent } from '../components/QuizComponent';
@@ -56,23 +56,55 @@ const THEME_STYLES: Record<HazardTopic | 'General', {
 
 function ActivityIcon(props: any) {
   return (
-    <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+    <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
   );
 }
 
+type SlideType = 'content' | 'game' | 'quiz';
+
+interface Slide {
+  type: SlideType;
+  title: string;
+  data?: any;
+}
+
 export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => {
-  const [activeSectionIndex, setActiveSectionIndex] = useState(0);
+  const [activeSlideIndex, setActiveSlideIndex] = useState(0);
   const [showStartMenu, setShowStartMenu] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // Construct Virtual Slides Array
+  const slides = useMemo(() => {
+    const s: Slide[] = lecture.sections.map(section => ({
+      type: 'content',
+      title: section.title,
+      data: section
+    }));
+
+    if (lecture.gameType !== 'none') {
+      s.push({
+        type: 'game',
+        title: 'Simulation Protocol',
+      });
+    }
+
+    if (lecture.quiz && lecture.quiz.length > 0) {
+      s.push({
+        type: 'quiz',
+        title: 'Knowledge Certification',
+      });
+    }
+    return s;
+  }, [lecture]);
+
   // Reset state when lecture changes
   useEffect(() => {
-    setActiveSectionIndex(0);
+    setActiveSlideIndex(0);
     setShowStartMenu(true);
   }, [lecture.id]);
 
-  // Handle fullscreen change events (e.g., ESC key)
+  // Handle fullscreen change events
   useEffect(() => {
     const handleFullscreenChange = () => {
       setIsFullscreen(!!document.fullscreenElement);
@@ -83,10 +115,8 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => 
 
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) {
-      // Request fullscreen on the container ref instead of the whole document
-      // This hides the global Header and Footer automatically
       containerRef.current?.requestFullscreen().catch(err => {
-        console.error(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+        console.error(`Error attempting to enable full-screen mode: ${err.message}`);
       });
     } else {
       if (document.exitFullscreen) {
@@ -95,99 +125,60 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => 
     }
   };
 
-  const activeSection = lecture.sections[activeSectionIndex];
-  const isFirstSection = activeSectionIndex === 0;
-  const isLastSection = activeSectionIndex === lecture.sections.length - 1;
-  const progressPercent = ((activeSectionIndex + 1) / lecture.sections.length) * 100;
-
   const theme = THEME_STYLES[lecture.topic] || THEME_STYLES.General;
   const TopicIcon = theme.icon;
 
+  const activeSlide = slides[activeSlideIndex];
+  const isFirstSlide = activeSlideIndex === 0;
+  const isLastSlide = activeSlideIndex === slides.length - 1;
+  const progressPercent = ((activeSlideIndex + 1) / slides.length) * 100;
+
   const handleNext = () => {
-    if (!isLastSection) {
-      setActiveSectionIndex(prev => prev + 1);
-      // If we are in fullscreen, the container is the scrollable element
-      if (isFullscreen && containerRef.current) {
-         containerRef.current.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-         window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
+    if (!isLastSlide) {
+      setActiveSlideIndex(prev => prev + 1);
     } else {
-      const interactiveEl = document.getElementById('interactive-section');
-      if (interactiveEl) interactiveEl.scrollIntoView({ behavior: 'smooth' });
+      onBack(); // "Finish" action
     }
   };
 
   const handlePrev = () => {
-    if (!isFirstSection) {
-      setActiveSectionIndex(prev => prev - 1);
-      if (isFullscreen && containerRef.current) {
-        containerRef.current.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
+    if (!isFirstSlide) {
+      setActiveSlideIndex(prev => prev - 1);
     }
   };
 
-  // --- MISSION BRIEFING SCREEN (START MENU) ---
+  // --- MISSION BRIEFING SCREEN ---
   if (showStartMenu) {
     return (
       <div className={`fixed inset-0 z-50 flex flex-col items-center justify-center bg-gradient-to-br ${theme.bgGradient} text-white overflow-hidden`}>
-        
-        {/* Background Image with Overlay */}
         <div className="absolute inset-0 opacity-20">
-          <img 
-            src={lecture.imageUrl} 
-            alt="Background" 
-            className="w-full h-full object-cover filter blur-sm scale-110"
-          />
+          <img src={lecture.imageUrl} alt="Background" className="w-full h-full object-cover filter blur-sm scale-110"/>
         </div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_black_90%)]" />
 
-        {/* Content Container */}
         <div className="relative z-10 max-w-4xl w-full px-6 flex flex-col md:flex-row gap-12 items-center animate-in fade-in zoom-in duration-500">
-          
-          {/* Left Panel: Visual & Title */}
           <div className="flex-1 text-center md:text-left space-y-6">
             <div className={`inline-flex items-center px-4 py-1.5 rounded border border-white/20 bg-black/40 backdrop-blur-md ${theme.accentColor} font-mono text-sm tracking-widest uppercase mb-4`}>
               <TopicIcon className="w-4 h-4 mr-2" />
               Mission Briefing
             </div>
-            
-            <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none" style={{ textShadow: '0 0 40px rgba(0,0,0,0.5)' }}>
-              {lecture.title}
-            </h1>
-            
-            <p className="text-slate-300 text-lg md:text-xl font-light leading-relaxed border-l-4 border-white/20 pl-6">
-              {lecture.description}
-            </p>
-
-            {/* Stats Grid */}
+            <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none" style={{ textShadow: '0 0 40px rgba(0,0,0,0.5)' }}>{lecture.title}</h1>
+            <p className="text-slate-300 text-lg md:text-xl font-light leading-relaxed border-l-4 border-white/20 pl-6">{lecture.description}</p>
             <div className="grid grid-cols-2 gap-4 pt-4">
               <div className="bg-white/5 border border-white/10 p-4 rounded-lg backdrop-blur-sm">
                 <div className="text-slate-400 text-xs uppercase tracking-wider mb-1">Estimated Time</div>
-                <div className="text-2xl font-bold flex items-center">
-                  <Clock className="w-5 h-5 mr-2 text-slate-400" />
-                  {lecture.readTime}:00
-                </div>
+                <div className="text-2xl font-bold flex items-center"><Clock className="w-5 h-5 mr-2 text-slate-400" />{lecture.readTime}:00</div>
               </div>
               <div className="bg-white/5 border border-white/10 p-4 rounded-lg backdrop-blur-sm">
                 <div className="text-slate-400 text-xs uppercase tracking-wider mb-1">Difficulty</div>
-                <div className={`text-2xl font-bold ${theme.accentColor}`}>
-                  {lecture.difficulty.toUpperCase()}
-                </div>
+                <div className={`text-2xl font-bold ${theme.accentColor}`}>{lecture.difficulty.toUpperCase()}</div>
               </div>
             </div>
           </div>
 
-          {/* Right Panel: Objectives & Action */}
           <div className="w-full md:w-96 bg-black/60 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-2xl relative overflow-hidden group">
             <div className={`absolute top-0 left-0 w-full h-1 ${theme.buttonBg}`} />
-            
-            <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6 flex items-center">
-              <Target className="w-4 h-4 mr-2" /> Mission Goals
-            </h3>
-            
+            <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6 flex items-center"><Target className="w-4 h-4 mr-2" /> Mission Goals</h3>
             <ul className="space-y-4 mb-10">
               {lecture.objectives.slice(0, 3).map((obj, i) => (
                 <li key={i} className="flex items-start text-sm text-slate-200">
@@ -196,190 +187,152 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => 
                 </li>
               ))}
             </ul>
-
             <button
               onClick={() => setShowStartMenu(false)}
               className={`w-full group/btn relative overflow-hidden ${theme.buttonBg} ${theme.buttonHover} text-white font-black uppercase tracking-wider py-5 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] flex items-center justify-center`}
             >
-              <span className="relative z-10 flex items-center">
-                Start Mission <Play className="w-5 h-5 ml-2 fill-current" />
-              </span>
+              <span className="relative z-10 flex items-center">Start Mission <Play className="w-5 h-5 ml-2 fill-current" /></span>
               <div className="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-[-200%] transition-transform duration-700 ease-in-out" />
             </button>
-            
-            <button 
-              onClick={onBack}
-              className="w-full mt-4 text-xs text-slate-500 hover:text-white uppercase tracking-widest transition-colors"
-            >
-              Abort Mission
-            </button>
+            <button onClick={onBack} className="w-full mt-4 text-xs text-slate-500 hover:text-white uppercase tracking-widest transition-colors">Abort Mission</button>
           </div>
         </div>
       </div>
     );
   }
 
-  // --- STANDARD CONTENT VIEW (REVEALED AFTER START) ---
+  // --- SLIDE BASED CONTENT VIEW ---
   return (
     <div 
       ref={containerRef}
-      className={`min-h-screen bg-gradient-to-br ${theme.bgGradient} text-white font-sans transition-colors duration-500 overflow-y-auto`}
+      className={`h-screen w-full flex flex-col bg-gradient-to-br ${theme.bgGradient} text-white font-sans overflow-hidden`}
     >
-      <div className={`${isFullscreen ? 'w-full px-6' : 'max-w-5xl mx-auto px-4 sm:px-6 lg:px-8'} py-8 animate-in fade-in slide-in-from-bottom-4 duration-700 relative`}>
-        
-        {/* Top Navigation Bar - Hidden in Fullscreen to provide immersive view */}
+        {/* TOP BAR */}
         {!isFullscreen && (
-          <div className="flex items-center justify-between mb-8">
-            <button 
-              onClick={onBack}
-              className="group flex items-center text-slate-400 hover:text-white transition-colors font-medium"
-            >
-              <div className="p-2 bg-white/5 rounded-lg border border-white/10 shadow-sm mr-3 group-hover:bg-white/10 group-hover:border-white/20">
+          <div className="flex-none flex items-center justify-between px-6 py-4 bg-black/20 border-b border-white/5 backdrop-blur-sm z-20">
+            <button onClick={onBack} className="group flex items-center text-slate-400 hover:text-white transition-colors font-medium">
+              <div className="p-1.5 bg-white/5 rounded-lg border border-white/10 shadow-sm mr-3 group-hover:bg-white/10">
                 <ArrowLeft className="w-4 h-4" />
               </div>
-              <span className="text-sm uppercase tracking-wide">Exit Mission</span>
+              <span className="text-xs uppercase tracking-wide">Exit Mission</span>
             </button>
 
             <div className="flex items-center space-x-3">
-               <button
-                 onClick={toggleFullscreen}
-                 className="p-2 bg-black/40 border border-white/10 rounded-lg hover:bg-white/10 transition-colors text-slate-400 hover:text-white"
-                 title="Enter Fullscreen"
-               >
+               <button onClick={toggleFullscreen} className="p-2 bg-black/40 border border-white/10 rounded-lg hover:bg-white/10 transition-colors text-slate-400 hover:text-white" title="Fullscreen">
                  <Maximize className="w-4 h-4" />
                </button>
-              <div className={`px-3 py-1.5 bg-black/40 border border-white/10 rounded text-xs font-bold uppercase tracking-wider ${theme.accentColor}`}>
+              <div className={`px-3 py-1 bg-black/40 border border-white/10 rounded text-[10px] font-bold uppercase tracking-wider ${theme.accentColor}`}>
                 {lecture.topic} Protocol
               </div>
             </div>
           </div>
         )}
 
-        {/* Floating Controls for Fullscreen (Visible only when Fullscreen) */}
+        {/* FULLSCREEN CONTROLS */}
         {isFullscreen && (
-           <button
-             onClick={toggleFullscreen}
-             className="fixed top-6 right-6 z-50 p-3 bg-black/60 border border-white/20 rounded-full text-white hover:bg-black/80 backdrop-blur-md transition-all shadow-lg group"
-             title="Exit Fullscreen"
-           >
+           <button onClick={toggleFullscreen} className="fixed top-6 right-6 z-50 p-3 bg-black/60 border border-white/20 rounded-full text-white hover:bg-black/80 backdrop-blur-md transition-all shadow-lg group">
              <Minimize className="w-5 h-5 group-hover:scale-90 transition-transform" />
            </button>
         )}
 
-        <div className="bg-black/30 backdrop-blur-xl shadow-2xl rounded-2xl border border-white/10 overflow-hidden mb-8 relative">
+        {/* MAIN STAGE - FLEX 1 to fill remaining height */}
+        <div className="flex-1 relative flex flex-col justify-center items-center p-4 md:p-6 overflow-hidden">
           
-          {/* Progress Bar (Sticky at top of card) */}
-          <div className="absolute top-0 left-0 w-full h-1 bg-white/10 z-10">
-            <div 
-              className={`${theme.buttonBg} h-full transition-all duration-500 ease-out shadow-[0_0_10px_currentColor]`} 
-              style={{ width: `${progressPercent}%` }}
-            />
-          </div>
-
-          {/* Hero Section - Only visible on the first section */}
-          {isFirstSection && (
-            <div className="relative h-64 md:h-80">
-              <img 
-                src={lecture.imageUrl} 
-                alt={lecture.title} 
-                className="w-full h-full object-cover opacity-80"
-              />
-              <div className={`absolute inset-0 bg-gradient-to-t ${theme.bgGradient.replace('from-', 'from-slate-900/100 ').replace('via-', 'via-slate-900/60 ').split(' ')[0]} flex items-end`}>
-                <div className="p-8 md:p-12 text-white w-full">
-                  <h1 className="text-4xl md:text-5xl font-black mb-2 uppercase tracking-tight shadow-black drop-shadow-lg">{lecture.title}</h1>
+          <div className="w-full max-w-5xl h-full max-h-full flex flex-col bg-black/30 backdrop-blur-xl shadow-2xl rounded-2xl border border-white/10 relative overflow-hidden">
+             
+             {/* HEADER BAR INSIDE CARD */}
+             <div className="flex-none p-6 md:p-8 flex justify-between items-center border-b border-white/5 bg-white/5 relative">
+                {/* PROGRESS BAR */}
+                <div className="absolute bottom-0 left-0 w-full h-0.5 bg-white/10">
+                   <div className={`${theme.buttonBg} h-full transition-all duration-500 ease-out shadow-[0_0_10px_currentColor]`} style={{ width: `${progressPercent}%` }} />
                 </div>
-              </div>
-            </div>
-          )}
+                
+                <h2 className="text-xl md:text-2xl font-bold text-white flex items-center truncate">
+                   <span className={`mr-3 w-8 h-8 rounded-lg ${theme.buttonBg} text-white flex items-center justify-center text-sm shadow-lg flex-shrink-0`}>
+                     {activeSlideIndex + 1}
+                   </span>
+                   {activeSlide.title}
+                </h2>
+                <span className="text-xs font-mono text-slate-500 uppercase flex-shrink-0 ml-4">
+                   SEC {activeSlideIndex + 1} / {slides.length}
+                </span>
+             </div>
 
-          {/* Main Content Area */}
-          <div className="p-8 md:p-12 min-h-[400px]">
-            
-            <div className="flex justify-between items-center mb-8 border-b border-white/10 pb-4">
-              <h2 className="text-2xl font-bold text-white flex items-center">
-                  <span className={`mr-3 w-8 h-8 rounded-lg ${theme.buttonBg} text-white flex items-center justify-center text-sm shadow-lg`}>
-                    {activeSectionIndex + 1}
-                  </span>
-                  {activeSection.title}
-              </h2>
-              <span className="text-xs font-mono text-slate-500 uppercase">
-                  SEC {activeSectionIndex + 1} / {lecture.sections.length}
-              </span>
-            </div>
-
-            <div className="prose prose-lg prose-invert max-w-none mb-12 text-slate-300 leading-relaxed" key={activeSection.id}>
-              <div dangerouslySetInnerHTML={{ __html: activeSection.content }} />
-            </div>
-
-            {/* Navigation Controls */}
-            <div className="flex items-center justify-between border-t border-white/10 pt-8">
-              <button
-                  onClick={handlePrev}
-                  disabled={isFirstSection}
-                  className={`flex items-center px-6 py-3 rounded-lg text-sm font-bold uppercase tracking-wide transition-all ${
-                    isFirstSection 
-                    ? 'text-slate-600 cursor-not-allowed' 
-                    : 'text-slate-400 hover:bg-white/5 hover:text-white'
-                  }`}
-              >
-                  <ChevronLeft className="w-4 h-4 mr-2" />
-                  Prev
-              </button>
-
-              <button
-                  onClick={handleNext}
-                  className={`flex items-center px-8 py-4 rounded-xl text-sm font-bold uppercase tracking-widest transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 ${
-                    isLastSection
-                    ? 'bg-slate-100 text-slate-900 hover:bg-white'
-                    : `${theme.buttonBg} text-white ${theme.buttonHover}`
-                  }`}
-              >
-                  {isLastSection ? 'Proceed to Training' : 'Next Sector'}
-                  <ChevronRight className="w-4 h-4 ml-2" />
-              </button>
-            </div>
-          </div>
-        </div>
-            
-        {/* Interactive Section */}
-        <div id="interactive-section" className="space-y-8 pt-8 pb-20">
-            {/* Section Divider */}
-            <div className="flex items-center justify-center space-x-4 mb-4 opacity-50">
-              <div className="h-px bg-white/20 w-full max-w-xs"></div>
-              <div className="font-mono text-xs text-slate-400 uppercase tracking-widest">Training Simulation</div>
-              <div className="h-px bg-white/20 w-full max-w-xs"></div>
-            </div>
-
-            {/* Game Module */}
-            {lecture.gameType !== 'none' && (
-              <section className="scroll-mt-20">
-                <div className="bg-black/30 backdrop-blur-xl rounded-2xl shadow-xl border border-white/10 p-1">
-                  <div className="rounded-xl p-8 bg-gradient-to-b from-white/5 to-transparent">
-                    <div className={`flex items-center ${theme.accentColor} mb-6 font-bold uppercase tracking-wider text-sm`}>
-                      <Gamepad2 className="w-5 h-5 mr-2" />
-                      Interactive Scenario
+             {/* SCROLLABLE CONTENT AREA */}
+             <div className="flex-1 overflow-y-auto p-6 md:p-8 relative">
+                <div className="animate-in fade-in slide-in-from-right-4 duration-500 h-full flex flex-col">
+                  
+                  {/* CONTENT SLIDE */}
+                  {activeSlide.type === 'content' && (
+                    <div className="prose prose-lg prose-invert max-w-none text-slate-300 leading-relaxed flex-1 flex flex-col justify-center">
+                      <div dangerouslySetInnerHTML={{ __html: activeSlide.data.content }} />
                     </div>
-                    {lecture.gameType === 'earthquake-sim' && <EarthquakeGame />}
-                    {lecture.gameType === 'flood-choice' && <FloodGame />}
-                  </div>
-                </div>
-              </section>
-            )}
+                  )}
 
-            {/* Quiz Module */}
-            {lecture.quiz && lecture.quiz.length > 0 && (
-              <section className="scroll-mt-20">
-                <div className="bg-black/30 backdrop-blur-xl rounded-2xl shadow-xl border border-white/10 p-8 border-l-4 border-emerald-500">
-                  <div className="flex items-center text-emerald-400 mb-6 font-bold uppercase tracking-wider text-sm">
-                    <BrainCircuit className="w-5 h-5 mr-2" />
-                    Knowledge Certification
-                  </div>
-                  <QuizComponent questions={lecture.quiz} />
+                  {/* GAME SLIDE */}
+                  {activeSlide.type === 'game' && (
+                    <div className="flex-1 flex flex-col justify-center">
+                       <div className="rounded-xl p-4 bg-gradient-to-b from-white/5 to-transparent h-full flex flex-col">
+                        <div className={`flex items-center ${theme.accentColor} mb-6 font-bold uppercase tracking-wider text-sm`}>
+                          <Gamepad2 className="w-5 h-5 mr-2" />
+                          Interactive Scenario
+                        </div>
+                        <div className="flex-1 flex items-center justify-center">
+                          {lecture.gameType === 'earthquake-sim' && <div className="w-full"><EarthquakeGame /></div>}
+                          {lecture.gameType === 'flood-choice' && <div className="w-full"><FloodGame /></div>}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* QUIZ SLIDE */}
+                  {activeSlide.type === 'quiz' && (
+                    <div className="flex-1 flex flex-col justify-center">
+                      <div className="rounded-xl p-4 border-l-4 border-emerald-500 h-full flex flex-col">
+                        <div className="flex items-center text-emerald-400 mb-6 font-bold uppercase tracking-wider text-sm">
+                          <BrainCircuit className="w-5 h-5 mr-2" />
+                          Knowledge Certification
+                        </div>
+                         <div className="flex-1 flex items-center justify-center w-full">
+                           <div className="w-full max-w-2xl">
+                             <QuizComponent questions={lecture.quiz!} />
+                           </div>
+                         </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
-              </section>
-            )}
+             </div>
+
+             {/* FOOTER NAV CONTROLS */}
+             <div className="flex-none p-6 border-t border-white/5 flex items-center justify-between bg-black/20">
+                <button
+                    onClick={handlePrev}
+                    disabled={isFirstSlide}
+                    className={`flex items-center px-6 py-3 rounded-lg text-sm font-bold uppercase tracking-wide transition-all ${
+                      isFirstSlide 
+                      ? 'text-slate-700 cursor-not-allowed' 
+                      : 'text-slate-400 hover:bg-white/5 hover:text-white'
+                    }`}
+                >
+                    <ChevronLeft className="w-4 h-4 mr-2" />
+                    Prev
+                </button>
+
+                <button
+                    onClick={handleNext}
+                    className={`flex items-center px-8 py-4 rounded-xl text-sm font-bold uppercase tracking-widest transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 ${
+                      isLastSlide
+                      ? 'bg-emerald-600 text-white hover:bg-emerald-500'
+                      : `${theme.buttonBg} text-white ${theme.buttonHover}`
+                    }`}
+                >
+                    {isLastSlide ? 'Complete Mission' : 'Next Sector'}
+                    <ChevronRight className="w-4 h-4 ml-2" />
+                </button>
+             </div>
+          </div>
         </div>
-      </div>
     </div>
   );
 };
