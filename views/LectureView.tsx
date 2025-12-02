@@ -149,7 +149,20 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => 
     const titleSize = lecture.title.length > 20 ? "text-4xl md:text-6xl" : "text-5xl md:text-7xl";
     
     return (
-      <div className={`fixed inset-0 z-50 flex flex-col items-center justify-center bg-gradient-to-br ${theme.bgGradient} text-white overflow-hidden`}>
+      <div className={`fixed inset-0 z-50 flex flex-col items-center justify-center bg-gradient-to-br ${theme.bgGradient} text-white overflow-hidden`} ref={containerRef}>
+        {/* Fullscreen Toggle for Start Menu */}
+        <button 
+          onClick={toggleFullscreen} 
+          className="absolute top-6 right-6 z-50 p-3 bg-black/40 border border-white/10 rounded-full text-slate-300 hover:text-white hover:bg-white/10 backdrop-blur-md transition-all shadow-lg group"
+          title={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
+        >
+           {isFullscreen ? (
+             <Minimize className="w-6 h-6 group-hover:scale-90 transition-transform" />
+           ) : (
+             <Maximize className="w-6 h-6 group-hover:scale-110 transition-transform" />
+           )}
+        </button>
+
         <div className="absolute inset-0 opacity-30">
           <img src={lecture.imageUrl} alt="Background" className="w-full h-full object-cover filter blur-sm scale-110 animate-pulse" style={{ animationDuration: '10s' }}/>
         </div>
