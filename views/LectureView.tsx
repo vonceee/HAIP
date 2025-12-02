@@ -294,7 +294,8 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => 
                   {/* STANDARD CONTENT SLIDE */}
                   {activeSlide.type === 'content' && (
                     <div className="prose prose-lg prose-invert max-w-none text-slate-300 leading-relaxed h-full overflow-y-auto flex flex-col items-center">
-                      <div className="w-full max-w-4xl" dangerouslySetInnerHTML={{ __html: activeSlide.data.content }} />
+                      {/* Changed max-w from 4xl to larger to utilize full width on large screens */}
+                      <div className="w-full max-w-[90%] xl:max-w-[1600px]" dangerouslySetInnerHTML={{ __html: activeSlide.data.content }} />
                     </div>
                   )}
 
