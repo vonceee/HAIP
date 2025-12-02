@@ -1,4 +1,5 @@
 
+
 export type HazardTopic = 'Earthquake' | 'Flood' | 'Volcano' | 'General';
 
 export type GameType = 'earthquake-sim' | 'flood-choice' | 'none';
@@ -32,7 +33,8 @@ export interface Lecture {
   objectives: string[];
   competencies: string[];
   sections: LectureSection[]; // Replaced 'content' string with sections
-  quiz?: QuizQuestion[];
+  refresherQuiz?: QuizQuestion[]; // Pre-assessment quiz for dashboard
+  finalQuiz?: QuizQuestion[]; // Comprehensive quiz for end of lecture
   gameType: GameType;
 }
 

@@ -1,4 +1,5 @@
 
+
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { Lecture, HazardTopic } from '../types';
 import { ArrowLeft, BrainCircuit, Gamepad2, Clock, ChevronRight, ChevronLeft, Target, Shield, Play, AlertTriangle, Zap, Waves, Maximize, Minimize } from 'lucide-react';
@@ -60,7 +61,7 @@ function ActivityIcon(props: any) {
   );
 }
 
-type SlideType = 'content' | 'dashboard';
+type SlideType = 'content' | 'dashboard' | 'final-quiz';
 
 interface Slide {
   type: SlideType;
@@ -81,7 +82,16 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => 
       title: section.title,
       data: section
     }));
-    // Note: Game and Quiz are now embedded in the first 'dashboard' slide
+    
+    // Add Final Quiz Slide if it exists
+    if (lecture.finalQuiz && lecture.finalQuiz.length > 0) {
+      s.push({
+        type: 'final-quiz',
+        title: 'Certification Exam',
+        data: lecture.finalQuiz
+      });
+    }
+
     return s;
   }, [lecture]);
 
@@ -249,7 +259,7 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => 
              <div className="flex-1 overflow-hidden p-6 relative">
                 <div className="animate-in fade-in slide-in-from-right-4 duration-500 h-full">
                   
-                  {/* DASHBOARD SLIDE (OBJECTIVES + GAME + QUIZ) */}
+                  {/* DASHBOARD SLIDE (OBJECTIVES + GAME + REFRESHER QUIZ) */}
                   {activeSlide.type === 'dashboard' && (
                     <div className="h-full grid grid-cols-1 lg:grid-cols-2 gap-6 overflow-y-auto lg:overflow-hidden">
                       {/* Left Column: Objectives + Game */}
@@ -279,8 +289,8 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => 
                       {/* Right Column: Refresher Quiz */}
                       <div className="h-full min-h-[400px] lg:min-h-0 bg-white/5 rounded-xl border border-white/10 overflow-hidden flex flex-col">
                          <div className="flex-1 p-2">
-                            {lecture.quiz && lecture.quiz.length > 0 ? (
-                               <QuizComponent questions={lecture.quiz} />
+                            {lecture.refresherQuiz && lecture.refresherQuiz.length > 0 ? (
+                               <QuizComponent questions={lecture.refresherQuiz} title="Refresher Quiz" />
                             ) : (
                                <div className="flex items-center justify-center h-full text-slate-500">
                                  No Quiz Available
@@ -294,9 +304,17 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => 
                   {/* STANDARD CONTENT SLIDE */}
                   {activeSlide.type === 'content' && (
                     <div className="prose prose-lg prose-invert max-w-none text-slate-300 leading-relaxed h-full overflow-y-auto flex flex-col items-center">
-                      {/* Changed max-w from 4xl to larger to utilize full width on large screens */}
                       <div className="w-full max-w-[90%] xl:max-w-[1600px]" dangerouslySetInnerHTML={{ __html: activeSlide.data.content }} />
                     </div>
+                  )}
+
+                  {/* FINAL QUIZ SLIDE */}
+                  {activeSlide.type === 'final-quiz' && (
+                     <div className="h-full flex flex-col items-center justify-center max-w-4xl mx-auto">
+                        <div className="w-full h-full bg-white/5 rounded-xl border border-white/10 p-6 shadow-2xl">
+                           <QuizComponent questions={activeSlide.data} title="Final Certification Exam" />
+                        </div>
+                     </div>
                   )}
 
                 </div>
