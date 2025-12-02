@@ -1,4 +1,5 @@
 
+
 import { Lecture, EQStep, FloodScenario } from './types';
 
 export const LECTURES: Lecture[] = [
@@ -50,61 +51,58 @@ export const LECTURES: Lecture[] = [
         id: 'intro',
         title: 'Introduction',
         content: `
-          <div class="flex flex-col items-center text-center space-y-10 animate-in fade-in slide-in-from-bottom-8 duration-700 py-10">
+          <div class="flex flex-col items-center text-center space-y-12 animate-in fade-in slide-in-from-bottom-8 duration-700 py-12">
             
-            <div class="flex flex-col md:flex-row items-center justify-center gap-6 mb-2 group cursor-pointer hover:scale-105 transition-transform duration-500">
+            <div class="flex flex-col md:flex-row items-center justify-center gap-8 mb-4 group cursor-pointer hover:scale-105 transition-transform duration-500">
               <!-- Animated Visual Icon (Seismic Pulse) -->
               <div class="relative flex-shrink-0">
                 <div class="absolute inset-0 bg-orange-500/20 blur-3xl rounded-full group-hover:bg-orange-500/40 transition-all duration-500"></div>
-                <svg class="w-20 h-20 md:w-24 md:h-24 text-orange-500 transform group-hover:rotate-12 transition-transform duration-500 drop-shadow-[0_0_15px_rgba(249,115,22,0.8)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <svg class="w-24 h-24 md:w-32 md:h-32 text-orange-500 transform group-hover:rotate-12 transition-transform duration-500 drop-shadow-[0_0_20px_rgba(249,115,22,0.8)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M22 12h-4l-3 9L9 3l-3 9H2" />
                 </svg>
               </div>
 
               <!-- Title -->
-              <h3 class="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-600 uppercase tracking-tighter drop-shadow-2xl">
+              <h3 class="text-7xl md:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-600 uppercase tracking-tighter drop-shadow-2xl">
                 Earthquakes
               </h3>
             </div>
             
-            <div class="max-w-4xl mx-auto space-y-8 px-4">
+            <div class="max-w-6xl mx-auto space-y-10 px-6">
                <!-- Primary Content Card -->
-               <div class="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm relative overflow-hidden group hover:bg-white/10 transition-all duration-500 hover:shadow-[0_0_30px_rgba(249,115,22,0.1)]">
-                  <div class="absolute top-0 right-0 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl group-hover:bg-orange-500/20 transition-all"></div>
+               <div class="bg-white/5 border border-white/10 p-10 md:p-14 rounded-[3rem] backdrop-blur-sm relative overflow-hidden group hover:bg-white/10 transition-all duration-500 hover:shadow-[0_0_50px_rgba(249,115,22,0.15)]">
+                  <div class="absolute top-0 right-0 w-64 h-64 bg-orange-500/10 rounded-full blur-[100px] group-hover:bg-orange-500/20 transition-all"></div>
                   
-                  <p class="text-xl md:text-2xl text-slate-200 font-light leading-relaxed relative z-10 text-justify md:text-center">
-                    <span class="font-bold text-orange-400">Earthquakes</span> are among the most destructive natural hazards on Earth. Their impacts go beyond
-                    ground shaking—they can trigger multiple secondary hazards that pose threats to human life,
-                    infrastructure, and the environment.
+                  <p class="text-3xl md:text-4xl text-slate-100 font-light leading-relaxed relative z-10 text-justify md:text-center mb-10">
+                    <span class="font-black text-orange-400">Earthquakes</span> are among the most destructive natural hazards on Earth.
                   </p>
                   
-                  <p class="text-lg text-slate-400 mt-6 relative z-10 font-medium">
-                    Understanding these potential hazards is essential for developing <span class="text-orange-300 font-bold border-b border-orange-500/30 px-1 hover:bg-orange-500/10 rounded transition-colors">predictive skills</span> and effective <span class="text-orange-300 font-bold border-b border-orange-500/30 px-1 hover:bg-orange-500/10 rounded transition-colors">disaster preparedness</span>.
+                  <p class="text-2xl md:text-3xl text-slate-300 font-light leading-relaxed relative z-10 text-justify md:text-center">
+                    Their impacts go beyond ground shaking—they trigger a chain of <span class="font-bold text-white">secondary hazards</span> that pose immediate threats to human life, infrastructure, and the environment.
                   </p>
-               </div>
+                  
+                  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 relative z-10">
+                     <div class="bg-black/30 p-6 rounded-2xl border border-orange-500/10 hover:border-orange-500/40 transition-colors group/badge cursor-default hover:-translate-y-2 duration-300">
+                        <div class="text-orange-500 font-black uppercase text-sm mb-2 tracking-widest group-hover/badge:text-white">Predict</div>
+                        <div class="text-slate-300 text-lg">Anticipate potential secondary hazards before they strike.</div>
+                     </div>
+                     <div class="bg-black/30 p-6 rounded-2xl border border-orange-500/10 hover:border-orange-500/40 transition-colors group/badge cursor-default hover:-translate-y-2 duration-300 delay-100">
+                        <div class="text-orange-500 font-black uppercase text-sm mb-2 tracking-widest group-hover/badge:text-white">Minimize</div>
+                        <div class="text-slate-300 text-lg">Reduce casualties through strategic planning.</div>
+                     </div>
+                     <div class="bg-black/30 p-6 rounded-2xl border border-orange-500/10 hover:border-orange-500/40 transition-colors group/badge cursor-default hover:-translate-y-2 duration-300 delay-200">
+                        <div class="text-orange-500 font-black uppercase text-sm mb-2 tracking-widest group-hover/badge:text-white">Strengthen</div>
+                        <div class="text-slate-300 text-lg">Build long-term disaster resilience.</div>
+                     </div>
+                  </div>
 
-               <!-- Secondary Content Block -->
-               <div class="bg-gradient-to-br from-orange-950/40 to-black/40 border-l-4 border-orange-500 p-8 rounded-r-3xl text-left shadow-lg transform hover:translate-x-2 transition-transform duration-300">
-                  <p class="text-xl text-slate-300 leading-relaxed italic">
-                    "Earthquakes create a chain of destructive processes that affect people, the environment, and infrastructure."
-                  </p>
-                  
-                  <div class="mt-6">
-                    <p class="text-xs text-slate-500 uppercase tracking-widest font-bold mb-3">Analyzing effects helps communities:</p>
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                       <div class="group/item flex items-center justify-center sm:justify-start space-x-3 bg-black/20 p-3 rounded-lg hover:bg-orange-500/20 hover:border-orange-500/30 border border-transparent transition-all cursor-default">
-                          <div class="w-2 h-2 rounded-full bg-orange-500 group-hover/item:animate-ping"></div>
-                          <span class="text-sm font-bold text-slate-300 group-hover/item:text-white transition-colors">Predict Hazards</span>
-                       </div>
-                       <div class="group/item flex items-center justify-center sm:justify-start space-x-3 bg-black/20 p-3 rounded-lg hover:bg-orange-500/20 hover:border-orange-500/30 border border-transparent transition-all cursor-default">
-                          <div class="w-2 h-2 rounded-full bg-orange-500 group-hover/item:animate-ping"></div>
-                          <span class="text-sm font-bold text-slate-300 group-hover/item:text-white transition-colors">Minimize Casualties</span>
-                       </div>
-                       <div class="group/item flex items-center justify-center sm:justify-start space-x-3 bg-black/20 p-3 rounded-lg hover:bg-orange-500/20 hover:border-orange-500/30 border border-transparent transition-all cursor-default">
-                          <div class="w-2 h-2 rounded-full bg-orange-500 group-hover/item:animate-ping"></div>
-                          <span class="text-sm font-bold text-slate-300 group-hover/item:text-white transition-colors">Strengthen Resilience</span>
-                       </div>
-                    </div>
+                  <div class="mt-12 pt-12 border-t border-white/5">
+                     <p class="text-2xl text-slate-400 font-medium italic">
+                       "Analyzing these effects is crucial for developing predictive skills and effective disaster preparedness."
+                     </p>
+                     <p class="text-sm text-orange-500/60 mt-4 uppercase tracking-widest font-bold">
+                       Reference: PHIVOLCS (2023)
+                     </p>
                   </div>
                </div>
             </div>
@@ -117,40 +115,176 @@ export const LECTURES: Lecture[] = [
         title: 'Primary Hazards',
         content: `
           <div class="flex flex-col space-y-12 animate-in fade-in duration-700 py-6">
-            <h3 class="text-6xl md:text-8xl font-black text-white/10 absolute -top-10 left-0 select-none z-0">SHAKING</h3>
             
             <div class="relative z-10">
               <h3 class="text-5xl md:text-7xl font-black text-white mb-6 uppercase tracking-tight">
                 Ground Shaking
               </h3>
               
-              <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div class="grid grid-cols-1 gap-8 items-center">
                  <div class="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-sm">
                     <p class="text-2xl text-slate-200 leading-relaxed mb-6 font-light">
                       The vibration of the ground caused by the sudden release of energy during an earthquake.
                     </p>
-                    <div class="h-32 flex items-center justify-center bg-black/40 rounded-xl overflow-hidden relative">
-                       <svg class="w-full h-full text-orange-500/20 absolute" viewBox="0 0 100 20" preserveAspectRatio="none">
-                         <path d="M0 10 Q 5 10, 10 10 T 20 10 T 30 5 T 40 15 T 50 2 T 60 18 T 70 10 T 80 10 T 90 10 T 100 10" fill="none" stroke="currentColor" stroke-width="0.5" />
-                         <path d="M0 10 Q 5 10, 10 10 T 20 10 T 30 0 T 40 20 T 50 -5 T 60 25 T 70 10 T 80 10 T 90 10 T 100 10" fill="none" stroke="currentColor" stroke-width="1" class="animate-pulse" />
-                       </svg>
-                       <span class="text-orange-500 font-mono text-xs z-10 bg-black/80 px-2 py-1 rounded">SEISMIC WAVE VISUALIZATION</span>
+                    <div class="h-32 flex items-center justify-center bg-black/40 rounded-xl overflow-hidden relative border border-white/10">
+                       <style>
+                          @keyframes seismic-scroll {
+                            0% { transform: translateX(0); }
+                            100% { transform: translateX(-50%); }
+                          }
+                       </style>
+                       <!-- Scrolling Wave Container -->
+                       <div class="absolute inset-0 flex items-center w-[200%]" style="animation: seismic-scroll 3s linear infinite">
+                          <svg class="w-1/2 h-full text-orange-500/40" viewBox="0 0 100 20" preserveAspectRatio="none">
+                            <path d="M0 10 H10 L15 8 L20 12 L25 5 L30 15 L35 2 L40 18 L45 8 L50 12 L55 4 L60 16 L65 10 H100" fill="none" stroke="currentColor" stroke-width="0.8" vector-effect="non-scaling-stroke" />
+                          </svg>
+                          <svg class="w-1/2 h-full text-orange-500/40" viewBox="0 0 100 20" preserveAspectRatio="none">
+                            <path d="M0 10 H10 L15 8 L20 12 L25 5 L30 15 L35 2 L40 18 L45 8 L50 12 L55 4 L60 16 L65 10 H100" fill="none" stroke="currentColor" stroke-width="0.8" vector-effect="non-scaling-stroke" />
+                          </svg>
+                       </div>
+                       
+                       <!-- Gradient Mask -->
+                       <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-black/80 z-0"></div>
+
+                       <!-- Badge -->
+                       <span class="text-orange-500 font-mono text-xs z-10 bg-black/90 px-3 py-1.5 rounded border border-orange-500/50 shadow-[0_0_15px_rgba(249,115,22,0.4)] flex items-center gap-2">
+                          <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
+                          </span>
+                          LIVE SEISMOGRAPH
+                       </span>
                     </div>
                  </div>
 
-                 <div class="space-y-4">
-                    <div class="group bg-orange-900/20 border border-orange-500/20 p-6 rounded-xl hover:bg-orange-500/20 transition-all cursor-default">
-                       <h4 class="text-xl font-bold text-orange-400 mb-2">Structural Damage</h4>
-                       <p class="text-slate-300">Weakly designed buildings, bridges, and houses collapse, especially on soft soils.</p>
+                 <!-- New Detailed Content Section -->
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Card: Seismic Waves -->
+                    <div class="bg-white/5 border border-white/10 p-6 rounded-2xl hover:bg-white/10 transition-colors">
+                       <h4 class="text-xl font-bold text-orange-400 mb-4 uppercase tracking-wide flex items-center">
+                          <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                          Seismic Waves
+                       </h4>
+                       <ul class="space-y-4">
+                          <li class="flex items-start">
+                             <div class="bg-orange-500/20 px-2 py-1 rounded mr-3 text-orange-400 font-bold text-[10px] w-16 text-center mt-0.5">P-WAVES</div>
+                             <p class="text-slate-300 text-sm">Primary waves. Fastest, compressional motion. Usually felt as a sudden jolt.</p>
+                          </li>
+                          <li class="flex items-start">
+                             <div class="bg-red-500/20 px-2 py-1 rounded mr-3 text-red-400 font-bold text-[10px] w-16 text-center mt-0.5">S-WAVES</div>
+                             <p class="text-slate-300 text-sm">Secondary waves. Slower but stronger side-to-side motion. Causes significant damage.</p>
+                          </li>
+                          <li class="flex items-start">
+                             <div class="bg-purple-500/20 px-2 py-1 rounded mr-3 text-purple-400 font-bold text-[10px] w-16 text-center mt-0.5">SURFACE</div>
+                             <p class="text-slate-300 text-sm">Travel along the Earth's surface. The most destructive rolling motion.</p>
+                          </li>
+                       </ul>
                     </div>
-                    <div class="group bg-orange-900/20 border border-orange-500/20 p-6 rounded-xl hover:bg-orange-500/20 transition-all cursor-default">
-                       <h4 class="text-xl font-bold text-orange-400 mb-2">Infrastructure Disruption</h4>
-                       <p class="text-slate-300">Roads crack, utilities fail, and transportation networks are cut off.</p>
+
+                    <!-- Card: Intensity Factors -->
+                    <div class="bg-white/5 border border-white/10 p-6 rounded-2xl hover:bg-white/10 transition-colors">
+                       <h4 class="text-xl font-bold text-orange-400 mb-4 uppercase tracking-wide flex items-center">
+                          <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+                          Intensity Factors
+                       </h4>
+                       <div class="space-y-5">
+                          <div>
+                             <div class="flex justify-between text-xs font-bold uppercase mb-1">
+                                <span class="text-slate-400">Magnitude</span>
+                                <span class="text-orange-500">Energy Released</span>
+                             </div>
+                             <div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden"><div class="bg-orange-500 h-full w-3/4"></div></div>
+                             <p class="text-slate-500 text-[10px] mt-1">The total amount of energy released at the source.</p>
+                          </div>
+                          <div>
+                             <div class="flex justify-between text-xs font-bold uppercase mb-1">
+                                <span class="text-slate-400">Distance</span>
+                                <span class="text-orange-500">Proximity</span>
+                             </div>
+                             <div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden"><div class="bg-orange-500 h-full w-1/2"></div></div>
+                             <p class="text-slate-500 text-[10px] mt-1">Closer to the epicenter = Stronger shaking.</p>
+                          </div>
+                          <div>
+                             <div class="flex justify-between text-xs font-bold uppercase mb-1">
+                                <span class="text-slate-400">Soil Type</span>
+                                <span class="text-red-500 animate-pulse">Critical Risk</span>
+                             </div>
+                             <div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden"><div class="bg-red-500 h-full w-full"></div></div>
+                             <p class="text-slate-500 text-[10px] mt-1">Soft soil amplifies shaking and liquefaction risk.</p>
+                          </div>
+                       </div>
                     </div>
-                    <div class="group bg-orange-900/20 border border-orange-500/20 p-6 rounded-xl hover:bg-orange-500/20 transition-all cursor-default">
-                       <h4 class="text-xl font-bold text-orange-400 mb-2">Psychological Stress</h4>
-                       <p class="text-slate-300">Fear and trauma affect survivors long after the earthquake.</p>
-                    </div>
+                 </div>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      {
+        id: 'effects-analysis',
+        title: 'Effects Analysis',
+        content: `
+          <div class="flex flex-col h-full justify-center">
+            <h3 class="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-600 mb-12 text-center uppercase drop-shadow-sm">
+              Effects Analysis
+            </h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-4 items-stretch">
+              <!-- Card 1: Structural -->
+              <div class="group relative bg-white/5 border border-white/10 p-8 rounded-3xl overflow-hidden hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(249,115,22,0.15)] flex flex-col">
+                 <div class="absolute -right-10 -top-10 bg-orange-500/10 w-40 h-40 rounded-full blur-3xl group-hover:bg-orange-500/20 transition-all duration-700"></div>
+                 
+                 <!-- Icon -->
+                 <div class="mb-8 text-orange-500/80 group-hover:text-orange-400 transition-colors transform group-hover:scale-110 group-hover:rotate-3 duration-500 origin-bottom-left">
+                    <svg class="w-16 h-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m8-2a2 2 0 11-4 0 2 2 0 014 0zM12 9a2 2 0 100-4 2 2 0 000 4z" />
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 21h6" />
+                    </svg>
+                 </div>
+
+                 <h4 class="text-2xl font-black text-white mb-4 uppercase tracking-tight">Structural<br/>Damage</h4>
+                 <p class="text-slate-300 leading-relaxed text-lg flex-grow">Weakly designed buildings, bridges, and houses collapse, especially on <span class="text-orange-300 font-bold">soft soils</span>.</p>
+                 
+                 <div class="mt-6 pt-6 border-t border-white/5 flex items-center text-xs font-bold text-orange-500 uppercase tracking-widest opacity-50 group-hover:opacity-100 transition-opacity">
+                    <span class="w-2 h-2 bg-orange-500 rounded-full mr-2 animate-pulse"></span> Critical Risk
+                 </div>
+              </div>
+
+              <!-- Card 2: Infrastructure -->
+              <div class="group relative bg-white/5 border border-white/10 p-8 rounded-3xl overflow-hidden hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(239,68,68,0.15)] flex flex-col">
+                 <div class="absolute -right-10 -top-10 bg-red-500/10 w-40 h-40 rounded-full blur-3xl group-hover:bg-red-500/20 transition-all duration-700"></div>
+                 
+                 <!-- Icon -->
+                 <div class="mb-8 text-red-500/80 group-hover:text-red-400 transition-colors transform group-hover:skew-x-6 duration-500 origin-center">
+                    <svg class="w-16 h-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                 </div>
+
+                 <h4 class="text-2xl font-black text-white mb-4 uppercase tracking-tight">Infrastructure<br/>Disruption</h4>
+                 <p class="text-slate-300 leading-relaxed text-lg flex-grow">Roads crack, utilities fail, and <span class="text-red-300 font-bold">transportation networks</span> are cut off.</p>
+
+                 <div class="mt-6 pt-6 border-t border-white/5 flex items-center text-xs font-bold text-red-500 uppercase tracking-widest opacity-50 group-hover:opacity-100 transition-opacity">
+                    <span class="w-2 h-2 bg-red-500 rounded-full mr-2"></span> System Failure
+                 </div>
+              </div>
+
+              <!-- Card 3: Psychological -->
+              <div class="group relative bg-white/5 border border-white/10 p-8 rounded-3xl overflow-hidden hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(168,85,247,0.15)] flex flex-col">
+                 <div class="absolute -right-10 -top-10 bg-purple-500/10 w-40 h-40 rounded-full blur-3xl group-hover:bg-purple-500/20 transition-all duration-700"></div>
+                 
+                 <!-- Icon -->
+                 <div class="mb-8 text-purple-500/80 group-hover:text-purple-400 transition-colors transform group-hover:scale-105 duration-500 animate-[pulse_3s_ease-in-out_infinite]">
+                    <svg class="w-16 h-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                    </svg>
+                 </div>
+
+                 <h4 class="text-2xl font-black text-white mb-4 uppercase tracking-tight">Psychological<br/>Stress</h4>
+                 <p class="text-slate-300 leading-relaxed text-lg flex-grow">Fear and trauma affect survivors <span class="text-purple-300 font-bold">long after</span> the earthquake.</p>
+
+                 <div class="mt-6 pt-6 border-t border-white/5 flex items-center text-xs font-bold text-purple-500 uppercase tracking-widest opacity-50 group-hover:opacity-100 transition-opacity">
+                    <span class="w-2 h-2 bg-purple-500 rounded-full mr-2"></span> Long-term Impact
                  </div>
               </div>
             </div>
@@ -184,7 +318,7 @@ export const LECTURES: Lecture[] = [
 
              <div class="flex flex-col justify-center h-full lg:px-12">
                 <div class="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl group">
-                   <img src="https://picsum.photos/seed/rupture/800/600" alt="Ground Rupture Example" class="w-full h-auto object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700" />
+                   <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcToS-znEiOO7d1W94qFPB_ZXpGwqZg7gFRHroWyeWwDAJ9sJgX0xuAyLVGuMtoe" alt="Ground Rupture Example" class="w-full h-auto object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700" />
                    <div class="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-md p-4 border-t border-white/10">
                       <p class="text-sm text-slate-300 italic">
                         "A potential ground rupture along the West Valley Fault could damage parts of Quezon City."
