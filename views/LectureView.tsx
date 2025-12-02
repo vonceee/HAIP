@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+
+import React, { useState, useEffect, useRef } from 'react';
 import { Lecture, HazardTopic } from '../types';
-import { ArrowLeft, BrainCircuit, Gamepad2, Clock, ChevronRight, ChevronLeft, Target, Shield, Play, AlertTriangle, Zap, Waves } from 'lucide-react';
+import { ArrowLeft, BrainCircuit, Gamepad2, Clock, ChevronRight, ChevronLeft, Target, Shield, Play, AlertTriangle, Zap, Waves, Maximize, Minimize } from 'lucide-react';
 import { QuizComponent } from '../components/QuizComponent';
 import { EarthquakeGame } from '../components/games/EarthquakeGame';
 import { FloodGame } from '../components/games/FloodGame';
@@ -62,12 +63,37 @@ function ActivityIcon(props: any) {
 export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => {
   const [activeSectionIndex, setActiveSectionIndex] = useState(0);
   const [showStartMenu, setShowStartMenu] = useState(true);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   // Reset state when lecture changes
   useEffect(() => {
     setActiveSectionIndex(0);
     setShowStartMenu(true);
   }, [lecture.id]);
+
+  // Handle fullscreen change events (e.g., ESC key)
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
+  }, []);
+
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      // Request fullscreen on the container ref instead of the whole document
+      // This hides the global Header and Footer automatically
+      containerRef.current?.requestFullscreen().catch(err => {
+        console.error(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+      });
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+    }
+  };
 
   const activeSection = lecture.sections[activeSectionIndex];
   const isFirstSection = activeSectionIndex === 0;
@@ -80,7 +106,12 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => 
   const handleNext = () => {
     if (!isLastSection) {
       setActiveSectionIndex(prev => prev + 1);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // If we are in fullscreen, the container is the scrollable element
+      if (isFullscreen && containerRef.current) {
+         containerRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+         window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     } else {
       const interactiveEl = document.getElementById('interactive-section');
       if (interactiveEl) interactiveEl.scrollIntoView({ behavior: 'smooth' });
@@ -90,7 +121,11 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => 
   const handlePrev = () => {
     if (!isFirstSection) {
       setActiveSectionIndex(prev => prev - 1);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (isFullscreen && containerRef.current) {
+        containerRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     }
   };
 
@@ -110,7 +145,7 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => 
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_black_90%)]" />
 
         {/* Content Container */}
-        <div className="relative z-10 max-w-4xl w-full px-6 flex flex-col md:flex-row gap-12 items-center">
+        <div className="relative z-10 max-w-4xl w-full px-6 flex flex-col md:flex-row gap-12 items-center animate-in fade-in zoom-in duration-500">
           
           {/* Left Panel: Visual & Title */}
           <div className="flex-1 text-center md:text-left space-y-6">
@@ -129,14 +164,14 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => 
 
             {/* Stats Grid */}
             <div className="grid grid-cols-2 gap-4 pt-4">
-              <div className="bg-white/5 border border-white/10 p-4 rounded-lg">
+              <div className="bg-white/5 border border-white/10 p-4 rounded-lg backdrop-blur-sm">
                 <div className="text-slate-400 text-xs uppercase tracking-wider mb-1">Estimated Time</div>
                 <div className="text-2xl font-bold flex items-center">
                   <Clock className="w-5 h-5 mr-2 text-slate-400" />
                   {lecture.readTime}:00
                 </div>
               </div>
-              <div className="bg-white/5 border border-white/10 p-4 rounded-lg">
+              <div className="bg-white/5 border border-white/10 p-4 rounded-lg backdrop-blur-sm">
                 <div className="text-slate-400 text-xs uppercase tracking-wider mb-1">Difficulty</div>
                 <div className={`text-2xl font-bold ${theme.accentColor}`}>
                   {lecture.difficulty.toUpperCase()}
@@ -169,7 +204,6 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => 
               <span className="relative z-10 flex items-center">
                 Start Mission <Play className="w-5 h-5 ml-2 fill-current" />
               </span>
-              {/* Scanline effect on button */}
               <div className="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-[-200%] transition-transform duration-700 ease-in-out" />
             </button>
             
@@ -187,136 +221,164 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => 
 
   // --- STANDARD CONTENT VIEW (REVEALED AFTER START) ---
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-in fade-in duration-700">
-      
-      {/* Top Navigation Bar */}
-      <div className="flex items-center justify-between mb-8">
-        <button 
-          onClick={onBack}
-          className="group flex items-center text-slate-500 hover:text-slate-900 transition-colors font-medium"
-        >
-          <div className="p-2 bg-white rounded-lg border border-slate-200 shadow-sm mr-3 group-hover:border-slate-300">
-             <ArrowLeft className="w-4 h-4" />
-          </div>
-          <span className="text-sm uppercase tracking-wide">Exit Mission</span>
-        </button>
-        <div className={`px-3 py-1 bg-slate-100 rounded text-xs font-bold uppercase tracking-wider ${theme.accentColor.replace('text-', 'text-slate-')}`}>
-          {lecture.topic} Protocol
-        </div>
-      </div>
-
-      <div className="bg-white rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-200 overflow-hidden mb-8 relative">
+    <div 
+      ref={containerRef}
+      className={`min-h-screen bg-gradient-to-br ${theme.bgGradient} text-white font-sans transition-colors duration-500 overflow-y-auto`}
+    >
+      <div className={`${isFullscreen ? 'w-full px-6' : 'max-w-5xl mx-auto px-4 sm:px-6 lg:px-8'} py-8 animate-in fade-in slide-in-from-bottom-4 duration-700 relative`}>
         
-        {/* Progress Bar (Sticky at top of card) */}
-        <div className="absolute top-0 left-0 w-full h-1.5 bg-slate-100 z-10">
-          <div 
-            className={`${theme.buttonBg} h-full transition-all duration-500 ease-out shadow-[0_0_10px_currentColor]`} 
-            style={{ width: `${progressPercent}%` }}
-          />
-        </div>
+        {/* Top Navigation Bar - Hidden in Fullscreen to provide immersive view */}
+        {!isFullscreen && (
+          <div className="flex items-center justify-between mb-8">
+            <button 
+              onClick={onBack}
+              className="group flex items-center text-slate-400 hover:text-white transition-colors font-medium"
+            >
+              <div className="p-2 bg-white/5 rounded-lg border border-white/10 shadow-sm mr-3 group-hover:bg-white/10 group-hover:border-white/20">
+                <ArrowLeft className="w-4 h-4" />
+              </div>
+              <span className="text-sm uppercase tracking-wide">Exit Mission</span>
+            </button>
 
-        {/* Hero Section - Only visible on the first section */}
-        {isFirstSection && (
-          <div className="relative h-64 md:h-80">
-            <img 
-              src={lecture.imageUrl} 
-              alt={lecture.title} 
-              className="w-full h-full object-cover"
-            />
-            <div className={`absolute inset-0 bg-gradient-to-t ${theme.bgGradient.replace('from-', 'from-slate-900/90 ').replace('via-', 'via-slate-900/40 ').split(' ')[0]} flex items-end`}>
-              <div className="p-8 md:p-12 text-white w-full">
-                <h1 className="text-4xl md:text-5xl font-black mb-2 uppercase tracking-tight">{lecture.title}</h1>
+            <div className="flex items-center space-x-3">
+               <button
+                 onClick={toggleFullscreen}
+                 className="p-2 bg-black/40 border border-white/10 rounded-lg hover:bg-white/10 transition-colors text-slate-400 hover:text-white"
+                 title="Enter Fullscreen"
+               >
+                 <Maximize className="w-4 h-4" />
+               </button>
+              <div className={`px-3 py-1.5 bg-black/40 border border-white/10 rounded text-xs font-bold uppercase tracking-wider ${theme.accentColor}`}>
+                {lecture.topic} Protocol
               </div>
             </div>
           </div>
         )}
 
-        {/* Main Content Area */}
-        <div className="p-8 md:p-12 min-h-[400px]">
+        {/* Floating Controls for Fullscreen (Visible only when Fullscreen) */}
+        {isFullscreen && (
+           <button
+             onClick={toggleFullscreen}
+             className="fixed top-6 right-6 z-50 p-3 bg-black/60 border border-white/20 rounded-full text-white hover:bg-black/80 backdrop-blur-md transition-all shadow-lg group"
+             title="Exit Fullscreen"
+           >
+             <Minimize className="w-5 h-5 group-hover:scale-90 transition-transform" />
+           </button>
+        )}
+
+        <div className="bg-black/30 backdrop-blur-xl shadow-2xl rounded-2xl border border-white/10 overflow-hidden mb-8 relative">
           
-          <div className="flex justify-between items-center mb-8 border-b border-slate-100 pb-4">
-             <h2 className="text-2xl font-bold text-slate-900 flex items-center">
-                <span className={`mr-3 w-8 h-8 rounded-lg ${theme.buttonBg} text-white flex items-center justify-center text-sm`}>
-                  {activeSectionIndex + 1}
-                </span>
-                {activeSection.title}
-             </h2>
-             <span className="text-xs font-mono text-slate-400 uppercase">
-                SEC {activeSectionIndex + 1} / {lecture.sections.length}
-             </span>
+          {/* Progress Bar (Sticky at top of card) */}
+          <div className="absolute top-0 left-0 w-full h-1 bg-white/10 z-10">
+            <div 
+              className={`${theme.buttonBg} h-full transition-all duration-500 ease-out shadow-[0_0_10px_currentColor]`} 
+              style={{ width: `${progressPercent}%` }}
+            />
           </div>
 
-          <div className="prose prose-slate prose-lg max-w-none mb-12" key={activeSection.id}>
-             <div dangerouslySetInnerHTML={{ __html: activeSection.content }} />
-          </div>
+          {/* Hero Section - Only visible on the first section */}
+          {isFirstSection && (
+            <div className="relative h-64 md:h-80">
+              <img 
+                src={lecture.imageUrl} 
+                alt={lecture.title} 
+                className="w-full h-full object-cover opacity-80"
+              />
+              <div className={`absolute inset-0 bg-gradient-to-t ${theme.bgGradient.replace('from-', 'from-slate-900/100 ').replace('via-', 'via-slate-900/60 ').split(' ')[0]} flex items-end`}>
+                <div className="p-8 md:p-12 text-white w-full">
+                  <h1 className="text-4xl md:text-5xl font-black mb-2 uppercase tracking-tight shadow-black drop-shadow-lg">{lecture.title}</h1>
+                </div>
+              </div>
+            </div>
+          )}
 
-          {/* Navigation Controls */}
-          <div className="flex items-center justify-between border-t border-slate-200 pt-8">
-             <button
-                onClick={handlePrev}
-                disabled={isFirstSection}
-                className={`flex items-center px-6 py-3 rounded-lg text-sm font-bold uppercase tracking-wide transition-all ${
-                   isFirstSection 
-                   ? 'text-slate-300 cursor-not-allowed' 
-                   : 'text-slate-600 hover:bg-slate-100'
-                }`}
-             >
-                <ChevronLeft className="w-4 h-4 mr-2" />
-                Prev
-             </button>
+          {/* Main Content Area */}
+          <div className="p-8 md:p-12 min-h-[400px]">
+            
+            <div className="flex justify-between items-center mb-8 border-b border-white/10 pb-4">
+              <h2 className="text-2xl font-bold text-white flex items-center">
+                  <span className={`mr-3 w-8 h-8 rounded-lg ${theme.buttonBg} text-white flex items-center justify-center text-sm shadow-lg`}>
+                    {activeSectionIndex + 1}
+                  </span>
+                  {activeSection.title}
+              </h2>
+              <span className="text-xs font-mono text-slate-500 uppercase">
+                  SEC {activeSectionIndex + 1} / {lecture.sections.length}
+              </span>
+            </div>
 
-             <button
-                onClick={handleNext}
-                className={`flex items-center px-8 py-4 rounded-xl text-sm font-bold uppercase tracking-widest transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 ${
-                   isLastSection
-                   ? 'bg-slate-900 text-white'
-                   : `${theme.buttonBg} text-white ${theme.buttonHover}`
-                }`}
-             >
-                {isLastSection ? 'Proceed to Training' : 'Next Sector'}
-                <ChevronRight className="w-4 h-4 ml-2" />
-             </button>
+            <div className="prose prose-lg prose-invert max-w-none mb-12 text-slate-300 leading-relaxed" key={activeSection.id}>
+              <div dangerouslySetInnerHTML={{ __html: activeSection.content }} />
+            </div>
+
+            {/* Navigation Controls */}
+            <div className="flex items-center justify-between border-t border-white/10 pt-8">
+              <button
+                  onClick={handlePrev}
+                  disabled={isFirstSection}
+                  className={`flex items-center px-6 py-3 rounded-lg text-sm font-bold uppercase tracking-wide transition-all ${
+                    isFirstSection 
+                    ? 'text-slate-600 cursor-not-allowed' 
+                    : 'text-slate-400 hover:bg-white/5 hover:text-white'
+                  }`}
+              >
+                  <ChevronLeft className="w-4 h-4 mr-2" />
+                  Prev
+              </button>
+
+              <button
+                  onClick={handleNext}
+                  className={`flex items-center px-8 py-4 rounded-xl text-sm font-bold uppercase tracking-widest transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 ${
+                    isLastSection
+                    ? 'bg-slate-100 text-slate-900 hover:bg-white'
+                    : `${theme.buttonBg} text-white ${theme.buttonHover}`
+                  }`}
+              >
+                  {isLastSection ? 'Proceed to Training' : 'Next Sector'}
+                  <ChevronRight className="w-4 h-4 ml-2" />
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-          
-      {/* Interactive Section */}
-      <div id="interactive-section" className="space-y-8 pt-8">
-          {/* Section Divider */}
-          <div className="flex items-center justify-center space-x-4 mb-4 opacity-50">
-            <div className="h-px bg-slate-300 w-full max-w-xs"></div>
-            <div className="font-mono text-xs text-slate-400 uppercase tracking-widest">Training Simulation</div>
-            <div className="h-px bg-slate-300 w-full max-w-xs"></div>
-          </div>
+            
+        {/* Interactive Section */}
+        <div id="interactive-section" className="space-y-8 pt-8 pb-20">
+            {/* Section Divider */}
+            <div className="flex items-center justify-center space-x-4 mb-4 opacity-50">
+              <div className="h-px bg-white/20 w-full max-w-xs"></div>
+              <div className="font-mono text-xs text-slate-400 uppercase tracking-widest">Training Simulation</div>
+              <div className="h-px bg-white/20 w-full max-w-xs"></div>
+            </div>
 
-          {/* Game Module */}
-          {lecture.gameType !== 'none' && (
-            <section className="scroll-mt-20">
-              <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-1 bg-gradient-to-br from-slate-100 to-slate-200">
-                <div className="bg-white rounded-xl p-8">
-                  <div className={`flex items-center ${theme.accentColor} mb-6 font-bold uppercase tracking-wider text-sm`}>
-                    <Gamepad2 className="w-5 h-5 mr-2" />
-                    Interactive Scenario
+            {/* Game Module */}
+            {lecture.gameType !== 'none' && (
+              <section className="scroll-mt-20">
+                <div className="bg-black/30 backdrop-blur-xl rounded-2xl shadow-xl border border-white/10 p-1">
+                  <div className="rounded-xl p-8 bg-gradient-to-b from-white/5 to-transparent">
+                    <div className={`flex items-center ${theme.accentColor} mb-6 font-bold uppercase tracking-wider text-sm`}>
+                      <Gamepad2 className="w-5 h-5 mr-2" />
+                      Interactive Scenario
+                    </div>
+                    {lecture.gameType === 'earthquake-sim' && <EarthquakeGame />}
+                    {lecture.gameType === 'flood-choice' && <FloodGame />}
                   </div>
-                  {lecture.gameType === 'earthquake-sim' && <EarthquakeGame />}
-                  {lecture.gameType === 'flood-choice' && <FloodGame />}
                 </div>
-              </div>
-            </section>
-          )}
+              </section>
+            )}
 
-          {/* Quiz Module */}
-          {lecture.quiz && lecture.quiz.length > 0 && (
-            <section className="scroll-mt-20">
-              <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 border-l-4 border-emerald-500">
-                <div className="flex items-center text-emerald-600 mb-6 font-bold uppercase tracking-wider text-sm">
-                  <BrainCircuit className="w-5 h-5 mr-2" />
-                  Knowledge Certification
+            {/* Quiz Module */}
+            {lecture.quiz && lecture.quiz.length > 0 && (
+              <section className="scroll-mt-20">
+                <div className="bg-black/30 backdrop-blur-xl rounded-2xl shadow-xl border border-white/10 p-8 border-l-4 border-emerald-500">
+                  <div className="flex items-center text-emerald-400 mb-6 font-bold uppercase tracking-wider text-sm">
+                    <BrainCircuit className="w-5 h-5 mr-2" />
+                    Knowledge Certification
+                  </div>
+                  <QuizComponent questions={lecture.quiz} />
                 </div>
-                <QuizComponent questions={lecture.quiz} />
-              </div>
-            </section>
-          )}
+              </section>
+            )}
+        </div>
       </div>
     </div>
   );
