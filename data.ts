@@ -750,21 +750,21 @@ export const LECTURES: Lecture[] = [
   },
   {
     id: '3',
-    title: 'Volcanic Eruptions',
-    description: 'Ash, lava, and pyroclastic flows. Learn what to do if you live near a volcano.',
+    title: 'Volcano-Related Hazards',
+    description: 'Learn to recognize the signs of an impending eruption and understand the devastating power of pyroclastic flows, lahars, and ash fall.',
     topic: 'Volcano',
     imageUrl: 'https://picsum.photos/seed/volcano/800/400',
-    readTime: 6,
+    readTime: 8,
     difficulty: 'Advanced',
     objectives: [
-      'Identify volcanic hazards including ash and lava',
-      'Protect respiratory health during ashfall',
-      'Understand evacuation zones and alerts'
+      'Explain various volcano-related hazards',
+      'Recognize signs of an impending volcanic eruption',
+      'Understand forecasting and evacuation planning'
     ],
     competencies: [
-      'Hazard Identification',
-      'Personal Protection',
-      'Crisis Management'
+      'Hazard Analysis',
+      'Early Warning Recognition',
+      'Emergency Preparedness'
     ],
     gameType: 'none',
     sections: [
@@ -772,22 +772,27 @@ export const LECTURES: Lecture[] = [
         id: 'volcano-objectives',
         title: 'Learning Objectives',
         content: `
-          <h2 class="text-2xl font-bold text-brand-500 mb-6">Course Objectives</h2>
+          <h2 class="text-2xl font-bold text-brand-500 mb-6">Competencies</h2>
           <ul class="space-y-4 mb-8 text-slate-300">
             <li class="flex items-center">
-              <svg class="w-5 h-5 text-green-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-              Identify volcanic hazards including ash and lava
+              <svg class="w-5 h-5 text-red-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              Explain various volcano-related hazards
             </li>
             <li class="flex items-center">
-              <svg class="w-5 h-5 text-green-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-              Protect respiratory health during ashfall
+              <svg class="w-5 h-5 text-red-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              Recognize signs of an impending volcanic eruption
             </li>
           </ul>
+          
+          <div class="bg-red-900/20 border border-red-500/20 p-6 rounded-xl">
+            <h3 class="text-xl font-bold text-red-400 mb-2">Why It Matters</h3>
+            <p class="text-slate-300">"Volcanic eruptions cannot be stopped, but their impacts can be reduced through awareness and preparedness." — PHIVOLCS, 2023</p>
+          </div>
         `
       },
       {
         id: 'volcano-intro',
-        title: 'Volcanic Hazards',
+        title: 'Introduction',
         content: `
           <div class="flex flex-col items-center text-center space-y-6 animate-in fade-in slide-in-from-bottom-8 duration-700 py-10">
             
@@ -804,22 +809,27 @@ export const LECTURES: Lecture[] = [
               Volcanoes
             </h3>
 
-            <p class="text-3xl text-slate-200 font-thin tracking-wide uppercase mt-4">
-              Nature's <span class="font-black text-red-500 text-5xl inline-block transform hover:scale-125 hover:rotate-6 transition-transform cursor-pointer shadow-black drop-shadow-md">EXPLOSIVE</span> Fury.
+            <p class="text-2xl md:text-3xl text-slate-200 font-light max-w-4xl">
+              Powerful systems that can both <span class="text-green-400 font-bold">create landforms</span> and cause <span class="text-red-500 font-bold border-b-4 border-red-500/50">large-scale destruction</span>.
             </p>
 
-            <div class="grid grid-cols-3 gap-4 mt-12 w-full max-w-2xl">
-              <div class="bg-red-950/40 border border-red-500/30 p-6 rounded-2xl flex flex-col items-center hover:bg-red-900/60 transition-colors group cursor-crosshair">
-                 <span class="text-4xl mb-2 group-hover:-translate-y-2 transition-transform">🌫️</span>
-                 <span class="text-red-200 font-bold uppercase tracking-widest">Ash</span>
-              </div>
-              <div class="bg-orange-950/40 border border-orange-500/30 p-6 rounded-2xl flex flex-col items-center hover:bg-orange-900/60 transition-colors group cursor-crosshair">
-                 <span class="text-4xl mb-2 group-hover:-translate-y-2 transition-transform">🌋</span>
-                 <span class="text-orange-200 font-bold uppercase tracking-widest">Lava</span>
-              </div>
-              <div class="bg-yellow-950/40 border border-yellow-500/30 p-6 rounded-2xl flex flex-col items-center hover:bg-yellow-900/60 transition-colors group cursor-crosshair">
-                 <span class="text-4xl mb-2 group-hover:-translate-y-2 transition-transform">💨</span>
-                 <span class="text-yellow-200 font-bold uppercase tracking-widest">Gas</span>
+            <div class="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm max-w-4xl mt-8 hover:bg-white/10 transition-all text-left">
+              <p class="text-xl text-slate-300 leading-relaxed">
+                 When magma, gas, and ash escape from deep within the Earth, the surrounding environment faces severe hazards. Recognizing these signs is critical for:
+              </p>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+                 <div class="flex items-center space-x-3 text-slate-200 font-bold bg-black/20 p-3 rounded-lg border border-white/5">
+                    <span class="text-2xl">📡</span>
+                    <span>Forecasting</span>
+                 </div>
+                 <div class="flex items-center space-x-3 text-slate-200 font-bold bg-black/20 p-3 rounded-lg border border-white/5">
+                    <span class="text-2xl">🏃</span>
+                    <span>Evacuation</span>
+                 </div>
+                 <div class="flex items-center space-x-3 text-slate-200 font-bold bg-black/20 p-3 rounded-lg border border-white/5">
+                    <span class="text-2xl">❤️</span>
+                    <span>Saving Lives</span>
+                 </div>
               </div>
             </div>
 
@@ -827,20 +837,164 @@ export const LECTURES: Lecture[] = [
         `
       },
       {
-        id: 'volcano-ash',
-        title: 'Ashfall Dangers',
+        id: 'volcano-pyroclastic',
+        title: 'Pyroclastic Flow & Ash Fall',
         content: `
-          <h3 class="text-lg font-semibold text-slate-200 mb-2">Ashfall</h3>
-          <p class="mb-4">Volcanic ash is jagged particles of rock and natural glass. It is NOT soft like wood ash.</p>
-          
-          <ul class="list-disc pl-5 space-y-3 text-slate-300">
-             <li>Creates breathing problems (silicosis).</li>
-             <li>Can collapse roofs when wet and heavy.</li>
-             <li>Damages engines and electronics.</li>
-          </ul>
-          
-          <div class="bg-red-900/20 p-4 border border-red-500/30 rounded mt-4">
-            <strong>Safety Tip:</strong> Wear N95 masks and goggles if ash is falling.
+          <div class="h-full flex flex-col relative animate-in fade-in slide-in-from-right-8 duration-700">
+             
+             <!-- Vertical Divider -->
+             <div class="hidden lg:block absolute left-1/2 top-10 bottom-10 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent -translate-x-1/2"></div>
+
+             <div class="grid grid-cols-1 lg:grid-cols-2 h-full gap-8">
+               
+               <!-- Left Column: Pyroclastic Flow -->
+               <div class="flex flex-col justify-center p-6 lg:p-10">
+                  <div class="bg-orange-950/30 border border-orange-500/30 p-6 rounded-2xl mb-6">
+                    <h3 class="text-4xl md:text-6xl font-black text-orange-500 uppercase tracking-tighter mb-4">Pyroclastic Flow</h3>
+                    <p class="text-xl text-slate-200 mb-4">
+                       A fast-moving mixture of hot gases, ash, and volcanic rocks rushing down slopes at <span class="font-bold text-white">>100 km/h</span>. Temperatures can reach <span class="font-bold text-red-500">800°C</span>.
+                    </p>
+                    <ul class="space-y-2 text-slate-400 text-sm">
+                      <li class="flex items-center"><span class="w-1.5 h-1.5 bg-orange-500 rounded-full mr-2"></span> Instant incineration of anything in path</li>
+                      <li class="flex items-center"><span class="w-1.5 h-1.5 bg-orange-500 rounded-full mr-2"></span> Burial under thick ash deposits</li>
+                    </ul>
+                  </div>
+                  
+                  <div class="relative h-48 rounded-xl overflow-hidden group">
+                     <img src="https://picsum.photos/seed/smoke/800/400" alt="Pyroclastic Flow" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                     <div class="absolute bottom-0 left-0 bg-black/80 px-4 py-2 text-xs text-orange-300">
+                        Ex: Mt Pinatubo (1991) buried towns in Pampanga.
+                     </div>
+                  </div>
+               </div>
+               
+               <!-- Right Column: Ash Fall -->
+               <div class="flex flex-col justify-center p-6 lg:p-10 border-t lg:border-t-0 lg:border-l border-white/10">
+                  <div class="bg-slate-800/30 border border-slate-500/30 p-6 rounded-2xl mb-6">
+                    <h3 class="text-4xl md:text-6xl font-black text-slate-400 uppercase tracking-tighter mb-4">Ash Fall</h3>
+                    <p class="text-xl text-slate-200 mb-4">
+                       Volcanic ash and rock fragments ejected during explosive eruptions falling to the ground.
+                    </p>
+                    <ul class="space-y-2 text-slate-400 text-sm">
+                      <li class="flex items-center"><span class="w-1.5 h-1.5 bg-slate-400 rounded-full mr-2"></span> Roof collapse from heavy accumulation</li>
+                      <li class="flex items-center"><span class="w-1.5 h-1.5 bg-slate-400 rounded-full mr-2"></span> Respiratory problems & poor visibility</li>
+                    </ul>
+                  </div>
+
+                  <div class="relative h-48 rounded-xl overflow-hidden group">
+                     <img src="https://picsum.photos/seed/ash/800/400" alt="Ash Fall" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 grayscale" />
+                     <div class="absolute bottom-0 left-0 bg-black/80 px-4 py-2 text-xs text-slate-300">
+                        Ex: Taal Volcano (2020) blanketed towns, forcing evacuation.
+                     </div>
+                  </div>
+               </div>
+
+             </div>
+          </div>
+        `
+      },
+      {
+        id: 'volcano-lahar',
+        title: 'Lahars & Lava Flows',
+        content: `
+          <div class="h-full flex flex-col relative animate-in fade-in slide-in-from-right-8 duration-700">
+             
+             <div class="grid grid-cols-1 lg:grid-cols-2 h-full gap-8">
+               
+               <!-- Left Column: Lahars -->
+               <div class="flex flex-col justify-center p-6 lg:p-10">
+                  <h3 class="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-stone-400 to-stone-600 uppercase mb-6">Lahars</h3>
+                  <p class="text-2xl text-slate-200 font-light mb-8">
+                    Volcanic mudflows. Mixtures of ash, rocks, and water, often triggered by <span class="font-bold text-blue-400">rain</span> or melting ice.
+                  </p>
+                  
+                  <div class="bg-stone-900/50 p-6 rounded-xl border-l-4 border-stone-500 mb-6">
+                    <h5 class="font-bold text-stone-300 uppercase mb-2">Effects</h5>
+                    <p class="text-slate-400">Burial of communities, long-term river siltation, destruction of bridges.</p>
+                  </div>
+                   <div class="mt-auto">
+                    <p class="text-xs text-slate-500 font-mono">REF: Lagmay et al. (2020)</p>
+                  </div>
+               </div>
+               
+               <!-- Right Column: Lava Flows -->
+               <div class="flex flex-col justify-center p-6 lg:p-10 relative overflow-hidden group">
+                  <div class="absolute inset-0">
+                    <img src="https://picsum.photos/seed/lava/1200/1200" alt="Lava Flow" class="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-700" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/50"></div>
+                  </div>
+                  
+                  <div class="relative z-10">
+                    <h3 class="text-5xl md:text-7xl font-black text-red-500 uppercase mb-6 drop-shadow-lg">Lava Flows</h3>
+                    <p class="text-2xl text-white font-bold mb-4 drop-shadow-md">
+                      Molten rock flowing from the crater.
+                    </p>
+                    <div class="bg-black/60 backdrop-blur-md p-6 rounded-xl border border-red-500/30">
+                       <p class="text-red-200">Burns everything it touches but moves slowly. Creates new land when cooled.</p>
+                       <div class="mt-4 text-xs font-bold text-red-400 uppercase tracking-widest">
+                         Example: Mayon Volcano
+                       </div>
+                    </div>
+                  </div>
+               </div>
+
+             </div>
+          </div>
+        `
+      },
+      {
+        id: 'volcano-gases',
+        title: 'Gases & Tsunamis',
+        content: `
+          <div class="h-full flex flex-col relative animate-in fade-in slide-in-from-right-8 duration-700">
+             
+             <div class="grid grid-cols-1 lg:grid-cols-2 h-full gap-8">
+               
+               <!-- Left Column: Gases -->
+               <div class="flex flex-col justify-center p-6 lg:p-10 bg-yellow-950/10">
+                  <div class="flex items-center mb-6">
+                    <div class="w-16 h-16 bg-yellow-500/20 rounded-full flex items-center justify-center mr-4">
+                      <svg class="w-8 h-8 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>
+                    </div>
+                    <h3 class="text-4xl font-black text-yellow-500 uppercase">Volcanic Gases</h3>
+                  </div>
+                  
+                  <div class="space-y-4">
+                    <div class="bg-black/20 p-4 rounded-lg border-l-4 border-yellow-500">
+                       <h5 class="text-yellow-200 font-bold">Emissions</h5>
+                       <p class="text-slate-300 text-sm">Sulfur Dioxide (SO₂), Carbon Dioxide (CO₂), Hydrogen Sulfide (H₂S).</p>
+                    </div>
+                    <div class="bg-black/20 p-4 rounded-lg border-l-4 border-yellow-500">
+                       <h5 class="text-yellow-200 font-bold">Dangers</h5>
+                       <p class="text-slate-300 text-sm">Poisoning, acid rain damaging crops, atmospheric pollution.</p>
+                    </div>
+                  </div>
+               </div>
+               
+               <!-- Right Column: Tsunamis -->
+               <div class="flex flex-col justify-center p-6 lg:p-10 bg-blue-950/10">
+                  <div class="flex items-center mb-6">
+                    <div class="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center mr-4">
+                      <svg class="w-8 h-8 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                    </div>
+                    <h3 class="text-4xl font-black text-blue-500 uppercase">Volcanic Tsunamis</h3>
+                  </div>
+                  
+                  <p class="text-xl text-slate-200 mb-6">
+                    Large sea waves generated by underwater eruptions or caldera collapses.
+                  </p>
+
+                  <div class="relative h-48 rounded-xl overflow-hidden border border-blue-500/30">
+                     <img src="https://picsum.photos/seed/wave/800/400" alt="Tsunami" class="w-full h-full object-cover" />
+                     <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent flex items-end p-4">
+                        <p class="text-xs text-white">
+                          Ex: Hunga Tonga (2022) generated a tsunami reaching the Philippines.
+                        </p>
+                     </div>
+                  </div>
+               </div>
+
+             </div>
           </div>
         `
       }
@@ -848,12 +1002,135 @@ export const LECTURES: Lecture[] = [
     refresherQuiz: [
       {
         id: 'v1',
-        question: 'What is volcanic ash made of?',
-        options: ['Burnt wood', 'Rock and glass particles', 'Soft dust', 'Coal'],
+        question: 'What is volcanic ash mostly composed of?',
+        options: ['Burned wood', 'Jagged rock and glass', 'Soft dust', 'Coal'],
         correctAnswer: 1
+      },
+      {
+        id: 'v2',
+        question: 'Which hazard is a fast-moving mixture of hot gas and rock?',
+        options: ['Lava Flow', 'Pyroclastic Flow', 'Lahar', 'Ash Fall'],
+        correctAnswer: 1
+      },
+      {
+         id: 'v3',
+         question: 'What triggers a Lahar?',
+         options: ['Strong winds', 'Rain or melting ice mixing with ash', 'Solar flares', 'Tectonic shifts'],
+         correctAnswer: 1
       }
     ],
-    finalQuiz: []
+    finalQuiz: [
+      {
+        id: 'vq1',
+        question: 'Scientists observe increasing ground deformation and frequent volcanic quakes near Mt. Mayon. What does this most likely indicate?',
+        options: [
+          'The volcano is returning to its normal state.',
+          'Magma is moving upward, possibly leading to an eruption.',
+          'Wind pressure is increasing on the volcano’s slopes.',
+          'The volcano is cooling down.'
+        ],
+        correctAnswer: 1
+      },
+      {
+        id: 'vq2',
+        question: 'Residents notice a strong sulfur smell and steam rising from a nearby crater. What should be done to forecast possible volcanic activity?',
+        options: [
+          'Dismiss it as normal gas emission.',
+          'Monitor and report the observation to PHIVOLCS.',
+          'Evacuate immediately without confirmation.',
+          'Wait until ashfall occurs before acting.'
+        ],
+        correctAnswer: 1
+      },
+      {
+        id: 'vq3',
+        question: 'A viral post claims that “Mt. Taal will erupt this weekend.” How can you verify the accuracy of this claim?',
+        options: [
+          'Check the latest PHIVOLCS bulletin and alert level.',
+          'Believe it because it’s trending online.',
+          'Wait until someone nearby confirms an explosion.',
+          'Share it to warn others quickly.'
+        ],
+        correctAnswer: 0
+      },
+      {
+        id: 'vq4',
+        question: 'Your teacher says the volcano’s alert level has changed from 1 to 3. What does this accurately mean?',
+        options: [
+          'The volcano has completely erupted.',
+          'There is an increased tendency toward hazardous eruption.',
+          'The volcano is safe for tourism again.',
+          'The volcano has already stopped releasing gas.'
+        ],
+        correctAnswer: 1
+      },
+      {
+        id: 'vq5',
+        question: 'After a volcanic eruption, rivers nearby experience lahar flow when it rains heavily. What is the main cause of this hazard?',
+        options: [
+          'Cooling magma creates more rain.',
+          'Ash and debris mix with rainwater and flow downstream.',
+          'Earthquakes push the water outward.',
+          'Forest fires loosen the soil.'
+        ],
+        correctAnswer: 1
+      },
+      {
+        id: 'vq6',
+        question: 'Villages near a volcano are buried in pyroclastic materials. What caused this type of destruction?',
+        options: [
+          'Fast-moving currents of hot gas and volcanic fragments.',
+          'Rising water levels from nearby rivers.',
+          'Lava solidifying near houses.',
+          'Slow buildup of volcanic gases.'
+        ],
+        correctAnswer: 0
+      },
+      {
+        id: 'vq7',
+        question: 'Scientists record a series of harmonic tremors followed by gas emission increases. What pattern do these data suggest?',
+        options: [
+          'The volcano is becoming dormant.',
+          'There is a potential eruption due to magma movement.',
+          'The volcano’s activity is decreasing.',
+          'Weather changes are affecting the readings.'
+        ],
+        correctAnswer: 1
+      },
+      {
+        id: 'vq8',
+        question: 'In the past 50 years, every time the crater lake of a certain volcano changes color, an eruption follows within weeks. What does this pattern imply?',
+        options: [
+          'The lake color change can be ignored.',
+          'It may serve as an early warning indicator of volcanic activity.',
+          'The lake is affected only by seasonal rainfall.',
+          'It proves that eruptions are caused by lake pollution.'
+        ],
+        correctAnswer: 1
+      },
+      {
+        id: 'vq9',
+        question: 'PHIVOLCS raises the alert level to 4 for a nearby volcano. As a student living 8 km from the crater, what should you and your family do?',
+        options: [
+          'Continue normal activities but stay alert.',
+          'Pack essentials and evacuate following official instructions.',
+          'Wait for ashfall before leaving.',
+          'Climb the volcano to observe the eruption safely.'
+        ],
+        correctAnswer: 1
+      },
+      {
+        id: 'vq10',
+        question: 'Local officials plan to allow tourists to visit a volcano still under Alert Level 2. What is the most appropriate decision based on hazard forecasting?',
+        options: [
+          'Allow it because the volcano is not yet erupting.',
+          'Limit access and wait for official downgrading to Alert Level 0.',
+          'Promote more tours for economic recovery.',
+          'Ignore PHIVOLCS advisories since it’s a minor alert.'
+        ],
+        correctAnswer: 1
+      }
+    ]
   }
 ];
 
