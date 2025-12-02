@@ -646,107 +646,426 @@ export const LECTURES: Lecture[] = [
   },
   {
     id: '2',
-    title: 'Flood Safety: Rising Waters',
-    description: 'Understand the dangers of flash floods and how to navigate rising water scenarios.',
+    title: 'Hydrometeorological Hazards',
+    description: 'Recognize the early warning signs of tropical cyclones, floods, storm surges, landslides, and droughts to save lives.',
     topic: 'Flood',
-    imageUrl: 'https://picsum.photos/seed/flood/800/400',
-    readTime: 4,
+    imageUrl: 'https://picsum.photos/seed/rain/800/400',
+    readTime: 12,
     difficulty: 'Intermediate',
     objectives: [
-      'Recognize the signs of flash flooding',
-      'Understand the power of moving water',
-      'Identify electrical hazards during floods',
-      'Plan safe evacuation routes'
+      'Recognize signs of impending hydrometeorological hazards',
+      'Differentiate between natural and scientific warning signs',
+      'Understand indicators for Cyclones, Floods, and Storm Surges'
     ],
     competencies: [
-      'Situational Awareness',
-      'Decision Making',
-      'Electrical Safety'
+      'Hazard Recognition',
+      'Early Warning Awareness',
+      'Disaster Preparedness'
     ],
     gameType: 'flood-choice',
     sections: [
       {
-        id: 'flood-objectives',
+        id: 'hydro-objectives',
         title: 'Learning Objectives',
         content: `
-          <h2 class="text-2xl font-bold text-brand-500 mb-6">Course Objectives</h2>
+          <h2 class="text-2xl font-bold text-brand-500 mb-6">Competencies</h2>
           <ul class="space-y-4 mb-8 text-slate-300">
             <li class="flex items-center">
-              <svg class="w-5 h-5 text-green-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-              Recognize the signs of flash flooding
-            </li>
-            <li class="flex items-center">
-              <svg class="w-5 h-5 text-green-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-              Understand the power of moving water
-            </li>
-            <li class="flex items-center">
-              <svg class="w-5 h-5 text-green-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-              Identify electrical hazards during floods
+              <svg class="w-5 h-5 text-cyan-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              Recognize signs of impending hydrometeorological hazards
             </li>
           </ul>
-        `
-      },
-      {
-        id: 'flood-intro',
-        title: 'The Power of Water',
-        content: `
-          <div class="flex flex-col items-center text-center space-y-6 animate-in fade-in slide-in-from-bottom-8 duration-700 py-10">
-            
-            <!-- Animated Visual -->
-            <div class="relative group cursor-pointer mb-4">
-              <div class="absolute inset-0 bg-cyan-500/20 blur-3xl rounded-full group-hover:bg-cyan-500/40 transition-all duration-1000"></div>
-              <svg class="w-40 h-40 text-cyan-400 transform group-hover:translate-y-2 transition-transform duration-1000 ease-in-out drop-shadow-[0_0_20px_rgba(34,211,238,0.8)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-              </svg>
-              <div class="absolute inset-0 flex items-center justify-center">
-                 <svg class="w-16 h-16 text-white/50 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                   <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                 </svg>
-              </div>
-            </div>
-
-            <h3 class="text-7xl md:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-b from-cyan-300 to-blue-700 uppercase tracking-tighter drop-shadow-lg">
-              Flood
-            </h3>
-
-            <p class="text-3xl md:text-5xl text-white font-bold max-w-3xl leading-tight transform hover:scale-105 transition-transform duration-300">
-              "Turn Around, <br/> <span class="text-red-500 inline-block">Don't Drown!</span>"
-            </p>
-            
-            <div class="bg-blue-900/30 border border-blue-500/30 p-8 rounded-3xl backdrop-blur-sm max-w-3xl mt-8 hover:bg-blue-900/40 transition-colors">
-              <p class="text-xl text-slate-200 leading-relaxed">
-                 Flooding is the most common natural disaster. Just <span class="text-cyan-400 font-black text-3xl mx-2 inline-block animate-pulse">6 inches</span> of moving water can knock you off your feet.
-              </p>
-            </div>
+          
+          <div class="bg-cyan-900/20 border border-cyan-500/20 p-6 rounded-xl">
+             <h3 class="text-xl font-bold text-cyan-400 mb-2">Did You Know?</h3>
+             <p class="text-slate-300 italic">"Awareness of natural warning signs saves lives — even a few minutes of early action can make a big difference."</p>
+             <p class="text-slate-500 text-xs mt-2 text-right">— NDRRMC, 2023</p>
           </div>
         `
       },
       {
-        id: 'flood-hazards',
-        title: 'Electrical Hazards',
+        id: 'hydro-intro',
+        title: 'Introduction',
         content: `
-          <h2 class="text-xl font-bold text-slate-200 mb-4">Invisible Dangers</h2>
-          
-          <h3 class="text-lg font-semibold text-yellow-400 mt-4 mb-2">Electricity & Water</h3>
-          <p class="mb-4">Never touch electrical equipment if you are wet or standing in water. If your home is flooding, turn off power at the main breaker if it is safe to do so.</p>
-          
-          <ul class="list-disc pl-5 space-y-2 mt-4 text-slate-300">
-             <li>Do not walk through standing water if power lines are down nearby.</li>
-             <li>Unplug appliances if water levels are rising but haven't reached outlets yet.</li>
-             <li>Never drive around barricades. Local responders use them to safely direct traffic out of flooded areas.</li>
-          </ul>
+          <div class="flex flex-col items-center text-center space-y-6 animate-in fade-in slide-in-from-bottom-8 duration-700 py-10">
+            
+            <div class="relative group cursor-pointer mb-8">
+              <div class="absolute inset-0 bg-blue-500/20 blur-3xl rounded-full group-hover:bg-blue-500/40 transition-all duration-500"></div>
+              <svg class="w-32 h-32 md:w-48 md:h-48 text-blue-400 transform group-hover:scale-105 transition-transform duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+              </svg>
+            </div>
+
+            <h3 class="text-5xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 uppercase tracking-tighter hover:tracking-wide transition-all duration-700 cursor-default">
+              Hydrometeorological
+            </h3>
+            <h4 class="text-3xl md:text-5xl font-bold text-slate-300 uppercase tracking-widest">Hazards</h4>
+
+            <div class="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm hover:bg-white/10 transition-all max-w-4xl text-left mt-8 shadow-xl">
+              <p class="text-lg md:text-xl text-slate-300 leading-relaxed text-center">
+                Natural events caused by atmospheric, hydrological, or oceanographic processes. These include <span class="text-cyan-400 font-bold">tropical cyclones, floods, storm surges, droughts, and monsoons</span>.
+              </p>
+            </div>
+
+          </div>
+        `
+      },
+      {
+        id: 'hydro-cyclone',
+        title: 'Tropical Cyclone',
+        content: `
+          <div class="h-full flex flex-col relative animate-in fade-in slide-in-from-right-8 duration-700">
+             <div class="grid grid-cols-1 lg:grid-cols-2 h-full gap-8">
+               
+               <!-- Left Column -->
+               <div class="flex flex-col justify-center p-6 lg:p-10">
+                  <h3 class="text-5xl md:text-7xl font-black text-slate-200 uppercase tracking-tighter mb-8">
+                    Tropical Cyclone
+                  </h3>
+                  
+                  <div class="grid gap-6">
+                    <div class="bg-slate-800/40 p-6 rounded-2xl border border-slate-600/30">
+                       <h4 class="text-xl font-bold text-cyan-400 mb-3 uppercase flex items-center"><span class="text-2xl mr-2">🍃</span> Natural Signs</h4>
+                       <ul class="text-slate-300 space-y-2 text-sm">
+                         <li>• Sudden drop in air pressure & increased humidity</li>
+                         <li>• Dark, thick clouds in eastern sky</li>
+                         <li>• Strong winds shifting rapidly</li>
+                         <li>• Continuous heavy rain</li>
+                       </ul>
+                    </div>
+                    <div class="bg-slate-800/40 p-6 rounded-2xl border border-slate-600/30">
+                       <h4 class="text-xl font-bold text-blue-400 mb-3 uppercase flex items-center"><span class="text-2xl mr-2">📡</span> Scientific Signs</h4>
+                       <ul class="text-slate-300 space-y-2 text-sm">
+                         <li>• Satellite images showing spiraling clouds</li>
+                         <li>• PAGASA weather bulletins</li>
+                         <li>• Warning Signals (1-5) issued</li>
+                       </ul>
+                    </div>
+                  </div>
+               </div>
+               
+               <!-- Right Column -->
+               <div class="flex flex-col justify-center p-6 lg:p-10 relative group">
+                  <div class="relative w-full h-full min-h-[400px] overflow-hidden rounded-3xl border border-white/10 shadow-2xl bg-black/40">
+                    <img src="https://picsum.photos/seed/storm/1200/1200" alt="Cyclone" class="w-full h-full object-cover opacity-80" />
+                    <div class="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-md p-6">
+                       <p class="text-sm text-cyan-400 font-bold mb-1 uppercase">REAL WORLD EXAMPLE</p>
+                       <p class="text-white text-sm">Before Typhoon Yolanda (2013), PAGASA recorded a drastic pressure drop and spiral cloud formation.</p>
+                    </div>
+                  </div>
+               </div>
+
+             </div>
+          </div>
+        `
+      },
+      {
+        id: 'hydro-flood',
+        title: 'Impending Flood',
+        content: `
+          <div class="h-full flex flex-col relative animate-in fade-in slide-in-from-right-8 duration-700">
+             <div class="grid grid-cols-1 lg:grid-cols-2 h-full gap-8">
+               
+               <!-- Left Column -->
+               <div class="flex flex-col justify-center p-6 lg:p-10">
+                  <h3 class="text-5xl md:text-7xl font-black text-blue-500 uppercase tracking-tighter mb-8">
+                    Flood
+                  </h3>
+                  
+                  <div class="grid gap-6">
+                    <div class="bg-blue-900/20 p-6 rounded-2xl border border-blue-500/20">
+                       <h4 class="text-xl font-bold text-blue-300 mb-3 uppercase flex items-center"><span class="text-2xl mr-2">🌧️</span> Natural Signs</h4>
+                       <ul class="text-slate-300 space-y-2 text-sm">
+                         <li>• Continuous heavy rainfall (hours/days)</li>
+                         <li>• Rising water levels in rivers/creeks</li>
+                         <li>• Overflowing canals</li>
+                         <li>• Soil softening or water seeping up</li>
+                       </ul>
+                    </div>
+                    <div class="bg-blue-900/20 p-6 rounded-2xl border border-blue-500/20">
+                       <h4 class="text-xl font-bold text-blue-300 mb-3 uppercase flex items-center"><span class="text-2xl mr-2">📊</span> Scientific Signs</h4>
+                       <ul class="text-slate-300 space-y-2 text-sm">
+                         <li>• Rainfall radar intensity (>50mm/hr)</li>
+                         <li>• Color-coded warnings (Yellow, Orange, Red)</li>
+                       </ul>
+                    </div>
+                  </div>
+               </div>
+               
+               <!-- Right Column -->
+               <div class="flex flex-col justify-center p-6 lg:p-10 relative group">
+                  <div class="relative w-full h-full min-h-[400px] overflow-hidden rounded-3xl border border-white/10 shadow-2xl bg-black/40">
+                    <img src="https://picsum.photos/seed/flood/1200/1200" alt="Flood" class="w-full h-full object-cover opacity-80" />
+                    <div class="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-md p-6">
+                       <p class="text-sm text-blue-400 font-bold mb-1 uppercase">REAL WORLD EXAMPLE</p>
+                       <p class="text-white text-sm">In Marikina, residents monitor the river water level using PAGASA’s system.</p>
+                    </div>
+                  </div>
+               </div>
+
+             </div>
+          </div>
+        `
+      },
+      {
+        id: 'hydro-surge',
+        title: 'Storm Surge',
+        content: `
+          <div class="h-full flex flex-col relative animate-in fade-in slide-in-from-right-8 duration-700">
+             <div class="grid grid-cols-1 lg:grid-cols-2 h-full gap-8">
+               
+               <!-- Left Column -->
+               <div class="flex flex-col justify-center p-6 lg:p-10">
+                  <h3 class="text-5xl md:text-7xl font-black text-indigo-400 uppercase tracking-tighter mb-8">
+                    Storm Surge
+                  </h3>
+                  
+                  <div class="bg-indigo-950/30 p-8 rounded-3xl border border-indigo-500/30 mb-6">
+                       <h4 class="text-2xl font-bold text-indigo-200 mb-4 uppercase">Critical Indicators</h4>
+                       <ul class="space-y-4 text-slate-300">
+                         <li class="flex items-center"><div class="w-2 h-2 bg-indigo-500 rounded-full mr-3"></div> Unusually calm sea followed by sudden rise</li>
+                         <li class="flex items-center"><div class="w-2 h-2 bg-indigo-500 rounded-full mr-3"></div> Rapidly receding shoreline</li>
+                         <li class="flex items-center"><div class="w-2 h-2 bg-indigo-500 rounded-full mr-3"></div> Strong winds blowing toward shore</li>
+                       </ul>
+                  </div>
+                  <div class="bg-black/30 p-4 rounded-xl border-l-4 border-indigo-500">
+                     <span class="text-indigo-400 font-bold uppercase text-xs">Scientific</span>
+                     <p class="text-slate-400 text-sm">Model simulations predicting surge height based on wind/tide.</p>
+                  </div>
+               </div>
+               
+               <!-- Right Column -->
+               <div class="flex flex-col justify-center p-6 lg:p-10 relative group">
+                  <div class="relative w-full h-full min-h-[400px] overflow-hidden rounded-3xl border border-white/10 shadow-2xl bg-black/40">
+                    <img src="https://picsum.photos/seed/wave/1200/1200" alt="Storm Surge" class="w-full h-full object-cover opacity-80" />
+                    <div class="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-md p-6">
+                       <p class="text-sm text-indigo-400 font-bold mb-1 uppercase">REAL WORLD EXAMPLE</p>
+                       <p class="text-white text-sm">During Typhoon Yolanda, storm surges up to 7 meters high devastated Tacloban City.</p>
+                    </div>
+                  </div>
+               </div>
+
+             </div>
+          </div>
+        `
+      },
+      {
+        id: 'hydro-landslide',
+        title: 'Rain-Induced Landslide',
+        content: `
+          <div class="h-full flex flex-col relative animate-in fade-in slide-in-from-right-8 duration-700">
+             <div class="grid grid-cols-1 lg:grid-cols-2 h-full gap-8">
+               
+               <!-- Left Column -->
+               <div class="flex flex-col justify-center p-6 lg:p-10">
+                  <h3 class="text-5xl md:text-7xl font-black text-amber-600 uppercase tracking-tighter mb-8">
+                    Landslide
+                  </h3>
+                  
+                  <div class="grid grid-cols-2 gap-4">
+                     <div class="col-span-2 bg-amber-950/30 p-6 rounded-2xl border border-amber-600/30">
+                        <h4 class="text-lg font-bold text-amber-400 mb-2 uppercase">Natural Signs</h4>
+                        <ul class="text-slate-300 text-sm space-y-2">
+                           <li>• Cracks on ground/walls</li>
+                           <li>• Tilting trees/poles</li>
+                           <li>• Muddy springs appearing</li>
+                           <li>• Rumbling sounds from slope</li>
+                        </ul>
+                     </div>
+                     <div class="col-span-2 bg-amber-950/30 p-6 rounded-2xl border border-amber-600/30">
+                        <h4 class="text-lg font-bold text-amber-400 mb-2 uppercase">Scientific Signs</h4>
+                        <p class="text-slate-300 text-sm">Soil moisture sensors detecting saturation. Rainfall threshold exceeded.</p>
+                     </div>
+                  </div>
+               </div>
+               
+               <!-- Right Column -->
+               <div class="flex flex-col justify-center p-6 lg:p-10 relative group">
+                  <div class="relative w-full h-full min-h-[400px] overflow-hidden rounded-3xl border border-white/10 shadow-2xl bg-black/40">
+                    <img src="https://picsum.photos/seed/mud/1200/1200" alt="Landslide" class="w-full h-full object-cover opacity-80" />
+                    <div class="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-md p-6">
+                       <p class="text-sm text-amber-500 font-bold mb-1 uppercase">REAL WORLD EXAMPLE</p>
+                       <p class="text-white text-sm">The 2006 Leyte landslide was preceded by days of intense rainfall and visible ground cracks.</p>
+                    </div>
+                  </div>
+               </div>
+
+             </div>
+          </div>
+        `
+      },
+      {
+        id: 'hydro-drought',
+        title: 'Impending Drought',
+        content: `
+          <div class="h-full flex flex-col relative animate-in fade-in slide-in-from-right-8 duration-700">
+             <div class="grid grid-cols-1 lg:grid-cols-2 h-full gap-8">
+               
+               <!-- Left Column -->
+               <div class="flex flex-col justify-center p-6 lg:p-10">
+                  <h3 class="text-5xl md:text-7xl font-black text-yellow-600 uppercase tracking-tighter mb-8">
+                    Drought
+                  </h3>
+                  
+                  <div class="bg-yellow-950/20 p-8 rounded-3xl border border-yellow-600/30 mb-6">
+                       <h4 class="text-2xl font-bold text-yellow-500 mb-4 uppercase">Observable Signs</h4>
+                       <ul class="space-y-4 text-slate-300">
+                         <li class="flex items-center"><span class="text-2xl mr-3">☀️</span> Prolonged dry & hot days</li>
+                         <li class="flex items-center"><span class="text-2xl mr-3">💧</span> Drying of ponds, wells, creeks</li>
+                         <li class="flex items-center"><span class="text-2xl mr-3">🌾</span> Wilting crops and grass</li>
+                         <li class="flex items-center"><span class="text-2xl mr-3">💨</span> Dusty air</li>
+                       </ul>
+                  </div>
+               </div>
+               
+               <!-- Right Column -->
+               <div class="flex flex-col justify-center p-6 lg:p-10 relative group">
+                  <div class="relative w-full h-full min-h-[400px] overflow-hidden rounded-3xl border border-white/10 shadow-2xl bg-black/40">
+                    <img src="https://picsum.photos/seed/desert/1200/1200" alt="Drought" class="w-full h-full object-cover opacity-80" />
+                    <div class="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-md p-6">
+                       <p class="text-sm text-yellow-500 font-bold mb-1 uppercase">REAL WORLD EXAMPLE</p>
+                       <p class="text-white text-sm">PAGASA declared an El Niño event in 2019, leading to agricultural drought in Central Luzon.</p>
+                    </div>
+                  </div>
+               </div>
+
+             </div>
+          </div>
         `
       }
     ],
     refresherQuiz: [
       {
-        id: 'f1',
-        question: 'How much moving water is needed to knock a person down?',
-        options: ['2 feet', '6 inches', '1 inch', '3 feet'],
+        id: 'h1',
+        question: 'What includes tropical cyclones, floods, and storm surges?',
+        options: ['Geological Hazards', 'Hydrometeorological Hazards', 'Biological Hazards', 'Technological Hazards'],
+        correctAnswer: 1
+      },
+      {
+        id: 'h2',
+        question: 'Which agency monitors weather disturbances in the Philippines?',
+        options: ['PHIVOLCS', 'MMDA', 'PAGASA', 'DepEd'],
+        correctAnswer: 2
+      },
+      {
+        id: 'h3',
+        question: 'What is a key sign of an approaching tropical cyclone?',
+        options: ['Rising temperature', 'Drop in air pressure', 'Clear skies', 'Ground shaking'],
         correctAnswer: 1
       }
     ],
-    finalQuiz: []
+    finalQuiz: [
+      {
+        id: 'fq1',
+        question: 'The local weather bureau reports that a low-pressure area (LPA) has entered the Philippine Area of Responsibility (PAR). What should the barangay officials do to forecast possible hazards?',
+        options: [
+          'Wait until heavy rains start before preparing.',
+          'Monitor PAGASA updates and prepare for possible storm signals.',
+          'Ignore the report since LPA rarely develops into a typhoon.',
+          'Focus only on temperature forecasts.'
+        ],
+        correctAnswer: 1
+      },
+      {
+        id: 'fq2',
+        question: 'Meteorologists observe rapid cloud buildup and dropping air pressure in a coastal area. What can be forecasted from these conditions?',
+        options: [
+          'Clear and dry weather.',
+          'Possible thunderstorm or heavy rainfall.',
+          'Volcanic eruption nearby.',
+          'Increasing temperature in the area.'
+        ],
+        correctAnswer: 1
+      },
+      {
+        id: 'fq3',
+        question: 'A social media post says, “A super typhoon will hit the Philippines tomorrow,” but PAGASA has not issued any warning. How can you verify the accuracy of this claim?',
+        options: [
+          'Share it immediately to alert others.',
+          'Wait to see if it rains the next day.',
+          'Check the official PAGASA or NDRRMC bulletins.',
+          'Believe the post because it has thousands of likes.'
+        ],
+        correctAnswer: 2
+      },
+      {
+        id: 'fq4',
+        question: 'Your phone app shows a severe flood warning, but local authorities haven’t announced anything yet. What should you do to ensure accuracy before acting?',
+        options: [
+          'Compare the information with government advisories.',
+          'Ignore it since there’s no official announcement.',
+          'Immediately evacuate without checking.',
+          'Ask friends if they heard the same news.'
+        ],
+        correctAnswer: 0
+      },
+      {
+        id: 'fq5',
+        question: 'After days of heavy rain, a hillside community experiences a landslide. What is the most likely cause of this hazard?',
+        options: [
+          'Strong winds loosened the trees.',
+          'Prolonged rainfall saturated the soil, weakening its stability.',
+          'Earthquake vibrations caused the slope to collapse.',
+          'The land was too dry before the rain.'
+        ],
+        correctAnswer: 1
+      },
+      {
+        id: 'fq6',
+        question: 'Flooding occurred in a city even after only moderate rain. What could be the main contributing factor?',
+        options: [
+          'The city’s drainage system is clogged or inadequate.',
+          'There was too much sunlight before the rain.',
+          'The city is too far from the coast.',
+          'Wind direction caused water to pile up.'
+        ],
+        correctAnswer: 0
+      },
+      {
+        id: 'fq7',
+        question: 'Weather records show that a certain province often experiences strong typhoons every last quarter of the year. What pattern can be recognized from this data?',
+        options: [
+          'The area is safe during any season.',
+          'The province is located along the common typhoon path during monsoon months.',
+          'The typhoons are random events.',
+          'The frequency is caused by human activity.'
+        ],
+        correctAnswer: 1
+      },
+      {
+        id: 'fq8',
+        question: 'In the past five years, flash floods always occur shortly after intense rainfall lasting more than an hour. What does this pattern suggest?',
+        options: [
+          'The floods are caused by sea-level rise.',
+          'There is a predictable relationship between rainfall intensity and flooding.',
+          'Floods happen by coincidence.',
+          'Rainfall has no connection to flooding.'
+        ],
+        correctAnswer: 1
+      },
+      {
+        id: 'fq9',
+        question: 'PAGASA raises a Tropical Cyclone Wind Signal No. 3 for your area. What should your family do first?',
+        options: [
+          'Go to the nearest open field to watch the winds.',
+          'Secure your house, prepare a go-bag, and stay tuned to official updates.',
+          'Wait for the rain to stop before preparing.',
+          'Continue normal activities as long as there’s power.'
+        ],
+        correctAnswer: 1
+      },
+      {
+        id: 'fq10',
+        question: 'Your school is in a flood-prone area, and heavy rains have been continuous since early morning. As a student leader, what is the best decision to recommend to the principal?',
+        options: [
+          'Continue classes until dismissal time.',
+          'Wait for official cancellation from the mayor’s office.',
+          'Suspend classes early and ensure students get home safely.',
+          'Ask everyone to stay and observe the rainfall pattern.'
+        ],
+        correctAnswer: 2
+      }
+    ]
   },
   {
     id: '3',
