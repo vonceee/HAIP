@@ -1,5 +1,4 @@
 
-
 import { Lecture, EQStep, FloodScenario } from './types';
 
 export const LECTURES: Lecture[] = [
@@ -51,56 +50,56 @@ export const LECTURES: Lecture[] = [
         id: 'intro',
         title: 'Introduction',
         content: `
-          <div class="flex flex-col items-center text-center space-y-12 animate-in fade-in slide-in-from-bottom-8 duration-700 py-12">
+          <div class="flex flex-col items-center justify-center min-h-full space-y-4 animate-in fade-in slide-in-from-bottom-8 duration-700 py-6">
             
-            <div class="flex flex-col md:flex-row items-center justify-center gap-8 mb-4 group cursor-pointer hover:scale-105 transition-transform duration-500">
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6 mb-2 group cursor-pointer hover:scale-105 transition-transform duration-500">
               <!-- Animated Visual Icon (Seismic Pulse) -->
               <div class="relative flex-shrink-0">
                 <div class="absolute inset-0 bg-orange-500/20 blur-3xl rounded-full group-hover:bg-orange-500/40 transition-all duration-500"></div>
-                <svg class="w-24 h-24 md:w-32 md:h-32 text-orange-500 transform group-hover:rotate-12 transition-transform duration-500 drop-shadow-[0_0_20px_rgba(249,115,22,0.8)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <svg class="w-16 h-16 md:w-20 md:h-20 text-orange-500 transform group-hover:rotate-12 transition-transform duration-500 drop-shadow-[0_0_20px_rgba(249,115,22,0.8)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M22 12h-4l-3 9L9 3l-3 9H2" />
                 </svg>
               </div>
 
               <!-- Title -->
-              <h3 class="text-7xl md:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-600 uppercase tracking-tighter drop-shadow-2xl">
+              <h3 class="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-600 uppercase tracking-tighter drop-shadow-2xl">
                 Earthquakes
               </h3>
             </div>
             
-            <div class="max-w-6xl mx-auto space-y-10 px-6">
+            <div class="max-w-6xl mx-auto px-4 w-full">
                <!-- Primary Content Card -->
-               <div class="bg-white/5 border border-white/10 p-10 md:p-14 rounded-[3rem] backdrop-blur-sm relative overflow-hidden group hover:bg-white/10 transition-all duration-500 hover:shadow-[0_0_50px_rgba(249,115,22,0.15)]">
+               <div class="bg-white/5 border border-white/10 p-6 md:p-8 rounded-[2.5rem] backdrop-blur-sm relative overflow-hidden group hover:bg-white/10 transition-all duration-500 hover:shadow-[0_0_50px_rgba(249,115,22,0.15)]">
                   <div class="absolute top-0 right-0 w-64 h-64 bg-orange-500/10 rounded-full blur-[100px] group-hover:bg-orange-500/20 transition-all"></div>
                   
-                  <p class="text-3xl md:text-4xl text-slate-100 font-light leading-relaxed relative z-10 text-justify md:text-center mb-10">
+                  <p class="text-2xl md:text-3xl text-slate-100 font-light leading-snug relative z-10 text-justify md:text-center mb-6">
                     <span class="font-black text-orange-400">Earthquakes</span> are among the most destructive natural hazards on Earth.
                   </p>
                   
-                  <p class="text-2xl md:text-3xl text-slate-300 font-light leading-relaxed relative z-10 text-justify md:text-center">
+                  <p class="text-lg md:text-2xl text-slate-300 font-light leading-snug relative z-10 text-justify md:text-center">
                     Their impacts go beyond ground shaking—they trigger a chain of <span class="font-bold text-white">secondary hazards</span> that pose immediate threats to human life, infrastructure, and the environment.
                   </p>
                   
-                  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 relative z-10">
-                     <div class="bg-black/30 p-6 rounded-2xl border border-orange-500/10 hover:border-orange-500/40 transition-colors group/badge cursor-default hover:-translate-y-2 duration-300">
-                        <div class="text-orange-500 font-black uppercase text-sm mb-2 tracking-widest group-hover/badge:text-white">Predict</div>
-                        <div class="text-slate-300 text-lg">Anticipate potential secondary hazards before they strike.</div>
+                  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6 relative z-10">
+                     <div class="bg-black/30 p-4 rounded-2xl border border-orange-500/10 hover:border-orange-500/40 transition-colors group/badge cursor-default hover:-translate-y-2 duration-300">
+                        <div class="text-orange-500 font-black uppercase text-xs mb-1 tracking-widest group-hover/badge:text-white">Predict</div>
+                        <div class="text-slate-300 text-sm">Anticipate potential secondary hazards before they strike.</div>
                      </div>
-                     <div class="bg-black/30 p-6 rounded-2xl border border-orange-500/10 hover:border-orange-500/40 transition-colors group/badge cursor-default hover:-translate-y-2 duration-300 delay-100">
-                        <div class="text-orange-500 font-black uppercase text-sm mb-2 tracking-widest group-hover/badge:text-white">Minimize</div>
-                        <div class="text-slate-300 text-lg">Reduce casualties through strategic planning.</div>
+                     <div class="bg-black/30 p-4 rounded-2xl border border-orange-500/10 hover:border-orange-500/40 transition-colors group/badge cursor-default hover:-translate-y-2 duration-300 delay-100">
+                        <div class="text-orange-500 font-black uppercase text-xs mb-1 tracking-widest group-hover/badge:text-white">Minimize</div>
+                        <div class="text-slate-300 text-sm">Reduce casualties through strategic planning.</div>
                      </div>
-                     <div class="bg-black/30 p-6 rounded-2xl border border-orange-500/10 hover:border-orange-500/40 transition-colors group/badge cursor-default hover:-translate-y-2 duration-300 delay-200">
-                        <div class="text-orange-500 font-black uppercase text-sm mb-2 tracking-widest group-hover/badge:text-white">Strengthen</div>
-                        <div class="text-slate-300 text-lg">Build long-term disaster resilience.</div>
+                     <div class="bg-black/30 p-4 rounded-2xl border border-orange-500/10 hover:border-orange-500/40 transition-colors group/badge cursor-default hover:-translate-y-2 duration-300 delay-200">
+                        <div class="text-orange-500 font-black uppercase text-xs mb-1 tracking-widest group-hover/badge:text-white">Strengthen</div>
+                        <div class="text-slate-300 text-sm">Build long-term disaster resilience.</div>
                      </div>
                   </div>
 
-                  <div class="mt-12 pt-12 border-t border-white/5">
-                     <p class="text-2xl text-slate-400 font-medium italic">
-                       "Analyzing these effects is crucial for developing predictive skills and effective disaster preparedness."
+                  <div class="mt-6 pt-4 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+                     <p class="text-sm md:text-base text-slate-400 font-medium italic text-center md:text-left">
+                       "Analyzing these effects is crucial for developing predictive skills."
                      </p>
-                     <p class="text-sm text-orange-500/60 mt-4 uppercase tracking-widest font-bold">
+                     <p class="text-[10px] text-orange-500/60 uppercase tracking-widest font-bold whitespace-nowrap">
                        Reference: PHIVOLCS (2023)
                      </p>
                   </div>
@@ -114,19 +113,19 @@ export const LECTURES: Lecture[] = [
         id: 'primary',
         title: 'Primary Hazards',
         content: `
-          <div class="flex flex-col space-y-12 animate-in fade-in duration-700 py-6">
+          <div class="flex flex-col space-y-8 animate-in fade-in duration-700 py-6">
             
             <div class="relative z-10">
               <h3 class="text-5xl md:text-7xl font-black text-white mb-6 uppercase tracking-tight">
                 Ground Shaking
               </h3>
               
-              <div class="grid grid-cols-1 gap-8 items-center">
-                 <div class="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-sm">
+              <div class="grid grid-cols-1 gap-6 items-center">
+                 <div class="bg-white/5 border border-white/10 rounded-3xl p-6 backdrop-blur-sm">
                     <p class="text-2xl text-slate-200 leading-relaxed mb-6 font-light">
                       The vibration of the ground caused by the sudden release of energy during an earthquake.
                     </p>
-                    <div class="h-32 flex items-center justify-center bg-black/40 rounded-xl overflow-hidden relative border border-white/10">
+                    <div class="h-28 flex items-center justify-center bg-black/40 rounded-xl overflow-hidden relative border border-white/10">
                        <style>
                           @keyframes seismic-scroll {
                             0% { transform: translateX(0); }
@@ -298,33 +297,65 @@ export const LECTURES: Lecture[] = [
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center h-full relative">
              <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent hidden lg:block"></div>
 
-             <div class="flex flex-col justify-start h-full lg:px-12 py-6">
+             <div class="flex flex-col justify-start h-full lg:px-12 py-6 overflow-y-auto custom-scrollbar">
                 <h3 class="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400 mb-6 uppercase">Ground Rupture</h3>
-                <p class="text-2xl text-slate-300 mb-8 font-light">
+                <p class="text-2xl text-slate-300 mb-8 font-light leading-relaxed">
                   The visible tearing or displacement of the ground surface along an active fault during an earthquake.
                 </p>
                 
+                <div class="grid grid-cols-2 gap-4 mb-8">
+                   <div class="bg-white/5 p-4 rounded-xl border border-white/10 hover:bg-white/10 transition-colors">
+                      <div class="text-orange-400 font-bold text-sm uppercase mb-1">Vertical Offset</div>
+                      <div class="text-slate-400 text-xs">One side lifts higher than the other, creating scarps.</div>
+                   </div>
+                   <div class="bg-white/5 p-4 rounded-xl border border-white/10 hover:bg-white/10 transition-colors">
+                      <div class="text-orange-400 font-bold text-sm uppercase mb-1">Horizontal Shift</div>
+                      <div class="text-slate-400 text-xs">Ground moves sideways, severing roads and lines.</div>
+                   </div>
+                </div>
+
                 <div class="space-y-6">
-                  <div class="bg-white/5 border border-white/10 p-6 rounded-2xl">
-                    <h4 class="text-lg font-bold text-orange-400 mb-2 uppercase tracking-wide">Effects Analysis</h4>
-                    <ul class="list-disc list-inside space-y-2 text-slate-300">
-                      <li>Direct damage to buildings crossing fault lines.</li>
-                      <li>Land becomes uninhabitable, limiting expansion.</li>
-                      <li>Drastic relocation and reconstruction costs.</li>
+                  <div class="bg-white/5 border border-white/10 p-6 rounded-2xl group hover:border-orange-500/30 transition-all">
+                    <h4 class="text-lg font-bold text-orange-400 mb-4 uppercase tracking-wide flex items-center">
+                       <span class="w-2 h-2 bg-orange-500 rounded-full mr-2 animate-pulse"></span>
+                       Effects Analysis
+                    </h4>
+                    <ul class="space-y-4 text-slate-300">
+                      <li class="flex items-start">
+                         <svg class="w-5 h-5 text-red-500 mr-3 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m8-2a2 2 0 11-4 0 2 2 0 014 0zM12 9a2 2 0 100-4 2 2 0 000 4z" /></svg>
+                         <span><strong>Structural Tearing:</strong> Buildings directly on the fault are torn apart; foundations cannot withstand the sheer force.</span>
+                      </li>
+                      <li class="flex items-start">
+                         <svg class="w-5 h-5 text-red-500 mr-3 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" /></svg>
+                         <span><strong>Uninhabitable Zones:</strong> Fault zones become permanent no-build zones, limiting urban expansion.</span>
+                      </li>
+                      <li class="flex items-start">
+                         <svg class="w-5 h-5 text-red-500 mr-3 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                         <span><strong>Economic Loss:</strong> Relocation and infrastructure reconstruction costs increase drastically.</span>
+                      </li>
                     </ul>
+                  </div>
+
+                  <div class="bg-orange-950/30 border-l-4 border-orange-500 p-4 rounded-r-xl">
+                      <p class="text-orange-200 text-sm font-bold uppercase mb-1">Safety Protocol</p>
+                      <p class="text-slate-400 text-sm">Strict adherence to the <span class="text-white font-bold">5-meter buffer zone</span> on both sides of an active fault line is required by law.</p>
                   </div>
                 </div>
              </div>
 
              <div class="flex flex-col justify-center h-full lg:px-12">
                 <div class="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl group">
-                   <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcToS-znEiOO7d1W94qFPB_ZXpGwqZg7gFRHroWyeWwDAJ9sJgX0xuAyLVGuMtoe" alt="Ground Rupture Example" class="w-full h-auto object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700" />
-                   <div class="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-md p-4 border-t border-white/10">
-                      <p class="text-sm text-slate-300 italic">
-                        "A potential ground rupture along the West Valley Fault could damage parts of Quezon City."
+                   <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcToS-znEiOO7d1W94qFPB_ZXpGwqZg7gFRHroWyeWwDAJ9sJgX0xuAyLVGuMtoe" alt="Ground Rupture Example" class="w-full h-auto object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700 transform hover:scale-105 transition-transform duration-1000" />
+                   <div class="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-md p-6 border-t border-white/10">
+                      <div class="flex items-center mb-2">
+                          <span class="w-2 h-2 bg-red-500 rounded-full mr-2 animate-pulse"></span>
+                          <p class="text-xs text-red-400 font-bold uppercase tracking-widest">Real-World Scenario</p>
+                      </div>
+                      <p class="text-base text-slate-200 italic mb-2">
+                        "A potential ground rupture along the West Valley Fault could damage parts of Quezon City and Taguig, affecting major infrastructures."
                       </p>
-                      <p class="text-[10px] text-orange-500 font-bold mt-1 uppercase tracking-widest">
-                        Ref: PHIVOLCS Faultfinder Database (2023)
+                      <p class="text-[10px] text-orange-500 font-bold mt-1 uppercase tracking-widest opacity-70">
+                        Link: https://www.mdpi.com/geohazards/geohazards-06-00023/article_deploy/html/images/geohazards-06-00023-g001-550.jpg
                       </p>
                    </div>
                 </div>
@@ -732,23 +763,30 @@ export const LECTURES: Lecture[] = [
              
              <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <div class="lg:col-span-2 space-y-6">
-                   <p class="text-2xl text-slate-200 font-light">Abnormal rise of water generated by a storm, over and above the predicted astronomical tide.</p>
-                   
-                   <div class="bg-indigo-950/40 p-6 rounded-2xl border border-indigo-500/20">
-                      <h4 class="text-xl font-bold text-indigo-300 mb-4">Critical Signs</h4>
-                      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                         <li class="flex items-center bg-black/20 p-3 rounded-lg"><span class="text-2xl mr-3">🌊</span> Unusually calm sea followed by sudden rise</li>
-                         <li class="flex items-center bg-black/20 p-3 rounded-lg"><span class="text-2xl mr-3">🌬️</span> Strong winds blowing toward shore</li>
-                         <li class="flex items-center bg-black/20 p-3 rounded-lg"><span class="text-2xl mr-3">📉</span> Rapidly receding shoreline</li>
-                         <li class="flex items-center bg-black/20 p-3 rounded-lg"><span class="text-2xl mr-3">☁️</span> Low-pressure readings</li>
-                      </ul>
+                   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div class="bg-indigo-950/40 p-5 rounded-2xl border border-indigo-500/20">
+                         <h4 class="text-indigo-300 font-bold mb-2">Natural Indicators</h4>
+                         <ul class="text-sm text-slate-300 space-y-2">
+                           <li>• Unusually calm sea followed by sudden rise</li>
+                           <li>• Strong winds blowing toward shore</li>
+                           <li>• Rapidly receding shoreline</li>
+                           <li>• Dark clouds near coast</li>
+                         </ul>
+                      </div>
+                      <div class="bg-indigo-950/40 p-5 rounded-2xl border border-indigo-500/20">
+                         <h4 class="text-indigo-300 font-bold mb-2">Scientific Forecast</h4>
+                         <ul class="text-sm text-slate-300 space-y-2">
+                           <li>• PAGASA storm surge advisories</li>
+                           <li>• Model simulations of surge height</li>
+                         </ul>
+                      </div>
                    </div>
                 </div>
-                
-                <div class="relative rounded-2xl overflow-hidden border border-white/10 group">
-                   <img src="https://picsum.photos/seed/surge/400/600" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity" alt="Storm Surge" />
-                   <div class="absolute inset-0 flex items-center justify-center p-4 bg-black/60 hover:bg-transparent transition-colors">
-                      <p class="text-center font-bold text-white drop-shadow-md">"Typhoon Yolanda storm surges reached up to 7 meters."</p>
+
+                <div class="bg-white/5 border border-white/10 p-4 rounded-2xl flex flex-col justify-end relative overflow-hidden group">
+                   <img src="https://picsum.photos/seed/yolanda/400/600" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700" alt="Storm Surge Example" />
+                   <div class="relative z-10 bg-black/80 p-3 rounded-xl backdrop-blur-md">
+                      <p class="text-xs text-slate-200">"During Typhoon Yolanda, storm surges up to 7 meters high devastated Tacloban City."</p>
                    </div>
                 </div>
              </div>
@@ -756,46 +794,39 @@ export const LECTURES: Lecture[] = [
         `
       },
       {
-        id: 'landslide-rain',
+        id: 'landslide',
         title: 'Rain-Induced Landslide',
         content: `
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center h-full">
-             <div class="flex flex-col justify-start space-y-6">
-                <h3 class="text-4xl font-black text-emerald-400 uppercase">Landslide</h3>
-                <p class="text-lg text-slate-300">Movement of rock, debris, or earth down a slope.</p>
-                
-                <div class="space-y-3">
-                   <div class="flex items-start">
-                      <div class="bg-emerald-500/20 p-2 rounded mr-4 mt-1"><span class="block w-2 h-2 bg-emerald-500 rounded-full"></span></div>
-                      <div>
-                         <div class="font-bold text-emerald-200">Cracks</div>
-                         <div class="text-sm text-slate-400">Appearing on ground or walls.</div>
-                      </div>
-                   </div>
-                   <div class="flex items-start">
-                      <div class="bg-emerald-500/20 p-2 rounded mr-4 mt-1"><span class="block w-2 h-2 bg-emerald-500 rounded-full"></span></div>
-                      <div>
-                         <div class="font-bold text-emerald-200">Tilting</div>
-                         <div class="text-sm text-slate-400">Trees, poles, or fences shifting.</div>
-                      </div>
-                   </div>
-                   <div class="flex items-start">
-                      <div class="bg-emerald-500/20 p-2 rounded mr-4 mt-1"><span class="block w-2 h-2 bg-emerald-500 rounded-full"></span></div>
-                      <div>
-                         <div class="font-bold text-emerald-200">Muddy Springs</div>
-                         <div class="text-sm text-slate-400">Sudden appearance of water/mud.</div>
-                      </div>
-                   </div>
-                </div>
-             </div>
-             
-             <div class="h-64 lg:h-full bg-slate-800 rounded-3xl overflow-hidden border border-white/10 relative">
-                 <img src="https://picsum.photos/seed/mudslide/600/600" class="w-full h-full object-cover opacity-60" />
-                 <div class="absolute bottom-4 left-4 right-4 bg-black/80 p-3 rounded-lg backdrop-blur-sm">
-                    <div class="text-xs text-emerald-400 font-bold uppercase mb-1">Historical Case</div>
-                    <div class="text-sm text-white">2006 Leyte Landslide preceded by days of intense rainfall.</div>
-                 </div>
-             </div>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 h-full items-center">
+            <div class="flex flex-col justify-start space-y-6">
+               <h3 class="text-4xl font-black text-stone-400 uppercase">Landslide (Rain-Induced)</h3>
+               
+               <div class="bg-stone-900/50 p-6 rounded-2xl border border-stone-600/30">
+                  <h4 class="text-stone-300 font-bold mb-3 uppercase tracking-wider">Natural Warning Signs</h4>
+                  <div class="grid grid-cols-2 gap-4">
+                     <div class="flex items-center text-sm text-slate-300"><span class="w-1.5 h-1.5 bg-stone-500 rounded-full mr-2"></span>Cracks on ground/walls</div>
+                     <div class="flex items-center text-sm text-slate-300"><span class="w-1.5 h-1.5 bg-stone-500 rounded-full mr-2"></span>Tilting trees/poles</div>
+                     <div class="flex items-center text-sm text-slate-300"><span class="w-1.5 h-1.5 bg-stone-500 rounded-full mr-2"></span>Muddy springs appearing</div>
+                     <div class="flex items-center text-sm text-slate-300"><span class="w-1.5 h-1.5 bg-stone-500 rounded-full mr-2"></span>Rumbling sounds</div>
+                  </div>
+               </div>
+
+               <div class="bg-stone-900/50 p-6 rounded-2xl border border-stone-600/30">
+                  <h4 class="text-stone-300 font-bold mb-3 uppercase tracking-wider">Scientific Signs</h4>
+                  <ul class="space-y-2 text-sm text-slate-300">
+                     <li>• Soil moisture sensors detecting saturation</li>
+                     <li>• Rainfall threshold exceeded in hazard areas</li>
+                  </ul>
+               </div>
+            </div>
+            
+            <div class="relative h-full min-h-[300px] rounded-3xl overflow-hidden shadow-2xl border border-white/10 group">
+               <img src="https://picsum.photos/seed/landslide-rain/600/800" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" alt="Landslide" />
+               <div class="absolute bottom-0 w-full bg-gradient-to-t from-black via-black/80 to-transparent p-6 pt-20">
+                  <p class="text-stone-300 italic mb-2">"The 2006 Leyte landslide was preceded by days of intense rainfall and visible ground cracks."</p>
+                  <p class="text-[10px] font-bold text-stone-500 uppercase">Ref: PHIVOLCS (2022)</p>
+               </div>
+            </div>
           </div>
         `
       },
@@ -803,114 +834,117 @@ export const LECTURES: Lecture[] = [
         id: 'drought',
         title: 'Drought',
         content: `
-          <div class="flex flex-col h-full items-center justify-center text-center space-y-8">
-             <h3 class="text-5xl font-black text-amber-400 uppercase tracking-widest">Drought</h3>
-             <div class="w-24 h-1 bg-amber-500 rounded-full"></div>
-             
-             <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl w-full">
-                <div class="bg-amber-950/30 p-8 rounded-3xl border border-amber-500/20 hover:bg-amber-900/40 transition-colors">
-                   <h4 class="text-2xl font-bold text-amber-200 mb-4">Signs</h4>
-                   <ul class="text-left space-y-3 text-slate-300">
-                     <li>• Prolonged dry/hot days</li>
-                     <li>• Drying water bodies (ponds, wells)</li>
-                     <li>• Wilting crops & grass</li>
-                     <li>• Dusty air</li>
+          <div class="flex flex-col h-full justify-center space-y-8">
+             <div class="text-center">
+                <h3 class="text-5xl font-black text-amber-500 uppercase tracking-tight mb-2">Drought</h3>
+                <p class="text-amber-200/60 text-lg uppercase tracking-widest font-mono">Slow-onset Hazard</p>
+             </div>
+
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-amber-950/30 p-8 rounded-3xl border border-amber-500/20 hover:bg-amber-900/30 transition-colors">
+                   <h4 class="text-2xl font-bold text-amber-400 mb-6">Natural Signs</h4>
+                   <ul class="space-y-4 text-amber-100">
+                      <li class="flex items-center p-3 bg-black/20 rounded-xl"><span class="text-2xl mr-3">☀️</span> Prolonged dry & hot days</li>
+                      <li class="flex items-center p-3 bg-black/20 rounded-xl"><span class="text-2xl mr-3">💧</span> Drying of ponds, wells, creeks</li>
+                      <li class="flex items-center p-3 bg-black/20 rounded-xl"><span class="text-2xl mr-3">🌾</span> Wilting crops and grass</li>
                    </ul>
                 </div>
-                <div class="bg-amber-950/30 p-8 rounded-3xl border border-amber-500/20 hover:bg-amber-900/40 transition-colors">
-                   <h4 class="text-2xl font-bold text-amber-200 mb-4">Forecasting</h4>
-                   <ul class="text-left space-y-3 text-slate-300">
-                     <li>• El Niño advisory from PAGASA</li>
-                     <li>• Low rainfall forecasts</li>
-                     <li>• Decreased dam water levels</li>
+
+                <div class="bg-amber-950/30 p-8 rounded-3xl border border-amber-500/20 hover:bg-amber-900/30 transition-colors relative overflow-hidden">
+                   <h4 class="text-2xl font-bold text-amber-400 mb-6">Scientific Signs</h4>
+                   <ul class="space-y-4 text-amber-100 relative z-10">
+                      <li class="flex items-center"><span class="w-2 h-2 bg-amber-500 rounded-full mr-3"></span>El Niño advisory from PAGASA</li>
+                      <li class="flex items-center"><span class="w-2 h-2 bg-amber-500 rounded-full mr-3"></span>Low rainfall forecasts over multiple weeks</li>
+                      <li class="flex items-center"><span class="w-2 h-2 bg-amber-500 rounded-full mr-3"></span>Decreased dam water levels</li>
                    </ul>
+                   <div class="absolute bottom-4 right-4 text-[10px] text-amber-500/50 max-w-[200px] text-right">
+                      Ex: PAGASA declared El Niño in 2019, leading to agricultural drought in Central Luzon.
+                   </div>
                 </div>
              </div>
-             
-             <p class="text-slate-400 italic text-sm mt-8">Ref: PAGASA (2020) Climate Monitoring Bulletin</p>
           </div>
         `
       }
     ],
     refresherQuiz: [
       {
-        id: 'f-r1',
-        question: 'Which hazard involves an abnormal rise of sea water due to a storm?',
-        options: ['Tsunami', 'Storm Surge', 'High Tide', 'Flood'],
-        correctAnswer: 1
-      },
-      {
-        id: 'f-r2',
-        question: 'Who issues signals for Tropical Cyclones in the Philippines?',
-        options: ['PHIVOLCS', 'PAGASA', 'MMDA', 'DepEd'],
-        correctAnswer: 1
-      },
-      {
-        id: 'f-r3',
-        question: 'What color alert represents the highest rainfall warning?',
-        options: ['Yellow', 'Orange', 'Red', 'Blue'],
+        id: 'r1',
+        question: 'What is a scientific sign of an impending typhoon?',
+        options: ['Dark clouds', 'Strong winds', 'PAGASA Warning Signal', 'Heavy rain'],
         correctAnswer: 2
+      },
+      {
+        id: 'r2',
+        question: 'Which of these indicates an impending landslide?',
+        options: ['Cracks on ground', 'High tide', 'Strong sunlight', 'Calm wind'],
+        correctAnswer: 0
+      },
+      {
+        id: 'r3',
+        question: 'El Niño advisory is associated with which hazard?',
+        options: ['Flood', 'Drought', 'Tsunami', 'Storm Surge'],
+        correctAnswer: 1
       }
     ],
     finalQuiz: [
       {
-        id: 'f-q1',
-        question: 'The local weather bureau reports that a low-pressure area (LPA) has entered the Philippine Area of Responsibility (PAR). What should the barangay officials do?',
-        options: ['Wait until heavy rains start.', 'Monitor PAGASA updates and prepare.', 'Ignore the report.', 'Focus only on temperature.'],
+        id: 'q1',
+        question: 'The local weather bureau reports that a low-pressure area (LPA) has entered the Philippine Area of Responsibility (PAR). What should the barangay officials do to forecast possible hazards?',
+        options: ['Wait until heavy rains start before preparing.', 'Monitor PAGASA updates and prepare for possible storm signals.', 'Ignore the report since LPA rarely develops into a typhoon.', 'Focus only on temperature forecasts.'],
         correctAnswer: 1
       },
       {
-        id: 'f-q2',
-        question: 'Meteorologists observe rapid cloud buildup and dropping air pressure in a coastal area. What can be forecasted?',
-        options: ['Clear weather', 'Possible thunderstorm or heavy rainfall', 'Volcanic eruption', 'Increasing temperature'],
+        id: 'q2',
+        question: 'Meteorologists observe rapid cloud buildup and dropping air pressure in a coastal area. What can be forecasted from these conditions?',
+        options: ['Clear and dry weather.', 'Possible thunderstorm or heavy rainfall.', 'Volcanic eruption nearby.', 'Increasing temperature in the area.'],
         correctAnswer: 1
       },
       {
-        id: 'f-q3',
-        question: 'A social media post says "Super typhoon tomorrow" but PAGASA has not issued a warning. How to verify?',
-        options: ['Share immediately', 'Wait for rain', 'Check official PAGASA bulletins', 'Believe the post'],
+        id: 'q3',
+        question: 'A social media post says, "A super typhoon will hit the Philippines tomorrow," but PAGASA has not issued any warning. How can you verify the accuracy of this claim?',
+        options: ['Share it immediately to alert others.', 'Wait to see if it rains the next day.', 'Check the official PAGASA or NDRRMC bulletins.', 'Believe the post because it has thousands of likes.'],
         correctAnswer: 2
       },
       {
-        id: 'f-q4',
-        question: 'Your phone app shows a flood warning, but local authorities haven’t announced it. What to do?',
-        options: ['Compare with government advisories', 'Ignore it', 'Evacuate immediately', 'Ask friends'],
+        id: 'q4',
+        question: 'Your phone app shows a severe flood warning, but local authorities haven\'t announced anything yet. What should you do to ensure accuracy before acting?',
+        options: ['Compare the information with government advisories.', 'Ignore it since there\'s no official announcement.', 'Immediately evacuate without checking.', 'Ask friends if they heard the same news.'],
         correctAnswer: 0
       },
       {
-        id: 'f-q5',
-        question: 'After days of heavy rain, a hillside community experiences a landslide. Likely cause?',
-        options: ['Strong winds', 'Prolonged rainfall saturated the soil', 'Earthquake', 'Dry land'],
+        id: 'q5',
+        question: 'After days of heavy rain, a hillside community experiences a landslide. What is the most likely cause of this hazard?',
+        options: ['Strong winds loosened the trees.', 'Prolonged rainfall saturated the soil, weakening its stability.', 'Earthquake vibrations caused the slope to collapse.', 'The land was too dry before the rain.'],
         correctAnswer: 1
       },
       {
-        id: 'f-q6',
-        question: 'Flooding occurred in a city after moderate rain. Contributing factor?',
-        options: ['Clogged drainage system', 'Too much sunlight', 'Far from coast', 'Wind direction'],
+        id: 'q6',
+        question: 'Flooding occurred in a city even after only moderate rain. What could be the main contributing factor?',
+        options: ['The city\'s drainage system is clogged or inadequate.', 'There was too much sunlight before the rain.', 'The city is too far from the coast.', 'Wind direction caused water to pile up.'],
         correctAnswer: 0
       },
       {
-        id: 'f-q7',
-        question: 'Weather records show a province experiences typhoons every last quarter. What pattern is this?',
-        options: ['Safe area', 'Located along common typhoon path', 'Random events', 'Human activity'],
+        id: 'q7',
+        question: 'Weather records show that a certain province often experiences strong typhoons every last quarter of the year. What pattern can be recognized from this data?',
+        options: ['The area is safe during any season.', 'The province is located along the common typhoon path during monsoon months.', 'The typhoons are random events.', 'The frequency is caused by human activity.'],
         correctAnswer: 1
       },
       {
-        id: 'f-q8',
-        question: 'Flash floods always occur shortly after intense rainfall lasting >1 hour. Pattern suggestion?',
-        options: ['Sea-level rise', 'Predictable relationship between rainfall intensity and flooding', 'Coincidence', 'No connection'],
+        id: 'q8',
+        question: 'In the past five years, flash floods always occur shortly after intense rainfall lasting more than an hour. What does this pattern suggest?',
+        options: ['The floods are caused by sea-level rise.', 'There is a predictable relationship between rainfall intensity and flooding.', 'Floods happen by coincidence.', 'Rainfall has no connection to flooding.'],
         correctAnswer: 1
       },
       {
-        id: 'f-q9',
-        question: 'PAGASA raises Signal No. 3. What should your family do first?',
-        options: ['Watch winds outside', 'Secure house, prepare go-bag, stay tuned', 'Wait for rain to stop', 'Continue normal activities'],
+        id: 'q9',
+        question: 'PAGASA raises a Tropical Cyclone Wind Signal No. 3 for your area. What should your family do first?',
+        options: ['Go to the nearest open field to watch the winds.', 'Secure your house, prepare a go-bag, and stay tuned to official updates.', 'Wait for the rain to stop before preparing.', 'Continue normal activities as long as there\'s power.'],
         correctAnswer: 1
       },
       {
-        id: 'f-q10',
-        question: 'School is in flood-prone area, heavy rains since morning. Decision?',
-        options: ['Continue classes', 'Wait for mayor', 'Suspend classes early and ensure safety', 'Observe rain'],
+        id: 'q10',
+        question: 'Your school is in a flood-prone area, and heavy rains have been continuous since early morning. As a student leader, what is the best decision to recommend to the principal?',
+        options: ['Continue classes until dismissal time.', 'Wait for official cancellation from the mayor\'s office.', 'Suspend classes early and ensure students get home safely.', 'Ask everyone to stay and observe the rainfall pattern.'],
         correctAnswer: 2
       }
     ]
@@ -918,7 +952,7 @@ export const LECTURES: Lecture[] = [
   {
     id: '3',
     title: 'Volcanic Eruptions',
-    description: 'Learn about volcanic hazards like lahars, pyroclastic flows, and ashfall, and how to recognize impending eruptions.',
+    description: 'Learn about volcanic hazards like pyroclastic flows, lahars, and ashfall, and how to interpret alert levels.',
     topic: 'Volcano',
     imageUrl: 'https://picsum.photos/seed/volcano/800/400',
     readTime: 15,
@@ -926,12 +960,12 @@ export const LECTURES: Lecture[] = [
     objectives: [
       'Explain various volcano-related hazards',
       'Recognize signs of an impending volcanic eruption',
-      'Understand alert levels and evacuation protocols'
+      'Understand forecasting and evacuation planning'
     ],
     competencies: [
-      'Geological Hazard Awareness',
-      'Emergency Response',
-      'Community Safety'
+      'Hazard Recognition',
+      'Warning Signal Interpretation',
+      'Emergency Response'
     ],
     gameType: 'none',
     sections: [
@@ -952,7 +986,7 @@ export const LECTURES: Lecture[] = [
               </li>
               <li class="flex items-center">
                 <svg class="w-5 h-5 text-red-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-                Understand alert levels and evacuation protocols
+                Understand forecasting and evacuation planning
               </li>
             </ul>
           </div>
@@ -962,23 +996,23 @@ export const LECTURES: Lecture[] = [
         id: 'intro',
         title: 'Introduction',
         content: `
-          <div class="flex flex-col items-center text-center space-y-8 animate-in fade-in zoom-in duration-700 py-10">
+          <div class="flex flex-col items-center justify-center h-full space-y-8 animate-in fade-in duration-700">
              <div class="relative">
-                <div class="absolute inset-0 bg-red-600/20 blur-3xl rounded-full animate-pulse"></div>
-                <svg class="w-32 h-32 text-red-500 relative z-10 drop-shadow-[0_0_15px_rgba(239,68,68,0.8)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                <div class="absolute inset-0 bg-red-500/20 blur-3xl rounded-full animate-pulse"></div>
+                <svg class="w-32 h-32 text-red-500 relative z-10 drop-shadow-[0_0_15px_rgba(239,68,68,0.8)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg>
              </div>
              
-             <h3 class="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-t from-red-600 to-orange-400 uppercase tracking-tighter drop-shadow-2xl">
-               Volcanoes
+             <h3 class="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-600 uppercase tracking-tighter text-center">
+               Volcanic Hazards
              </h3>
              
-             <p class="text-2xl text-slate-200 font-light max-w-3xl leading-relaxed">
-               Powerful natural systems that can both create landforms and cause large-scale destruction.
-             </p>
-
-             <div class="bg-red-950/40 p-6 rounded-2xl border border-red-500/20 max-w-2xl">
-                <p class="text-slate-300 italic">"Volcanic eruptions cannot be stopped, but their impacts can be reduced through awareness and preparedness."</p>
-                <div class="mt-2 text-xs text-red-400 font-bold uppercase">— PHIVOLCS, 2023</div>
+             <div class="max-w-4xl text-center space-y-6 bg-black/40 p-8 rounded-3xl border border-red-500/20 backdrop-blur-sm">
+                <p class="text-2xl text-slate-200 font-light">
+                  Volcanoes are powerful systems that can create landforms but also cause <span class="text-red-400 font-bold">large-scale destruction</span>.
+                </p>
+                <p class="text-lg text-slate-400 italic">
+                  “Volcanic eruptions cannot be stopped, but their impacts can be reduced through awareness and preparedness.” — PHIVOLCS, 2023
+                </p>
              </div>
           </div>
         `
@@ -987,74 +1021,59 @@ export const LECTURES: Lecture[] = [
         id: 'pyroclastic',
         title: 'Pyroclastic Flow',
         content: `
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center h-full">
-             <div class="flex flex-col justify-start space-y-6">
-                <h3 class="text-5xl font-black text-orange-500 uppercase leading-none">Pyroclastic<br/><span class="text-white">Flow</span></h3>
-                <div class="flex items-center space-x-4">
-                   <span class="bg-red-600 text-white px-3 py-1 rounded font-bold text-xs uppercase">Extreme Hazard</span>
-                   <span class="text-orange-400 font-mono text-sm">> 800°C Temperature</span>
-                </div>
-                <p class="text-xl text-slate-300 font-light">
-                   A fast-moving mixture of hot gases, ash, and volcanic rocks rushing down slopes at >100 km/h.
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center h-full">
+             <div class="space-y-6">
+                <h3 class="text-5xl font-black text-orange-500 uppercase">Pyroclastic Flow</h3>
+                <p class="text-2xl text-slate-300 font-light">
+                  A fast-moving mixture of hot gases, ash, and volcanic rocks rushing down slopes at >100 km/h.
                 </p>
-                <div class="bg-white/5 border border-white/10 p-6 rounded-2xl">
-                   <h4 class="text-lg font-bold text-orange-400 mb-2 uppercase">Deadly Effects</h4>
-                   <ul class="space-y-2 text-slate-400">
-                      <li>• Instant incineration of anything in path</li>
-                      <li>• Burial under thick deposits</li>
-                      <li>• Destruction of forests & settlements</li>
+                <div class="flex items-center space-x-4">
+                   <div class="px-4 py-2 bg-red-950/50 border border-red-500/30 rounded-lg text-red-400 font-bold">Temp: 800°C</div>
+                   <div class="px-4 py-2 bg-orange-950/50 border border-orange-500/30 rounded-lg text-orange-400 font-bold">Speed: >100 km/h</div>
+                </div>
+                <div class="bg-white/5 p-6 rounded-2xl border border-white/10">
+                   <h4 class="text-white font-bold mb-2 uppercase">Effects</h4>
+                   <ul class="list-disc list-inside text-slate-300 space-y-1">
+                      <li>Instant incineration of anything in path</li>
+                      <li>Burial of areas under thick ash/rock</li>
                    </ul>
                 </div>
              </div>
-             <div class="relative h-80 lg:h-full rounded-3xl overflow-hidden shadow-2xl group border border-orange-500/20">
-                <img src="https://picsum.photos/seed/pyro/600/800" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" />
-                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black via-black/80 to-transparent p-6">
-                   <p class="text-white font-bold text-sm">Example: Mt. Pinatubo (1991)</p>
-                   <p class="text-slate-400 text-xs">Buried towns in Pampanga and Zambales.</p>
+             <div class="relative h-[400px] w-full rounded-3xl overflow-hidden shadow-2xl group border border-white/10">
+                <img src="https://picsum.photos/seed/pyroclastic/600/800" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700" alt="Pyroclastic Flow" />
+                <div class="absolute bottom-0 bg-black/80 w-full p-4 backdrop-blur-md">
+                   <p class="text-sm text-slate-300">"1991 Mt. Pinatubo eruption produced flows burying towns in Pampanga."</p>
                 </div>
              </div>
           </div>
         `
       },
       {
-        id: 'ashfall',
+        id: 'ash-fall',
         title: 'Ash Fall',
         content: `
-          <div class="flex flex-col h-full space-y-8">
-             <div class="flex items-end justify-between border-b border-white/10 pb-6">
-                <h3 class="text-5xl font-black text-gray-400 uppercase">Ash Fall</h3>
-                <span class="text-gray-500 font-mono uppercase tracking-widest">Tephra Fall</span>
-             </div>
-             
-             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="col-span-1 md:col-span-2 space-y-6">
-                   <p class="text-2xl text-slate-300 font-light">Volcanic ash and rock fragments ejected during explosive eruptions that fall to the ground.</p>
-                   
-                   <div class="grid grid-cols-2 gap-4">
-                      <div class="bg-gray-800/50 p-4 rounded-xl border border-gray-700">
-                         <div class="text-gray-300 font-bold mb-1">Roof Collapse</div>
-                         <div class="text-gray-500 text-xs">Due to heavy accumulation.</div>
-                      </div>
-                      <div class="bg-gray-800/50 p-4 rounded-xl border border-gray-700">
-                         <div class="text-gray-300 font-bold mb-1">Respiratory Issues</div>
-                         <div class="text-gray-500 text-xs">Reduced air quality.</div>
-                      </div>
-                      <div class="bg-gray-800/50 p-4 rounded-xl border border-gray-700">
-                         <div class="text-gray-300 font-bold mb-1">Water Contamination</div>
-                         <div class="text-gray-500 text-xs">Pollutes supplies.</div>
-                      </div>
-                      <div class="bg-gray-800/50 p-4 rounded-xl border border-gray-700">
-                         <div class="text-gray-300 font-bold mb-1">Visibility Zero</div>
-                         <div class="text-gray-500 text-xs">Flight cancellations.</div>
-                      </div>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center h-full">
+             <div class="space-y-6">
+                <h3 class="text-5xl font-black text-stone-400 uppercase">Ash Fall</h3>
+                <p class="text-2xl text-slate-300 font-light">
+                  Volcanic ash and rock fragments ejected during explosive eruptions falling to the ground.
+                </p>
+                
+                <div class="grid grid-cols-2 gap-4">
+                   <div class="bg-stone-800/50 p-4 rounded-xl border border-stone-600">
+                      <h5 class="text-stone-300 font-bold text-sm uppercase">Respiratory Issues</h5>
+                      <p class="text-xs text-slate-400">Reduced air quality causes breathing problems.</p>
+                   </div>
+                   <div class="bg-stone-800/50 p-4 rounded-xl border border-stone-600">
+                      <h5 class="text-stone-300 font-bold text-sm uppercase">Roof Collapse</h5>
+                      <p class="text-xs text-slate-400">Heavy ash accumulation destroys structures.</p>
                    </div>
                 </div>
-                <div class="bg-gray-900 rounded-2xl p-6 border border-gray-800 flex flex-col justify-end relative overflow-hidden group">
-                   <img src="https://picsum.photos/seed/ash/400/600" class="absolute inset-0 w-full h-full object-cover opacity-50 grayscale group-hover:grayscale-0 transition-all" />
-                   <div class="relative z-10">
-                      <div class="text-white font-bold">Taal Volcano (2020)</div>
-                      <div class="text-gray-400 text-xs">Blanketed nearby towns.</div>
-                   </div>
+             </div>
+             <div class="relative h-[400px] w-full rounded-3xl overflow-hidden shadow-2xl group border border-white/10">
+                <img src="https://picsum.photos/seed/ashfall/600/800" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700 grayscale" alt="Ash Fall" />
+                <div class="absolute bottom-0 bg-black/80 w-full p-4 backdrop-blur-md">
+                   <p class="text-sm text-slate-300">"2020 Taal Volcano eruption blanketed towns, forcing evacuation."</p>
                 </div>
              </div>
           </div>
@@ -1064,110 +1083,104 @@ export const LECTURES: Lecture[] = [
         id: 'lahar',
         title: 'Lahars',
         content: `
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center h-full">
-            <div class="flex flex-col justify-start space-y-6">
-               <h3 class="text-4xl font-black text-stone-400 uppercase">Lahars</h3>
-               <p class="text-lg text-slate-300">Volcanic mudflows: mixtures of ash, rocks, and water flowing down river valleys.</p>
-               <div class="bg-stone-900/50 p-6 rounded-2xl border border-stone-600/30">
-                  <h4 class="text-stone-300 font-bold uppercase mb-2">Triggers</h4>
-                  <div class="flex space-x-4 mb-4">
-                     <span class="bg-blue-900/50 text-blue-300 px-3 py-1 rounded text-sm border border-blue-500/30">Rainfall</span>
-                     <span class="bg-cyan-900/50 text-cyan-300 px-3 py-1 rounded text-sm border border-cyan-500/30">Melting Ice</span>
-                  </div>
-                  <h4 class="text-stone-300 font-bold uppercase mb-2">Impact</h4>
-                  <ul class="list-disc list-inside text-slate-400 text-sm">
-                     <li>Burial of communities & farmlands</li>
-                     <li>Long-term river siltation</li>
-                     <li>Destruction of bridges</li>
-                  </ul>
-               </div>
-            </div>
-            <div class="rounded-3xl overflow-hidden shadow-2xl border border-white/10">
-               <img src="https://picsum.photos/seed/mud/800/600" class="w-full h-full object-cover" />
-            </div>
+          <div class="flex flex-col items-center justify-center space-y-8 h-full">
+             <h3 class="text-6xl font-black text-stone-500 uppercase tracking-tighter">Lahars</h3>
+             <p class="text-2xl text-slate-300 text-center max-w-2xl font-light">
+                Mixtures of volcanic ash, rocks, and water flowing down river valleys, often triggered by rain.
+             </p>
+             <div class="bg-stone-900/80 p-8 rounded-3xl border border-stone-700 max-w-4xl w-full flex flex-col md:flex-row gap-8 items-center">
+                <div class="flex-1 space-y-4">
+                   <div class="flex items-center"><span class="w-3 h-3 bg-stone-500 rounded-full mr-3"></span>Burial of communities and farmlands</div>
+                   <div class="flex items-center"><span class="w-3 h-3 bg-stone-500 rounded-full mr-3"></span>Long-term river siltation</div>
+                   <div class="flex items-center"><span class="w-3 h-3 bg-stone-500 rounded-full mr-3"></span>Destruction of bridges</div>
+                </div>
+                <div class="flex-1 text-sm text-stone-400 italic border-l border-stone-700 pl-8">
+                   "Post-eruption lahars from Mt. Pinatubo continued for years after 1991."
+                </div>
+             </div>
           </div>
         `
       }
     ],
     refresherQuiz: [
       {
-        id: 'v-r1',
-        question: 'What is a mixture of hot gases, ash, and rocks rushing down a volcano?',
-        options: ['Lava Flow', 'Pyroclastic Flow', 'Lahar', 'Ash Fall'],
+        id: 'r1',
+        question: 'What is a fast-moving mixture of hot gas and rock?',
+        options: ['Lahar', 'Pyroclastic Flow', 'Ash Fall', 'Lava Flow'],
         correctAnswer: 1
       },
       {
-        id: 'v-r2',
-        question: 'Which hazard is caused by volcanic debris mixing with water?',
-        options: ['Lahar', 'Magma', 'Tsunami', 'Fissure'],
-        correctAnswer: 0
+        id: 'r2',
+        question: 'Which hazard is caused by ash mixing with water?',
+        options: ['Tsunami', 'Lahar', 'Earthquake', 'Fire'],
+        correctAnswer: 1
       },
       {
-        id: 'v-r3',
-        question: 'What gas is commonly monitored to predict eruptions?',
-        options: ['Oxygen', 'Sulfur Dioxide (SO2)', 'Nitrogen', 'Helium'],
+        id: 'r3',
+        question: 'What is the main danger of ash fall to buildings?',
+        options: ['Fire', 'Roof Collapse', 'Flooding', 'Corrosion'],
         correctAnswer: 1
       }
     ],
     finalQuiz: [
       {
-        id: 'v-q1',
-        question: 'Scientists observe increasing ground deformation and frequent volcanic quakes. Indicate?',
-        options: ['Normal state', 'Magma moving upward, possible eruption', 'Wind pressure', 'Cooling down'],
+        id: 'q1',
+        question: 'Scientists observe increasing ground deformation and frequent volcanic quakes near Mt. Mayon. What does this most likely indicate?',
+        options: ['The volcano is returning to its normal state.', 'Magma is moving upward, possibly leading to an eruption.', 'Wind pressure is increasing on the volcano\'s slopes.', 'The volcano is cooling down.'],
         correctAnswer: 1
       },
       {
-        id: 'v-q2',
-        question: 'Strong sulfur smell and steam rising from crater. Forecast action?',
-        options: ['Dismiss', 'Monitor and report to PHIVOLCS', 'Evacuate immediately', 'Wait for ash'],
+        id: 'q2',
+        question: 'Residents notice a strong sulfur smell and steam rising from a nearby crater. What should be done to forecast possible volcanic activity?',
+        options: ['Dismiss it as normal gas emission.', 'Monitor and report the observation to PHIVOLCS.', 'Evacuate immediately without confirmation.', 'Wait until ashfall occurs before acting.'],
         correctAnswer: 1
       },
       {
-        id: 'v-q3',
-        question: 'Viral post says "Eruption this weekend". Verify?',
-        options: ['Check PHIVOLCS bulletin', 'Believe trending', 'Wait for explosion', 'Share quickly'],
+        id: 'q3',
+        question: 'A viral post claims that "Mt. Taal will erupt this weekend." How can you verify the accuracy of this claim?',
+        options: ['Check the latest PHIVOLCS bulletin and alert level.', 'Believe it because it\'s trending online.', 'Wait until someone nearby confirms an explosion.', 'Share it to warn others quickly.'],
         correctAnswer: 0
       },
       {
-        id: 'v-q4',
-        question: 'Alert level changed from 1 to 3. Meaning?',
-        options: ['Completely erupted', 'Increased tendency toward hazardous eruption', 'Safe for tourism', 'Stopped releasing gas'],
+        id: 'q4',
+        question: 'Your teacher says the volcano\'s alert level has changed from 1 to 3. What does this accurately mean?',
+        options: ['The volcano has completely erupted.', 'There is an increased tendency toward hazardous eruption.', 'The volcano is safe for tourism again.', 'The volcano has already stopped releasing gas.'],
         correctAnswer: 1
       },
       {
-        id: 'v-q5',
-        question: 'River nearby experiences lahar when raining. Cause?',
-        options: ['Cooling magma', 'Ash/debris mix with rainwater', 'Earthquakes', 'Forest fires'],
+        id: 'q5',
+        question: 'After a volcanic eruption, rivers nearby experience lahar flow when it rains heavily. What is the main cause of this hazard?',
+        options: ['Cooling magma creates more rain.', 'Ash and debris mix with rainwater and flow downstream.', 'Earthquakes push the water outward.', 'Forest fires loosen the soil.'],
         correctAnswer: 1
       },
       {
-        id: 'v-q6',
-        question: 'Villages buried in pyroclastic materials. Cause?',
-        options: ['Fast-moving currents of hot gas/fragments', 'Rising river water', 'Solidifying lava', 'Slow gas buildup'],
+        id: 'q6',
+        question: 'Villages near a volcano are buried in pyroclastic materials. What caused this type of destruction?',
+        options: ['Fast-moving currents of hot gas and volcanic fragments.', 'Rising water levels from nearby rivers.', 'Lava solidifying near houses.', 'Slow buildup of volcanic gases.'],
         correctAnswer: 0
       },
       {
-        id: 'v-q7',
-        question: 'Harmonic tremors followed by gas emission increase. Suggests?',
-        options: ['Dormant', 'Potential eruption (magma movement)', 'Decreasing activity', 'Weather changes'],
+        id: 'q7',
+        question: 'Scientists record a series of harmonic tremors followed by gas emission increases. What pattern do these data suggest?',
+        options: ['The volcano is becoming dormant.', 'There is a potential eruption due to magma movement.', 'The volcano\'s activity is decreasing.', 'Weather changes are affecting the readings.'],
         correctAnswer: 1
       },
       {
-        id: 'v-q8',
-        question: 'Crater lake changes color before every eruption in past 50 years. Imply?',
-        options: ['Ignore', 'Early warning indicator', 'Seasonal rainfall', 'Lake pollution'],
+        id: 'q8',
+        question: 'In the past 50 years, every time the crater lake of a certain volcano changes color, an eruption follows within weeks. What does this pattern imply?',
+        options: ['The lake color change can be ignored.', 'It may serve as an early warning indicator of volcanic activity.', 'The lake is affected only by seasonal rainfall.', 'It proves that eruptions are caused by lake pollution.'],
         correctAnswer: 1
       },
       {
-        id: 'v-q9',
-        question: 'Alert level 4. Student lives 8km away. Decision?',
-        options: ['Continue normal', 'Pack and evacuate per instructions', 'Wait for ash', 'Climb to observe'],
+        id: 'q9',
+        question: 'PHIVOLCS raises the alert level to 4 for a nearby volcano. As a student living 8 km from the crater, what should you and your family do?',
+        options: ['Continue normal activities but stay alert.', 'Pack essentials and evacuate following official instructions.', 'Wait for ashfall before leaving.', 'Climb the volcano to observe the eruption safely.'],
         correctAnswer: 1
       },
       {
-        id: 'v-q10',
-        question: 'Tourists want to visit volcano under Alert Level 2. Decision?',
-        options: ['Allow', 'Limit access and wait for Alert Level 0', 'Promote tours', 'Ignore advisories'],
+        id: 'q10',
+        question: 'Local officials plan to allow tourists to visit a volcano still under Alert Level 2. What is the most appropriate decision based on hazard forecasting?',
+        options: ['Allow it because the volcano is not yet erupting.', 'Limit access and wait for official downgrading to Alert Level 0.', 'Promote more tours for economic recovery.', 'Ignore PHIVOLCS advisories since it\'s a minor alert.'],
         correctAnswer: 1
       }
     ]
@@ -1175,18 +1188,18 @@ export const LECTURES: Lecture[] = [
 ];
 
 export const EQ_STEPS: EQStep[] = [
-  { id: '1', text: 'Drop, Cover, and Hold On', correctCategory: 'During' },
-  { id: '2', text: 'Secure heavy furniture', correctCategory: 'Before' },
-  { id: '3', text: 'Check for injuries', correctCategory: 'After' },
-  { id: '4', text: 'Prepare an emergency kit', correctCategory: 'Before' },
-  { id: '5', text: 'Stay away from windows', correctCategory: 'During' },
-  { id: '6', text: 'Evacuate to safe area', correctCategory: 'After' }
+  { id: '1', text: 'Secure heavy furniture', correctCategory: 'Before' },
+  { id: '2', text: 'Prepare emergency kit', correctCategory: 'Before' },
+  { id: '3', text: 'Drop, Cover, and Hold On', correctCategory: 'During' },
+  { id: '4', text: 'Stay away from windows', correctCategory: 'During' },
+  { id: '5', text: 'Check for injuries', correctCategory: 'After' },
+  { id: '6', text: 'Inspect utilities for damage', correctCategory: 'After' },
 ];
 
 export const FLOOD_SCENARIOS: FloodScenario[] = [
-  { id: '1', text: 'Walking through knee-deep moving water', isSafe: false, explanation: 'Moving water can knock you down.' },
-  { id: '2', text: 'Evacuating to higher ground early', isSafe: true, explanation: 'Always evacuate before water rises.' },
-  { id: '3', text: 'Driving across a flooded bridge', isSafe: false, explanation: 'Bridge could collapse or car could float.' },
-  { id: '4', text: 'Switching off main power', isSafe: true, explanation: 'Prevents electrical shock hazards.' },
-  { id: '5', text: 'Drinking tap water after flood', isSafe: false, explanation: 'Water may be contaminated.' }
+  { id: '1', text: 'Walking through knee-deep floodwater to get home.', isSafe: false, explanation: 'Floodwater can be contaminated, hide sharp objects, or have strong currents.' },
+  { id: '2', text: 'Moving to the second floor of your house during rising water.', isSafe: true, explanation: 'Seeking higher ground is the safest action during a flood.' },
+  { id: '3', text: 'Touching wet electrical appliances to turn them off.', isSafe: false, explanation: 'Risk of electrocution is extremely high. Use main breaker if dry.' },
+  { id: '4', text: 'Drinking tap water immediately after a flood.', isSafe: false, explanation: 'Water sources may be contaminated. Boil or use bottled water.' },
+  { id: '5', text: 'Listening to battery-operated radio for updates.', isSafe: true, explanation: 'Staying informed via reliable sources is crucial.' },
 ];
