@@ -73,6 +73,7 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => 
   const [showStartMenu, setShowStartMenu] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const contentScrollRef = useRef<HTMLDivElement>(null);
 
   // Construct Virtual Slides Array
   const slides = useMemo(() => {
@@ -99,6 +100,13 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => 
     setActiveSlideIndex(0);
     setShowStartMenu(true);
   }, [lecture.id]);
+
+  // Scroll to top when active slide changes
+  useEffect(() => {
+    if (contentScrollRef.current) {
+      contentScrollRef.current.scrollTop = 0;
+    }
+  }, [activeSlideIndex]);
 
   // Handle fullscreen change events
   useEffect(() => {
@@ -204,26 +212,31 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => 
               </div>
             </div>
 
-            {/* Mission Card (Right) */}
+            {/* Mission Card (Right) - Displays Competencies */}
             <div className="w-full max-w-md bg-black/60 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-2xl relative overflow-hidden group">
               <div className={`absolute top-0 left-0 w-full h-1 ${theme.buttonBg}`} />
               
               <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6 flex items-center">
                 <Target className="w-4 h-4 mr-2" /> 
-                Mission Objectives
+                Mission Competencies
               </h3>
               
               <ul className="space-y-4 mb-10">
-                {lecture.objectives.slice(0, 3).map((obj, i) => (
+                {lecture.competencies.slice(0, 3).map((comp, i) => (
                   <li key={i} className="flex items-start text-sm text-slate-200">
                     <div className={`mt-1.5 mr-3 w-1.5 h-1.5 rounded-full ${theme.buttonBg} shadow-[0_0_8px_currentColor] flex-shrink-0`} />
-                    <span className="leading-snug">{obj}</span>
+                    <span className="leading-snug">{comp}</span>
                   </li>
                 ))}
               </ul>
               
               <button
-                onClick={() => setShowStartMenu(false)}
+                onClick={() => {
+                   if (!document.fullscreenElement && containerRef.current) {
+                      containerRef.current.requestFullscreen().catch(() => {});
+                   }
+                   setShowStartMenu(false);
+                }}
                 className={`w-full group/btn relative overflow-hidden ${theme.buttonBg} ${theme.buttonHover} text-white font-black uppercase tracking-wider py-5 px-8 rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] flex items-center justify-center`}
               >
                 <span className="relative z-10 flex items-center">
@@ -277,121 +290,120 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => 
            </button>
         )}
 
-        {/* MAIN STAGE - FLEX 1 to fill remaining height */}
-        <div className="flex-1 relative flex flex-col justify-center items-center p-2 sm:p-4 md:p-6 overflow-hidden">
-          
-          <div className="w-full h-full flex flex-col bg-black/30 backdrop-blur-xl shadow-2xl rounded-2xl border border-white/10 relative overflow-hidden transition-all duration-300">
-             
-             {/* HEADER BAR INSIDE CARD */}
-             <div className="flex-none p-4 sm:p-6 flex justify-between items-center border-b border-white/5 bg-white/5 relative">
-                {/* PROGRESS BAR */}
-                <div className="absolute bottom-0 left-0 w-full h-0.5 bg-white/10">
-                   <div className={`${theme.buttonBg} h-full transition-all duration-500 ease-out shadow-[0_0_10px_currentColor]`} style={{ width: `${progressPercent}%` }} />
+        {/* PROGRESS BAR */}
+        <div className="h-1 bg-white/5 w-full flex-none">
+          <div 
+            className={`h-full ${theme.buttonBg} transition-all duration-300 shadow-[0_0_10px_currentColor]`} 
+            style={{ width: `${progressPercent}%` }}
+          />
+        </div>
+
+        {/* MAIN CONTENT AREA */}
+        <div 
+           className={`flex-1 overflow-y-auto w-full mx-auto p-4 sm:p-6 lg:p-8 custom-scrollbar ${isFullscreen ? 'w-full px-8 lg:px-12' : 'max-w-[90%] xl:max-w-[1600px]'}`}
+           ref={contentScrollRef}
+        >
+          {activeSlide.type === 'dashboard' ? (
+             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full min-h-min">
+                {/* Top Left: Learning Objectives */}
+                <div className="bg-black/20 border border-white/10 rounded-3xl p-6 sm:p-8 backdrop-blur-sm lg:col-span-1 h-full overflow-y-auto">
+                    <h2 className={`text-2xl sm:text-3xl font-black uppercase mb-6 ${theme.accentColor} tracking-tight`}>
+                       {activeSlide.title}
+                    </h2>
+                    <div 
+                      className="prose prose-invert prose-lg max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-p:text-slate-300 prose-li:text-slate-300"
+                      dangerouslySetInnerHTML={{ __html: activeSlide.data.content }}
+                    />
                 </div>
-                
-                <h2 className="text-lg md:text-2xl font-bold text-white flex items-center truncate">
-                   <span className={`mr-3 w-8 h-8 rounded-lg ${theme.buttonBg} text-white flex items-center justify-center text-sm shadow-lg flex-shrink-0`}>
-                     {activeSlideIndex + 1}
+
+                {/* Right Column: Refresher Quiz */}
+                <div className="lg:row-span-2 h-full min-h-[400px]">
+                   <QuizComponent questions={lecture.refresherQuiz || []} title="Refresher Quiz" />
+                </div>
+
+                {/* Bottom Left: Simulation */}
+                <div className="bg-black/30 border border-white/10 rounded-3xl p-4 sm:p-6 backdrop-blur-sm relative overflow-hidden flex flex-col h-full min-h-[300px]">
+                    <div className="flex items-center justify-between mb-4 z-10">
+                      <h3 className="text-xl font-bold text-white flex items-center">
+                         <Gamepad2 className={`w-5 h-5 mr-2 ${theme.accentColor}`} />
+                         Simulation
+                      </h3>
+                      <span className="text-[10px] uppercase font-bold bg-white/10 px-2 py-1 rounded text-slate-400">Interactive</span>
+                    </div>
+                    
+                    <div className="flex-1 relative z-10">
+                       {lecture.gameType === 'earthquake-sim' && <EarthquakeGame />}
+                       {lecture.gameType === 'flood-choice' && <FloodGame />}
+                       {lecture.gameType === 'none' && (
+                         <div className="flex items-center justify-center h-full text-slate-500 text-sm italic">
+                           No simulation required for this protocol.
+                         </div>
+                       )}
+                    </div>
+                </div>
+             </div>
+          ) : activeSlide.type === 'final-quiz' ? (
+             <div className="w-full h-full flex flex-col items-center justify-center max-w-5xl mx-auto">
+                 <div className="w-full h-full max-h-[800px]">
+                    <QuizComponent questions={activeSlide.data} title="Certification Exam" />
+                 </div>
+             </div>
+          ) : (
+            /* Standard Content Slide */
+             <div className="flex flex-col h-full">
+                {/* Header (Only on non-fullscreen or compact mode logic can go here, but we keep simple) */}
+                <div className="flex items-center space-x-3 mb-6 sm:mb-8 opacity-50">
+                   <div className={`w-2 h-2 rounded-full ${theme.buttonBg}`}></div>
+                   <span className="text-xs font-mono uppercase tracking-widest text-slate-400">
+                     Section {activeSlideIndex} / {slides.length - 1}
                    </span>
-                   <span className="truncate">{activeSlide.title}</span>
-                </h2>
-                <span className="text-xs font-mono text-slate-500 uppercase flex-shrink-0 ml-4 hidden sm:inline">
-                   SEC {activeSlideIndex + 1} / {slides.length}
-                </span>
-             </div>
-
-             {/* CONTENT AREA */}
-             <div className="flex-1 overflow-hidden p-4 sm:p-6 relative">
-                <div className="animate-in fade-in slide-in-from-right-4 duration-500 h-full">
-                  
-                  {/* DASHBOARD SLIDE (OBJECTIVES + GAME + REFRESHER QUIZ) */}
-                  {activeSlide.type === 'dashboard' && (
-                    <div className="h-full grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 overflow-y-auto lg:overflow-hidden">
-                      {/* Left Column: Objectives + Game */}
-                      <div className="flex flex-col gap-4 sm:gap-6 h-full min-h-[500px] lg:min-h-0">
-                         {/* Objectives - Top Left */}
-                         <div className={`flex-1 bg-white/5 rounded-xl border border-white/10 p-4 sm:p-6 overflow-y-auto custom-scrollbar ${lecture.gameType === 'none' ? 'h-full' : ''}`}>
-                            <div className="prose prose-sm prose-invert max-w-none text-slate-300">
-                               <div dangerouslySetInnerHTML={{ __html: activeSlide.data.content }} />
-                            </div>
-                         </div>
-                         
-                         {/* Simulation - Bottom Left */}
-                         {lecture.gameType !== 'none' && (
-                           <div className="flex-1 bg-white/5 rounded-xl border border-white/10 overflow-hidden flex flex-col relative min-h-[250px] sm:min-h-[300px]">
-                              <div className={`absolute top-0 left-0 px-3 py-1 bg-black/40 border-b border-r border-white/10 rounded-br-lg z-10 text-[10px] font-bold uppercase tracking-wider ${theme.accentColor}`}>
-                                <Gamepad2 className="w-3 h-3 inline-block mr-1" />
-                                Interactive Simulation
-                              </div>
-                              <div className="flex-1 p-2 flex items-center justify-center overflow-y-auto">
-                                {lecture.gameType === 'earthquake-sim' && <div className="w-full h-full flex items-center"><EarthquakeGame /></div>}
-                                {lecture.gameType === 'flood-choice' && <div className="w-full h-full flex items-center"><FloodGame /></div>}
-                              </div>
-                           </div>
-                         )}
-                      </div>
-
-                      {/* Right Column: Refresher Quiz */}
-                      <div className="h-full min-h-[400px] lg:min-h-0 bg-white/5 rounded-xl border border-white/10 overflow-hidden flex flex-col">
-                         <div className="flex-1 p-2">
-                            {lecture.refresherQuiz && lecture.refresherQuiz.length > 0 ? (
-                               <QuizComponent questions={lecture.refresherQuiz} title="Refresher Quiz" />
-                            ) : (
-                               <div className="flex items-center justify-center h-full text-slate-500">
-                                 No Quiz Available
-                               </div>
-                            )}
-                         </div>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* STANDARD CONTENT SLIDE */}
-                  {activeSlide.type === 'content' && (
-                    <div className="prose prose-lg prose-invert max-w-none text-slate-300 leading-relaxed h-full overflow-y-auto flex flex-col items-center">
-                      <div className="w-full max-w-[100%] sm:max-w-[90%] xl:max-w-[1600px]" dangerouslySetInnerHTML={{ __html: activeSlide.data.content }} />
-                    </div>
-                  )}
-
-                  {/* FINAL QUIZ SLIDE */}
-                  {activeSlide.type === 'final-quiz' && (
-                     <div className="h-full flex flex-col items-center justify-center max-w-4xl mx-auto">
-                        <div className="w-full h-full bg-white/5 rounded-xl border border-white/10 p-4 sm:p-6 shadow-2xl">
-                           <QuizComponent questions={activeSlide.data} title="Final Certification Exam" />
-                        </div>
-                     </div>
-                  )}
-
                 </div>
-             </div>
 
-             {/* FOOTER NAV CONTROLS */}
-             <div className="flex-none p-4 sm:p-6 border-t border-white/5 flex items-center justify-between bg-black/20">
-                <button
-                    onClick={handlePrev}
-                    disabled={isFirstSlide}
-                    className={`flex items-center px-4 sm:px-6 py-2 sm:py-3 rounded-lg text-xs sm:text-sm font-bold uppercase tracking-wide transition-all ${
-                      isFirstSlide 
-                      ? 'text-slate-700 cursor-not-allowed' 
-                      : 'text-slate-400 hover:bg-white/5 hover:text-white'
-                    }`}
-                >
-                    <ChevronLeft className="w-4 h-4 mr-1 sm:mr-2" />
-                    <span className="hidden sm:inline">Prev</span>
-                </button>
-
-                <button
-                    onClick={handleNext}
-                    className={`flex items-center px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-widest transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 ${
-                      isLastSlide
-                      ? 'bg-emerald-600 text-white hover:bg-emerald-500'
-                      : `${theme.buttonBg} text-white ${theme.buttonHover}`
-                    }`}
-                >
-                    {isLastSlide ? 'Complete' : 'Next Sector'}
-                    <ChevronRight className="w-4 h-4 ml-1 sm:ml-2" />
-                </button>
+                <div 
+                  className="prose prose-invert prose-xl md:prose-2xl max-w-none w-full flex-1"
+                  dangerouslySetInnerHTML={{ __html: activeSlide.data.content }}
+                />
              </div>
+          )}
+        </div>
+
+        {/* NAVIGATION FOOTER */}
+        <div className="flex-none p-4 sm:p-6 bg-black/20 border-t border-white/5 backdrop-blur-sm z-20">
+          <div className="max-w-4xl mx-auto flex items-center justify-between">
+            <button
+              onClick={handlePrev}
+              disabled={isFirstSlide}
+              className={`flex items-center px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-bold transition-all ${
+                isFirstSlide 
+                  ? 'opacity-0 pointer-events-none' 
+                  : 'bg-white/5 hover:bg-white/10 text-white'
+              }`}
+            >
+              <ChevronLeft className="w-5 h-5 mr-2" />
+              <span className="hidden sm:inline">Previous</span>
+            </button>
+
+            <div className="flex space-x-1.5 sm:space-x-2">
+              {slides.map((_, idx) => (
+                 <div 
+                   key={idx}
+                   className={`h-1.5 rounded-full transition-all duration-300 ${
+                     idx === activeSlideIndex 
+                       ? `w-6 sm:w-8 ${theme.buttonBg}` 
+                       : 'w-1.5 sm:w-2 bg-white/20'
+                   }`}
+                 />
+              ))}
+            </div>
+
+            <button
+              onClick={handleNext}
+              className={`flex items-center px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-bold transition-all shadow-lg ${theme.buttonBg} ${theme.buttonHover} text-white`}
+            >
+              <span className="hidden sm:inline">{isLastSlide ? 'Finish Mission' : 'Next Section'}</span>
+              <span className="sm:hidden">{isLastSlide ? 'Finish' : 'Next'}</span>
+              <ChevronRight className="w-5 h-5 ml-2" />
+            </button>
           </div>
         </div>
     </div>

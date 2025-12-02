@@ -15,10 +15,10 @@ const TOPIC_STYLES: Record<string, string> = {
 };
 
 const TOPIC_HOVER_STYLES: Record<string, string> = {
-  'Earthquake': 'hover:shadow-[0_20px_40px_-5px_rgba(249,115,22,0.3)] hover:border-orange-300/50',
-  'Flood': 'hover:shadow-[0_20px_40px_-5px_rgba(59,130,246,0.3)] hover:border-blue-300/50',
-  'Volcano': 'hover:shadow-[0_20px_40px_-5px_rgba(239,68,68,0.3)] hover:border-red-300/50',
-  'General': 'hover:shadow-[0_20px_40px_-5px_rgba(100,116,139,0.3)] hover:border-slate-300/50',
+  'Earthquake': 'hover:shadow-[0_20px_40px_-5px_rgba(249,115,22,0.4)] hover:border-orange-500/50 hover:ring-2 hover:ring-orange-500/20',
+  'Flood': 'hover:shadow-[0_20px_40px_-5px_rgba(59,130,246,0.4)] hover:border-blue-500/50 hover:ring-2 hover:ring-blue-500/20',
+  'Volcano': 'hover:shadow-[0_20px_40px_-5px_rgba(239,68,68,0.4)] hover:border-red-500/50 hover:ring-2 hover:ring-red-500/20',
+  'General': 'hover:shadow-[0_20px_40px_-5px_rgba(100,116,139,0.4)] hover:border-slate-500/50 hover:ring-2 hover:ring-slate-500/20',
 };
 
 export const LectureCard: React.FC<LectureCardProps> = ({ lecture, onClick }) => {
@@ -27,7 +27,7 @@ export const LectureCard: React.FC<LectureCardProps> = ({ lecture, onClick }) =>
   return (
     <div 
       onClick={() => onClick(lecture.id)}
-      className={`group relative bg-white rounded-2xl shadow-sm transition-all duration-300 border border-slate-200 overflow-hidden cursor-pointer flex flex-col h-full transform hover:-translate-y-2 ${hoverStyle}`}
+      className={`group relative bg-white rounded-2xl shadow-sm transition-all duration-300 border border-slate-200 overflow-hidden cursor-pointer flex flex-col h-full transform hover:-translate-y-1 hover:scale-[1.02] ${hoverStyle}`}
     >
       {/* Tactical Header Bar */}
       <div className={`h-1.5 w-full ${TOPIC_STYLES[lecture.topic] || TOPIC_STYLES.General}`} />
@@ -42,14 +42,14 @@ export const LectureCard: React.FC<LectureCardProps> = ({ lecture, onClick }) =>
         
         {/* Play Overlay (Visible on Hover) */}
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <div className="bg-white/20 backdrop-blur-sm p-3 rounded-full border border-white/50 shadow-lg">
+          <div className="bg-white/20 backdrop-blur-sm p-3 rounded-full border border-white/50 shadow-lg scale-75 group-hover:scale-100 transition-transform duration-300">
              <PlayCircle className="w-10 h-10 text-white fill-current" />
           </div>
         </div>
 
         {/* Topic Badge */}
         <div className="absolute top-4 left-4">
-          <span className="bg-black/80 backdrop-blur-md text-white px-3 py-1 rounded text-[10px] font-bold uppercase tracking-widest border border-white/10">
+          <span className="bg-black/80 backdrop-blur-md text-white px-3 py-1 rounded text-[10px] font-bold uppercase tracking-widest border border-white/10 shadow-lg">
             {lecture.topic}
           </span>
         </div>
@@ -91,7 +91,7 @@ export const LectureCard: React.FC<LectureCardProps> = ({ lecture, onClick }) =>
         </div>
         
         {/* Hover "Start" Call to Action */}
-        <div className="absolute bottom-0 left-0 w-full bg-slate-900 text-white py-3 px-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 flex justify-between items-center">
+        <div className="absolute bottom-0 left-0 w-full bg-slate-900 text-white py-3 px-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 flex justify-between items-center z-10">
           <span className="text-xs font-bold uppercase tracking-widest">Deploy</span>
           <ChevronRight className="w-4 h-4" />
         </div>
