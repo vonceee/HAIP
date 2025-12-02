@@ -1,4 +1,5 @@
 
+
 import { Lecture, EQStep, FloodScenario } from './types';
 
 export const LECTURES: Lecture[] = [
@@ -72,35 +73,45 @@ export const LECTURES: Lecture[] = [
                <div class="bg-white/5 border border-white/10 p-6 md:p-8 rounded-[2.5rem] backdrop-blur-sm relative overflow-hidden group hover:bg-white/10 transition-all duration-500 hover:shadow-[0_0_50px_rgba(249,115,22,0.15)]">
                   <div class="absolute top-0 right-0 w-64 h-64 bg-orange-500/10 rounded-full blur-[100px] group-hover:bg-orange-500/20 transition-all"></div>
                   
-                  <p class="text-2xl md:text-3xl text-slate-100 font-light leading-snug relative z-10 text-justify md:text-center mb-6">
+                  <p class="text-3xl md:text-4xl text-slate-100 font-light leading-snug relative z-10 text-justify md:text-center mb-8">
                     <span class="font-black text-orange-400">Earthquakes</span> are among the most destructive natural hazards on Earth.
                   </p>
                   
-                  <p class="text-lg md:text-2xl text-slate-300 font-light leading-snug relative z-10 text-justify md:text-center">
+                  <p class="text-2xl md:text-3xl text-slate-300 font-light leading-snug relative z-10 text-justify md:text-center mb-8">
                     Their impacts go beyond ground shaking—they trigger a chain of <span class="font-bold text-white">secondary hazards</span> that pose immediate threats to human life, infrastructure, and the environment.
                   </p>
+
+                  <p class="text-xl md:text-2xl text-slate-400 font-light leading-relaxed relative z-10 text-justify md:text-center mb-10 border-l-4 border-orange-500/50 pl-6 md:border-none md:pl-0">
+                    Understanding these potential hazards is essential for developing predictive skills and effective disaster preparedness.
+                  </p>
                   
-                  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6 relative z-10">
-                     <div class="bg-black/30 p-4 rounded-2xl border border-orange-500/10 hover:border-orange-500/40 transition-colors group/badge cursor-default hover:-translate-y-2 duration-300">
-                        <div class="text-orange-500 font-black uppercase text-xs mb-1 tracking-widest group-hover/badge:text-white">Predict</div>
-                        <div class="text-slate-300 text-sm">Anticipate potential secondary hazards before they strike.</div>
+                  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 relative z-10">
+                     <div class="bg-black/30 p-6 rounded-2xl border border-orange-500/10 hover:border-orange-500/40 transition-colors group/badge cursor-default hover:-translate-y-2 duration-300 hover:bg-orange-500/10">
+                        <div class="text-orange-500 font-black uppercase text-sm mb-2 tracking-widest group-hover/badge:text-white flex items-center justify-center gap-2">
+                           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+                           Predict
+                        </div>
+                        <div class="text-slate-300 text-base text-center">Analyze effects to anticipate secondary hazards before they strike.</div>
                      </div>
-                     <div class="bg-black/30 p-4 rounded-2xl border border-orange-500/10 hover:border-orange-500/40 transition-colors group/badge cursor-default hover:-translate-y-2 duration-300 delay-100">
-                        <div class="text-orange-500 font-black uppercase text-xs mb-1 tracking-widest group-hover/badge:text-white">Minimize</div>
-                        <div class="text-slate-300 text-sm">Reduce casualties through strategic planning.</div>
+                     <div class="bg-black/30 p-6 rounded-2xl border border-orange-500/10 hover:border-orange-500/40 transition-colors group/badge cursor-default hover:-translate-y-2 duration-300 delay-100 hover:bg-orange-500/10">
+                        <div class="text-orange-500 font-black uppercase text-sm mb-2 tracking-widest group-hover/badge:text-white flex items-center justify-center gap-2">
+                           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                           Minimize
+                        </div>
+                        <div class="text-slate-300 text-base text-center">Implement safety protocols to drastically reduce casualties.</div>
                      </div>
-                     <div class="bg-black/30 p-4 rounded-2xl border border-orange-500/10 hover:border-orange-500/40 transition-colors group/badge cursor-default hover:-translate-y-2 duration-300 delay-200">
-                        <div class="text-orange-500 font-black uppercase text-xs mb-1 tracking-widest group-hover/badge:text-white">Strengthen</div>
-                        <div class="text-slate-300 text-sm">Build long-term disaster resilience.</div>
+                     <div class="bg-black/30 p-6 rounded-2xl border border-orange-500/10 hover:border-orange-500/40 transition-colors group/badge cursor-default hover:-translate-y-2 duration-300 delay-200 hover:bg-orange-500/10">
+                        <div class="text-orange-500 font-black uppercase text-sm mb-2 tracking-widest group-hover/badge:text-white flex items-center justify-center gap-2">
+                           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m8-2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                           Strengthen
+                        </div>
+                        <div class="text-slate-300 text-base text-center">Build resilient infrastructure to withstand future disasters.</div>
                      </div>
                   </div>
 
-                  <div class="mt-6 pt-4 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-                     <p class="text-sm md:text-base text-slate-400 font-medium italic text-center md:text-left">
-                       "Analyzing these effects is crucial for developing predictive skills."
-                     </p>
-                     <p class="text-[10px] text-orange-500/60 uppercase tracking-widest font-bold whitespace-nowrap">
-                       Reference: PHIVOLCS (2023)
+                  <div class="mt-10 flex justify-center">
+                     <p class="text-xs text-orange-500/60 uppercase tracking-widest font-bold border border-orange-500/20 px-4 py-1 rounded-full bg-black/20">
+                       Reference: PHIVOLCS (2023). Earthquake Hazards.
                      </p>
                   </div>
                </div>
@@ -116,7 +127,7 @@ export const LECTURES: Lecture[] = [
           <div class="flex flex-col space-y-8 animate-in fade-in duration-700 py-6">
             
             <div class="relative z-10">
-              <h3 class="text-5xl md:text-7xl font-black text-white mb-6 uppercase tracking-tight">
+              <h3 class="text-5xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight">
                 Ground Shaking
               </h3>
               
@@ -347,10 +358,6 @@ export const LECTURES: Lecture[] = [
                 <div class="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl group">
                    <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcToS-znEiOO7d1W94qFPB_ZXpGwqZg7gFRHroWyeWwDAJ9sJgX0xuAyLVGuMtoe" alt="Ground Rupture Example" class="w-full h-auto object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700 transform hover:scale-105 transition-transform duration-1000" />
                    <div class="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-md p-6 border-t border-white/10">
-                      <div class="flex items-center mb-2">
-                          <span class="w-2 h-2 bg-red-500 rounded-full mr-2 animate-pulse"></span>
-                          <p class="text-xs text-red-400 font-bold uppercase tracking-widest">Real-World Scenario</p>
-                      </div>
                       <p class="text-base text-slate-200 italic mb-2">
                         "A potential ground rupture along the West Valley Fault could damage parts of Quezon City and Taguig, affecting major infrastructures."
                       </p>
@@ -375,9 +382,25 @@ export const LECTURES: Lecture[] = [
                 <p class="text-2xl text-slate-300 mb-8 font-light">
                   The process where water-saturated, loose soil behaves like a liquid during intense shaking.
                 </p>
+
+                <!-- The Recipe for Liquefaction -->
+                <div class="grid grid-cols-3 gap-3 mb-8">
+                  <div class="bg-cyan-900/20 border border-cyan-500/30 p-4 rounded-xl text-center hover:bg-cyan-900/40 transition-colors">
+                    <div class="text-2xl mb-2">🏖️</div>
+                    <div class="text-[10px] uppercase font-bold text-cyan-400 tracking-wide">Loose Soil</div>
+                  </div>
+                  <div class="bg-cyan-900/20 border border-cyan-500/30 p-4 rounded-xl text-center hover:bg-cyan-900/40 transition-colors">
+                    <div class="text-2xl mb-2">💧</div>
+                    <div class="text-[10px] uppercase font-bold text-cyan-400 tracking-wide">Water Saturation</div>
+                  </div>
+                  <div class="bg-cyan-900/20 border border-cyan-500/30 p-4 rounded-xl text-center hover:bg-cyan-900/40 transition-colors">
+                    <div class="text-2xl mb-2">〰️</div>
+                    <div class="text-[10px] uppercase font-bold text-cyan-400 tracking-wide">Intense Shaking</div>
+                  </div>
+                </div>
                 
                 <div class="space-y-6">
-                  <div class="bg-cyan-950/30 border border-cyan-500/20 p-6 rounded-2xl">
+                  <div class="bg-cyan-950/30 border border-cyan-500/20 p-6 rounded-2xl group hover:border-cyan-500/40 transition-all">
                     <h4 class="text-lg font-bold text-cyan-400 mb-2 uppercase tracking-wide">Critical Impacts</h4>
                     <ul class="space-y-3 text-slate-300 text-lg">
                       <li class="flex items-start"><span class="text-cyan-500 mr-2">►</span> Building Instability: Structures sink or tilt.</li>
@@ -385,18 +408,30 @@ export const LECTURES: Lecture[] = [
                       <li class="flex items-start"><span class="text-cyan-500 mr-2">►</span> Economic Disruption: High recovery costs for industrial zones.</li>
                     </ul>
                   </div>
+
+                  <div class="flex items-start space-x-4 bg-cyan-500/10 p-4 rounded-xl border border-cyan-500/10">
+                     <div class="bg-cyan-500/20 p-3 rounded-full flex-shrink-0">
+                       <svg class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                       </svg>
+                     </div>
+                     <div>
+                         <h4 class="text-cyan-300 font-bold uppercase text-sm mb-1">Visual Indicator: Sand Boils</h4>
+                         <p class="text-slate-400 text-sm">Water and sand ejected from the ground like miniature volcanoes during the shaking, a tell-tale sign of liquefaction.</p>
+                     </div>
+                  </div>
                 </div>
              </div>
 
              <div class="flex flex-col justify-center h-full lg:px-12">
                 <div class="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl group">
-                   <img src="https://picsum.photos/seed/liquefaction/800/600" alt="Liquefaction Example" class="w-full h-auto object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700 grayscale hover:grayscale-0" />
+                   <img src="https://static.temblor.net/wp-content/uploads/2019/12/Cotobato-Earthquakes-Landslide-768x470.jpg" alt="Liquefaction Example" class="w-full h-auto object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700 grayscale hover:grayscale-0" />
                    <div class="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-md p-4 border-t border-white/10">
                       <p class="text-sm text-slate-300 italic">
                         "During 2019 Cotabato earthquakes, Kidapawan experienced liquefaction damaging roads."
                       </p>
                       <p class="text-[10px] text-cyan-500 font-bold mt-1 uppercase tracking-widest">
-                        Ref: PHIVOLCS Earthquake Report (2019)
+                        Link: https://temblor.net/cotobato-earthquakes-landslide/
                       </p>
                    </div>
                 </div>
