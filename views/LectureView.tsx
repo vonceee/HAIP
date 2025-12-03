@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { Lecture, HazardTopic } from '../types';
-import { ArrowLeft, BrainCircuit, Gamepad2, Clock, ChevronRight, ChevronLeft, Target, Shield, Play, AlertTriangle, Zap, Waves, Maximize, Minimize } from 'lucide-react';
+import { ArrowLeft, BrainCircuit, Gamepad2, Clock, ChevronRight, ChevronLeft, Target, Shield, Play, AlertTriangle, Zap, Waves, Maximize, Minimize, X } from 'lucide-react';
 import { QuizComponent } from '../components/QuizComponent';
 import { EarthquakeGame } from '../components/games/EarthquakeGame';
 import { FloodGame } from '../components/games/FloodGame';
@@ -72,6 +72,8 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => 
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
   const [showStartMenu, setShowStartMenu] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [previewImage, setPreviewImage] = useState<string | null>(null); // State for Image Modal
+  
   const containerRef = useRef<HTMLDivElement>(null);
   const contentScrollRef = useRef<HTMLDivElement>(null);
 
@@ -126,6 +128,16 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => 
       if (document.exitFullscreen) {
         document.exitFullscreen();
       }
+    }
+  };
+
+  // Handle clicks on images inside the dangerouslySetInnerHTML content
+  const handleContentClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    const target = e.target as HTMLElement;
+    // Check if the clicked element is an image with the specific class
+    if (target.tagName === 'IMG' && target.classList.contains('zoomable-image')) {
+      const img = target as HTMLImageElement;
+      setPreviewImage(img.src);
     }
   };
 
@@ -261,6 +273,21 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => 
       ref={containerRef}
       className={`h-screen supports-[height:100dvh]:h-[100dvh] w-full flex flex-col bg-gradient-to-br ${theme.bgGradient} text-white font-sans overflow-hidden`}
     >
+        {/* IMAGE PREVIEW MODAL */}
+        {previewImage && (
+          <div className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-200" onClick={() => setPreviewImage(null)}>
+             <button className="absolute top-4 right-4 p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors text-white">
+                <X className="w-8 h-8" />
+             </button>
+             <img 
+               src={previewImage} 
+               alt="Preview" 
+               className="max-h-[90vh] max-w-[90vw] object-contain rounded-lg shadow-2xl ring-1 ring-white/10"
+               onClick={(e) => e.stopPropagation()} // Prevent closing when clicking the image itself
+             />
+          </div>
+        )}
+
         {/* TOP BAR */}
         {!isFullscreen && (
           <div className="flex-none flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 bg-black/20 border-b border-white/5 backdrop-blur-sm z-20">
@@ -302,6 +329,7 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => 
         <div 
            className={`flex-1 overflow-y-auto w-full mx-auto p-4 sm:p-6 lg:p-8 custom-scrollbar ${isFullscreen ? 'w-full px-8 lg:px-12' : 'max-w-[90%] xl:max-w-[1600px]'}`}
            ref={contentScrollRef}
+           onClick={handleContentClick} // Event Delegation for content clicks
         >
           {activeSlide.type === 'dashboard' ? (
              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full min-h-min">
