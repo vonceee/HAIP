@@ -89,7 +89,7 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => 
     if (lecture.finalQuiz && lecture.finalQuiz.length > 0) {
       s.push({
         type: 'final-quiz',
-        title: 'Certification Exam',
+        title: 'Test Your Knowledge', // Changed from Certification Exam
         data: lecture.finalQuiz
       });
     }
@@ -118,6 +118,48 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => 
     document.addEventListener('fullscreenchange', handleFullscreenChange);
     return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
   }, []);
+
+  // Handle JavaScript Auto-Scroll logic for manual override
+  useEffect(() => {
+    const containers = document.querySelectorAll('.auto-scroll-container');
+    
+    containers.forEach(container => {
+      const el = container as HTMLElement;
+      let scrollInterval: any;
+      let isHovering = false;
+
+      // Auto-scroll function
+      const startScroll = () => {
+        clearInterval(scrollInterval);
+        scrollInterval = setInterval(() => {
+          if (!isHovering) {
+            if (el.scrollTop + el.clientHeight >= el.scrollHeight - 1) {
+              el.scrollTop = 0; // Reset to top
+            } else {
+              el.scrollTop += 1; // Speed of scroll
+            }
+          }
+        }, 30); // 30ms interval = ~33fps
+      };
+
+      // Event Listeners
+      const handleMouseEnter = () => { isHovering = true; };
+      const handleMouseLeave = () => { isHovering = false; };
+
+      el.addEventListener('mouseenter', handleMouseEnter);
+      el.addEventListener('mouseleave', handleMouseLeave);
+
+      // Initialize
+      startScroll();
+
+      // Cleanup
+      return () => {
+        clearInterval(scrollInterval);
+        el.removeEventListener('mouseenter', handleMouseEnter);
+        el.removeEventListener('mouseleave', handleMouseLeave);
+      };
+    });
+  }, [activeSlideIndex]); // Re-run when slide changes to attach to new DOM elements
 
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) {
@@ -344,9 +386,9 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => 
                     />
                 </div>
 
-                {/* Right Column: Refresher Quiz */}
+                {/* Right Column: Refresher Quiz (Standard Mode) */}
                 <div className="lg:row-span-2 h-full min-h-[400px]">
-                   <QuizComponent questions={lecture.refresherQuiz || []} title="Refresher Quiz" />
+                   <QuizComponent questions={lecture.refresherQuiz || []} title="Refresher Quiz" mode="wizard" />
                 </div>
 
                 {/* Bottom Left: Simulation */}
@@ -371,9 +413,10 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack }) => 
                 </div>
              </div>
           ) : activeSlide.type === 'final-quiz' ? (
-             <div className="w-full h-full flex flex-col items-center justify-center max-w-5xl mx-auto">
-                 <div className="w-full h-full max-h-[800px]">
-                    <QuizComponent questions={activeSlide.data} title="Certification Exam" />
+             <div className="w-full h-full flex flex-col items-center justify-start max-w-5xl mx-auto pb-20">
+                 {/* Final Quiz in Form Mode */}
+                 <div className="w-full">
+                    <QuizComponent questions={activeSlide.data} title="Test Your Knowledge" mode="form" />
                  </div>
              </div>
           ) : (

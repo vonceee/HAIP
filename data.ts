@@ -350,146 +350,64 @@ export const LECTURES: Lecture[] = [
                 </div>
              </div>
 
-             <!-- Right Column: Documented Cases (Infinite Scroll) -->
-             <div class="h-full relative overflow-hidden rounded-3xl bg-black/20 border border-white/5 group/scroller">
-                <!-- Gradient Masks -->
-                <div class="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-black/60 to-transparent z-10 pointer-events-none"></div>
-                <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/60 to-transparent z-10 pointer-events-none"></div>
-
-                <style>
-                  @keyframes marquee-vertical {
-                    0% { transform: translateY(0); }
-                    100% { transform: translateY(-50%); }
-                  }
-                  .animate-vertical-scroll {
-                    animation: marquee-vertical 40s linear infinite;
-                  }
-                  .animate-vertical-scroll:hover {
-                    animation-play-state: paused;
-                  }
-                </style>
-
-                <!-- Scrolling Content Wrapper -->
-                <div class="animate-vertical-scroll">
-                   <!-- Content Set 1 -->
-                   <div class="space-y-6 px-4 py-6">
-                      <!-- Item 1: Bohol -->
-                      <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors group cursor-pointer">
-                         <div class="h-48 overflow-hidden relative">
-                            <img src="https://i.imgur.com/mz2zqMV.jpeg" alt="Bohol Rupture" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
-                            <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors pointer-events-none"></div>
-                         </div>
-                         <div class="p-4">
-                            <p class="text-sm text-slate-200 font-bold mb-1">Ground rupture in Bohol following the 2013 earthquake.</p>
-                            <a href="https://afe-adb.org/sites/default/files/Earthquake%20Risk%20and%20Preparedness.pdf" target="_blank" class="text-[10px] text-orange-500 hover:text-orange-400 uppercase tracking-wider flex items-center">
-                              View Source <svg class="w-3 h-3 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
-                            </a>
-                         </div>
+             <!-- Right Column: Documented Cases (Manual Scroll) -->
+             <div class="h-full relative overflow-hidden rounded-3xl bg-black/20 border border-white/5 group/scroller auto-scroll-container overflow-y-auto custom-scrollbar">
+                <div class="space-y-6 px-4 py-6">
+                   <!-- Item 1: Bohol -->
+                   <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors group cursor-pointer">
+                      <div class="h-48 overflow-hidden relative">
+                         <img src="https://i.imgur.com/mz2zqMV.jpeg" alt="Bohol Rupture" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
+                         <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors pointer-events-none"></div>
                       </div>
-
-                      <!-- Item 2: North Cotabato -->
-                      <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors group cursor-pointer">
-                         <div class="h-48 overflow-hidden relative">
-                            <img src="https://i.imgur.com/nSEuU4D.jpeg" alt="Cotabato Rupture" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
-                         </div>
-                         <div class="p-4">
-                            <p class="text-sm text-slate-200 font-bold mb-1">Surface rupture observed in North Cotabato after the 2019 earthquake.</p>
-                            <p class="text-[10px] text-slate-500">Source: YouTube Documentation</p>
-                         </div>
-                      </div>
-
-                      <!-- Item 3: Surigao -->
-                      <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors group cursor-pointer">
-                         <div class="h-48 overflow-hidden relative">
-                            <img src="https://i.imgur.com/MkMEKQH.jpeg" alt="Surigao Cracks" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
-                         </div>
-                         <div class="p-4">
-                            <p class="text-sm text-slate-200 font-bold mb-1">Cracks in the road caused by ground rupture in Surigao during the 2017 earthquake.</p>
-                            <a href="https://temblor.net/earthquake-insights/" target="_blank" class="text-[10px] text-orange-500 hover:text-orange-400 uppercase tracking-wider">Temblor.net Insights</a>
-                         </div>
-                      </div>
-
-                      <!-- Item 4: Negros Oriental -->
-                      <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors group cursor-pointer">
-                         <div class="h-48 overflow-hidden relative">
-                            <img src="https://i.imgur.com/lgVgC4n.jpeg" alt="Negros Fissure" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
-                         </div>
-                         <div class="p-4">
-                            <p class="text-sm text-slate-200 font-bold mb-1">Extensive ground fissure in Negros Oriental after the 2012 earthquake.</p>
-                            <p class="text-[10px] text-slate-500">Source: RPN Radio</p>
-                         </div>
-                      </div>
-
-                      <!-- Item 5: Masbate -->
-                      <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors group cursor-pointer">
-                         <div class="h-48 overflow-hidden relative">
-                            <img src="https://i.imgur.com/ApVeqLD.jpeg" alt="Masbate Damage" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
-                         </div>
-                         <div class="p-4">
-                            <p class="text-sm text-slate-200 font-bold mb-1">Ground rupture damaging infrastructure in Masbate after the 2020 earthquake.</p>
-                            <a href="https://www.researchgate.net/" target="_blank" class="text-[10px] text-orange-500 hover:text-orange-400 uppercase tracking-wider">ResearchGate Figure</a>
-                         </div>
+                      <div class="p-4">
+                         <p class="text-sm text-slate-200 font-bold mb-1">Ground rupture in Bohol following the 2013 earthquake.</p>
+                         <a href="https://afe-adb.org/sites/default/files/Earthquake%20Risk%20and%20Preparedness.pdf" target="_blank" class="text-[10px] text-orange-500 hover:text-orange-400 uppercase tracking-wider flex items-center">
+                           View Source <svg class="w-3 h-3 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                         </a>
                       </div>
                    </div>
 
-                   <!-- Content Set 2 (Duplicate for Loop) -->
-                   <div class="space-y-6 px-4 py-6">
-                      <!-- Item 1: Bohol -->
-                      <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors group cursor-pointer">
-                         <div class="h-48 overflow-hidden relative">
-                            <img src="https://i.imgur.com/mz2zqMV.jpeg" alt="Bohol Rupture" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
-                            <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors pointer-events-none"></div>
-                         </div>
-                         <div class="p-4">
-                            <p class="text-sm text-slate-200 font-bold mb-1">Ground rupture in Bohol following the 2013 earthquake.</p>
-                            <a href="https://afe-adb.org/sites/default/files/Earthquake%20Risk%20and%20Preparedness.pdf" target="_blank" class="text-[10px] text-orange-500 hover:text-orange-400 uppercase tracking-wider flex items-center">
-                              View Source <svg class="w-3 h-3 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
-                            </a>
-                         </div>
+                   <!-- Item 2: North Cotabato -->
+                   <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors group cursor-pointer">
+                      <div class="h-48 overflow-hidden relative">
+                         <img src="https://i.imgur.com/nSEuU4D.jpeg" alt="Cotabato Rupture" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
                       </div>
-
-                      <!-- Item 2: North Cotabato -->
-                      <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors group cursor-pointer">
-                         <div class="h-48 overflow-hidden relative">
-                            <img src="https://i.imgur.com/nSEuU4D.jpeg" alt="Cotabato Rupture" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
-                         </div>
-                         <div class="p-4">
-                            <p class="text-sm text-slate-200 font-bold mb-1">Surface rupture observed in North Cotabato after the 2019 earthquake.</p>
-                            <p class="text-[10px] text-slate-500">Source: YouTube Documentation</p>
-                         </div>
+                      <div class="p-4">
+                         <p class="text-sm text-slate-200 font-bold mb-1">Surface rupture observed in North Cotabato after the 2019 earthquake.</p>
+                         <p class="text-[10px] text-slate-500">Source: YouTube Documentation</p>
                       </div>
+                   </div>
 
-                      <!-- Item 3: Surigao -->
-                      <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors group cursor-pointer">
-                         <div class="h-48 overflow-hidden relative">
-                            <img src="https://i.imgur.com/MkMEKQH.jpeg" alt="Surigao Cracks" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
-                         </div>
-                         <div class="p-4">
-                            <p class="text-sm text-slate-200 font-bold mb-1">Cracks in the road caused by ground rupture in Surigao during the 2017 earthquake.</p>
-                            <a href="https://temblor.net/earthquake-insights/" target="_blank" class="text-[10px] text-orange-500 hover:text-orange-400 uppercase tracking-wider">Temblor.net Insights</a>
-                         </div>
+                   <!-- Item 3: Surigao -->
+                   <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors group cursor-pointer">
+                      <div class="h-48 overflow-hidden relative">
+                         <img src="https://i.imgur.com/MkMEKQH.jpeg" alt="Surigao Cracks" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
                       </div>
-
-                      <!-- Item 4: Negros Oriental -->
-                      <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors group cursor-pointer">
-                         <div class="h-48 overflow-hidden relative">
-                            <img src="https://i.imgur.com/lgVgC4n.jpeg" alt="Negros Fissure" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
-                         </div>
-                         <div class="p-4">
-                            <p class="text-sm text-slate-200 font-bold mb-1">Extensive ground fissure in Negros Oriental after the 2012 earthquake.</p>
-                            <p class="text-[10px] text-slate-500">Source: RPN Radio</p>
-                         </div>
+                      <div class="p-4">
+                         <p class="text-sm text-slate-200 font-bold mb-1">Cracks in the road caused by ground rupture in Surigao during the 2017 earthquake.</p>
+                         <a href="https://temblor.net/earthquake-insights/" target="_blank" class="text-[10px] text-orange-500 hover:text-orange-400 uppercase tracking-wider">Temblor.net Insights</a>
                       </div>
+                   </div>
 
-                      <!-- Item 5: Masbate -->
-                      <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors group cursor-pointer">
-                         <div class="h-48 overflow-hidden relative">
-                            <img src="https://i.imgur.com/ApVeqLD.jpeg" alt="Masbate Damage" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
-                         </div>
-                         <div class="p-4">
-                            <p class="text-sm text-slate-200 font-bold mb-1">Ground rupture damaging infrastructure in Masbate after the 2020 earthquake.</p>
-                            <a href="https://www.researchgate.net/" target="_blank" class="text-[10px] text-orange-500 hover:text-orange-400 uppercase tracking-wider">ResearchGate Figure</a>
-                         </div>
+                   <!-- Item 4: Negros Oriental -->
+                   <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors group cursor-pointer">
+                      <div class="h-48 overflow-hidden relative">
+                         <img src="https://i.imgur.com/lgVgC4n.jpeg" alt="Negros Fissure" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
+                      </div>
+                      <div class="p-4">
+                         <p class="text-sm text-slate-200 font-bold mb-1">Extensive ground fissure in Negros Oriental after the 2012 earthquake.</p>
+                         <p class="text-[10px] text-slate-500">Source: RPN Radio</p>
+                      </div>
+                   </div>
+
+                   <!-- Item 5: Masbate -->
+                   <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors group cursor-pointer">
+                      <div class="h-48 overflow-hidden relative">
+                         <img src="https://i.imgur.com/ApVeqLD.jpeg" alt="Masbate Damage" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
+                      </div>
+                      <div class="p-4">
+                         <p class="text-sm text-slate-200 font-bold mb-1">Ground rupture damaging infrastructure in Masbate after the 2020 earthquake.</p>
+                         <a href="https://www.researchgate.net/" target="_blank" class="text-[10px] text-orange-500 hover:text-orange-400 uppercase tracking-wider">ResearchGate Figure</a>
                       </div>
                    </div>
                 </div>
@@ -501,65 +419,105 @@ export const LECTURES: Lecture[] = [
         id: 'liquefaction',
         title: 'Liquefaction',
         content: `
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center h-full relative">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start h-[calc(100vh-200px)] relative">
              <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent hidden lg:block"></div>
 
-             <div class="flex flex-col justify-start h-full lg:px-12 py-6">
-                <h3 class="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 to-blue-500 mb-6 uppercase">Liquefaction</h3>
-                <p class="text-2xl text-slate-300 mb-8 font-light">
-                  The process where water-saturated, loose soil behaves like a liquid during intense shaking.
-                </p>
-
-                <!-- The Recipe for Liquefaction -->
-                <div class="grid grid-cols-3 gap-3 mb-8">
-                  <div class="bg-cyan-900/20 border border-cyan-500/30 p-4 rounded-xl text-center hover:bg-cyan-900/40 transition-colors">
-                    <div class="text-2xl mb-2">🏖️</div>
-                    <div class="text-[10px] uppercase font-bold text-cyan-400 tracking-wide">Loose Soil</div>
-                  </div>
-                  <div class="bg-cyan-900/20 border border-cyan-500/30 p-4 rounded-xl text-center hover:bg-cyan-900/40 transition-colors">
-                    <div class="text-2xl mb-2">💧</div>
-                    <div class="text-[10px] uppercase font-bold text-cyan-400 tracking-wide">Water Saturation</div>
-                  </div>
-                  <div class="bg-cyan-900/20 border border-cyan-500/30 p-4 rounded-xl text-center hover:bg-cyan-900/40 transition-colors">
-                    <div class="text-2xl mb-2">〰️</div>
-                    <div class="text-[10px] uppercase font-bold text-cyan-400 tracking-wide">Intense Shaking</div>
-                  </div>
-                </div>
-                
+             <div class="flex flex-col justify-center h-full lg:px-12 py-6">
                 <div class="space-y-6">
-                  <div class="bg-cyan-950/30 border border-cyan-500/20 p-6 rounded-2xl group hover:border-cyan-500/40 transition-all">
-                    <h4 class="text-lg font-bold text-cyan-400 mb-2 uppercase tracking-wide">Critical Impacts</h4>
-                    <ul class="space-y-3 text-slate-300 text-lg">
-                      <li class="flex items-start"><span class="text-cyan-500 mr-2">►</span> Building Instability: Structures sink or tilt.</li>
-                      <li class="flex items-start"><span class="text-cyan-500 mr-2">►</span> Underground Damage: Pipes burst due to soil movement.</li>
-                      <li class="flex items-start"><span class="text-cyan-500 mr-2">►</span> Economic Disruption: High recovery costs for industrial zones.</li>
-                    </ul>
-                  </div>
+                    <h3 class="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 to-blue-500 mb-6 uppercase">Liquefaction</h3>
+                    <p class="text-2xl text-slate-300 mb-8 font-light">
+                      The process where water-saturated, loose soil behaves like a liquid during intense shaking.
+                    </p>
 
-                  <div class="flex items-start space-x-4 bg-cyan-500/10 p-4 rounded-xl border border-cyan-500/10">
-                     <div class="bg-cyan-500/20 p-3 rounded-full flex-shrink-0">
-                       <svg class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                       </svg>
-                     </div>
-                     <div>
-                         <h4 class="text-cyan-300 font-bold uppercase text-sm mb-1">Visual Indicator: Sand Boils</h4>
-                         <p class="text-slate-400 text-sm">Water and sand ejected from the ground like miniature volcanoes during the shaking, a tell-tale sign of liquefaction.</p>
-                     </div>
-                  </div>
+                    <!-- The Recipe for Liquefaction -->
+                    <div class="grid grid-cols-3 gap-3 mb-8">
+                      <div class="bg-cyan-900/20 border border-cyan-500/30 p-4 rounded-xl text-center hover:bg-cyan-900/40 transition-colors">
+                        <div class="text-2xl mb-2">🏖️</div>
+                        <div class="text-[10px] uppercase font-bold text-cyan-400 tracking-wide">Loose Soil</div>
+                      </div>
+                      <div class="bg-cyan-900/20 border border-cyan-500/30 p-4 rounded-xl text-center hover:bg-cyan-900/40 transition-colors">
+                        <div class="text-2xl mb-2">💧</div>
+                        <div class="text-[10px] uppercase font-bold text-cyan-400 tracking-wide">Water Saturation</div>
+                      </div>
+                      <div class="bg-cyan-900/20 border border-cyan-500/30 p-4 rounded-xl text-center hover:bg-cyan-900/40 transition-colors">
+                        <div class="text-2xl mb-2">〰️</div>
+                        <div class="text-[10px] uppercase font-bold text-cyan-400 tracking-wide">Intense Shaking</div>
+                      </div>
+                    </div>
+                    
+                    <div class="space-y-6">
+                      <div class="bg-cyan-950/30 border border-cyan-500/20 p-6 rounded-2xl group hover:border-cyan-500/40 transition-all">
+                        <h4 class="text-lg font-bold text-cyan-400 mb-2 uppercase tracking-wide">Critical Impacts</h4>
+                        <ul class="space-y-3 text-slate-300 text-lg">
+                          <li class="flex items-start"><span class="text-cyan-500 mr-2">►</span> Building Instability: Structures sink or tilt.</li>
+                          <li class="flex items-start"><span class="text-cyan-500 mr-2">►</span> Underground Damage: Pipes burst due to soil movement.</li>
+                          <li class="flex items-start"><span class="text-cyan-500 mr-2">►</span> Economic Disruption: High recovery costs for industrial zones.</li>
+                        </ul>
+                      </div>
+
+                      <div class="flex items-start space-x-4 bg-cyan-500/10 p-4 rounded-xl border border-cyan-500/10">
+                         <div class="bg-cyan-500/20 p-3 rounded-full flex-shrink-0">
+                           <svg class="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                           </svg>
+                         </div>
+                         <div>
+                             <h4 class="text-cyan-300 font-bold uppercase text-sm mb-1">Visual Indicator: Sand Boils</h4>
+                             <p class="text-slate-400 text-sm">Water and sand ejected from the ground like miniature volcanoes during the shaking, a tell-tale sign of liquefaction.</p>
+                         </div>
+                      </div>
+                    </div>
                 </div>
              </div>
 
-             <div class="flex flex-col justify-center h-full lg:px-12">
-                <div class="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl group">
-                   <img src="https://static.temblor.net/wp-content/uploads/2019/12/Cotobato-Earthquakes-Landslide-768x470.jpg" alt="Liquefaction Example" class="w-full h-auto object-cover transition-opacity duration-700" />
-                   <div class="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-md p-4 border-t border-white/10">
-                      <p class="text-sm text-slate-300 italic">
-                        "During 2019 Cotabato earthquakes, Kidapawan experienced liquefaction damaging roads."
-                      </p>
-                      <p class="text-[10px] text-cyan-500 font-bold mt-1 uppercase tracking-widest">
-                        Link: https://temblor.net/cotobato-earthquakes-landslide/
-                      </p>
+             <!-- Right Column: Documented Cases (Manual Scroll) -->
+             <div class="h-full relative overflow-hidden rounded-3xl bg-black/20 border border-white/5 group/scroller auto-scroll-container overflow-y-auto custom-scrollbar">
+                <div class="space-y-6 px-4 py-6">
+                   <!-- Item 1: Dagupan -->
+                   <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors group cursor-pointer">
+                      <div class="h-48 overflow-hidden relative">
+                         <img src="https://i.imgur.com/ejDazPW.jpeg" alt="Dagupan Liquefaction" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
+                         <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors pointer-events-none"></div>
+                      </div>
+                      <div class="p-4">
+                         <p class="text-sm text-slate-200 font-bold mb-1">Buildings sinking and tilting in Dagupan City following the 1990 Luzon earthquake.</p>
+                         <a href="https://www.nzsee.org.nz/db/2011/043.pdf" target="_blank" class="text-[10px] text-cyan-500 hover:text-cyan-400 uppercase tracking-wider flex items-center">
+                           View Report <svg class="w-3 h-3 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                         </a>
+                      </div>
+                   </div>
+
+                   <!-- Item 2: Pampanga -->
+                   <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors group cursor-pointer">
+                      <div class="h-48 overflow-hidden relative">
+                         <img src="https://i.imgur.com/XkdS1Sh.jpeg" alt="Sand Boils" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
+                      </div>
+                      <div class="p-4">
+                         <p class="text-sm text-slate-200 font-bold mb-1">Evidence of liquefaction in the form of sand boils erupting from the ground in Pampanga.</p>
+                         <a href="https://www.researchgate.net/" target="_blank" class="text-[10px] text-cyan-500 hover:text-cyan-400 uppercase tracking-wider">ResearchGate</a>
+                      </div>
+                   </div>
+
+                   <!-- Item 3: Central Luzon -->
+                   <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors group cursor-pointer">
+                      <div class="h-48 overflow-hidden relative">
+                         <img src="https://i.imgur.com/IZmT3AT.jpeg" alt="Bohol House Tilt" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
+                      </div>
+                      <div class="p-4">
+                         <p class="text-sm text-slate-200 font-bold mb-1">A house visibly tilted due to the ground softening underneath during the 2013 Bohol earthquake.</p>
+                         <p class="text-[10px] text-slate-500">Source: Semantic Scholar</p>
+                      </div>
+                   </div>
+
+                   <!-- Item 4: Niigata -->
+                   <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors group cursor-pointer">
+                      <div class="h-48 overflow-hidden relative">
+                         <img src="https://i.imgur.com/bMTSWWs.jpeg" alt="Niigata Liquefaction" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
+                      </div>
+                      <div class="p-4">
+                         <p class="text-sm text-slate-200 font-bold mb-1">Effects of soil liquefaction caused by the earthquake on apartment buildings.</p>
+                         <a href="https://www.menard-asia.com/" target="_blank" class="text-[10px] text-cyan-500 hover:text-cyan-400 uppercase tracking-wider">Menard Asia</a>
+                      </div>
                    </div>
                 </div>
              </div>
