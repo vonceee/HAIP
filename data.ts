@@ -73,11 +73,11 @@ export const LECTURES: Lecture[] = [
                <div class="bg-white/5 border border-white/10 p-6 md:p-8 rounded-[2.5rem] backdrop-blur-sm relative overflow-hidden group hover:bg-white/10 transition-all duration-500 hover:shadow-[0_0_50px_rgba(249,115,22,0.15)]">
                   <div class="absolute top-0 right-0 w-64 h-64 bg-orange-500/10 rounded-full blur-[100px] group-hover:bg-orange-500/20 transition-all"></div>
                   
-                  <p class="text-3xl md:text-4xl text-slate-100 font-light leading-snug relative z-10 text-justify md:text-center mb-8">
+                  <p class="text-2xl md:text-3xl text-slate-100 font-light leading-snug relative z-10 text-justify md:text-center mb-8">
                     <span class="font-black text-orange-400">Earthquakes</span> are among the most destructive natural hazards on Earth.
                   </p>
                   
-                  <p class="text-2xl md:text-3xl text-slate-300 font-light leading-snug relative z-10 text-justify md:text-center mb-8">
+                  <p class="text-1xl md:text-2xl text-slate-300 font-light leading-snug relative z-10 text-justify md:text-center mb-8">
                     Their impacts go beyond ground shaking—they trigger a chain of <span class="font-bold text-white">secondary hazards</span> that pose immediate threats to human life, infrastructure, and the environment.
                   </p>
 
@@ -356,7 +356,7 @@ export const LECTURES: Lecture[] = [
 
              <div class="flex flex-col justify-center h-full lg:px-12">
                 <div class="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl group">
-                   <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcToS-znEiOO7d1W94qFPB_ZXpGwqZg7gFRHroWyeWwDAJ9sJgX0xuAyLVGuMtoe" alt="Ground Rupture Example" class="w-full h-auto object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700 transform hover:scale-105 transition-transform duration-1000" />
+                   <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcToS-znEiOO7d1W94qFPB_ZXpGwqZg7gFRHroWyeWwDAJ9sJgX0xuAyLVGuMtoe" alt="Ground Rupture Example" class="w-full h-auto object-cover transition-transform duration-1000 transform hover:scale-105" />
                    <div class="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-md p-6 border-t border-white/10">
                       <p class="text-base text-slate-200 italic mb-2">
                         "A potential ground rupture along the West Valley Fault could damage parts of Quezon City and Taguig, affecting major infrastructures."
@@ -425,7 +425,7 @@ export const LECTURES: Lecture[] = [
 
              <div class="flex flex-col justify-center h-full lg:px-12">
                 <div class="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl group">
-                   <img src="https://static.temblor.net/wp-content/uploads/2019/12/Cotobato-Earthquakes-Landslide-768x470.jpg" alt="Liquefaction Example" class="w-full h-auto object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700 grayscale hover:grayscale-0" />
+                   <img src="https://static.temblor.net/wp-content/uploads/2019/12/Cotobato-Earthquakes-Landslide-768x470.jpg" alt="Liquefaction Example" class="w-full h-auto object-cover transition-opacity duration-700" />
                    <div class="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-md p-4 border-t border-white/10">
                       <p class="text-sm text-slate-300 italic">
                         "During 2019 Cotabato earthquakes, Kidapawan experienced liquefaction damaging roads."
@@ -466,13 +466,13 @@ export const LECTURES: Lecture[] = [
 
              <div class="flex flex-col justify-center h-full lg:px-12">
                 <div class="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl group">
-                   <img src="https://picsum.photos/seed/landslide/800/600" alt="Landslide Example" class="w-full h-auto object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700 sepia hover:sepia-0" />
+                   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlQwdz27HmZeSAfVUjS-GdTjbwIkjcA-u7HZNLd0DkzUZZRQQp1knV2FBubTx8" alt="Landslide Example" class="w-full h-auto object-cover transition-opacity duration-700" />
                    <div class="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-md p-4 border-t border-white/10">
                       <p class="text-sm text-slate-300 italic">
-                        "The 1990 Luzon Earthquake triggered massive landslides in Benguet."
+                        "NASA Earth Observatory / US Marine Corps This massive landslide covered the entire village of Guinsaugon."
                       </p>
                       <p class="text-[10px] text-stone-500 font-bold mt-1 uppercase tracking-widest">
-                        Ref: Lagmay, A. M. F. et al. (2020)
+                        Link: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlQwdz27HmZeSAfVUjS-GdTjbwIkjcA-u7HZNLd0DkzUZZRQQp1knV2FBubTx8 
                       </p>
                    </div>
                 </div>
@@ -513,7 +513,7 @@ export const LECTURES: Lecture[] = [
 
              <div class="flex flex-col justify-center h-full lg:px-12">
                 <div class="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl group">
-                   <img src="https://picsum.photos/seed/tsunami/800/600" alt="Tsunami Example" class="w-full h-auto object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700 bg-blue-900" />
+                   <img src="https://picsum.photos/seed/tsunami/800/600" alt="Tsunami Example" class="w-full h-auto object-cover transition-opacity duration-700 bg-blue-900" />
                    <div class="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-md p-4 border-t border-white/10">
                       <p class="text-sm text-slate-300 italic">
                         "The 1976 Moro Gulf Earthquake caused a tsunami that killed more than 8,000 people."
@@ -551,7 +551,7 @@ export const LECTURES: Lecture[] = [
 
              <div class="flex flex-col justify-center h-full lg:px-12">
                 <div class="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl group">
-                   <img src="https://picsum.photos/seed/fire/800/600" alt="Fire Example" class="w-full h-auto object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700 hue-rotate-15" />
+                   <img src="https://picsum.photos/seed/fire/800/600" alt="Fire Example" class="w-full h-auto object-cover transition-opacity duration-700" />
                    <div class="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-md p-4 border-t border-white/10">
                       <p class="text-sm text-slate-300 italic">
                         "The 1906 San Francisco Earthquake led to widespread fires causing more deaths than the quake."
