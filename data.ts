@@ -301,11 +301,11 @@ export const LECTURES: Lecture[] = [
         id: 'ground-rupture',
         title: 'Ground Rupture',
         content: `
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start h-[calc(100vh-200px)] relative">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start h-[calc(100vh-320px)] relative">
              <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent hidden lg:block"></div>
 
              <!-- Left Column: Information (Fixed/Sticky) -->
-             <div class="flex flex-col justify-center h-full lg:px-12 py-2">
+             <div class="flex flex-col justify-start h-full lg:px-12 py-2">
                 <div class="space-y-8">
                     <h3 class="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400 uppercase leading-none">Ground Rupture</h3>
                     <p class="text-2xl md:text-3xl text-slate-300 font-light leading-relaxed">
@@ -420,10 +420,10 @@ export const LECTURES: Lecture[] = [
         id: 'liquefaction',
         title: 'Liquefaction',
         content: `
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start h-[calc(100vh-200px)] relative">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start h-[calc(100vh-320px)] relative">
              <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent hidden lg:block"></div>
 
-             <div class="flex flex-col justify-center h-full lg:px-12 py-6">
+             <div class="flex flex-col justify-start h-full lg:px-12 py-2">
                 <div class="space-y-6">
                     <h3 class="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 to-blue-500 mb-6 uppercase">Liquefaction</h3>
                     <p class="text-2xl md:text-3xl text-slate-300 mb-8 font-light">
@@ -502,6 +502,17 @@ export const LECTURES: Lecture[] = [
                    <!-- Item 3: Central Luzon -->
                    <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors group cursor-pointer">
                       <div class="h-48 overflow-hidden relative">
+                         <img src="https://i.imgur.com/m7ErQuv.jpeg" alt="Road Cracks" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
+                      </div>
+                      <div class="p-4">
+                         <p class="text-sm text-slate-200 font-bold mb-1">A road cracked and displaced by liquefaction effects during a major earthquake.</p>
+                         <p class="text-[10px] text-slate-500">Source: YouTube</p>
+                      </div>
+                   </div>
+
+                   <!-- Item 4: Bohol -->
+                   <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors group cursor-pointer">
+                      <div class="h-48 overflow-hidden relative">
                          <img src="https://i.imgur.com/IZmT3AT.jpeg" alt="Bohol House Tilt" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
                       </div>
                       <div class="p-4">
@@ -510,7 +521,7 @@ export const LECTURES: Lecture[] = [
                       </div>
                    </div>
 
-                   <!-- Item 4: Niigata -->
+                   <!-- Item 5: Niigata -->
                    <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors group cursor-pointer">
                       <div class="h-48 overflow-hidden relative">
                          <img src="https://i.imgur.com/bMTSWWs.jpeg" alt="Niigata Liquefaction" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
@@ -529,11 +540,11 @@ export const LECTURES: Lecture[] = [
         id: 'landslides',
         title: 'Landslides',
         content: `
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start h-[calc(100vh-200px)] relative">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start h-[calc(100vh-320px)] relative">
              <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent hidden lg:block"></div>
 
              <!-- Left Column: Sticky Info -->
-             <div class="flex flex-col justify-center h-full lg:px-12 py-6">
+             <div class="flex flex-col justify-start h-full lg:px-12 py-2">
                  <div class="space-y-8">
                     <div>
                        <h3 class="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-200 to-stone-500 mb-4 uppercase">Landslides</h3>
@@ -576,36 +587,58 @@ export const LECTURES: Lecture[] = [
              <!-- Right Column: Scrollable Images -->
              <div class="h-full relative overflow-hidden rounded-3xl bg-black/20 border border-white/5 group/scroller auto-scroll-container overflow-y-auto custom-scrollbar">
                  <div class="space-y-6 px-4 py-6">
-                    <!-- Image Card 1 -->
+                    <!-- Image Card 1: Maco -->
                     <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors group cursor-pointer">
                         <div class="h-56 overflow-hidden relative">
-                           <img src="https://images.unsplash.com/photo-1541625622618-b2230a1379c6?auto=format&fit=crop&q=80&w=800" alt="Mountain Landslide" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
+                           <img src="https://imgs.mongabay.com/wp-content/uploads/sites/20/2024/02/21135449/landslide-philippines.jpg" onerror="this.src='https://images.unsplash.com/photo-1541625622618-b2230a1379c6?auto=format&fit=crop&q=80&w=800'" alt="Maco Landslide" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
                         </div>
                         <div class="p-4">
-                           <p class="text-sm text-slate-200 font-bold mb-1">Massive slope failure in mountainous regions.</p>
-                           <span class="text-[10px] text-stone-500 uppercase">Generic Visualization</span>
+                           <p class="text-sm text-slate-200 font-bold mb-1">The aftermath of a massive landslide that buried a mining village in Maco, Davao de Oro.</p>
+                           <p class="text-[10px] text-stone-500 uppercase">Source: Mongabay</p>
                         </div>
                     </div>
                     
-                    <!-- Image Card 2 -->
+                    <!-- Image Card 2: Naga City -->
                     <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors group cursor-pointer">
                         <div class="h-56 overflow-hidden relative">
-                           <img src="https://images.unsplash.com/photo-1465225314224-587cd83d322b?auto=format&fit=crop&q=80&w=800" alt="Road Blockage" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
+                           <img src="https://floodlist.com/wp-content/uploads/2022/10/Landslide-Philippines-Civil-Defense-Northern-Mindanao-Region-10-1536x1152.jpg" onerror="this.src='https://images.unsplash.com/photo-1594916368862-23c31e984f18?auto=format&fit=crop&q=80&w=800'" alt="Naga City Landslide" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
                         </div>
                         <div class="p-4">
-                           <p class="text-sm text-slate-200 font-bold mb-1">Infrastructure isolation caused by debris flow.</p>
-                           <span class="text-[10px] text-stone-500 uppercase">Generic Visualization</span>
+                           <p class="text-sm text-slate-200 font-bold mb-1">Rescuers searching through the debris of a major landslide in Naga City, Cebu.</p>
+                           <a href="https://floodlist.com/asia/philippines-northern-mindanao-october-2022" target="_blank" class="text-[10px] text-stone-400 hover:text-white uppercase tracking-wider">FloodList Report</a>
                         </div>
                     </div>
 
-                     <!-- Image Card 3 -->
+                     <!-- Image Card 3: Itogon -->
                     <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors group cursor-pointer">
                         <div class="h-56 overflow-hidden relative">
-                           <img src="https://images.unsplash.com/photo-1594916368862-23c31e984f18?auto=format&fit=crop&q=80&w=800" alt="Village Damage" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
+                           <img src="https://imgs.mongabay.com/wp-content/uploads/sites/20/2024/02/21140213/landslide-philippines-2.jpg" onerror="this.src='https://images.unsplash.com/photo-1465225314224-587cd83d322b?auto=format&fit=crop&q=80&w=800'" alt="Itogon Landslide" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
                         </div>
                         <div class="p-4">
-                           <p class="text-sm text-slate-200 font-bold mb-1">Devastation of upland settlements.</p>
-                           <span class="text-[10px] text-stone-500 uppercase">Generic Visualization</span>
+                           <p class="text-sm text-slate-200 font-bold mb-1">Large-scale slope failure in Itogon, Benguet, triggered by Typhoon Ompong.</p>
+                           <p class="text-[10px] text-stone-500 uppercase">Source: Mongabay</p>
+                        </div>
+                    </div>
+
+                    <!-- Image Card 4: Guinsaugon -->
+                    <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors group cursor-pointer">
+                        <div class="h-56 overflow-hidden relative">
+                           <img src="https://blogs.agu.org/landslideblog/files/2022/07/22_07-Philippines-2.jpg" alt="Guinsaugon Landslide" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
+                        </div>
+                        <div class="p-4">
+                           <p class="text-sm text-slate-200 font-bold mb-1">An aerial view of the catastrophic landslide that covered the village of Guinsaugon in Southern Leyte.</p>
+                           <a href="https://blogs.agu.org/landslideblog" target="_blank" class="text-[10px] text-stone-400 hover:text-white uppercase tracking-wider">AGU Blog</a>
+                        </div>
+                    </div>
+
+                    <!-- Image Card 5: Baybay City -->
+                    <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors group cursor-pointer">
+                        <div class="h-56 overflow-hidden relative">
+                           <img src="https://files01.pna.gov.ph/category-list/2021/05/19/lslide-gsc.jpg" alt="Baybay City Landslide" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
+                        </div>
+                        <div class="p-4">
+                           <p class="text-sm text-slate-200 font-bold mb-1">Devastation caused by landslides in Baybay City following Tropical Storm Agaton.</p>
+                           <a href="https://www.pna.gov.ph/articles/1140765" target="_blank" class="text-[10px] text-stone-400 hover:text-white uppercase tracking-wider">PNA Article</a>
                         </div>
                     </div>
                  </div>
@@ -965,11 +998,11 @@ export const LECTURES: Lecture[] = [
         id: 'landslide',
         title: 'Rain-Induced Landslide',
         content: `
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start h-[calc(100vh-200px)] relative">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start h-[calc(100vh-320px)] relative">
              <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent hidden lg:block"></div>
 
              <!-- Left Column: Information (Sticky) -->
-             <div class="flex flex-col justify-center h-full lg:px-12 py-6">
+             <div class="flex flex-col justify-start h-full lg:px-12 py-6">
                 <div class="space-y-6">
                     <h3 class="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-stone-300 to-stone-600 mb-6 uppercase">Landslides</h3>
                     <p class="text-2xl text-slate-300 mb-8 font-light">
