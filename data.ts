@@ -1,4 +1,5 @@
 
+
 import { Lecture, EQStep, FloodScenario } from './types';
 
 export const LECTURES: Lecture[] = [
@@ -62,7 +63,7 @@ export const LECTURES: Lecture[] = [
               </div>
 
               <!-- Title -->
-              <h3 class="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-600 uppercase tracking-tighter drop-shadow-2xl">
+              <h3 class="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-600 uppercase tracking-tighter drop-shadow-2xl">
                 Earthquakes
               </h3>
             </div>
@@ -72,11 +73,11 @@ export const LECTURES: Lecture[] = [
                <div class="bg-white/5 border border-white/10 p-6 md:p-8 rounded-[2.5rem] backdrop-blur-sm relative overflow-hidden group hover:bg-white/10 transition-all duration-500 hover:shadow-[0_0_60px_rgba(249,115,22,0.15)]">
                   <div class="absolute top-0 right-0 w-96 h-96 bg-orange-500/10 rounded-full blur-[120px] group-hover:bg-orange-500/20 transition-all"></div>
                   
-                  <p class="text-2xl md:text-3xl text-slate-100 font-light leading-snug relative z-10 text-center mb-6">
+                  <p class="text-3xl md:text-4xl text-slate-100 font-light leading-snug relative z-10 text-center mb-6">
                     <span class="font-black text-orange-400">Earthquakes</span> are among the most destructive natural hazards on Earth.
                   </p>
                   
-                  <p class="text-xl md:text-2xl text-slate-300 font-light leading-snug relative z-10 text-center mb-8">
+                  <p class="text-2xl md:text-3xl text-slate-300 font-light leading-snug relative z-10 text-center mb-8">
                     Their impacts go beyond ground shaking—they trigger a chain of <span class="font-bold text-white border-b-2 border-orange-500/50">secondary hazards</span> that pose immediate threats to human life, infrastructure, and the environment.
                   </p>
 
@@ -122,7 +123,7 @@ export const LECTURES: Lecture[] = [
           <div class="flex flex-col space-y-8 animate-in fade-in duration-700 py-6">
             
             <div class="relative z-10">
-              <h3 class="text-5xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight">
+              <h3 class="text-4xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight">
                 Ground Shaking
               </h3>
               
@@ -230,7 +231,7 @@ export const LECTURES: Lecture[] = [
         title: 'Effects Analysis',
         content: `
           <div class="flex flex-col h-full justify-center">
-            <h3 class="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-600 mb-12 text-center uppercase drop-shadow-sm">
+            <h3 class="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-600 mb-12 text-center uppercase drop-shadow-sm">
               Effects Analysis
             </h3>
 
@@ -305,47 +306,47 @@ export const LECTURES: Lecture[] = [
 
              <!-- Left Column: Information (Fixed/Sticky) -->
              <div class="flex flex-col justify-center h-full lg:px-12 py-2">
-                <div class="space-y-6">
-                    <h3 class="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400 uppercase leading-none">Ground Rupture</h3>
-                    <p class="text-xl text-slate-300 font-light leading-relaxed">
+                <div class="space-y-8">
+                    <h3 class="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400 uppercase leading-none">Ground Rupture</h3>
+                    <p class="text-2xl md:text-3xl text-slate-300 font-light leading-relaxed">
                       The visible tearing or displacement of the ground surface along an active fault during an earthquake.
                     </p>
                     
-                    <div class="grid grid-cols-2 gap-4">
-                       <div class="bg-white/5 p-4 rounded-xl border border-white/10 hover:bg-white/10 transition-colors">
-                          <div class="text-orange-400 font-bold text-xs uppercase mb-1">Vertical Offset</div>
-                          <div class="text-slate-400 text-[10px] leading-tight">One side lifts higher than the other, creating scarps.</div>
+                    <div class="grid grid-cols-2 gap-6">
+                       <div class="bg-white/5 p-5 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors">
+                          <div class="text-orange-400 font-bold text-lg uppercase mb-2">Vertical Offset</div>
+                          <div class="text-slate-300 text-sm leading-snug">One side lifts higher than the other, creating scarps.</div>
                        </div>
-                       <div class="bg-white/5 p-4 rounded-xl border border-white/10 hover:bg-white/10 transition-colors">
-                          <div class="text-orange-400 font-bold text-xs uppercase mb-1">Horizontal Shift</div>
-                          <div class="text-slate-400 text-[10px] leading-tight">Ground moves sideways, severing roads and lines.</div>
+                       <div class="bg-white/5 p-5 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors">
+                          <div class="text-orange-400 font-bold text-lg uppercase mb-2">Horizontal Shift</div>
+                          <div class="text-slate-300 text-sm leading-snug">Ground moves sideways, severing roads and lines.</div>
                        </div>
                     </div>
 
-                    <div class="bg-white/5 border border-white/10 p-5 rounded-2xl">
-                        <h4 class="text-sm font-bold text-orange-400 mb-3 uppercase tracking-wide flex items-center">
-                           <span class="w-1.5 h-1.5 bg-orange-500 rounded-full mr-2"></span>
+                    <div class="bg-white/5 border border-white/10 p-6 rounded-3xl">
+                        <h4 class="text-xl font-bold text-orange-400 mb-4 uppercase tracking-wide flex items-center">
+                           <span class="w-2 h-2 bg-orange-500 rounded-full mr-3"></span>
                            Effects Analysis
                         </h4>
-                        <ul class="space-y-2 text-slate-300 text-sm">
+                        <ul class="space-y-3 text-slate-300 text-lg">
                           <li class="flex items-start">
-                             <span class="text-red-500 mr-2">►</span>
+                             <span class="text-red-500 mr-3 mt-1">►</span>
                              <span><strong>Structural Tearing:</strong> Foundations split apart.</span>
                           </li>
                           <li class="flex items-start">
-                             <span class="text-red-500 mr-2">►</span>
+                             <span class="text-red-500 mr-3 mt-1">►</span>
                              <span><strong>Uninhabitable Zones:</strong> Permanent no-build zones.</span>
                           </li>
                           <li class="flex items-start">
-                             <span class="text-red-500 mr-2">►</span>
+                             <span class="text-red-500 mr-3 mt-1">►</span>
                              <span><strong>Economic Loss:</strong> Relocation costs increase.</span>
                           </li>
                         </ul>
                     </div>
 
-                    <div class="bg-orange-950/30 border-l-4 border-orange-500 p-3 rounded-r-xl">
-                        <p class="text-orange-200 text-xs font-bold uppercase mb-1">Safety Protocol</p>
-                        <p class="text-slate-400 text-xs">Strict adherence to the <span class="text-white font-bold">5-meter buffer zone</span> on both sides of an active fault.</p>
+                    <div class="bg-orange-950/30 border-l-4 border-orange-500 p-5 rounded-r-2xl">
+                        <p class="text-orange-200 text-sm font-bold uppercase mb-2">Safety Protocol</p>
+                        <p class="text-slate-300 text-lg">Strict adherence to the <span class="text-white font-bold">5-meter buffer zone</span> on both sides of an active fault.</p>
                     </div>
                 </div>
              </div>
@@ -424,8 +425,8 @@ export const LECTURES: Lecture[] = [
 
              <div class="flex flex-col justify-center h-full lg:px-12 py-6">
                 <div class="space-y-6">
-                    <h3 class="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 to-blue-500 mb-6 uppercase">Liquefaction</h3>
-                    <p class="text-2xl text-slate-300 mb-8 font-light">
+                    <h3 class="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 to-blue-500 mb-6 uppercase">Liquefaction</h3>
+                    <p class="text-2xl md:text-3xl text-slate-300 mb-8 font-light">
                       The process where water-saturated, loose soil behaves like a liquid during intense shaking.
                     </p>
 
@@ -433,15 +434,15 @@ export const LECTURES: Lecture[] = [
                     <div class="grid grid-cols-3 gap-3 mb-8">
                       <div class="bg-cyan-900/20 border border-cyan-500/30 p-4 rounded-xl text-center hover:bg-cyan-900/40 transition-colors">
                         <div class="text-2xl mb-2">🏖️</div>
-                        <div class="text-[10px] uppercase font-bold text-cyan-400 tracking-wide">Loose Soil</div>
+                        <div class="text-xs md:text-sm uppercase font-bold text-cyan-400 tracking-wide">Loose Soil</div>
                       </div>
                       <div class="bg-cyan-900/20 border border-cyan-500/30 p-4 rounded-xl text-center hover:bg-cyan-900/40 transition-colors">
                         <div class="text-2xl mb-2">💧</div>
-                        <div class="text-[10px] uppercase font-bold text-cyan-400 tracking-wide">Water Saturation</div>
+                        <div class="text-xs md:text-sm uppercase font-bold text-cyan-400 tracking-wide">Water Saturation</div>
                       </div>
                       <div class="bg-cyan-900/20 border border-cyan-500/30 p-4 rounded-xl text-center hover:bg-cyan-900/40 transition-colors">
                         <div class="text-2xl mb-2">〰️</div>
-                        <div class="text-[10px] uppercase font-bold text-cyan-400 tracking-wide">Intense Shaking</div>
+                        <div class="text-xs md:text-sm uppercase font-bold text-cyan-400 tracking-wide">Intense Shaking</div>
                       </div>
                     </div>
                     
@@ -463,7 +464,7 @@ export const LECTURES: Lecture[] = [
                          </div>
                          <div>
                              <h4 class="text-cyan-300 font-bold uppercase text-sm mb-1">Visual Indicator: Sand Boils</h4>
-                             <p class="text-slate-400 text-sm">Water and sand ejected from the ground like miniature volcanoes during the shaking, a tell-tale sign of liquefaction.</p>
+                             <p class="text-slate-400 text-base">Water and sand ejected from the ground like miniature volcanoes during the shaking, a tell-tale sign of liquefaction.</p>
                          </div>
                       </div>
                     </div>
@@ -528,39 +529,86 @@ export const LECTURES: Lecture[] = [
         id: 'landslides',
         title: 'Landslides',
         content: `
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center h-full relative">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start h-[calc(100vh-200px)] relative">
              <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent hidden lg:block"></div>
 
-             <div class="flex flex-col justify-start h-full lg:px-12 py-6">
-                <h3 class="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-stone-300 to-stone-600 mb-6 uppercase">Landslides</h3>
-                <p class="text-2xl text-slate-300 mb-8 font-light">
-                   Downhill movement of rocks and soil triggered by ground shaking, especially in mountainous terrains.
-                </p>
-                
-                <div class="grid grid-cols-1 gap-4">
-                   <div class="bg-stone-900/50 border border-stone-700 p-4 rounded-xl">
-                      <h4 class="font-bold text-stone-400 uppercase text-xs">Burial of Settlements</h4>
-                      <p class="text-slate-300 text-sm">Entire villages can be buried, as seen in Luzon.</p>
-                   </div>
-                   <div class="bg-stone-900/50 border border-stone-700 p-4 rounded-xl">
-                      <h4 class="font-bold text-stone-400 uppercase text-xs">Isolation</h4>
-                      <p class="text-slate-300 text-sm">Blocked roads hinder rescue operations.</p>
-                   </div>
-                </div>
+             <!-- Left Column: Sticky Info -->
+             <div class="flex flex-col justify-center h-full lg:px-12 py-6">
+                 <div class="space-y-8">
+                    <div>
+                       <h3 class="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-200 to-stone-500 mb-4 uppercase">Landslides</h3>
+                       <p class="text-2xl md:text-3xl text-slate-300 font-light leading-relaxed">
+                          Downhill movement of rocks and soil triggered by <span class="text-emerald-400 font-bold">ground shaking</span>, especially in mountainous terrains.
+                       </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-4">
+                       <!-- Effect 1 -->
+                       <div class="bg-stone-900/40 border border-stone-600/30 p-5 rounded-2xl flex items-start hover:bg-stone-800/40 transition-colors">
+                          <div class="bg-stone-500/20 p-3 rounded-lg mr-4">
+                             <svg class="w-6 h-6 text-stone-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m8-2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                          </div>
+                          <div>
+                             <h4 class="text-stone-300 font-bold uppercase text-lg mb-1">Burial of Settlements</h4>
+                             <p class="text-slate-400 text-lg">Entire villages can be buried, as seen in upland communities of Luzon.</p>
+                          </div>
+                       </div>
+                       
+                       <!-- Effect 2 -->
+                       <div class="bg-stone-900/40 border border-stone-600/30 p-5 rounded-2xl flex items-start hover:bg-stone-800/40 transition-colors">
+                          <div class="bg-stone-500/20 p-3 rounded-lg mr-4">
+                             <svg class="w-6 h-6 text-stone-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                          </div>
+                          <div>
+                             <h4 class="text-stone-300 font-bold uppercase text-lg mb-1">Isolation of Areas</h4>
+                             <p class="text-slate-400 text-lg">Blocked roads hinder rescue and relief operations.</p>
+                          </div>
+                       </div>
+                    </div>
+
+                    <div class="bg-emerald-900/20 border-l-4 border-emerald-500 p-4 rounded-r-xl backdrop-blur-sm">
+                        <p class="text-emerald-400 text-xs font-bold uppercase mb-1">Historical Context</p>
+                        <p class="text-slate-300 text-lg italic">"The 1990 Luzon Earthquake triggered massive landslides in Benguet, burying houses and farmlands."</p>
+                    </div>
+                 </div>
              </div>
 
-             <div class="flex flex-col justify-center h-full lg:px-12">
-                <div class="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl group">
-                   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlQwdz27HmZeSAfVUjS-GdTjbwIkjcA-u7HZNLd0DkzUZZRQQp1knV2FBubTx8" alt="Landslide Example" class="w-full h-auto object-cover transition-opacity duration-700" />
-                   <div class="absolute bottom-0 left-0 right-0 bg-black/80 backdrop-blur-md p-4 border-t border-white/10">
-                      <p class="text-sm text-slate-300 italic">
-                        "NASA Earth Observatory / US Marine Corps This massive landslide covered the entire village of Guinsaugon."
-                      </p>
-                      <p class="text-[10px] text-stone-500 font-bold mt-1 uppercase tracking-widest">
-                        Link: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlQwdz27HmZeSAfVUjS-GdTjbwIkjcA-u7HZNLd0DkzUZZRQQp1knV2FBubTx8 
-                      </p>
-                   </div>
-                </div>
+             <!-- Right Column: Scrollable Images -->
+             <div class="h-full relative overflow-hidden rounded-3xl bg-black/20 border border-white/5 group/scroller auto-scroll-container overflow-y-auto custom-scrollbar">
+                 <div class="space-y-6 px-4 py-6">
+                    <!-- Image Card 1 -->
+                    <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors group cursor-pointer">
+                        <div class="h-56 overflow-hidden relative">
+                           <img src="https://images.unsplash.com/photo-1541625622618-b2230a1379c6?auto=format&fit=crop&q=80&w=800" alt="Mountain Landslide" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
+                        </div>
+                        <div class="p-4">
+                           <p class="text-sm text-slate-200 font-bold mb-1">Massive slope failure in mountainous regions.</p>
+                           <span class="text-[10px] text-stone-500 uppercase">Generic Visualization</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Image Card 2 -->
+                    <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors group cursor-pointer">
+                        <div class="h-56 overflow-hidden relative">
+                           <img src="https://images.unsplash.com/photo-1465225314224-587cd83d322b?auto=format&fit=crop&q=80&w=800" alt="Road Blockage" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
+                        </div>
+                        <div class="p-4">
+                           <p class="text-sm text-slate-200 font-bold mb-1">Infrastructure isolation caused by debris flow.</p>
+                           <span class="text-[10px] text-stone-500 uppercase">Generic Visualization</span>
+                        </div>
+                    </div>
+
+                     <!-- Image Card 3 -->
+                    <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors group cursor-pointer">
+                        <div class="h-56 overflow-hidden relative">
+                           <img src="https://images.unsplash.com/photo-1594916368862-23c31e984f18?auto=format&fit=crop&q=80&w=800" alt="Village Damage" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
+                        </div>
+                        <div class="p-4">
+                           <p class="text-sm text-slate-200 font-bold mb-1">Devastation of upland settlements.</p>
+                           <span class="text-[10px] text-stone-500 uppercase">Generic Visualization</span>
+                        </div>
+                    </div>
+                 </div>
              </div>
           </div>
         `
@@ -573,7 +621,7 @@ export const LECTURES: Lecture[] = [
              <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent hidden lg:block"></div>
 
              <div class="flex flex-col justify-start h-full lg:px-12 py-6">
-                <h3 class="text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600 mb-6 uppercase">Tsunami</h3>
+                <h3 class="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-600 mb-6 uppercase">Tsunami</h3>
                 <p class="text-2xl text-slate-300 mb-8 font-light">
                    A series of large sea waves generated by undersea earthquakes that displace huge volumes of water.
                 </p>
@@ -620,7 +668,7 @@ export const LECTURES: Lecture[] = [
              <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent hidden lg:block"></div>
 
              <div class="flex flex-col justify-start h-full lg:px-12 py-6">
-                <h3 class="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500 mb-6 uppercase">Fire & Failures</h3>
+                <h3 class="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500 mb-6 uppercase">Fire & Failures</h3>
                 <p class="text-2xl text-slate-300 mb-8 font-light">
                    Secondary hazards caused by damaged gas lines, power systems, and industrial facilities.
                 </p>
@@ -786,7 +834,7 @@ export const LECTURES: Lecture[] = [
                 <svg class="w-24 h-24 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" /></svg>
              </div>
              
-             <h3 class="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-b from-cyan-200 to-blue-600 uppercase tracking-tighter max-w-4xl">
+             <h3 class="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-b from-cyan-200 to-blue-600 uppercase tracking-tighter max-w-4xl">
                Hydrometeorological Hazards
              </h3>
              
@@ -879,7 +927,7 @@ export const LECTURES: Lecture[] = [
         title: 'Storm Surge',
         content: `
           <div class="flex flex-col h-full space-y-6">
-             <h3 class="text-5xl font-black text-indigo-400 uppercase">Storm Surge</h3>
+             <h3 class="text-4xl font-black text-indigo-400 uppercase">Storm Surge</h3>
              
              <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <div class="lg:col-span-2 space-y-6">
@@ -917,36 +965,89 @@ export const LECTURES: Lecture[] = [
         id: 'landslide',
         title: 'Rain-Induced Landslide',
         content: `
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 h-full items-center">
-            <div class="flex flex-col justify-start space-y-6">
-               <h3 class="text-4xl font-black text-stone-400 uppercase">Landslide (Rain-Induced)</h3>
-               
-               <div class="bg-stone-900/50 p-6 rounded-2xl border border-stone-600/30">
-                  <h4 class="text-stone-300 font-bold mb-3 uppercase tracking-wider">Natural Warning Signs</h4>
-                  <div class="grid grid-cols-2 gap-4">
-                     <div class="flex items-center text-sm text-slate-300"><span class="w-1.5 h-1.5 bg-stone-500 rounded-full mr-2"></span>Cracks on ground/walls</div>
-                     <div class="flex items-center text-sm text-slate-300"><span class="w-1.5 h-1.5 bg-stone-500 rounded-full mr-2"></span>Tilting trees/poles</div>
-                     <div class="flex items-center text-sm text-slate-300"><span class="w-1.5 h-1.5 bg-stone-500 rounded-full mr-2"></span>Muddy springs appearing</div>
-                     <div class="flex items-center text-sm text-slate-300"><span class="w-1.5 h-1.5 bg-stone-500 rounded-full mr-2"></span>Rumbling sounds</div>
-                  </div>
-               </div>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start h-[calc(100vh-200px)] relative">
+             <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent hidden lg:block"></div>
 
-               <div class="bg-stone-900/50 p-6 rounded-2xl border border-stone-600/30">
-                  <h4 class="text-stone-300 font-bold mb-3 uppercase tracking-wider">Scientific Signs</h4>
-                  <ul class="space-y-2 text-sm text-slate-300">
-                     <li>• Soil moisture sensors detecting saturation</li>
-                     <li>• Rainfall threshold exceeded in hazard areas</li>
-                  </ul>
-               </div>
-            </div>
-            
-            <div class="relative h-full min-h-[300px] rounded-3xl overflow-hidden shadow-2xl border border-white/10 group">
-               <img src="https://picsum.photos/seed/landslide-rain/600/800" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" alt="Landslide" />
-               <div class="absolute bottom-0 w-full bg-gradient-to-t from-black via-black/80 to-transparent p-6 pt-20">
-                  <p class="text-stone-300 italic mb-2">"The 2006 Leyte landslide was preceded by days of intense rainfall and visible ground cracks."</p>
-                  <p class="text-[10px] font-bold text-stone-500 uppercase">Ref: PHIVOLCS (2022)</p>
-               </div>
-            </div>
+             <!-- Left Column: Information (Sticky) -->
+             <div class="flex flex-col justify-center h-full lg:px-12 py-6">
+                <div class="space-y-6">
+                    <h3 class="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-stone-300 to-stone-600 mb-6 uppercase">Landslides</h3>
+                    <p class="text-2xl text-slate-300 mb-8 font-light">
+                       Downhill movement of rocks and soil triggered by heavy rainfall, especially in mountainous terrains.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 gap-4">
+                       <div class="bg-stone-900/50 border border-stone-700 p-4 rounded-xl">
+                          <h4 class="font-bold text-stone-400 uppercase text-xs">Natural Signs</h4>
+                          <p class="text-slate-300 text-sm">Cracks on ground, tilting trees, muddy springs appearing.</p>
+                       </div>
+                       <div class="bg-stone-900/50 border border-stone-700 p-4 rounded-xl">
+                          <h4 class="font-bold text-stone-400 uppercase text-xs">Scientific Signs</h4>
+                          <p class="text-slate-300 text-sm">Soil moisture sensors detecting saturation.</p>
+                       </div>
+                    </div>
+                </div>
+             </div>
+
+             <!-- Right Column: Documented Cases (Scrollable) -->
+             <div class="h-full relative overflow-hidden rounded-3xl bg-black/20 border border-white/5 group/scroller auto-scroll-container overflow-y-auto custom-scrollbar">
+                <div class="space-y-6 px-4 py-6">
+                   <!-- Item 1: Maco -->
+                   <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors group cursor-pointer">
+                      <div class="h-48 overflow-hidden relative">
+                         <img src="https://images.unsplash.com/photo-1541625622618-b2230a1379c6?auto=format&fit=crop&q=80&w=800" alt="Maco Landslide" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
+                      </div>
+                      <div class="p-4">
+                         <p class="text-sm text-slate-200 font-bold mb-1">The aftermath of a massive landslide that buried a mining village in Maco, Davao de Oro.</p>
+                         <p class="text-[10px] text-stone-500">Source: Mongabay</p>
+                      </div>
+                   </div>
+
+                   <!-- Item 2: Naga City -->
+                   <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors group cursor-pointer">
+                      <div class="h-48 overflow-hidden relative">
+                         <img src="https://images.unsplash.com/photo-1594916368862-23c31e984f18?auto=format&fit=crop&q=80&w=800" alt="Naga City Landslide" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
+                      </div>
+                      <div class="p-4">
+                         <p class="text-sm text-slate-200 font-bold mb-1">Rescuers searching through the debris of a major landslide in Naga City, Cebu.</p>
+                         <a href="https://floodlist.com/asia/philippines-northern-mindanao-october-2022" target="_blank" class="text-[10px] text-stone-400 hover:text-white uppercase tracking-wider">FloodList Report</a>
+                      </div>
+                   </div>
+
+                   <!-- Item 3: Itogon -->
+                   <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors group cursor-pointer">
+                      <div class="h-48 overflow-hidden relative">
+                         <img src="https://images.unsplash.com/photo-1465225314224-587cd83d322b?auto=format&fit=crop&q=80&w=800" alt="Itogon Landslide" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
+                      </div>
+                      <div class="p-4">
+                         <p class="text-sm text-slate-200 font-bold mb-1">Large-scale slope failure in Itogon, Benguet, triggered by Typhoon Ompong.</p>
+                         <p class="text-[10px] text-stone-500">Source: Mongabay</p>
+                      </div>
+                   </div>
+
+                   <!-- Item 4: Guinsaugon -->
+                   <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors group cursor-pointer">
+                      <div class="h-48 overflow-hidden relative">
+                         <img src="https://blogs.agu.org/landslideblog/files/2022/07/22_07-Philippines-2.jpg" alt="Guinsaugon Landslide" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
+                      </div>
+                      <div class="p-4">
+                         <p class="text-sm text-slate-200 font-bold mb-1">An aerial view of the catastrophic landslide that covered the village of Guinsaugon in Southern Leyte.</p>
+                         <a href="https://blogs.agu.org/landslideblog" target="_blank" class="text-[10px] text-stone-400 hover:text-white uppercase tracking-wider">AGU Blog</a>
+                      </div>
+                   </div>
+
+                   <!-- Item 5: Baybay City -->
+                   <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors group cursor-pointer">
+                      <div class="h-48 overflow-hidden relative">
+                         <img src="https://files01.pna.gov.ph/category-list/2021/05/19/lslide-gsc.jpg" alt="Baybay City Landslide" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
+                      </div>
+                      <div class="p-4">
+                         <p class="text-sm text-slate-200 font-bold mb-1">Devastation caused by landslides in Baybay City following Tropical Storm Agaton.</p>
+                         <a href="https://www.pna.gov.ph/articles/1140765" target="_blank" class="text-[10px] text-stone-400 hover:text-white uppercase tracking-wider">PNA Article</a>
+                      </div>
+                   </div>
+                </div>
+             </div>
           </div>
         `
       },
@@ -956,7 +1057,7 @@ export const LECTURES: Lecture[] = [
         content: `
           <div class="flex flex-col h-full justify-center space-y-8">
              <div class="text-center">
-                <h3 class="text-5xl font-black text-amber-500 uppercase tracking-tight mb-2">Drought</h3>
+                <h3 class="text-4xl md:text-5xl font-black text-amber-500 uppercase tracking-tight mb-2">Drought</h3>
                 <p class="text-amber-200/60 text-lg uppercase tracking-widest font-mono">Slow-onset Hazard</p>
              </div>
 
@@ -1122,7 +1223,7 @@ export const LECTURES: Lecture[] = [
                 <svg class="w-32 h-32 text-red-500 relative z-10 drop-shadow-[0_0_15px_rgba(239,68,68,0.8)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg>
              </div>
              
-             <h3 class="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-600 uppercase tracking-tighter text-center">
+             <h3 class="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-600 uppercase tracking-tighter text-center">
                Volcanic Hazards
              </h3>
              
@@ -1143,7 +1244,7 @@ export const LECTURES: Lecture[] = [
         content: `
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center h-full">
              <div class="space-y-6">
-                <h3 class="text-5xl font-black text-orange-500 uppercase">Pyroclastic Flow</h3>
+                <h3 class="text-4xl font-black text-orange-500 uppercase">Pyroclastic Flow</h3>
                 <p class="text-2xl text-slate-300 font-light">
                   A fast-moving mixture of hot gases, ash, and volcanic rocks rushing down slopes at >100 km/h.
                 </p>
@@ -1174,7 +1275,7 @@ export const LECTURES: Lecture[] = [
         content: `
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center h-full">
              <div class="space-y-6">
-                <h3 class="text-5xl font-black text-stone-400 uppercase">Ash Fall</h3>
+                <h3 class="text-4xl font-black text-stone-400 uppercase">Ash Fall</h3>
                 <p class="text-2xl text-slate-300 font-light">
                   Volcanic ash and rock fragments ejected during explosive eruptions falling to the ground.
                 </p>
@@ -1204,7 +1305,7 @@ export const LECTURES: Lecture[] = [
         title: 'Lahars',
         content: `
           <div class="flex flex-col items-center justify-center space-y-8 h-full">
-             <h3 class="text-6xl font-black text-stone-500 uppercase tracking-tighter">Lahars</h3>
+             <h3 class="text-4xl md:text-5xl font-black text-stone-500 uppercase tracking-tighter">Lahars</h3>
              <p class="text-2xl text-slate-300 text-center max-w-2xl font-light">
                 Mixtures of volcanic ash, rocks, and water flowing down river valleys, often triggered by rain.
              </p>
@@ -1227,7 +1328,7 @@ export const LECTURES: Lecture[] = [
         content: `
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center h-full">
              <div class="space-y-6">
-                <h3 class="text-5xl font-black text-orange-600 uppercase">Lava Flows</h3>
+                <h3 class="text-4xl font-black text-orange-600 uppercase">Lava Flows</h3>
                 <p class="text-2xl text-slate-300 font-light">
                   Molten rock that flows from the crater during a non-explosive eruption.
                 </p>
@@ -1255,7 +1356,7 @@ export const LECTURES: Lecture[] = [
         title: 'Volcanic Gases',
         content: `
           <div class="flex flex-col h-full justify-center">
-             <h3 class="text-5xl font-black text-yellow-500 uppercase mb-8 text-center">Volcanic Gases</h3>
+             <h3 class="text-4xl md:text-5xl font-black text-yellow-500 uppercase mb-8 text-center">Volcanic Gases</h3>
              
              <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="bg-yellow-950/20 p-6 rounded-2xl border border-yellow-500/20 text-center">
@@ -1283,7 +1384,7 @@ export const LECTURES: Lecture[] = [
         content: `
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center h-full">
              <div class="space-y-6">
-                <h3 class="text-5xl font-black text-cyan-500 uppercase">Volcanic Tsunami</h3>
+                <h3 class="text-4xl font-black text-cyan-500 uppercase">Volcanic Tsunami</h3>
                 <p class="text-2xl text-slate-300 font-light">
                   Large sea waves generated by underwater eruptions, landslides, or caldera collapses.
                 </p>

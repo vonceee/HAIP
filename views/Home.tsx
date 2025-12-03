@@ -1,17 +1,52 @@
-
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { LECTURES } from '../data';
 import { LectureCard } from '../components/LectureCard';
-import { Search, Shield, Target } from 'lucide-react';
+import { Search, Shield, Target, ChevronRight, X, ArrowDown, MousePointer } from 'lucide-react';
 import { HazardTopic } from '../types';
 
 interface HomeProps {
   onNavigate: (lectureId: string) => void;
+  tutorialStep: number | null;
+  setTutorialStep: (step: number | null) => void;
 }
 
-export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
+export const Home: React.FC<HomeProps> = ({ onNavigate, tutorialStep, setTutorialStep }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTopic, setSelectedTopic] = useState<HazardTopic | 'All'>('All');
+
+  const controlsRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  // Auto-scroll to highlighted elements during walkthrough
+  useEffect(() => {
+    if (tutorialStep === 1 && controlsRef.current) {
+      controlsRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } else if (tutorialStep === 2 && gridRef.current) {
+      gridRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [tutorialStep]);
+
+  const handleNextStep = () => {
+    if (tutorialStep === null) return;
+    
+    if (tutorialStep < 2) {
+      setTutorialStep(tutorialStep + 1);
+    } else if (tutorialStep === 2) {
+      // Transition to Lecture View for Step 3
+      const firstLecture = filteredLectures[0] || LECTURES[0];
+      if (firstLecture) {
+        setTutorialStep(3); // Next step in Lecture View
+        onNavigate(firstLecture.id);
+      } else {
+        completeTutorial();
+      }
+    }
+  };
+
+  const completeTutorial = () => {
+    localStorage.setItem('haip_onboarding_complete', 'true');
+    setTutorialStep(null);
+  };
 
   const filteredLectures = useMemo(() => {
     return LECTURES.filter(lecture => {
@@ -21,6 +56,16 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       return matchesSearch && matchesTopic;
     });
   }, [searchTerm, selectedTopic]);
+
+  // Determine Dialog Position based on step
+  const getDialogPosition = () => {
+    switch (tutorialStep) {
+      case 0: return 'bottom-8'; // Welcome - Bottom
+      case 1: return 'bottom-8'; // Search (Top) - Dialog Bottom
+      case 2: return 'top-24';   // Grid (Bottom) - Dialog Top
+      default: return 'bottom-8';
+    }
+  };
 
   return (
     <div className="relative w-full min-h-full">
@@ -54,6 +99,61 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
         }
       `}</style>
 
+      {/* --- TUTORIAL OVERLAY --- */}
+      {tutorialStep !== null && tutorialStep <= 2 && (
+        <>
+          {/* Backdrop - Only visible on Step 0 to allow visibility of components in Steps 1 & 2 */}
+          <div 
+            className={`fixed inset-0 bg-black/80 backdrop-blur-sm z-[60] transition-all duration-700 ${
+              tutorialStep === 0 ? 'opacity-100' : 'opacity-0 pointer-events-none'
+            }`} 
+          />
+
+          {/* Tutorial Dialog Box */}
+          <div className={`fixed ${getDialogPosition()} left-0 right-0 z-[100] flex justify-center px-4 animate-in fade-in duration-500 transition-all ease-in-out`}>
+             <div className="bg-slate-900 border border-brand-500/50 shadow-[0_0_50px_rgba(14,165,233,0.3)] max-w-2xl w-full rounded-2xl p-6 relative overflow-hidden">
+                {/* Decorative Tech Lines */}
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-500 to-transparent"></div>
+                <div className="absolute bottom-0 right-0 w-2/3 h-px bg-gradient-to-l from-brand-500/50 to-transparent"></div>
+                
+                <div className="flex items-start gap-6">
+                   <div className="flex-1">
+                      <div className="flex justify-between items-start mb-2">
+                        <h3 className="text-brand-400 font-mono text-xs uppercase tracking-widest font-bold">
+                           System Message // Step {tutorialStep + 1} of 5
+                        </h3>
+                        <button onClick={completeTutorial} className="text-slate-500 hover:text-white transition-colors">
+                           <X className="w-4 h-4" />
+                        </button>
+                      </div>
+                      
+                      <p className="text-lg text-white font-medium mb-6 min-h-[3.5rem]">
+                        {tutorialStep === 0 && "Welcome Recruit. This is the HAIP Command Center. I will be your guide for this session."}
+                        {tutorialStep === 1 && "Use the Command Deck to identify specific hazard protocols or filter missions by category."}
+                        {tutorialStep === 2 && "Missions are displayed here. We will now select a mission to demonstrate the briefing protocol."}
+                      </p>
+
+                      <div className="flex justify-end gap-3">
+                         <button 
+                           onClick={completeTutorial}
+                           className="px-4 py-2 text-xs font-bold text-slate-400 hover:text-white uppercase tracking-wider transition-colors"
+                         >
+                            Skip Briefing
+                         </button>
+                         <button 
+                           onClick={handleNextStep}
+                           className="px-6 py-2 bg-brand-600 hover:bg-brand-500 text-white text-sm font-bold uppercase tracking-wider rounded-lg shadow-lg hover:shadow-brand-500/25 transition-all flex items-center"
+                         >
+                            {tutorialStep === 2 ? 'Select Mission' : 'Next'} <ChevronRight className="w-4 h-4 ml-1" />
+                         </button>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+        </>
+      )}
+
       {/* Background Visual Elements */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         {/* Technical Grid Pattern */}
@@ -80,7 +180,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Hero / Dashboard Header */}
         <div className="flex flex-col md:flex-row items-end justify-between mb-12 border-b-2 border-slate-200 pb-8">
-          <div>
+          <div className="w-full md:w-auto">
             <div className="flex items-center text-brand-600 font-bold tracking-widest text-xs uppercase mb-2">
               <Shield className="w-4 h-4 mr-2" />
               Disaster Preparedness Training
@@ -94,14 +194,28 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
             </p>
           </div>
           
-          <div className="hidden md:block text-right">
-             <div className="text-3xl font-bold text-slate-300">{LECTURES.length}</div>
-             <div className="text-xs font-bold text-slate-400 uppercase tracking-widest">Active Modules</div>
+          <div className="flex items-center gap-4 mt-6 md:mt-0 self-end">
+             <div className="hidden md:block text-right pl-4 border-l border-slate-200">
+                <div className="text-3xl font-bold text-slate-300 leading-none">{LECTURES.length}</div>
+                <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Active Modules</div>
+             </div>
           </div>
         </div>
 
-        {/* Controls Bar */}
-        <div className="flex flex-col md:flex-row gap-4 mb-10 items-center justify-between bg-white/80 backdrop-blur-sm p-2 rounded-2xl shadow-sm border border-slate-200">
+        {/* Controls Bar - HIGHLIGHTED IN STEP 1 */}
+        <div 
+          ref={controlsRef}
+          className={`flex flex-col md:flex-row gap-4 mb-10 items-center justify-between bg-white/80 backdrop-blur-sm p-2 rounded-2xl shadow-sm border border-slate-200 transition-all duration-500 ${tutorialStep === 1 ? 'relative z-[70] ring-4 ring-brand-500/50 scale-[1.02] shadow-[0_0_50px_rgba(14,165,233,0.3)] bg-white' : ''}`}
+        >
+          {tutorialStep === 1 && (
+             <div className="absolute -top-16 left-1/2 -translate-x-1/2 z-[80] flex flex-col items-center animate-bounce">
+                <div className="bg-brand-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg mb-2 uppercase tracking-wide whitespace-nowrap">
+                   Filter & Search
+                </div>
+                <ArrowDown className="w-8 h-8 text-brand-500 fill-current" />
+             </div>
+          )}
+
           <div className="relative w-full md:w-96">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5" />
             <input
@@ -130,29 +244,49 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           </div>
         </div>
 
-        {/* Grid */}
-        {filteredLectures.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredLectures.map(lecture => (
-              <LectureCard 
-                key={lecture.id} 
-                lecture={lecture} 
-                onClick={onNavigate} 
-              />
-            ))}
-          </div>
-        ) : (
-          <div className="flex flex-col items-center justify-center py-20 bg-slate-50/50 backdrop-blur-sm rounded-3xl border-2 border-dashed border-slate-300">
-            <Target className="w-16 h-16 text-slate-300 mb-4" />
-            <p className="text-slate-500 text-lg font-medium">No missions found matching criteria.</p>
-            <button 
-              onClick={() => { setSearchTerm(''); setSelectedTopic('All'); }}
-              className="mt-4 text-brand-600 font-bold hover:underline uppercase tracking-wide text-sm"
-            >
-              Reset Filters
-            </button>
-          </div>
-        )}
+        {/* Grid - HIGHLIGHTED IN STEP 2 */}
+        <div 
+          ref={gridRef}
+          className={`transition-all duration-500 rounded-3xl ${tutorialStep === 2 ? 'relative z-[70] ring-4 ring-brand-500/50 p-4 bg-white/10 backdrop-blur-sm' : ''}`}
+        >
+          {tutorialStep === 2 && (
+             <div className="absolute -top-16 left-8 z-[80] flex flex-col items-start animate-bounce">
+                <div className="bg-brand-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg mb-2 uppercase tracking-wide whitespace-nowrap">
+                   Select Mission
+                </div>
+                <ArrowDown className="w-8 h-8 text-brand-500 fill-current ml-6" />
+             </div>
+          )}
+
+          {filteredLectures.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredLectures.map(lecture => (
+                <LectureCard 
+                  key={lecture.id} 
+                  lecture={lecture} 
+                  onClick={(id) => {
+                    // If tutorial is active, handle manual click gracefully
+                    if (tutorialStep === 2) {
+                      setTutorialStep(3);
+                    }
+                    onNavigate(id);
+                  }} 
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="flex flex-col items-center justify-center py-20 bg-slate-50/50 backdrop-blur-sm rounded-3xl border-2 border-dashed border-slate-300">
+              <Target className="w-16 h-16 text-slate-300 mb-4" />
+              <p className="text-slate-500 text-lg font-medium">No missions found matching criteria.</p>
+              <button 
+                onClick={() => { setSearchTerm(''); setSelectedTopic('All'); }}
+                className="mt-4 text-brand-600 font-bold hover:underline uppercase tracking-wide text-sm"
+              >
+                Reset Filters
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
