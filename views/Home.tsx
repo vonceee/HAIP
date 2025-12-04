@@ -1,3 +1,4 @@
+
 import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { LECTURES } from '../data';
 import { LectureCard } from '../components/LectureCard';
@@ -185,12 +186,12 @@ export const Home: React.FC<HomeProps> = ({ onNavigate, tutorialStep, setTutoria
               <Shield className="w-4 h-4 mr-2" />
               Disaster Preparedness Training
             </div>
-            <h1 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase relative">
-              <span className="relative z-10">Mission Select</span>
+            <h1 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter uppercase relative leading-tight">
+              <span className="relative z-10">Hazard Awareness Interactive Portal</span>
               <div className="absolute -bottom-2 left-0 w-1/3 h-3 bg-brand-200/50 -skew-x-12 -z-10" />
             </h1>
-            <p className="text-slate-500 mt-2 text-lg max-w-lg">
-              Choose a hazard protocol below to begin your training simulation.
+            <p className="text-slate-500 mt-4 text-lg max-w-xl">
+              Select a learning module below to access comprehensive lessons, simulations, and safety protocols designed to build disaster resilience.
             </p>
           </div>
           
