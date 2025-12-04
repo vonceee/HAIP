@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { Lecture, HazardTopic } from '../types';
-import { ArrowLeft, BrainCircuit, Gamepad2, Clock, ChevronRight, ChevronLeft, Target, Shield, Play, AlertTriangle, Zap, Waves, Maximize, Minimize, X, ArrowDown, ArrowUp } from 'lucide-react';
+import { ArrowLeft, BrainCircuit, Gamepad2, Clock, ChevronRight, ChevronLeft, Target, Shield, Play, AlertTriangle, Zap, Waves, Maximize, Minimize, X, ArrowDown, ArrowUp, ZoomIn, RotateCcw } from 'lucide-react';
 import { QuizComponent } from '../components/QuizComponent';
 import { EarthquakeGame } from '../components/games/EarthquakeGame';
 import { FloodGame } from '../components/games/FloodGame';
@@ -13,7 +13,7 @@ interface LectureViewProps {
   setTutorialStep: (step: number | null) => void;
 }
 
-// Game-like visual themes based on topic
+// Game-like visual themes based on topic - LIGHTER VARIANTS
 const THEME_STYLES: Record<HazardTopic | 'General', {
   bgGradient: string;
   accentColor: string;
@@ -23,31 +23,31 @@ const THEME_STYLES: Record<HazardTopic | 'General', {
   glow: string;
 }> = {
   'Earthquake': {
-    bgGradient: 'from-orange-950 via-slate-900 to-slate-950',
-    accentColor: 'text-orange-500',
+    bgGradient: 'from-orange-800 via-slate-700 to-slate-800',
+    accentColor: 'text-orange-400',
     buttonBg: 'bg-orange-600',
     buttonHover: 'hover:bg-orange-500',
     icon: ActivityIcon,
     glow: 'shadow-orange-500/20'
   },
   'Flood': {
-    bgGradient: 'from-cyan-950 via-blue-900 to-slate-900',
-    accentColor: 'text-cyan-400',
+    bgGradient: 'from-cyan-800 via-blue-800 to-slate-800',
+    accentColor: 'text-cyan-300',
     buttonBg: 'bg-cyan-600',
     buttonHover: 'hover:bg-cyan-500',
     icon: Waves,
     glow: 'shadow-cyan-500/20'
   },
   'Volcano': {
-    bgGradient: 'from-red-950 via-slate-900 to-slate-950',
-    accentColor: 'text-red-500',
+    bgGradient: 'from-red-800 via-slate-700 to-slate-800',
+    accentColor: 'text-red-400',
     buttonBg: 'bg-red-600',
     buttonHover: 'hover:bg-red-500',
     icon: AlertTriangle,
     glow: 'shadow-red-500/20'
   },
   'General': {
-    bgGradient: 'from-slate-900 via-slate-800 to-black',
+    bgGradient: 'from-slate-700 via-slate-600 to-slate-800',
     accentColor: 'text-emerald-400',
     buttonBg: 'bg-emerald-600',
     buttonHover: 'hover:bg-emerald-500',
@@ -75,6 +75,7 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack, tutor
   const [showStartMenu, setShowStartMenu] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [previewImage, setPreviewImage] = useState<string | null>(null);
+  const [zoomLevel, setZoomLevel] = useState(1);
   
   const containerRef = useRef<HTMLDivElement>(null);
   const contentScrollRef = useRef<HTMLDivElement>(null);
@@ -103,6 +104,10 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack, tutor
   const completeTutorial = () => {
     localStorage.setItem('haip_onboarding_complete', 'true');
     setTutorialStep(null);
+  };
+
+  const resetZoom = () => {
+    setZoomLevel(1);
   };
 
   // Construct Virtual Slides Array
@@ -273,27 +278,52 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack, tutor
           </div>
         )}
 
-        {/* Fullscreen Toggle */}
-        <button 
-          onClick={toggleFullscreen} 
-          className="fixed top-4 right-4 sm:top-6 sm:right-6 z-50 p-3 bg-black/40 border border-white/10 rounded-full text-slate-300 hover:text-white hover:bg-white/10 backdrop-blur-md transition-all shadow-lg group"
-          title={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
-        >
-           {isFullscreen ? (
-             <Minimize className="w-6 h-6 group-hover:scale-90 transition-transform" />
-           ) : (
-             <Maximize className="w-6 h-6 group-hover:scale-110 transition-transform" />
-           )}
-        </button>
+        {/* Top Right Controls Group */}
+        <div className="fixed top-4 right-4 sm:top-6 sm:right-6 z-50 flex items-center gap-3">
+            {/* Zoom Controls */}
+            <div className="hidden sm:flex items-center bg-black/40 border border-white/10 rounded-full px-3 py-1.5 backdrop-blur-md shadow-lg transition-all hover:bg-black/60">
+                 <button onClick={resetZoom} title="Reset Zoom" className="pr-3 border-r border-white/10 text-slate-400 hover:text-white transition-colors flex items-center">
+                    <RotateCcw className="w-4 h-4" />
+                 </button>
+                 <div className="flex items-center pl-3">
+                    <ZoomIn className="w-4 h-4 text-slate-300 mr-2" />
+                    <input
+                      type="range"
+                      min="0.8"
+                      max="1.5"
+                      step="0.1"
+                      value={zoomLevel}
+                      onChange={(e) => setZoomLevel(parseFloat(e.target.value))}
+                      className="w-20 h-1.5 bg-slate-600 rounded-lg appearance-none cursor-pointer accent-white"
+                    />
+                 </div>
+            </div>
 
-        <div className="fixed inset-0 opacity-30 pointer-events-none">
+            {/* Fullscreen Toggle */}
+            <button 
+              onClick={toggleFullscreen} 
+              className="p-3 bg-black/40 border border-white/10 rounded-full text-slate-300 hover:text-white hover:bg-white/10 backdrop-blur-md transition-all shadow-lg group"
+              title={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
+            >
+               {isFullscreen ? (
+                 <Minimize className="w-6 h-6 group-hover:scale-90 transition-transform" />
+               ) : (
+                 <Maximize className="w-6 h-6 group-hover:scale-110 transition-transform" />
+               )}
+            </button>
+        </div>
+
+        <div className="fixed inset-0 opacity-40 pointer-events-none">
           <img src={lecture.imageUrl} alt="Background" className="w-full h-full object-cover filter blur-sm scale-110 animate-pulse" style={{ animationDuration: '10s' }}/>
         </div>
-        <div className="fixed inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_black_90%)] pointer-events-none" />
+        <div className="fixed inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(0,0,0,0.4)_100%)] pointer-events-none" />
 
         {/* Content Wrapper */}
         <div className="relative min-h-full flex items-center justify-center p-6">
-          <div className="relative z-10 max-w-6xl w-full flex flex-col lg:flex-row gap-8 lg:gap-16 items-center animate-in fade-in zoom-in duration-500 py-10 lg:py-0">
+          <div 
+            style={{ zoom: zoomLevel }}
+            className="relative z-10 max-w-6xl w-full flex flex-col lg:flex-row gap-8 lg:gap-16 items-center animate-in fade-in zoom-in duration-500 py-10 lg:py-0"
+          >
             
             {/* Mission Details */}
             <div className="flex-1 text-center lg:text-left space-y-6 w-full">
@@ -328,19 +358,19 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack, tutor
             </div>
 
             {/* Mission Card */}
-            <div className="w-full max-w-md bg-black/60 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-2xl relative overflow-hidden group">
+            <div className="w-full max-w-md bg-black/50 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-2xl relative overflow-hidden group">
               <div className={`absolute top-0 left-0 w-full h-1 ${theme.buttonBg}`} />
               
-              <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6 flex items-center">
-                <Target className="w-4 h-4 mr-2" /> 
+              <h3 className="text-base font-bold text-slate-400 uppercase tracking-widest mb-6 flex items-center">
+                <Target className="w-5 h-5 mr-2" /> 
                 Mission Competencies
               </h3>
               
               <ul className="space-y-4 mb-10">
                 {lecture.competencies.slice(0, 3).map((comp, i) => (
-                  <li key={i} className="flex items-start text-sm text-slate-200">
-                    <div className={`mt-1.5 mr-3 w-1.5 h-1.5 rounded-full ${theme.buttonBg} shadow-[0_0_8px_currentColor] flex-shrink-0`} />
-                    <span className="leading-snug">{comp}</span>
+                  <li key={i} className="flex items-start text-lg text-slate-200">
+                    <div className={`mt-2 mr-3 w-2 h-2 rounded-full ${theme.buttonBg} shadow-[0_0_8px_currentColor] flex-shrink-0`} />
+                    <span className="leading-snug font-medium">{comp}</span>
                   </li>
                 ))}
               </ul>
@@ -420,8 +450,8 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack, tutor
         )}
 
         {/* TOP BAR - ALWAYS VISIBLE */}
-        <div className="flex-none flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 bg-black/20 border-b border-white/5 backdrop-blur-sm z-20">
-          <button onClick={onBack} className="group flex items-center text-slate-400 hover:text-white transition-colors font-medium">
+        <div className="flex-none flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 bg-black/10 border-b border-white/5 backdrop-blur-sm z-20">
+          <button onClick={onBack} className="group flex items-center text-slate-300 hover:text-white transition-colors font-medium">
             <div className="p-1.5 bg-white/5 rounded-lg border border-white/10 shadow-sm mr-2 sm:mr-3 group-hover:bg-white/10">
               <ArrowLeft className="w-4 h-4" />
             </div>
@@ -430,14 +460,34 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack, tutor
           </button>
 
           <div className="flex items-center space-x-3">
+              {/* Zoom Controls */}
+              <div className="flex items-center bg-black/20 border border-white/10 rounded-full px-3 py-1.5 mr-2">
+                 <button onClick={resetZoom} className="pr-3 border-r border-white/10 text-slate-400 hover:text-white transition-colors flex items-center" title="Reset Zoom">
+                    <RotateCcw className="w-4 h-4" />
+                 </button>
+                 <div className="flex items-center pl-3">
+                    <ZoomIn className="w-4 h-4 text-slate-300 mr-2" />
+                    <input 
+                      type="range" 
+                      min="0.8" 
+                      max="1.5" 
+                      step="0.1" 
+                      value={zoomLevel} 
+                      onChange={(e) => setZoomLevel(parseFloat(e.target.value))}
+                      className="w-24 h-1.5 bg-slate-600 rounded-lg appearance-none cursor-pointer accent-white"
+                      title="Zoom Content"
+                    />
+                 </div>
+              </div>
+
               <button 
                 onClick={toggleFullscreen} 
-                className="p-2 bg-black/40 border border-white/10 rounded-lg hover:bg-white/10 transition-colors text-slate-400 hover:text-white" 
+                className="p-2 bg-black/20 border border-white/10 rounded-lg hover:bg-white/10 transition-colors text-slate-300 hover:text-white" 
                 title={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
               >
                 {isFullscreen ? <Minimize className="w-4 h-4" /> : <Maximize className="w-4 h-4" />}
               </button>
-            <div className={`px-3 py-1 bg-black/40 border border-white/10 rounded text-[10px] font-bold uppercase tracking-wider ${theme.accentColor}`}>
+            <div className={`px-3 py-1 bg-black/20 border border-white/10 rounded text-[10px] font-bold uppercase tracking-wider ${theme.accentColor}`}>
               {lecture.topic} <span className="hidden sm:inline">Protocol</span>
             </div>
           </div>
@@ -455,66 +505,68 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack, tutor
            ref={contentScrollRef}
            onClick={handleContentClick}
         >
-          {activeSlide.type === 'dashboard' ? (
-             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full min-h-min">
-                <div className="bg-black/20 border border-white/10 rounded-3xl p-6 sm:p-8 backdrop-blur-sm lg:col-span-1 h-full overflow-y-auto">
-                    <h2 className={`text-2xl sm:text-3xl font-black uppercase mb-6 ${theme.accentColor} tracking-tight`}>
-                       {activeSlide.title}
-                    </h2>
-                    <div 
-                      className="prose prose-invert prose-lg max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-p:text-slate-300 prose-li:text-slate-300"
-                      dangerouslySetInnerHTML={{ __html: activeSlide.data.content }}
-                    />
-                </div>
+          <div style={{ zoom: zoomLevel }} className="h-full">
+            {activeSlide.type === 'dashboard' ? (
+               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full min-h-min">
+                  <div className="bg-black/10 border border-white/10 rounded-3xl p-6 sm:p-8 backdrop-blur-sm lg:col-span-1 h-full overflow-y-auto">
+                      <h2 className={`text-2xl sm:text-3xl font-black uppercase mb-6 ${theme.accentColor} tracking-tight`}>
+                         {activeSlide.title}
+                      </h2>
+                      <div 
+                        className="prose prose-invert prose-lg max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-p:text-slate-200 prose-li:text-slate-200"
+                        dangerouslySetInnerHTML={{ __html: activeSlide.data.content }}
+                      />
+                  </div>
 
-                <div className="lg:row-span-2 h-full min-h-[400px]">
-                   <QuizComponent questions={lecture.refresherQuiz || []} title="Refresher Quiz" mode="wizard" />
-                </div>
+                  <div className="lg:row-span-2 h-full min-h-[400px]">
+                     <QuizComponent questions={lecture.refresherQuiz || []} title="Refresher Quiz" mode="wizard" />
+                  </div>
 
-                <div className="bg-black/30 border border-white/10 rounded-3xl p-4 sm:p-6 backdrop-blur-sm relative overflow-hidden flex flex-col h-full min-h-[300px]">
-                    <div className="flex items-center justify-between mb-4 z-10">
-                      <h3 className="text-xl font-bold text-white flex items-center">
-                         <Gamepad2 className={`w-5 h-5 mr-2 ${theme.accentColor}`} />
-                         Simulation
-                      </h3>
-                      <span className="text-[10px] uppercase font-bold bg-white/10 px-2 py-1 rounded text-slate-400">Interactive</span>
-                    </div>
-                    
-                    <div className="flex-1 relative z-10">
-                       {lecture.gameType === 'earthquake-sim' && <EarthquakeGame />}
-                       {lecture.gameType === 'flood-choice' && <FloodGame />}
-                       {lecture.gameType === 'none' && (
-                         <div className="flex items-center justify-center h-full text-slate-500 text-sm italic">
-                           No simulation required for this protocol.
-                         </div>
-                       )}
-                    </div>
-                </div>
-             </div>
-          ) : activeSlide.type === 'final-quiz' ? (
-             <div className="w-full h-full flex flex-col items-center justify-start max-w-5xl mx-auto pb-20">
-                 <div className="w-full">
-                    <QuizComponent questions={activeSlide.data} title="Test Your Knowledge" mode="form" />
-                 </div>
-             </div>
-          ) : (
-             <div className="flex flex-col h-full">
-                <div className="flex items-center space-x-3 mb-6 sm:mb-8 opacity-50">
-                   <div className={`w-2 h-2 rounded-full ${theme.buttonBg}`}></div>
-                   <span className="text-xs font-mono uppercase tracking-widest text-slate-400">
-                     Section {activeSlideIndex} / {slides.length - 1}
-                   </span>
-                </div>
+                  <div className="bg-black/20 border border-white/10 rounded-3xl p-4 sm:p-6 backdrop-blur-sm relative overflow-hidden flex flex-col h-full min-h-[300px]">
+                      <div className="flex items-center justify-between mb-4 z-10">
+                        <h3 className="text-xl font-bold text-white flex items-center">
+                           <Gamepad2 className={`w-5 h-5 mr-2 ${theme.accentColor}`} />
+                           Simulation
+                        </h3>
+                        <span className="text-[10px] uppercase font-bold bg-white/10 px-2 py-1 rounded text-slate-300">Interactive</span>
+                      </div>
+                      
+                      <div className="flex-1 relative z-10">
+                         {lecture.gameType === 'earthquake-sim' && <EarthquakeGame />}
+                         {lecture.gameType === 'flood-choice' && <FloodGame />}
+                         {lecture.gameType === 'none' && (
+                           <div className="flex items-center justify-center h-full text-slate-400 text-sm italic">
+                             No simulation required for this protocol.
+                           </div>
+                         )}
+                      </div>
+                  </div>
+               </div>
+            ) : activeSlide.type === 'final-quiz' ? (
+               <div className="w-full h-full flex flex-col items-center justify-start max-w-5xl mx-auto pb-20">
+                   <div className="w-full">
+                      <QuizComponent questions={activeSlide.data} title="Test Your Knowledge" mode="form" />
+                   </div>
+               </div>
+            ) : (
+               <div className="flex flex-col h-full">
+                  <div className="flex items-center space-x-3 mb-6 sm:mb-8 opacity-60">
+                     <div className={`w-2 h-2 rounded-full ${theme.buttonBg}`}></div>
+                     <span className="text-xs font-mono uppercase tracking-widest text-slate-300">
+                       Section {activeSlideIndex} / {slides.length - 1}
+                     </span>
+                  </div>
 
-                <div 
-                  className="prose prose-invert prose-xl md:prose-2xl max-w-none w-full flex-1"
-                  dangerouslySetInnerHTML={{ __html: activeSlide.data.content }}
-                />
-             </div>
-          )}
+                  <div 
+                    className="prose prose-invert prose-xl md:prose-2xl max-w-none w-full flex-1"
+                    dangerouslySetInnerHTML={{ __html: activeSlide.data.content }}
+                  />
+               </div>
+            )}
+          </div>
         </div>
 
-        <div className="flex-none p-4 sm:p-6 bg-black/20 border-t border-white/5 backdrop-blur-sm z-20">
+        <div className="flex-none p-4 sm:p-6 bg-black/10 border-t border-white/5 backdrop-blur-sm z-20">
           <div className="max-w-4xl mx-auto flex items-center justify-between">
             <button
               onClick={handlePrev}
@@ -522,7 +574,7 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack, tutor
               className={`flex items-center px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-bold transition-all ${
                 isFirstSlide 
                   ? 'opacity-0 pointer-events-none' 
-                  : 'bg-white/5 hover:bg-white/10 text-white'
+                  : 'bg-white/10 hover:bg-white/20 text-white'
               }`}
             >
               <ChevronLeft className="w-5 h-5 mr-2" />
@@ -536,7 +588,7 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack, tutor
                    className={`h-1.5 rounded-full transition-all duration-300 ${
                      idx === activeSlideIndex 
                        ? `w-6 sm:w-8 ${theme.buttonBg}` 
-                       : 'w-1.5 sm:w-2 bg-white/20'
+                       : 'w-1.5 sm:w-2 bg-white/30'
                    }`}
                  />
               ))}

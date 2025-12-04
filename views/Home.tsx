@@ -157,6 +157,17 @@ export const Home: React.FC<HomeProps> = ({ onNavigate, tutorialStep, setTutoria
 
       {/* Background Visual Elements */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        
+        {/* Main Background Image */}
+        <div className="absolute inset-0">
+           <img 
+             src="https://i.imgur.com/u8c9kJ7.jpeg" 
+             alt="World Map Background" 
+             className="w-full h-full object-cover opacity-10 filter grayscale contrast-125"
+           />
+           <div className="absolute inset-0 bg-gradient-to-b from-slate-50/90 via-slate-50/80 to-slate-50/90" />
+        </div>
+
         {/* Technical Grid Pattern */}
         <div 
           className="absolute inset-0 opacity-[0.05]" 
