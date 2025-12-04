@@ -113,7 +113,7 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack, tutor
   // Construct Virtual Slides Array
   const slides = useMemo(() => {
     const s: Slide[] = lecture.sections.map((section, index) => ({
-      type: index === 0 ? 'dashboard' : 'content',
+      type: index === 1 ? 'dashboard' : 'content', // Changed from 0 to 1 to move dashboard
       title: section.title,
       data: section
     }));

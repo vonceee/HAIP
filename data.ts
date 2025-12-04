@@ -24,10 +24,44 @@ export const LECTURES: Lecture[] = [
     gameType: 'earthquake-sim',
     sections: [
       {
+        id: 'melc',
+        title: 'Most Essential Learning Competencies',
+        content: `
+          <div class="flex flex-col items-center justify-center min-h-[60vh] py-10">
+             <div class="bg-orange-950/40 border-4 border-orange-500/40 p-10 rounded-[3rem] max-w-5xl w-full text-center backdrop-blur-md shadow-[0_0_60px_rgba(249,115,22,0.2)] hover:scale-[1.02] transition-transform duration-500 group relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-orange-500/10 rounded-full blur-[80px] group-hover:bg-orange-500/20 transition-all"></div>
+                
+                <h3 class="text-3xl md:text-5xl font-russo font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500 uppercase mb-12 drop-shadow-xl tracking-wider">
+                   Most Essential Learning Competencies
+                </h3>
+                
+                <div class="space-y-8 text-left">
+                   <div class="bg-black/30 p-6 rounded-2xl border border-orange-500/20 hover:bg-orange-900/20 transition-colors flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                      <div class="text-xl md:text-2xl text-slate-100 font-chakra font-bold">
+                         Identify various potential earthquake hazards.
+                      </div>
+                      <span class="bg-orange-600 text-white px-4 py-2 rounded-lg font-mono text-sm font-bold tracking-widest shadow-lg whitespace-nowrap">
+                         DRR11/12-If-g-17
+                      </span>
+                   </div>
+
+                   <div class="bg-black/30 p-6 rounded-2xl border border-orange-500/20 hover:bg-orange-900/20 transition-colors flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                      <div class="text-xl md:text-2xl text-slate-100 font-chakra font-bold">
+                         Analyze the effects of the different earthquake hazards.
+                      </div>
+                      <span class="bg-orange-600 text-white px-4 py-2 rounded-lg font-mono text-sm font-bold tracking-widest shadow-lg whitespace-nowrap">
+                         DRR11/12-If-g-19
+                      </span>
+                   </div>
+                </div>
+             </div>
+          </div>
+        `
+      },
+      {
         id: 'objectives',
         title: 'Learning Objectives',
         content: `
-          <h2 class="text-3xl md:text-4xl font-russo text-orange-500 mb-6 uppercase tracking-wider drop-shadow-md">Course Objectives</h2>
           <div class="bg-white/5 p-6 rounded-xl border-l-4 border-orange-500 hover:bg-white/10 transition-all duration-300 shadow-lg">
             <ul class="space-y-6 text-slate-200 font-chakra text-lg md:text-xl">
               <li class="flex items-center group">
@@ -911,10 +945,35 @@ export const LECTURES: Lecture[] = [
     gameType: 'flood-choice',
     sections: [
       {
+        id: 'melc',
+        title: 'Most Essential Learning Competencies',
+        content: `
+          <div class="flex flex-col items-center justify-center min-h-[60vh] py-10">
+             <div class="bg-cyan-950/40 border-4 border-cyan-500/40 p-10 rounded-[3rem] max-w-5xl w-full text-center backdrop-blur-md shadow-[0_0_60px_rgba(6,182,212,0.2)] hover:scale-[1.02] transition-transform duration-500 group relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-cyan-500/10 rounded-full blur-[80px] group-hover:bg-cyan-500/20 transition-all"></div>
+                
+                <h3 class="text-3xl md:text-5xl font-fredoka font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 uppercase mb-12 drop-shadow-xl tracking-wider">
+                   Most Essential Learning Competencies
+                </h3>
+                
+                <div class="space-y-8 text-left">
+                   <div class="bg-black/30 p-6 rounded-2xl border border-cyan-500/20 hover:bg-cyan-900/20 transition-colors flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                      <div class="text-xl md:text-2xl text-slate-100 font-quicksand font-bold">
+                         Recognize signs of impending hydrometeorological hazards.
+                      </div>
+                      <span class="bg-cyan-600 text-white px-4 py-2 rounded-lg font-mono text-sm font-bold tracking-widest shadow-lg whitespace-nowrap">
+                         DRR11/12-IIc-d-33
+                      </span>
+                   </div>
+                </div>
+             </div>
+          </div>
+        `
+      },
+      {
         id: 'objectives',
         title: 'Learning Objectives',
         content: `
-          <h2 class="text-3xl font-fredoka font-bold text-cyan-400 mb-6 drop-shadow-md">Course Objectives</h2>
           <div class="bg-white/5 p-6 rounded-[2rem] border-2 border-cyan-400/30 hover:border-cyan-400 transition-all duration-500 shadow-lg">
             <ul class="space-y-4 text-slate-200 font-quicksand text-lg font-bold">
                <li class="flex items-center group">
@@ -1164,10 +1223,44 @@ export const LECTURES: Lecture[] = [
     gameType: 'none',
     sections: [
       {
+        id: 'melc',
+        title: 'Most Essential Learning Competencies',
+        content: `
+          <div class="flex flex-col items-center justify-center min-h-[60vh] py-10">
+             <div class="bg-red-950/40 border-4 border-red-500/40 p-10 rounded-[3rem] max-w-5xl w-full text-center backdrop-blur-md shadow-[0_0_60px_rgba(239,68,68,0.2)] hover:scale-[1.02] transition-transform duration-500 group relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-red-500/10 rounded-full blur-[80px] group-hover:bg-red-500/20 transition-all"></div>
+                
+                <h3 class="text-3xl md:text-5xl font-carter font-black text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-500 uppercase mb-12 drop-shadow-xl tracking-wider">
+                   Most Essential Learning Competencies
+                </h3>
+                
+                <div class="space-y-8 text-left">
+                   <div class="bg-black/30 p-6 rounded-2xl border border-red-500/20 hover:bg-red-900/20 transition-colors flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                      <div class="text-xl md:text-2xl text-slate-100 font-signika font-bold">
+                         Explain various volcano-related hazards.
+                      </div>
+                      <span class="bg-red-600 text-white px-4 py-2 rounded-lg font-mono text-sm font-bold tracking-widest shadow-lg whitespace-nowrap">
+                         DRR11/12-Ih-i-22
+                      </span>
+                   </div>
+
+                   <div class="bg-black/30 p-6 rounded-2xl border border-red-500/20 hover:bg-red-900/20 transition-colors flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                      <div class="text-xl md:text-2xl text-slate-100 font-signika font-bold">
+                         Recognize signs of an impending volcanic eruption.
+                      </div>
+                      <span class="bg-red-600 text-white px-4 py-2 rounded-lg font-mono text-sm font-bold tracking-widest shadow-lg whitespace-nowrap">
+                         DRR11/12-Ih-i-24
+                      </span>
+                   </div>
+                </div>
+             </div>
+          </div>
+        `
+      },
+      {
         id: 'objectives',
         title: 'Learning Objectives',
         content: `
-          <h2 class="text-3xl md:text-4xl font-carter font-bold text-red-500 mb-6 drop-shadow-md animate-pulse">Course Objectives</h2>
           <div class="bg-white/5 p-8 rounded-xl border-4 border-red-500/20 hover:border-red-500 hover:rotate-1 transition-all duration-300 shadow-xl">
             <ul class="space-y-6 text-slate-200 font-signika text-xl">
                <li class="flex items-center group"><svg class="w-8 h-8 text-red-500 mr-4 group-hover:scale-125 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>Explain various volcano-related hazards</li>
