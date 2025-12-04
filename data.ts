@@ -1,5 +1,3 @@
-
-
 import { Lecture, EQStep, FloodScenario } from './types';
 
 export const LECTURES: Lecture[] = [
@@ -8,7 +6,7 @@ export const LECTURES: Lecture[] = [
     title: 'Earthquake Hazards & Effects',
     description: 'A comprehensive guide to primary and secondary earthquake hazards, including ground shaking, liquefaction, and tsunamis.',
     topic: 'Earthquake',
-    imageUrl: 'https://picsum.photos/seed/quake/800/400',
+    imageUrl: 'https://i.imgur.com/uI1W4uP.jpeg',
     readTime: 10,
     difficulty: 'Intermediate',
     objectives: [
@@ -864,7 +862,7 @@ export const LECTURES: Lecture[] = [
     title: 'Hydrometeorological Hazards',
     description: 'Learn about hazards caused by atmospheric, hydrological, or oceanographic processes like cyclones, floods, and droughts.',
     topic: 'Flood',
-    imageUrl: 'https://picsum.photos/seed/flood/800/400',
+    imageUrl: 'https://i.imgur.com/mL67Bpp.jpeg',
     readTime: 12,
     difficulty: 'Beginner',
     objectives: [
@@ -1117,7 +1115,7 @@ export const LECTURES: Lecture[] = [
     title: 'Volcano-Related Hazards',
     description: 'Understand volcanic eruptions, ash fall, lahars, and pyroclastic flows.',
     topic: 'Volcano',
-    imageUrl: 'https://picsum.photos/seed/volcano/800/400',
+    imageUrl: 'https://i.imgur.com/eQVYVP2.jpeg',
     readTime: 15,
     difficulty: 'Advanced',
     objectives: [
@@ -1667,4 +1665,3 @@ export const FLOOD_SCENARIOS: FloodScenario[] = [
     explanation: 'Wait for official "All Clear". Hazards may persist.',
   }
 ];
-

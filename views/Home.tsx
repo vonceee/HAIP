@@ -158,58 +158,49 @@ export const Home: React.FC<HomeProps> = ({ onNavigate, tutorialStep, setTutoria
       {/* Background Visual Elements */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         
-        {/* Main Background Image */}
-        <div className="absolute inset-0">
+        {/* Main Background Image - Layered First (Behind everything) */}
+        <div className="absolute inset-0 z-0">
            <img 
              src="https://i.imgur.com/u8c9kJ7.jpeg" 
              alt="World Map Background" 
-             className="w-full h-full object-cover opacity-10 filter grayscale contrast-125"
+             className="w-full h-full object-cover opacity-80"
            />
-           <div className="absolute inset-0 bg-gradient-to-b from-slate-50/90 via-slate-50/80 to-slate-50/90" />
+           {/* Gradient Overlay reduced to allow colors to show */}
+           <div className="absolute inset-0 bg-gradient-to-b from-slate-50/40 via-transparent to-slate-50/60" />
         </div>
-
-        {/* Technical Grid Pattern */}
-        <div 
-          className="absolute inset-0 opacity-[0.05]" 
-          style={{ 
-            backgroundImage: `linear-gradient(to right, #475569 1px, transparent 1px),
-                              linear-gradient(to bottom, #475569 1px, transparent 1px)`,
-            backgroundSize: '40px 40px' 
-          }} 
-        />
         
-        {/* Ambient Animated Gradient Blobs */}
-        <div className="absolute top-[-10%] right-[-10%] w-[800px] h-[800px] bg-blue-500/10 rounded-full blur-[100px] animate-blob" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-orange-500/10 rounded-full blur-[100px] animate-blob animation-delay-2000" />
-        <div className="absolute top-[30%] left-[20%] w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-[80px] animate-blob animation-delay-4000" />
+        {/* Ambient Animated Gradient Blobs - Layered Third */}
+        <div className="absolute top-[-10%] right-[-10%] w-[800px] h-[800px] bg-blue-500/10 rounded-full blur-[100px] animate-blob z-10 mix-blend-overlay" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-orange-500/10 rounded-full blur-[100px] animate-blob animation-delay-2000 z-10 mix-blend-overlay" />
+        <div className="absolute top-[30%] left-[20%] w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-[80px] animate-blob animation-delay-4000 z-10 mix-blend-overlay" />
 
-        {/* Drifting Particles */}
-        <div className="absolute top-[60%] left-[10%] w-2 h-2 bg-slate-400 rounded-full animate-drift opacity-0" />
-        <div className="absolute top-[40%] right-[20%] w-3 h-3 bg-blue-400 rounded-full animate-drift animation-delay-2000 opacity-0" />
-        <div className="absolute top-[80%] left-[40%] w-1.5 h-1.5 bg-orange-400 rounded-full animate-drift animation-delay-6000 opacity-0" />
+        {/* Drifting Particles - Layered Fourth */}
+        <div className="absolute top-[60%] left-[10%] w-2 h-2 bg-slate-400 rounded-full animate-drift opacity-0 z-10" />
+        <div className="absolute top-[40%] right-[20%] w-3 h-3 bg-blue-400 rounded-full animate-drift animation-delay-2000 opacity-0 z-10" />
+        <div className="absolute top-[80%] left-[40%] w-1.5 h-1.5 bg-orange-400 rounded-full animate-drift animation-delay-6000 opacity-0 z-10" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Hero / Dashboard Header */}
-        <div className="flex flex-col md:flex-row items-end justify-between mb-12 border-b-2 border-slate-200 pb-8">
+        {/* Hero / Dashboard Header - Refined Card */}
+        <div className="flex flex-col md:flex-row items-end justify-between mb-12 bg-white/80 backdrop-blur-md rounded-3xl p-8 shadow-xl border border-white/40">
           <div className="w-full md:w-auto">
-            <div className="flex items-center text-brand-600 font-bold tracking-widest text-xs uppercase mb-2">
+            <div className="flex items-center text-brand-700 font-bold tracking-widest text-xs uppercase mb-3">
               <Shield className="w-4 h-4 mr-2" />
               Disaster Preparedness Training
             </div>
-            <h1 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter uppercase relative leading-tight">
+            <h1 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter uppercase relative leading-tight drop-shadow-sm">
               <span className="relative z-10">Hazard Awareness Interactive Portal</span>
               <div className="absolute -bottom-2 left-0 w-1/3 h-3 bg-brand-200/50 -skew-x-12 -z-10" />
             </h1>
-            <p className="text-slate-500 mt-4 text-lg max-w-xl">
+            <p className="text-slate-700 mt-4 text-lg max-w-xl font-medium leading-relaxed">
               Select a learning module below to access comprehensive lessons, simulations, and safety protocols designed to build disaster resilience.
             </p>
           </div>
           
           <div className="flex items-center gap-4 mt-6 md:mt-0 self-end">
-             <div className="hidden md:block text-right pl-4 border-l border-slate-200">
-                <div className="text-3xl font-bold text-slate-300 leading-none">{LECTURES.length}</div>
-                <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Active Modules</div>
+             <div className="hidden md:block text-right pl-6 border-l-2 border-slate-200">
+                <div className="text-4xl font-black text-brand-600 leading-none">{LECTURES.length}</div>
+                <div className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-1">Active Modules</div>
              </div>
           </div>
         </div>
@@ -217,7 +208,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate, tutorialStep, setTutoria
         {/* Controls Bar - HIGHLIGHTED IN STEP 1 */}
         <div 
           ref={controlsRef}
-          className={`flex flex-col md:flex-row gap-4 mb-10 items-center justify-between bg-white/80 backdrop-blur-sm p-2 rounded-2xl shadow-sm border border-slate-200 transition-all duration-500 ${tutorialStep === 1 ? 'relative z-[70] ring-4 ring-brand-500/50 scale-[1.02] shadow-[0_0_50px_rgba(14,165,233,0.3)] bg-white' : ''}`}
+          className={`flex flex-col md:flex-row gap-4 mb-10 items-center justify-between bg-white/80 backdrop-blur-sm p-3 rounded-2xl shadow-sm border border-slate-200/60 transition-all duration-500 ${tutorialStep === 1 ? 'relative z-[70] ring-4 ring-brand-500/50 scale-[1.02] shadow-[0_0_50px_rgba(14,165,233,0.3)] bg-white' : ''}`}
         >
           {tutorialStep === 1 && (
              <div className="absolute -top-16 left-1/2 -translate-x-1/2 z-[80] flex flex-col items-center animate-bounce">
@@ -232,10 +223,10 @@ export const Home: React.FC<HomeProps> = ({ onNavigate, tutorialStep, setTutoria
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5" />
             <input
               type="text"
-              placeholder="Search missions..."
+              placeholder="Search Hazards..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 bg-slate-50 border-none rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all font-medium"
+              className="w-full pl-12 pr-4 py-3 bg-slate-50 border-none rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all font-medium placeholder-slate-400"
             />
           </div>
 
@@ -247,7 +238,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate, tutorialStep, setTutoria
                 className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all whitespace-nowrap uppercase tracking-wide ${
                   selectedTopic === topic 
                     ? 'bg-slate-900 text-white shadow-lg transform scale-105' 
-                    : 'bg-transparent text-slate-500 hover:bg-slate-100 hover:text-slate-900'
+                    : 'bg-transparent text-slate-600 hover:bg-white/50 hover:text-slate-900'
                 }`}
               >
                 {topic}
@@ -287,7 +278,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate, tutorialStep, setTutoria
               ))}
             </div>
           ) : (
-            <div className="flex flex-col items-center justify-center py-20 bg-slate-50/50 backdrop-blur-sm rounded-3xl border-2 border-dashed border-slate-300">
+            <div className="flex flex-col items-center justify-center py-20 bg-white/60 backdrop-blur-sm rounded-3xl border-2 border-dashed border-slate-300 shadow-sm">
               <Target className="w-16 h-16 text-slate-300 mb-4" />
               <p className="text-slate-500 text-lg font-medium">No missions found matching criteria.</p>
               <button 
