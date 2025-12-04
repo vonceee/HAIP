@@ -4,11 +4,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HAIP - Hazard Awareness</title>
+    
+    <!-- Google Fonts Import -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Carter+One&family=Chakra+Petch:wght@300;400;600;700&family=Fredoka:wght@300;400;600;700&family=Outfit:wght@300;400;700;900&family=Quicksand:wght@300;400;600;700&family=Russo+One&family=Signika+Negative:wght@300;400;600;700&display=swap" rel="stylesheet">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
+            fontFamily: {
+              sans: ['Outfit', 'sans-serif'],
+              // Earthquake Theme
+              russo: ['"Russo One"', 'sans-serif'],
+              chakra: ['"Chakra Petch"', 'sans-serif'],
+              // Flood Theme
+              fredoka: ['"Fredoka"', 'sans-serif'],
+              quicksand: ['"Quicksand"', 'sans-serif'],
+              // Volcano Theme
+              carter: ['"Carter One"', 'cursive'],
+              signika: ['"Signika Negative"', 'sans-serif'],
+            },
             colors: {
               brand: {
                 50: '#f0f9ff',
@@ -70,7 +88,7 @@
 }
 </script>
 </head>
-  <body class="bg-slate-50 text-slate-900 antialiased">
+  <body class="bg-slate-50 text-slate-900 antialiased font-sans">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>
