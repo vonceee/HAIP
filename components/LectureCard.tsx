@@ -1,6 +1,8 @@
+
 import React from 'react';
 import { Lecture } from '../types';
 import { Clock, BarChart, ChevronRight, Gamepad2, PlayCircle } from 'lucide-react';
+import { ImageWithLoader } from './ImageWithLoader';
 
 interface LectureCardProps {
   lecture: Lecture;
@@ -33,22 +35,23 @@ export const LectureCard: React.FC<LectureCardProps> = ({ lecture, onClick }) =>
       <div className={`h-1.5 w-full ${TOPIC_STYLES[lecture.topic] || TOPIC_STYLES.General}`} />
 
       {/* Image Container */}
-      <div className="relative h-48 overflow-hidden bg-slate-900">
-        <img 
+      <div className="relative h-48 bg-slate-900">
+        <ImageWithLoader 
           src={lecture.imageUrl} 
           alt={lecture.title}
+          containerClassName="w-full h-full"
           className="w-full h-full object-cover opacity-90 group-hover:opacity-60 group-hover:scale-110 transition-all duration-700"
         />
         
         {/* Play Overlay (Visible on Hover) */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 pointer-events-none">
           <div className="bg-white/20 backdrop-blur-sm p-3 rounded-full border border-white/50 shadow-lg scale-75 group-hover:scale-100 transition-transform duration-300">
              <PlayCircle className="w-10 h-10 text-white fill-current" />
           </div>
         </div>
 
         {/* Topic Badge */}
-        <div className="absolute top-4 left-4">
+        <div className="absolute top-4 left-4 z-10">
           <span className="bg-black/80 backdrop-blur-md text-white px-3 py-1 rounded text-[10px] font-bold uppercase tracking-widest border border-white/10 shadow-lg">
             {lecture.topic}
           </span>
@@ -56,7 +59,7 @@ export const LectureCard: React.FC<LectureCardProps> = ({ lecture, onClick }) =>
 
         {/* Game Indicator */}
         {lecture.gameType !== 'none' && (
-          <div className="absolute bottom-4 right-4 bg-emerald-500 text-white p-1.5 rounded shadow-lg animate-pulse" title="Simulation Active">
+          <div className="absolute bottom-4 right-4 bg-emerald-500 text-white p-1.5 rounded shadow-lg animate-pulse z-10" title="Simulation Active">
             <Gamepad2 className="w-4 h-4" />
           </div>
         )}

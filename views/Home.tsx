@@ -4,6 +4,7 @@ import { LECTURES } from '../data';
 import { LectureCard } from '../components/LectureCard';
 import { Search, Shield, Target, ChevronRight, X, ArrowDown, MousePointer } from 'lucide-react';
 import { HazardTopic } from '../types';
+import { ImageWithLoader } from '../components/ImageWithLoader';
 
 interface HomeProps {
   onNavigate: (lectureId: string) => void;
@@ -160,9 +161,10 @@ export const Home: React.FC<HomeProps> = ({ onNavigate, tutorialStep, setTutoria
         
         {/* Main Background Image - Layered First (Behind everything) */}
         <div className="absolute inset-0 z-0">
-           <img 
+           <ImageWithLoader 
              src="https://i.imgur.com/u8c9kJ7.jpeg" 
              alt="World Map Background" 
+             containerClassName="w-full h-full"
              className="w-full h-full object-cover opacity-80"
            />
            {/* Gradient Overlay reduced to allow colors to show */}

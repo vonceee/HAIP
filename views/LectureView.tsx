@@ -5,6 +5,7 @@ import { ArrowLeft, BrainCircuit, Gamepad2, Clock, ChevronRight, ChevronLeft, Ta
 import { QuizComponent } from '../components/QuizComponent';
 import { EarthquakeGame } from '../components/games/EarthquakeGame';
 import { FloodGame } from '../components/games/FloodGame';
+import { ImageWithLoader } from '../components/ImageWithLoader';
 
 interface LectureViewProps {
   lecture: Lecture;
@@ -113,7 +114,7 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack, tutor
   // Construct Virtual Slides Array
   const slides = useMemo(() => {
     const s: Slide[] = lecture.sections.map((section, index) => ({
-      type: index === 1 ? 'dashboard' : 'content', // Changed from 0 to 1 to move dashboard
+      type: index === 1 ? 'dashboard' : 'content',
       title: section.title,
       data: section
     }));
@@ -139,6 +140,40 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack, tutor
       contentScrollRef.current.scrollTop = 0;
     }
   }, [activeSlideIndex]);
+
+  // Handle injected content image loading
+  useEffect(() => {
+    // Small delay to ensure DOM is ready
+    const timer = setTimeout(() => {
+      if (contentScrollRef.current) {
+        const images = contentScrollRef.current.querySelectorAll('img');
+        
+        images.forEach((img) => {
+          if (img.complete) return; // Already loaded
+
+          // Add loading state classes
+          img.style.opacity = '0';
+          img.style.transition = 'opacity 0.5s ease-in-out';
+          
+          const parent = img.parentElement;
+          if (parent) {
+             parent.classList.add('animate-pulse', 'bg-white/10');
+          }
+
+          const handleLoad = () => {
+             img.style.opacity = '1';
+             if (parent) {
+               parent.classList.remove('animate-pulse', 'bg-white/10');
+             }
+          };
+
+          img.addEventListener('load', handleLoad);
+        });
+      }
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [activeSlideIndex, slides]);
 
   useEffect(() => {
     const handleFullscreenChange = () => {
@@ -277,7 +312,13 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack, tutor
         </div>
 
         <div className="fixed inset-0 opacity-40 pointer-events-none">
-          <img src={lecture.imageUrl} alt="Background" className="w-full h-full object-cover filter blur-sm scale-110 animate-pulse" style={{ animationDuration: '10s' }}/>
+          <ImageWithLoader 
+             src={lecture.imageUrl} 
+             alt="Background" 
+             containerClassName="w-full h-full"
+             className="w-full h-full object-cover filter blur-sm scale-110 animate-pulse" 
+             style={{ animationDuration: '10s' }}
+           />
         </div>
         <div className="fixed inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(0,0,0,0.4)_100%)] pointer-events-none" />
 
@@ -396,24 +437,39 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack, tutor
   return (
     <div 
       ref={containerRef}
-      className={`h-screen supports-[height:100dvh]:h-[100dvh] w-full flex flex-col bg-gradient-to-br ${theme.bgGradient} text-white font-sans overflow-hidden`}
+      className={`h-screen supports-[height:100dvh]:h-[100dvh] w-full flex flex-col bg-gradient-to-br ${theme.bgGradient} text-white font-sans overflow-hidden relative`}
     >
+        {/* Background Layers (Persistent from Start Menu) */}
+        <div className="absolute inset-0 z-0">
+             <div className="absolute inset-0 opacity-40 pointer-events-none">
+                <ImageWithLoader 
+                    src={lecture.imageUrl} 
+                    alt="Background" 
+                    containerClassName="w-full h-full"
+                    className="w-full h-full object-cover filter blur-sm scale-110 animate-pulse" 
+                    style={{ animationDuration: '10s' }}
+                />
+            </div>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(0,0,0,0.4)_100%)] pointer-events-none" />
+        </div>
+
         {previewImage && (
           <div className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-200" onClick={() => setPreviewImage(null)}>
              <button className="absolute top-4 right-4 p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors text-white">
                 <X className="w-8 h-8" />
              </button>
-             <img 
+             <ImageWithLoader 
                src={previewImage} 
                alt="Preview" 
-               className="max-h-[90vh] max-w-[90vw] object-contain rounded-lg shadow-2xl ring-1 ring-white/10"
-               onClick={(e) => e.stopPropagation()} 
+               containerClassName="max-h-[90vh] max-w-[90vw] rounded-lg shadow-2xl ring-1 ring-white/10"
+               className="max-h-[90vh] max-w-[90vw] object-contain"
+               onClick={(e: React.MouseEvent) => e.stopPropagation()} 
              />
           </div>
         )}
 
         {/* TOP BAR - ALWAYS VISIBLE */}
-        <div className="flex-none flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 bg-black/10 border-b border-white/5 backdrop-blur-sm z-20">
+        <div className="flex-none flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 bg-black/10 border-b border-white/5 backdrop-blur-sm z-20 relative">
           <button onClick={onBack} className="group flex items-center text-slate-300 hover:text-white transition-colors font-medium">
             <div className="p-1.5 bg-white/5 rounded-lg border border-white/10 shadow-sm mr-2 sm:mr-3 group-hover:bg-white/10">
               <ArrowLeft className="w-4 h-4" />
@@ -456,7 +512,7 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack, tutor
           </div>
         </div>
 
-        <div className="h-1 bg-white/5 w-full flex-none">
+        <div className="h-1 bg-white/5 w-full flex-none z-20 relative">
           <div 
             className={`h-full ${theme.buttonBg} transition-all duration-300 shadow-[0_0_10px_currentColor]`} 
             style={{ width: `${progressPercent}%` }}
@@ -464,7 +520,7 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack, tutor
         </div>
 
         <div 
-           className="flex-1 overflow-y-auto w-full mx-auto p-4 sm:p-6 lg:p-8 custom-scrollbar px-8 lg:px-12"
+           className="flex-1 overflow-y-auto w-full mx-auto p-4 sm:p-6 lg:p-8 custom-scrollbar px-8 lg:px-12 relative z-10"
            ref={contentScrollRef}
            onClick={handleContentClick}
         >
@@ -535,7 +591,7 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack, tutor
           </div>
         </div>
 
-        <div className="flex-none p-4 sm:p-6 bg-black/10 border-t border-white/5 backdrop-blur-sm z-20">
+        <div className="flex-none p-4 sm:p-6 bg-black/10 border-t border-white/5 backdrop-blur-sm z-20 relative">
           <div className="max-w-4xl mx-auto flex items-center justify-between">
             <button
               onClick={handlePrev}
