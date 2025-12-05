@@ -148,43 +148,6 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack, tutor
     return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
   }, []);
 
-  useEffect(() => {
-    const containers = document.querySelectorAll('.auto-scroll-container');
-    
-    containers.forEach(container => {
-      const el = container as HTMLElement;
-      let scrollInterval: any;
-      let isHovering = false;
-
-      const startScroll = () => {
-        clearInterval(scrollInterval);
-        scrollInterval = setInterval(() => {
-          if (!isHovering) {
-            if (el.scrollTop + el.clientHeight >= el.scrollHeight - 1) {
-              el.scrollTop = 0;
-            } else {
-              el.scrollTop += 1;
-            }
-          }
-        }, 30);
-      };
-
-      const handleMouseEnter = () => { isHovering = true; };
-      const handleMouseLeave = () => { isHovering = false; };
-
-      el.addEventListener('mouseenter', handleMouseEnter);
-      el.addEventListener('mouseleave', handleMouseLeave);
-
-      startScroll();
-
-      return () => {
-        clearInterval(scrollInterval);
-        el.removeEventListener('mouseenter', handleMouseEnter);
-        el.removeEventListener('mouseleave', handleMouseLeave);
-      };
-    });
-  }, [activeSlideIndex]);
-
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) {
       containerRef.current?.requestFullscreen().catch(err => {
@@ -507,39 +470,45 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack, tutor
         >
           <div style={{ zoom: zoomLevel }} className="h-full">
             {activeSlide.type === 'dashboard' ? (
-               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full min-h-min">
-                  <div className="bg-black/10 border border-white/10 rounded-3xl p-6 sm:p-8 backdrop-blur-sm lg:col-span-1 h-full overflow-y-auto">
-                      <h2 className={`text-2xl sm:text-3xl font-black uppercase mb-6 ${theme.accentColor} tracking-tight`}>
-                         {activeSlide.title}
-                      </h2>
-                      <div 
-                        className="prose prose-invert prose-lg max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-p:text-slate-200 prose-li:text-slate-200"
-                        dangerouslySetInnerHTML={{ __html: activeSlide.data.content }}
-                      />
+               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:h-full h-auto min-h-min">
+                  {/* Left Column Container - Explicitly defined to handle Flex distribution */}
+                  <div className="flex flex-col gap-6 lg:h-full h-auto lg:overflow-hidden order-1">
+                      {/* Objectives Section - Flex 1 to take remaining space, min-h-0 to allow scrolling inside */}
+                      <div className="bg-black/10 border border-white/10 rounded-3xl p-6 sm:p-8 backdrop-blur-sm flex-1 overflow-y-auto min-h-[300px] lg:min-h-0">
+                          <h2 className={`text-2xl sm:text-3xl font-black uppercase mb-6 ${theme.accentColor} tracking-tight`}>
+                             {activeSlide.title}
+                          </h2>
+                          <div 
+                            className="prose prose-invert prose-lg max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-p:text-slate-200 prose-li:text-slate-200"
+                            dangerouslySetInnerHTML={{ __html: activeSlide.data.content }}
+                          />
+                      </div>
+
+                      {/* Game Section - Fixed height or natural height */}
+                      <div className="bg-black/20 border border-white/10 rounded-3xl p-4 sm:p-6 backdrop-blur-sm relative overflow-hidden flex flex-col min-h-[350px] flex-none">
+                          <div className="flex items-center justify-between mb-4 z-10">
+                            <h3 className="text-xl font-bold text-white flex items-center">
+                               <Gamepad2 className={`w-5 h-5 mr-2 ${theme.accentColor}`} />
+                               Simulation
+                            </h3>
+                            <span className="text-[10px] uppercase font-bold bg-white/10 px-2 py-1 rounded text-slate-300">Interactive</span>
+                          </div>
+                          
+                          <div className="flex-1 relative z-10">
+                             {lecture.gameType === 'earthquake-sim' && <EarthquakeGame />}
+                             {lecture.gameType === 'flood-choice' && <FloodGame />}
+                             {lecture.gameType === 'none' && (
+                               <div className="flex items-center justify-center h-full text-slate-400 text-sm italic">
+                                 No simulation required for this protocol.
+                               </div>
+                             )}
+                          </div>
+                      </div>
                   </div>
 
-                  <div className="lg:row-span-2 h-full min-h-[400px]">
+                  {/* Right Column - Quiz */}
+                  <div className="lg:h-full h-auto min-h-[500px] lg:overflow-hidden order-2">
                      <QuizComponent questions={lecture.refresherQuiz || []} title="Refresher Quiz" mode="wizard" />
-                  </div>
-
-                  <div className="bg-black/20 border border-white/10 rounded-3xl p-4 sm:p-6 backdrop-blur-sm relative overflow-hidden flex flex-col h-full min-h-[300px]">
-                      <div className="flex items-center justify-between mb-4 z-10">
-                        <h3 className="text-xl font-bold text-white flex items-center">
-                           <Gamepad2 className={`w-5 h-5 mr-2 ${theme.accentColor}`} />
-                           Simulation
-                        </h3>
-                        <span className="text-[10px] uppercase font-bold bg-white/10 px-2 py-1 rounded text-slate-300">Interactive</span>
-                      </div>
-                      
-                      <div className="flex-1 relative z-10">
-                         {lecture.gameType === 'earthquake-sim' && <EarthquakeGame />}
-                         {lecture.gameType === 'flood-choice' && <FloodGame />}
-                         {lecture.gameType === 'none' && (
-                           <div className="flex items-center justify-center h-full text-slate-400 text-sm italic">
-                             No simulation required for this protocol.
-                           </div>
-                         )}
-                      </div>
                   </div>
                </div>
             ) : activeSlide.type === 'final-quiz' ? (
