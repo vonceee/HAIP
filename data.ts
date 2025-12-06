@@ -3,31 +3,31 @@
 import { Lecture, EQStep, FloodScenario } from './types';
 
 export const LECTURES: Lecture[] = [
-  {
-    id: '1',
-    title: 'Earthquake Hazards & Effects',
-    description: 'A comprehensive guide to primary and secondary earthquake hazards, including ground shaking, liquefaction, and tsunamis.',
-    topic: 'Earthquake',
-    imageUrl: 'https://i.imgur.com/uI1W4uP.jpeg',
-    readTime: 10,
-    difficulty: 'Intermediate',
-    objectives: [
-      'Identify various potential earthquake hazards',
-      'Analyze the effects of different earthquake hazards',
-      'Understand the difference between primary and secondary hazards',
-      'Recognize real-world examples of historical earthquake damage'
-    ],
-    competencies: [
-      'Hazard Identification',
-      'Risk Analysis',
-      'Disaster Resilience'
-    ],
-    gameType: 'earthquake-sim',
-    sections: [
-      {
-        id: 'melc',
-        title: 'Most Essential Learning Competencies',
-        content: `
+   {
+      id: '1',
+      title: 'Earthquake Hazards & Effects',
+      description: 'A comprehensive guide to primary and secondary earthquake hazards, including ground shaking, liquefaction, and tsunamis.',
+      topic: 'Earthquake',
+      imageUrl: 'https://i.imgur.com/uI1W4uP.jpeg',
+      readTime: 10,
+      difficulty: 'Intermediate',
+      objectives: [
+         'Identify various potential earthquake hazards',
+         'Analyze the effects of different earthquake hazards',
+         'Understand the difference between primary and secondary hazards',
+         'Recognize real-world examples of historical earthquake damage'
+      ],
+      competencies: [
+         'Hazard Identification',
+         'Risk Analysis',
+         'Disaster Resilience'
+      ],
+      gameType: 'earthquake-sim',
+      sections: [
+         {
+            id: 'melc',
+            title: 'Most Essential Learning Competencies',
+            content: `
           <div class="flex flex-col items-center justify-center min-h-[60vh] py-10">
              <div class="bg-orange-950/40 border-4 border-orange-500/40 p-10 rounded-[3rem] max-w-5xl w-full text-center backdrop-blur-md shadow-[0_0_60px_rgba(249,115,22,0.2)] hover:scale-[1.02] transition-transform duration-500 group relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-64 h-64 bg-orange-500/10 rounded-full blur-[80px] group-hover:bg-orange-500/20 transition-all"></div>
@@ -58,11 +58,11 @@ export const LECTURES: Lecture[] = [
              </div>
           </div>
         `
-      },
-      {
-        id: 'objectives',
-        title: 'Learning Objectives',
-        content: `
+         },
+         {
+            id: 'objectives',
+            title: 'Learning Objectives',
+            content: `
           <div class="bg-white/5 p-6 rounded-xl border-l-4 border-orange-500 hover:bg-white/10 transition-all duration-300 shadow-lg">
             <ul class="space-y-6 text-slate-200 font-chakra text-lg md:text-xl">
               <li class="flex items-center group">
@@ -86,11 +86,11 @@ export const LECTURES: Lecture[] = [
             </ul>
           </div>
         `
-      },
-      {
-        id: 'intro',
-        title: 'Introduction',
-        content: `
+         },
+         {
+            id: 'intro',
+            title: 'Introduction',
+            content: `
           <div class="flex flex-col items-center justify-center min-h-full space-y-4 animate-in fade-in slide-in-from-bottom-8 duration-700 py-4">
             
             <div class="flex flex-col md:flex-row items-center justify-center gap-6 mb-2 group cursor-pointer hover:scale-105 transition-transform duration-500">
@@ -155,11 +155,11 @@ export const LECTURES: Lecture[] = [
             </div>
           </div>
         `
-      },
-      {
-        id: 'primary',
-        title: 'Primary Hazards',
-        content: `
+         },
+         {
+            id: 'primary',
+            title: 'Primary Hazards',
+            content: `
           <div class="flex flex-col space-y-8 animate-in fade-in duration-700 py-6">
             
             <div class="relative z-10">
@@ -259,11 +259,11 @@ export const LECTURES: Lecture[] = [
             </div>
           </div>
         `
-      },
-      {
-        id: 'effects-analysis',
-        title: 'Effects Analysis',
-        content: `
+         },
+         {
+            id: 'effects-analysis',
+            title: 'Effects Analysis',
+            content: `
           <div class="flex flex-col h-full justify-center">
             <h3 class="text-4xl md:text-5xl font-russo font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-600 mb-12 text-center uppercase drop-shadow-md tracking-wider">
               Effects Analysis
@@ -273,7 +273,7 @@ export const LECTURES: Lecture[] = [
               <!-- Card 1: Structural Damage -->
               <div class="group relative bg-black/40 border-2 border-white/10 rounded-3xl overflow-hidden hover:border-orange-500 transition-all duration-500 hover:-translate-y-4 hover:shadow-[0_0_50px_rgba(249,115,22,0.4)] flex flex-col justify-end p-8 cursor-pointer">
                  <div class="absolute inset-0">
-                    <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcSqssC7vXzoyLzNvfkXJ-I4a6d6GDgySXYeqGE9FDJ_gtgHhe6yoCqCQ67Rjm1HpGmylItApk1WFBampNLR7KSKbLH78nIYIalxAvvW1yx0pYBKZSI" alt="Structural Damage" class="w-full h-full object-cover opacity-50 group-hover:scale-110 transition-transform duration-700 group-hover:opacity-80 group-hover:rotate-1" />
+                    <img src="https://i.imgur.com/P2c24Fz.jpeg" alt="Structural Damage" class="w-full h-full object-cover opacity-50 group-hover:scale-110 transition-transform duration-700 group-hover:opacity-80 group-hover:rotate-1" />
                     <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
                  </div>
                  
@@ -293,7 +293,7 @@ export const LECTURES: Lecture[] = [
               <!-- Card 2: Infrastructure Disruption -->
               <div class="group relative bg-black/40 border-2 border-white/10 rounded-3xl overflow-hidden hover:border-red-500 transition-all duration-500 hover:-translate-y-4 hover:shadow-[0_0_50px_rgba(239,68,68,0.4)] flex flex-col justify-end p-8 cursor-pointer">
                  <div class="absolute inset-0">
-                    <img src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcTUF-pc5NFCipNGeotknbGqsge3KLhCSBGbzg52o4ytl05ikW4S3Cs3LEKVnUHaTwI22DbIRPoQDGATQrzf8DQQ4Ss-bowO2ZbUvyDg2c9dtzUHGmo" alt="Infrastructure Disruption" class="w-full h-full object-cover opacity-50 group-hover:scale-110 transition-transform duration-700 group-hover:opacity-80 group-hover:-rotate-1" />
+                    <img src="https://i.imgur.com/pBXuXnF.jpeg" alt="Infrastructure Disruption" class="w-full h-full object-cover opacity-50 group-hover:scale-110 transition-transform duration-700 group-hover:opacity-80 group-hover:-rotate-1" />
                     <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
                  </div>
                  
@@ -313,7 +313,7 @@ export const LECTURES: Lecture[] = [
               <!-- Card 3: Psychological Stress -->
               <div class="group relative bg-black/40 border-2 border-white/10 rounded-3xl overflow-hidden hover:border-purple-500 transition-all duration-500 hover:-translate-y-4 hover:shadow-[0_0_50px_rgba(168,85,247,0.4)] flex flex-col justify-end p-8 cursor-pointer">
                  <div class="absolute inset-0">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrNzSRi1RoYHWvCeqdnt7tQbHFLQkUBxRj_g&s" alt="Psychological Stress" class="w-full h-full object-cover opacity-50 group-hover:scale-110 transition-transform duration-700 group-hover:opacity-80 grayscale group-hover:grayscale-0" />
+                    <img src="https://i.imgur.com/nieyw10.jpeg" alt="Psychological Stress" class="w-full h-full object-cover opacity-50 group-hover:scale-110 transition-transform duration-700 group-hover:opacity-80 grayscale group-hover:grayscale-0" />
                     <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
                  </div>
                  
@@ -332,11 +332,11 @@ export const LECTURES: Lecture[] = [
             </div>
           </div>
         `
-      },
-      {
-        id: 'ground-rupture',
-        title: 'Ground Rupture',
-        content: `
+         },
+         {
+            id: 'ground-rupture',
+            title: 'Ground Rupture',
+            content: `
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start h-auto lg:h-[calc(100vh-250px)] relative pb-10 lg:pb-0">
              <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent hidden lg:block"></div>
 
@@ -441,11 +441,11 @@ export const LECTURES: Lecture[] = [
              </div>
           </div>
         `
-      },
-      {
-        id: 'liquefaction',
-        title: 'Liquefaction',
-        content: `
+         },
+         {
+            id: 'liquefaction',
+            title: 'Liquefaction',
+            content: `
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start h-auto lg:h-[calc(100vh-250px)] relative pb-10 lg:pb-0">
              <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent hidden lg:block"></div>
 
@@ -534,11 +534,11 @@ export const LECTURES: Lecture[] = [
              </div>
           </div>
         `
-      },
-      {
-        id: 'landslides',
-        title: 'Landslides',
-        content: `
+         },
+         {
+            id: 'landslides',
+            title: 'Landslides',
+            content: `
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start h-auto lg:h-[calc(100vh-250px)] relative pb-10 lg:pb-0">
              <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent hidden lg:block"></div>
 
@@ -647,11 +647,11 @@ export const LECTURES: Lecture[] = [
              </div>
           </div>
         `
-      },
-      {
-        id: 'tsunami',
-        title: 'Tsunami',
-        content: `
+         },
+         {
+            id: 'tsunami',
+            title: 'Tsunami',
+            content: `
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start h-auto lg:h-[calc(100vh-250px)] relative pb-10 lg:pb-0">
              <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent hidden lg:block"></div>
 
@@ -723,11 +723,11 @@ export const LECTURES: Lecture[] = [
              </div>
           </div>
         `
-      },
-      {
-        id: 'fire-refs',
-        title: 'Fire & Infra',
-        content: `
+         },
+         {
+            id: 'fire-refs',
+            title: 'Fire & Infra',
+            content: `
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start h-auto lg:h-[calc(100vh-250px)] relative pb-10 lg:pb-0">
              <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent hidden lg:block"></div>
 
@@ -790,165 +790,165 @@ export const LECTURES: Lecture[] = [
              </div>
           </div>
         `
-      }
-    ],
-    refresherQuiz: [
-      {
-        id: 'q1',
-        question: 'Which type of seismic wave causes the most damage to structures?',
-        options: ['P-Waves', 'S-Waves', 'Surface Waves', 'Micro-tremors'],
-        correctAnswer: 2
-      },
-      {
-        id: 'q2',
-        question: 'What is the most effective immediate action during an earthquake?',
-        options: ['Run outside', 'Drop, Cover, and Hold On', 'Stand in a doorway', 'Call emergency services'],
-        correctAnswer: 1
-      },
-      {
-        id: 'q3',
-        question: 'Liquefaction mostly occurs in which type of soil?',
-        options: ['Solid Bedrock', 'Dry Clay', 'Loose, water-saturated sand', 'Compact Gravel'],
-        correctAnswer: 2
-      }
-    ],
-    finalQuiz: [
-      {
-        id: 'fq1',
-        question: 'Your school is located near an active fault line. Scientists detect several minor tremors in the past week. As a student leader, what is the best action your class should take?',
-        options: [
-          'Ignore the tremors since they are small.',
-          'Wait for a government warning before acting.',
-          'Conduct a safety drill and check evacuation routes.',
-          'Continue regular activities since no major quake has happened yet.'
-        ],
-        correctAnswer: 2
-      },
-      {
-        id: 'fq2',
-        question: 'Barangay officials receive a report of unusual ground vibration without an identified source. What should they do first to forecast possible earthquake risks?',
-        options: [
-          'Check social media for rumors.',
-          'Wait for aftershocks.',
-          'Coordinate with PHIVOLCS to verify seismic data.',
-          'Immediately evacuate all residents without confirmation.'
-        ],
-        correctAnswer: 2
-      },
-      {
-        id: 'fq3',
-        question: 'A student reads an online post claiming a major earthquake will occur on a specific date. What is the most accurate way to validate this information?',
-        options: [
-          'Share the post to alert others.',
-          'Check PHIVOLCS or USGS for official forecasts.',
-          'Ask friends if they heard the same news.',
-          'Assume it\'s true since it went viral.'
-        ],
-        correctAnswer: 1
-      },
-      {
-        id: 'fq4',
-        question: 'An earthquake detection app shows a magnitude 4.0 tremor nearby, but your friends say they felt nothing. How can you determine if the report is accurate?',
-        options: [
-          'Delete the app for being unreliable.',
-          'Compare data from other official monitoring centers.',
-          'Believe your friends instead of the app.',
-          'Assume the app has a bug.'
-        ],
-        correctAnswer: 1
-      },
-      {
-        id: 'fq5',
-        question: 'After an earthquake, several areas near rivers experience liquefaction. What caused this phenomenon?',
-        options: [
-          'The river water overflowed due to heavy rain.',
-          'Strong shaking increased water pressure in loose soil.',
-          'The ground fault directly opened under the river.',
-          'Underground lava caused soil movement.'
-        ],
-        correctAnswer: 1
-      },
-      {
-        id: 'fq6',
-        question: 'In a city built on reclaimed land, buildings suffer more damage during an earthquake than those on solid rock. What best explains this difference?',
-        options: [
-          'Reclaimed land has stronger soil.',
-          'Solid rock amplifies seismic waves.',
-          'Soft soil increases shaking intensity.',
-          'Both areas have equal risk.'
-        ],
-        correctAnswer: 2
-      },
-      {
-        id: 'fq7',
-        question: 'PHIVOLCS records a series of small tremors near a volcano over several weeks. What pattern could this indicate?',
-        options: [
-          'The volcano might be entering a rest period.',
-          'A possible larger seismic event or eruption.',
-          'Random natural movements with no risk.',
-          'A decrease in tectonic activity.'
-        ],
-        correctAnswer: 1
-      },
-      {
-        id: 'fq8',
-        question: 'A hazard map shows that areas with soft soil near fault lines experienced more ground rupture in the past. What pattern can you recognize from this data?',
-        options: [
-          'Hard soil areas are more dangerous.',
-          'Fault lines and soft soil together increase hazard risk.',
-          'Distance to the sea affects rupture frequency.',
-          'Past ruptures don’t affect future hazards.'
-        ],
-        correctAnswer: 1
-      },
-      {
-        id: 'fq9',
-        question: 'You are part of the school\'s disaster committee. A mild quake happens while class is ongoing. What is the most appropriate decision?',
-        options: [
-          'Stay seated and continue the lesson.',
-          'Evacuate calmly and follow the earthquake drill procedure.',
-          'Run outside immediately without coordination.',
-          'Wait for aftershocks before moving.'
-        ],
-        correctAnswer: 1
-      },
-      {
-        id: 'fq10',
-        question: 'Your barangay is planning to build new housing near a known fault line. What is the best decision to recommend based on hazard forecasting?',
-        options: [
-          'Approve construction since earthquakes can’t be predicted.',
-          'Continue construction but skip building permits.',
-          'Relocate the site to a safer distance from the fault.',
-          'Ignore hazard maps since they are only estimates.'
-        ],
-        correctAnswer: 2
-      }
-    ]
-  },
-  {
-    id: '2',
-    title: 'Hydrometeorological Hazards',
-    description: 'Learn about hazards caused by atmospheric, hydrological, or oceanographic processes like cyclones, floods, and droughts.',
-    topic: 'Flood',
-    imageUrl: 'https://i.imgur.com/mL67Bpp.jpeg',
-    readTime: 12,
-    difficulty: 'Beginner',
-    objectives: [
-      'Recognize signs of impending hydrometeorological hazards',
-      'Distinguish between natural signs and scientific forecasting',
-      'Understand the impact of floods, cyclones, and storm surges'
-    ],
-    competencies: [
-      'Hazard Recognition',
-      'Early Warning Analysis',
-      'Disaster Preparedness'
-    ],
-    gameType: 'flood-choice',
-    sections: [
-      {
-        id: 'melc',
-        title: 'Most Essential Learning Competencies',
-        content: `
+         }
+      ],
+      refresherQuiz: [
+         {
+            id: 'q1',
+            question: 'Which type of seismic wave causes the most damage to structures?',
+            options: ['P-Waves', 'S-Waves', 'Surface Waves', 'Micro-tremors'],
+            correctAnswer: 2
+         },
+         {
+            id: 'q2',
+            question: 'What is the most effective immediate action during an earthquake?',
+            options: ['Run outside', 'Drop, Cover, and Hold On', 'Stand in a doorway', 'Call emergency services'],
+            correctAnswer: 1
+         },
+         {
+            id: 'q3',
+            question: 'Liquefaction mostly occurs in which type of soil?',
+            options: ['Solid Bedrock', 'Dry Clay', 'Loose, water-saturated sand', 'Compact Gravel'],
+            correctAnswer: 2
+         }
+      ],
+      finalQuiz: [
+         {
+            id: 'fq1',
+            question: 'Your school is located near an active fault line. Scientists detect several minor tremors in the past week. As a student leader, what is the best action your class should take?',
+            options: [
+               'Ignore the tremors since they are small.',
+               'Wait for a government warning before acting.',
+               'Conduct a safety drill and check evacuation routes.',
+               'Continue regular activities since no major quake has happened yet.'
+            ],
+            correctAnswer: 2
+         },
+         {
+            id: 'fq2',
+            question: 'Barangay officials receive a report of unusual ground vibration without an identified source. What should they do first to forecast possible earthquake risks?',
+            options: [
+               'Check social media for rumors.',
+               'Wait for aftershocks.',
+               'Coordinate with PHIVOLCS to verify seismic data.',
+               'Immediately evacuate all residents without confirmation.'
+            ],
+            correctAnswer: 2
+         },
+         {
+            id: 'fq3',
+            question: 'A student reads an online post claiming a major earthquake will occur on a specific date. What is the most accurate way to validate this information?',
+            options: [
+               'Share the post to alert others.',
+               'Check PHIVOLCS or USGS for official forecasts.',
+               'Ask friends if they heard the same news.',
+               'Assume it\'s true since it went viral.'
+            ],
+            correctAnswer: 1
+         },
+         {
+            id: 'fq4',
+            question: 'An earthquake detection app shows a magnitude 4.0 tremor nearby, but your friends say they felt nothing. How can you determine if the report is accurate?',
+            options: [
+               'Delete the app for being unreliable.',
+               'Compare data from other official monitoring centers.',
+               'Believe your friends instead of the app.',
+               'Assume the app has a bug.'
+            ],
+            correctAnswer: 1
+         },
+         {
+            id: 'fq5',
+            question: 'After an earthquake, several areas near rivers experience liquefaction. What caused this phenomenon?',
+            options: [
+               'The river water overflowed due to heavy rain.',
+               'Strong shaking increased water pressure in loose soil.',
+               'The ground fault directly opened under the river.',
+               'Underground lava caused soil movement.'
+            ],
+            correctAnswer: 1
+         },
+         {
+            id: 'fq6',
+            question: 'In a city built on reclaimed land, buildings suffer more damage during an earthquake than those on solid rock. What best explains this difference?',
+            options: [
+               'Reclaimed land has stronger soil.',
+               'Solid rock amplifies seismic waves.',
+               'Soft soil increases shaking intensity.',
+               'Both areas have equal risk.'
+            ],
+            correctAnswer: 2
+         },
+         {
+            id: 'fq7',
+            question: 'PHIVOLCS records a series of small tremors near a volcano over several weeks. What pattern could this indicate?',
+            options: [
+               'The volcano might be entering a rest period.',
+               'A possible larger seismic event or eruption.',
+               'Random natural movements with no risk.',
+               'A decrease in tectonic activity.'
+            ],
+            correctAnswer: 1
+         },
+         {
+            id: 'fq8',
+            question: 'A hazard map shows that areas with soft soil near fault lines experienced more ground rupture in the past. What pattern can you recognize from this data?',
+            options: [
+               'Hard soil areas are more dangerous.',
+               'Fault lines and soft soil together increase hazard risk.',
+               'Distance to the sea affects rupture frequency.',
+               'Past ruptures don’t affect future hazards.'
+            ],
+            correctAnswer: 1
+         },
+         {
+            id: 'fq9',
+            question: 'You are part of the school\'s disaster committee. A mild quake happens while class is ongoing. What is the most appropriate decision?',
+            options: [
+               'Stay seated and continue the lesson.',
+               'Evacuate calmly and follow the earthquake drill procedure.',
+               'Run outside immediately without coordination.',
+               'Wait for aftershocks before moving.'
+            ],
+            correctAnswer: 1
+         },
+         {
+            id: 'fq10',
+            question: 'Your barangay is planning to build new housing near a known fault line. What is the best decision to recommend based on hazard forecasting?',
+            options: [
+               'Approve construction since earthquakes can’t be predicted.',
+               'Continue construction but skip building permits.',
+               'Relocate the site to a safer distance from the fault.',
+               'Ignore hazard maps since they are only estimates.'
+            ],
+            correctAnswer: 2
+         }
+      ]
+   },
+   {
+      id: '2',
+      title: 'Hydrometeorological Hazards',
+      description: 'Learn about hazards caused by atmospheric, hydrological, or oceanographic processes like cyclones, floods, and droughts.',
+      topic: 'Flood',
+      imageUrl: 'https://i.imgur.com/mL67Bpp.jpeg',
+      readTime: 12,
+      difficulty: 'Beginner',
+      objectives: [
+         'Recognize signs of impending hydrometeorological hazards',
+         'Distinguish between natural signs and scientific forecasting',
+         'Understand the impact of floods, cyclones, and storm surges'
+      ],
+      competencies: [
+         'Hazard Recognition',
+         'Early Warning Analysis',
+         'Disaster Preparedness'
+      ],
+      gameType: 'flood-choice',
+      sections: [
+         {
+            id: 'melc',
+            title: 'Most Essential Learning Competencies',
+            content: `
           <div class="flex flex-col items-center justify-center min-h-[60vh] py-10">
              <div class="bg-cyan-950/40 border-4 border-cyan-500/40 p-10 rounded-[3rem] max-w-5xl w-full text-center backdrop-blur-md shadow-[0_0_60px_rgba(6,182,212,0.2)] hover:scale-[1.02] transition-transform duration-500 group relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-64 h-64 bg-cyan-500/10 rounded-full blur-[80px] group-hover:bg-cyan-500/20 transition-all"></div>
@@ -970,11 +970,11 @@ export const LECTURES: Lecture[] = [
              </div>
           </div>
         `
-      },
-      {
-        id: 'objectives',
-        title: 'Learning Objectives',
-        content: `
+         },
+         {
+            id: 'objectives',
+            title: 'Learning Objectives',
+            content: `
           <div class="bg-white/5 p-6 rounded-[2rem] border-2 border-cyan-400/30 hover:border-cyan-400 transition-all duration-500 shadow-lg">
             <ul class="space-y-4 text-slate-200 font-quicksand text-lg font-bold">
                <li class="flex items-center group">
@@ -988,11 +988,11 @@ export const LECTURES: Lecture[] = [
             </ul>
           </div>
         `
-      },
-      {
-        id: 'intro',
-        title: 'Introduction',
-        content: `
+         },
+         {
+            id: 'intro',
+            title: 'Introduction',
+            content: `
           <div class="flex flex-col items-center justify-center min-h-full py-10">
             <div class="bg-cyan-950/40 border-4 border-cyan-500/20 p-8 rounded-[3rem] max-w-4xl w-full text-center backdrop-blur-md shadow-2xl hover:scale-105 transition-transform duration-700">
                <h3 class="text-4xl md:text-6xl font-fredoka font-black text-cyan-400 mb-8 uppercase tracking-wide drop-shadow-lg">Hydrometeorological Hazards</h3>
@@ -1009,11 +1009,11 @@ export const LECTURES: Lecture[] = [
             </div>
           </div>
         `
-      },
-      {
-        id: 'cyclone-natural',
-        title: 'Tropical Cyclone (Natural)',
-        content: `
+         },
+         {
+            id: 'cyclone-natural',
+            title: 'Tropical Cyclone (Natural)',
+            content: `
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start h-auto lg:h-[calc(100vh-250px)] relative pb-10 lg:pb-0">
              <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent hidden lg:block"></div>
 
@@ -1076,11 +1076,11 @@ export const LECTURES: Lecture[] = [
              </div>
           </div>
         `
-      },
-      {
-        id: 'cyclone-scientific',
-        title: 'Tropical Cyclone (Scientific)',
-        content: `
+         },
+         {
+            id: 'cyclone-scientific',
+            title: 'Tropical Cyclone (Scientific)',
+            content: `
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start h-auto lg:h-[calc(100vh-250px)] relative pb-10 lg:pb-0">
              <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent hidden lg:block"></div>
 
@@ -1160,11 +1160,11 @@ export const LECTURES: Lecture[] = [
              </div>
           </div>
         `
-      },
-      {
-        id: 'flood-natural',
-        title: 'Flood (Natural)',
-        content: `
+         },
+         {
+            id: 'flood-natural',
+            title: 'Flood (Natural)',
+            content: `
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start h-auto lg:h-[calc(100vh-250px)] relative pb-10 lg:pb-0">
              <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent hidden lg:block"></div>
 
@@ -1191,19 +1191,50 @@ export const LECTURES: Lecture[] = [
                 </div>
              </div>
 
-             <div class="h-96 lg:h-full relative overflow-hidden rounded-[2rem] bg-black/20 border border-white/5 group/scroller flex items-center justify-center">
-                 <div class="text-center p-8">
-                    <Waves className="w-24 h-24 text-blue-500 mx-auto mb-6 opacity-80" />
-                    <p className="text-xl text-slate-400 font-quicksand font-bold">Observing the environment is the first step in flood preparedness.</p>
+              <div class="h-96 lg:h-full relative overflow-hidden rounded-[2rem] bg-black/20 border border-white/5 group/scroller overflow-y-auto custom-scrollbar">
+                 <div class="space-y-6 px-4 py-6">
+                    <div class="bg-white/5 border-2 border-white/10 rounded-[2rem] overflow-hidden hover:bg-white/10 transition-colors group/image cursor-pointer relative shadow-lg hover:border-cyan-400">
+                        <div class="h-56 overflow-hidden relative">
+                           <img src="https://i.imgur.com/1AxYlwJ.jpeg" alt="Satellite Image" class="w-full h-full object-cover transform group-hover/image:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
+                           <a href="https://www.youtube.com/watch?v=EwNe89zYEgM" target="_blank" rel="noopener noreferrer" class="absolute top-2 right-2 bg-white text-black p-3 rounded-full opacity-0 group-hover/image:opacity-100 transition-all z-20 hover:scale-110 hover:rotate-12 shadow-xl border-2 border-cyan-500" title="View Source">
+                              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg>
+                           </a>
+                        </div>
+                        <div class="p-4">
+                           <p class="text-base text-slate-200 font-bold mb-1 font-quicksand">Several motorcyclists seen navigating through a flooded street</p>
+                        </div>
+                    </div>
+                    <div class="bg-white/5 border-2 border-white/10 rounded-[2rem] overflow-hidden hover:bg-white/10 transition-colors group/image cursor-pointer relative shadow-lg hover:border-cyan-400">
+                        <div class="h-56 overflow-hidden relative">
+                           <img src="https://i.imgur.com/psv8mUn.jpeg" alt="Wind Signals" class="w-full h-full object-cover transform group-hover/image:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
+                           <a href="https://www.youtube.com/watch?v=A3Zx8wEwhCU" target="_blank" rel="noopener noreferrer" class="absolute top-2 right-2 bg-white text-black p-3 rounded-full opacity-0 group-hover/image:opacity-100 transition-all z-20 hover:scale-110 hover:rotate-12 shadow-xl border-2 border-cyan-500" title="View Source">
+                              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg>
+                           </a>
+                        </div>
+                        <div class="p-4">
+                           <p class="text-base text-slate-200 font-bold mb-1 font-quicksand">Flooded city street during a rainstorm.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white/5 border-2 border-white/10 rounded-[2rem] overflow-hidden hover:bg-white/10 transition-colors group/image cursor-pointer relative shadow-lg hover:border-cyan-400">
+                        <div class="h-56 overflow-hidden relative">
+                           <img src="https://i.imgur.com/XRkStTg.jpeg" alt="Wind Signals Info" class="w-full h-full object-cover transform group-hover/image:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
+                           <a href="https://www.youtube.com/watch?v=BhgtcMoLGok" target="_blank" rel="noopener noreferrer" class="absolute top-2 right-2 bg-white text-black p-3 rounded-full opacity-0 group-hover/image:opacity-100 transition-all z-20 hover:scale-110 hover:rotate-12 shadow-xl border-2 border-cyan-500" title="View Source">
+                              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg>
+                           </a>
+                        </div>
+                        <div class="p-4">
+                           <p class="text-base text-slate-200 font-bold mb-1 font-quicksand">Heavily flooded open space.</p>
+                        </div>
+                    </div>
                  </div>
              </div>
           </div>
         `
-      },
-      {
-        id: 'flood-scientific',
-        title: 'Flood (Scientific)',
-        content: `
+         },
+         {
+            id: 'flood-scientific',
+            title: 'Flood (Scientific)',
+            content: `
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start h-auto lg:h-[calc(100vh-250px)] relative pb-10 lg:pb-0">
              <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent hidden lg:block"></div>
 
@@ -1228,19 +1259,28 @@ export const LECTURES: Lecture[] = [
                 </div>
              </div>
 
-             <div class="h-96 lg:h-full relative overflow-hidden rounded-[2rem] bg-black/20 border border-white/5 group/scroller flex items-center justify-center">
-                 <div class="text-center p-8">
-                    <ActivityIcon className="w-24 h-24 text-cyan-500 mx-auto mb-6 opacity-80" />
-                    <p className="text-xl text-slate-400 font-quicksand font-bold">Scientific monitoring provides early warning before flooding becomes critical.</p>
+             <div class="h-96 lg:h-full relative overflow-hidden rounded-[2rem] bg-white border border-white/5 group/scroller flex flex-col shadow-2xl">
+                 <div class="bg-cyan-950 text-cyan-50 text-xs font-bold uppercase tracking-widest py-3 text-center flex-none flex items-center justify-center gap-2">
+                    <span>Source: PAGASA Warning Legends</span>
+                    <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                 </div>
+                 <div class="flex-1 w-full bg-white relative">
+                      <iframe 
+                         src="https://www.pagasa.dost.gov.ph/learnings/legend" 
+                         class="absolute inset-0 w-full h-full border-0"
+                         title="PAGASA Warning Legends"
+                         loading="lazy"
+                         sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+                     ></iframe>
                  </div>
              </div>
           </div>
         `
-      },
-      {
-        id: 'storm-surge-natural',
-        title: 'Storm Surge (Natural)',
-        content: `
+         },
+         {
+            id: 'storm-surge-natural',
+            title: 'Storm Surge (Natural)',
+            content: `
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start h-auto lg:h-[calc(100vh-250px)] relative pb-10 lg:pb-0">
              <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent hidden lg:block"></div>
 
@@ -1255,19 +1295,61 @@ export const LECTURES: Lecture[] = [
                 </div>
              </div>
 
-             <div class="h-96 lg:h-full relative overflow-hidden rounded-[2rem] bg-black/20 border border-white/5 group/scroller flex items-center justify-center bg-indigo-900/20">
-                 <div class="text-center p-8">
-                    <Waves className="w-24 h-24 text-indigo-400 mx-auto mb-6 opacity-80" />
-                    <p className="text-xl text-slate-400 font-quicksand font-bold">Visual cues at the coastline can save lives before scientific confirmation reaches you.</p>
+             <div class="h-96 lg:h-full relative overflow-hidden rounded-[2rem] bg-black/20 border border-white/5 group/scroller overflow-y-auto custom-scrollbar">
+                 <div class="space-y-6 px-4 py-6">
+                    <div class="bg-white/5 border-2 border-white/10 rounded-[2rem] overflow-hidden hover:bg-white/10 transition-colors group/image cursor-pointer relative shadow-lg hover:border-cyan-400">
+                        <div class="h-56 overflow-hidden relative">
+                           <img src="https://i.imgur.com/n0gaLzx.jpeg" alt="Satellite Image" class="w-full h-full object-cover transform group-hover/image:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
+                           <a href="https://i.imgur.com/n0gaLzx.jpeg" target="_blank" rel="noopener noreferrer" class="absolute top-2 right-2 bg-white text-black p-3 rounded-full opacity-0 group-hover/image:opacity-100 transition-all z-20 hover:scale-110 hover:rotate-12 shadow-xl border-2 border-cyan-500" title="View Source">
+                              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg>
+                           </a>
+                        </div>
+                        <div class="p-4">
+                           <p class="text-base text-slate-200 font-bold mb-1 font-quicksand">Unusually calm sea followed by a sudden rise in water level.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white/5 border-2 border-white/10 rounded-[2rem] overflow-hidden hover:bg-white/10 transition-colors group/image cursor-pointer relative shadow-lg hover:border-cyan-400">
+                        <div class="h-56 overflow-hidden relative">
+                           <img src="https://i.imgur.com/iXMV7o2.jpeg" alt="Wind Signals" class="w-full h-full object-cover transform group-hover/image:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
+                           <a href="https://i.imgur.com/iXMV7o2.jpeg" target="_blank" rel="noopener noreferrer" class="absolute top-2 right-2 bg-white text-black p-3 rounded-full opacity-0 group-hover/image:opacity-100 transition-all z-20 hover:scale-110 hover:rotate-12 shadow-xl border-2 border-cyan-500" title="View Source">
+                              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg>
+                           </a>
+                        </div>
+                        <div class="p-4">
+                           <p class="text-base text-slate-200 font-bold mb-1 font-quicksand">Strong winds blowing toward the shore.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white/5 border-2 border-white/10 rounded-[2rem] overflow-hidden hover:bg-white/10 transition-colors group/image cursor-pointer relative shadow-lg hover:border-cyan-400">
+                        <div class="h-56 overflow-hidden relative">
+                           <img src="https://i.imgur.com/6vN8KDZ.jpeg" alt="Wind Signals Info" class="w-full h-full object-cover transform group-hover/image:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
+                           <a href="https://i.imgur.com/6vN8KDZ.jpeg" target="_blank" rel="noopener noreferrer" class="absolute top-2 right-2 bg-white text-black p-3 rounded-full opacity-0 group-hover/image:opacity-100 transition-all z-20 hover:scale-110 hover:rotate-12 shadow-xl border-2 border-cyan-500" title="View Source">
+                              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg>
+                           </a>
+                        </div>
+                        <div class="p-4">
+                           <p class="text-base text-slate-200 font-bold mb-1 font-quicksand"Heavily flooded open space, possibly a park or an area near a riverbank.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white/5 border-2 border-white/10 rounded-[2rem] overflow-hidden hover:bg-white/10 transition-colors group/image cursor-pointer relative shadow-lg hover:border-cyan-400">
+                        <div class="h-56 overflow-hidden relative">
+                           <img src="https://i.imgur.com/JO5wBP9.jpeg" alt="Wind Signals Info" class="w-full h-full object-cover transform group-hover/image:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
+                           <a href="https://i.imgur.com/JO5wBP9.jpeg" target="_blank" rel="noopener noreferrer" class="absolute top-2 right-2 bg-white text-black p-3 rounded-full opacity-0 group-hover/image:opacity-100 transition-all z-20 hover:scale-110 hover:rotate-12 shadow-xl border-2 border-cyan-500" title="View Source">
+                              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg>
+                           </a>
+                        </div>
+                        <div class="p-4">
+                           <p class="text-base text-slate-200 font-bold mb-1 font-quicksand">Low-pressure readings and dark clouds near the coast.</p>
+                        </div>
+                    </div>
                  </div>
              </div>
           </div>
         `
-      },
-      {
-        id: 'storm-surge-scientific',
-        title: 'Storm Surge (Scientific)',
-        content: `
+         },
+         {
+            id: 'storm-surge-scientific',
+            title: 'Storm Surge (Scientific)',
+            content: `
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start h-auto lg:h-[calc(100vh-250px)] relative pb-10 lg:pb-0">
              <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent hidden lg:block"></div>
 
@@ -1292,19 +1374,28 @@ export const LECTURES: Lecture[] = [
                 </div>
              </div>
 
-             <div class="h-96 lg:h-full relative overflow-hidden rounded-[2rem] bg-black/20 border border-white/5 group/scroller flex items-center justify-center bg-indigo-900/20">
-                 <div class="text-center p-8">
-                    <ActivityIcon className="w-24 h-24 text-indigo-400 mx-auto mb-6 opacity-80" />
-                    <p className="text-xl text-slate-400 font-quicksand font-bold">Scientific models help predict surge height and impact zones accurately.</p>
+             <div class="h-96 lg:h-full relative overflow-hidden rounded-[2rem] bg-white border border-white/5 group/scroller flex flex-col shadow-2xl">
+                 <div class="bg-cyan-950 text-cyan-50 text-xs font-bold uppercase tracking-widest py-3 text-center flex-none flex items-center justify-center gap-2">
+                    <span>Source: PAGASA Warning Legends</span>
+                    <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                 </div>
+                 <div class="flex-1 w-full bg-white relative">
+                      <iframe 
+                         src="https://www.pagasa.dost.gov.ph/information/about-tropical-cyclone" 
+                         class="absolute inset-0 w-full h-full border-0"
+                         title="PAGASA Warning Legends"
+                         loading="lazy"
+                         sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+                     ></iframe>
                  </div>
              </div>
           </div>
         `
-      },
-      {
-        id: 'landslide-natural',
-        title: 'Landslide (Natural)',
-        content: `
+         },
+         {
+            id: 'landslide-natural',
+            title: 'Landslide (Natural)',
+            content: `
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start h-auto lg:h-[calc(100vh-250px)] relative pb-10 lg:pb-0">
              <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent hidden lg:block"></div>
 
@@ -1365,11 +1456,11 @@ export const LECTURES: Lecture[] = [
              </div>
           </div>
         `
-      },
-      {
-        id: 'landslide-scientific',
-        title: 'Landslide (Scientific)',
-        content: `
+         },
+         {
+            id: 'landslide-scientific',
+            title: 'Landslide (Scientific)',
+            content: `
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start h-auto lg:h-[calc(100vh-250px)] relative pb-10 lg:pb-0">
              <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent hidden lg:block"></div>
 
@@ -1396,19 +1487,39 @@ export const LECTURES: Lecture[] = [
                  </div>
              </div>
 
-             <div class="h-96 lg:h-full relative overflow-hidden rounded-[2rem] bg-black/20 border border-white/5 group/scroller flex items-center justify-center bg-stone-900/20">
-                 <div class="text-center p-8">
-                    <ActivityIcon className="w-24 h-24 text-stone-400 mx-auto mb-6 opacity-80" />
-                    <p className="text-xl text-slate-400 font-quicksand font-bold">Sensors provide critical data on soil stability before visible signs appear.</p>
+             <div class="h-96 lg:h-full relative overflow-hidden rounded-[2rem] bg-black/20 border border-white/5 group/scroller overflow-y-auto custom-scrollbar">
+                 <div class="space-y-6 px-4 py-6">
+                    <div class="bg-white/5 border-2 border-white/10 rounded-[2rem] overflow-hidden hover:bg-white/10 transition-colors group/image cursor-pointer relative shadow-lg hover:border-emerald-400">
+                        <div class="h-56 overflow-hidden relative">
+                           <img src="https://i.imgur.com/alPzsqJ.jpeg" alt="Maco Landslide" class="w-full h-full object-cover transform group-hover/image:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
+                           <a href="https://i.imgur.com/alPzsqJ.jpeg" target="_blank" rel="noopener noreferrer" class="absolute top-2 right-2 bg-white text-black p-3 rounded-full opacity-0 group-hover/image:opacity-100 transition-all z-20 hover:scale-110 hover:rotate-12 shadow-xl border-2 border-emerald-500" title="View Source">
+                              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg>
+                           </a>
+                        </div>
+                        <div class="p-6">
+                           <p class="text-base text-slate-200 font-bold mb-1 font-quicksand">Soil moisture sensors detecting high water saturation</p>
+                        </div>
+                    </div>
+                    <div class="bg-white/5 border-2 border-white/10 rounded-[2rem] overflow-hidden hover:bg-white/10 transition-colors group/image cursor-pointer relative shadow-lg hover:border-emerald-400">
+                        <div class="h-56 overflow-hidden relative">
+                           <img src="https://i.imgur.com/U8hAnO7.jpeg" alt="Naga City Landslide" class="w-full h-full object-cover transform group-hover/image:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
+                           <a href="https://i.imgur.com/U8hAnO7.jpeg" target="_blank" rel="noopener noreferrer" class="absolute top-2 right-2 bg-white text-black p-3 rounded-full opacity-0 group-hover/image:opacity-100 transition-all z-20 hover:scale-110 hover:rotate-12 shadow-xl border-2 border-emerald-500" title="View Source">
+                              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg>
+                           </a>
+                        </div>
+                        <div class="p-6">
+                           <p class="text-base text-slate-200 font-bold mb-1 font-quicksand">Ground deformation monitoring instruments</p>
+                        </div>
+                    </div>
                  </div>
              </div>
           </div>
         `
-      },
-      {
-        id: 'drought-natural',
-        title: 'Drought (Natural)',
-        content: `
+         },
+         {
+            id: 'drought-natural',
+            title: 'Drought (Natural)',
+            content: `
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start h-auto lg:h-[calc(100vh-250px)] relative pb-10 lg:pb-0">
              <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent hidden lg:block"></div>
 
@@ -1435,19 +1546,28 @@ export const LECTURES: Lecture[] = [
                 </div>
              </div>
 
-             <div class="h-96 lg:h-full relative overflow-hidden rounded-[2rem] bg-black/20 border border-white/5 group/scroller flex items-center justify-center bg-orange-900/20">
-                 <div class="text-center p-8">
-                    <div className="w-24 h-24 text-orange-400 mx-auto mb-6 opacity-80 text-6xl">🏜️</div>
-                    <p className="text-xl text-slate-400 font-quicksand font-bold">Agricultural impacts are the first visible signs of drought.</p>
+             <div class="h-96 lg:h-full relative overflow-hidden rounded-[2rem] bg-black/20 border border-white/5 group/scroller overflow-y-auto custom-scrollbar">
+                 <div class="space-y-6 px-4 py-6">
+                    <div class="bg-white/5 border-2 border-white/10 rounded-[2rem] overflow-hidden hover:bg-white/10 transition-colors group/image cursor-pointer relative shadow-lg hover:border-emerald-400">
+                        <div class="h-56 overflow-hidden relative">
+                           <img src="https://perrona.wordpress.com/wp-content/uploads/2013/03/4-5-dried-up.jpg?w=1024" alt="Maco Landslide" class="w-full h-full object-cover transform group-hover/image:scale-110 transition-transform duration-700 zoomable-image cursor-zoom-in" />
+                           <a href="https://perrona.wordpress.com/2013/03/28/water-movement-march-7th-2013/" target="_blank" rel="noopener noreferrer" class="absolute top-2 right-2 bg-white text-black p-3 rounded-full opacity-0 group-hover/image:opacity-100 transition-all z-20 hover:scale-110 hover:rotate-12 shadow-xl border-2 border-emerald-500" title="View Source">
+                              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg>
+                           </a>
+                        </div>
+                        <div class="p-6">
+                           <p class="text-base text-slate-200 font-bold mb-1 font-quicksand">Soil moisture sensors detecting high water saturation</p>
+                        </div>
+                    </div>
                  </div>
              </div>
           </div>
         `
-      },
-      {
-        id: 'drought-scientific',
-        title: 'Drought (Scientific)',
-        content: `
+         },
+         {
+            id: 'drought-scientific',
+            title: 'Drought (Scientific)',
+            content: `
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start h-auto lg:h-[calc(100vh-250px)] relative pb-10 lg:pb-0">
              <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent hidden lg:block"></div>
 
@@ -1476,58 +1596,67 @@ export const LECTURES: Lecture[] = [
                 </div>
              </div>
 
-             <div class="h-96 lg:h-full relative overflow-hidden rounded-[2rem] bg-black/20 border border-white/5 group/scroller flex items-center justify-center bg-orange-900/20">
-                 <div class="text-center p-8">
-                    <ActivityIcon className="w-24 h-24 text-orange-400 mx-auto mb-6 opacity-80" />
-                    <p className="text-xl text-slate-400 font-quicksand font-bold">Dam water levels are a critical scientific indicator for urban water supply management.</p>
+             <div class="h-96 lg:h-full relative overflow-hidden rounded-[2rem] bg-white border border-white/5 group/scroller flex flex-col shadow-2xl">
+                 <div class="bg-cyan-950 text-cyan-50 text-xs font-bold uppercase tracking-widest py-3 text-center flex-none flex items-center justify-center gap-2">
+                    <span>Source: PAGASA Warning Legends</span>
+                    <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                 </div>
+                 <div class="flex-1 w-full bg-white relative">
+                      <iframe 
+                         src="https://www.pagasa.dost.gov.ph/climate/el-nino-la-nina/advisories" 
+                         class="absolute inset-0 w-full h-full border-0"
+                         title="PAGASA Warning Legends"
+                         loading="lazy"
+                         sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+                     ></iframe>
                  </div>
              </div>
           </div>
         `
-      }
-    ],
-    refresherQuiz: [
-      { id: 'hq1', question: 'What is a sign of an impending flood?', options: ['Clear skies', 'Rising river levels', 'Low humidity', 'Strong winds'], correctAnswer: 1 },
-      { id: 'hq2', question: 'Which agency issues tropical cyclone warnings?', options: ['PHIVOLCS', 'PAGASA', 'DSWD', 'DepEd'], correctAnswer: 1 },
-      { id: 'hq3', question: 'What characterizes a storm surge?', options: ['Receding shoreline', 'Heavy rain only', 'Ground shaking', 'Fire'], correctAnswer: 0 }
-    ],
-    finalQuiz: [
-      { id: 'fhq1', question: 'The local weather bureau reports that a low-pressure area (LPA) has entered the Philippine Area of Responsibility (PAR). What should the barangay officials do to forecast possible hazards?', options: ['Wait until heavy rains start before preparing.', 'Monitor PAGASA updates and prepare for possible storm signals.', 'Ignore the report since LPA rarely develops into a typhoon', 'Focus only on temperature forecasts'], correctAnswer: 1 },
-      { id: 'fhq2', question: 'Meteorologists observe rapid cloud buildup and dropping air pressure in a coastal area. What can be forecasted from these conditions?', options: ['Clear and dry weather', 'Possible thunderstorm or heavy rainfall', 'Volcanic eruption nearby', 'Increasing temperature in the area'], correctAnswer: 1 },
-      { id: 'fhq3', question: 'A social media post says, "A super typhoon will hit the Philippines tomorrow," but PAGASA has not issued any warning. How can you verify the accuracy of this claim?', options: ['Share it immediately to alert others', 'Wait to see if it rains the next day', 'Check the official PAGASA or NDRRMC bulletins.', 'Believe the post because it has thousands of likes.'], correctAnswer: 2 },
-      { id: 'fhq4', question: 'Your phone app shows a severe flood warning, but local authorities havent announced anything yet. What should you do to ensure accuracy before acting?', options: ['Compare the information with government advisories', 'Ignore it since theres no official announcement.', 'Immediately evacuate without checking.', 'Ask friends if they heard the same news.'], correctAnswer: 0 },
-      { id: 'fhq5', question: 'After days of heavy rain, a hillside community experiences a landslide. What is the most likely cause of this hazard?', options: ['Strong winds loosed the trees.', 'Prolonged rainfall saturated the soil, weakening its stability.', 'Earthquake', 'Dry land'], correctAnswer: 1 },
-      { id: 'fhq6', question: 'Flooding occured in a city even after only moderate rain. What could be the main contributing factor?', options: ['The citys drainage system is clogged or inadequate.', 'The was too much sunlight before the rain.', 'The city is too far from the coast.', 'Wind direction caused water to pile up.'], correctAnswer: 0 },
-      { id: 'fhq7', question: 'Weather records show that a certain province often experiences strong typhoons every last quarter of the year. What pattern can be recognized from this data?', options: ['The area is safe during any season.', 'The province is located along the common typhoon path during monsoon months.', 'The typhoons aer random events.', 'The frequency is caused by human activity.'], correctAnswer: 1 },
-      { id: 'fhq8', question: 'In the past five years, flash floods always occur shortly after intense rainfall more than an hour. What does this pattern suggest?', options: ['The floods are caused by sea-level rise.', 'There is a predictable relationship between rainfall intensity and flooding', 'Floods happen by coincidence', 'Rainfall has no connection to flooding'], correctAnswer: 1 },
-      { id: 'fhq9', question: 'PAGASA raises a Tropical Cyclone Wind Signal No. 3 for your area. What should your family do first?', options: ['Go to the nearest open field to watch the winds.', 'Secure your house, prepare a go-bag, and stay tuned to official updates.', 'Wait for the rain to stop before preparing.', 'Continue normal activities as long as theres power.'], correctAnswer: 1 },
-      { id: 'fhq10', question: 'Your shool is ina flood-prone area, and heavy rains have been continuous since early morning. As a student leader, what is the best decision to recommend to the principal?', options: ['Continue classes until dismissal time.', 'Wait for official cancellation from the mayors office', 'Suspend classes early and ensure students get home safely', 'Ask everyone to stay and observe the rainfall pattern'], correctAnswer: 2 }
-    ]
-  },
-  {
-    id: '3',
-    title: 'Volcano-Related Hazards',
-    description: 'Understand volcanic eruptions, ash fall, lahars, and pyroclastic flows.',
-    topic: 'Volcano',
-    imageUrl: 'https://i.imgur.com/eQVYVP2.jpeg',
-    readTime: 15,
-    difficulty: 'Advanced',
-    objectives: [
-      'Explain various volcano-related hazards',
-      'Recognize signs of an impending volcanic eruption',
-      'Understand the danger of pyroclastic flows and lahars'
-    ],
-    competencies: [
-      'Hazard Identification',
-      'Warning Sign Recognition',
-      'Evacuation Planning'
-    ],
-    gameType: 'none',
-    sections: [
-      {
-        id: 'melc',
-        title: 'Most Essential Learning Competencies',
-        content: `
+         }
+      ],
+      refresherQuiz: [
+         { id: 'hq1', question: 'What is a sign of an impending flood?', options: ['Clear skies', 'Rising river levels', 'Low humidity', 'Strong winds'], correctAnswer: 1 },
+         { id: 'hq2', question: 'Which agency issues tropical cyclone warnings?', options: ['PHIVOLCS', 'PAGASA', 'DSWD', 'DepEd'], correctAnswer: 1 },
+         { id: 'hq3', question: 'What characterizes a storm surge?', options: ['Receding shoreline', 'Heavy rain only', 'Ground shaking', 'Fire'], correctAnswer: 0 }
+      ],
+      finalQuiz: [
+         { id: 'fhq1', question: 'The local weather bureau reports that a low-pressure area (LPA) has entered the Philippine Area of Responsibility (PAR). What should the barangay officials do to forecast possible hazards?', options: ['Wait until heavy rains start before preparing.', 'Monitor PAGASA updates and prepare for possible storm signals.', 'Ignore the report since LPA rarely develops into a typhoon', 'Focus only on temperature forecasts'], correctAnswer: 1 },
+         { id: 'fhq2', question: 'Meteorologists observe rapid cloud buildup and dropping air pressure in a coastal area. What can be forecasted from these conditions?', options: ['Clear and dry weather', 'Possible thunderstorm or heavy rainfall', 'Volcanic eruption nearby', 'Increasing temperature in the area'], correctAnswer: 1 },
+         { id: 'fhq3', question: 'A social media post says, "A super typhoon will hit the Philippines tomorrow," but PAGASA has not issued any warning. How can you verify the accuracy of this claim?', options: ['Share it immediately to alert others', 'Wait to see if it rains the next day', 'Check the official PAGASA or NDRRMC bulletins.', 'Believe the post because it has thousands of likes.'], correctAnswer: 2 },
+         { id: 'fhq4', question: 'Your phone app shows a severe flood warning, but local authorities havent announced anything yet. What should you do to ensure accuracy before acting?', options: ['Compare the information with government advisories', 'Ignore it since theres no official announcement.', 'Immediately evacuate without checking.', 'Ask friends if they heard the same news.'], correctAnswer: 0 },
+         { id: 'fhq5', question: 'After days of heavy rain, a hillside community experiences a landslide. What is the most likely cause of this hazard?', options: ['Strong winds loosed the trees.', 'Prolonged rainfall saturated the soil, weakening its stability.', 'Earthquake', 'Dry land'], correctAnswer: 1 },
+         { id: 'fhq6', question: 'Flooding occured in a city even after only moderate rain. What could be the main contributing factor?', options: ['The citys drainage system is clogged or inadequate.', 'The was too much sunlight before the rain.', 'The city is too far from the coast.', 'Wind direction caused water to pile up.'], correctAnswer: 0 },
+         { id: 'fhq7', question: 'Weather records show that a certain province often experiences strong typhoons every last quarter of the year. What pattern can be recognized from this data?', options: ['The area is safe during any season.', 'The province is located along the common typhoon path during monsoon months.', 'The typhoons aer random events.', 'The frequency is caused by human activity.'], correctAnswer: 1 },
+         { id: 'fhq8', question: 'In the past five years, flash floods always occur shortly after intense rainfall more than an hour. What does this pattern suggest?', options: ['The floods are caused by sea-level rise.', 'There is a predictable relationship between rainfall intensity and flooding', 'Floods happen by coincidence', 'Rainfall has no connection to flooding'], correctAnswer: 1 },
+         { id: 'fhq9', question: 'PAGASA raises a Tropical Cyclone Wind Signal No. 3 for your area. What should your family do first?', options: ['Go to the nearest open field to watch the winds.', 'Secure your house, prepare a go-bag, and stay tuned to official updates.', 'Wait for the rain to stop before preparing.', 'Continue normal activities as long as theres power.'], correctAnswer: 1 },
+         { id: 'fhq10', question: 'Your shool is ina flood-prone area, and heavy rains have been continuous since early morning. As a student leader, what is the best decision to recommend to the principal?', options: ['Continue classes until dismissal time.', 'Wait for official cancellation from the mayors office', 'Suspend classes early and ensure students get home safely', 'Ask everyone to stay and observe the rainfall pattern'], correctAnswer: 2 }
+      ]
+   },
+   {
+      id: '3',
+      title: 'Volcano-Related Hazards',
+      description: 'Understand volcanic eruptions, ash fall, lahars, and pyroclastic flows.',
+      topic: 'Volcano',
+      imageUrl: 'https://i.imgur.com/eQVYVP2.jpeg',
+      readTime: 15,
+      difficulty: 'Advanced',
+      objectives: [
+         'Explain various volcano-related hazards',
+         'Recognize signs of an impending volcanic eruption',
+         'Understand the danger of pyroclastic flows and lahars'
+      ],
+      competencies: [
+         'Hazard Identification',
+         'Warning Sign Recognition',
+         'Evacuation Planning'
+      ],
+      gameType: 'none',
+      sections: [
+         {
+            id: 'melc',
+            title: 'Most Essential Learning Competencies',
+            content: `
           <div class="flex flex-col items-center justify-center min-h-[60vh] py-10">
              <div class="bg-red-950/40 border-4 border-red-500/40 p-10 rounded-[3rem] max-w-5xl w-full text-center backdrop-blur-md shadow-[0_0_60px_rgba(239,68,68,0.2)] hover:scale-[1.02] transition-transform duration-500 group relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-64 h-64 bg-red-500/10 rounded-full blur-[80px] group-hover:bg-red-500/20 transition-all"></div>
@@ -1558,11 +1687,11 @@ export const LECTURES: Lecture[] = [
              </div>
           </div>
         `
-      },
-      {
-        id: 'objectives',
-        title: 'Learning Objectives',
-        content: `
+         },
+         {
+            id: 'objectives',
+            title: 'Learning Objectives',
+            content: `
           <div class="bg-white/5 p-8 rounded-xl border-4 border-red-500/20 hover:border-red-500 hover:rotate-1 transition-all duration-300 shadow-xl">
             <ul class="space-y-6 text-slate-200 font-signika text-xl">
                <li class="flex items-center group"><svg class="w-8 h-8 text-red-500 mr-4 group-hover:scale-125 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>Explain various volcano-related hazards</li>
@@ -1570,11 +1699,11 @@ export const LECTURES: Lecture[] = [
             </ul>
           </div>
         `
-      },
-      {
-        id: 'intro',
-        title: 'Introduction',
-        content: `
+         },
+         {
+            id: 'intro',
+            title: 'Introduction',
+            content: `
           <div class="flex flex-col items-center justify-center min-h-full py-10">
              <div class="bg-red-950/40 border-4 border-red-500/40 p-10 rounded-[3rem] max-w-4xl text-center backdrop-blur-md shadow-[0_0_60px_rgba(239,68,68,0.3)] hover:scale-105 transition-transform duration-500">
                 <h3 class="text-5xl md:text-7xl font-carter font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500 uppercase mb-8 drop-shadow-xl">Volcano Hazards</h3>
@@ -1585,11 +1714,11 @@ export const LECTURES: Lecture[] = [
              </div>
           </div>
         `
-      },
-      {
-        id: 'pyroclastic',
-        title: 'Pyroclastic Flow',
-        content: `
+         },
+         {
+            id: 'pyroclastic',
+            title: 'Pyroclastic Flow',
+            content: `
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start h-auto lg:h-[calc(100vh-250px)] relative pb-10 lg:pb-0">
              <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent hidden lg:block"></div>
 
@@ -1668,11 +1797,11 @@ export const LECTURES: Lecture[] = [
              </div>
           </div>
         `
-      },
-      {
-        id: 'ash-fall',
-        title: 'Ash Fall',
-        content: `
+         },
+         {
+            id: 'ash-fall',
+            title: 'Ash Fall',
+            content: `
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start h-auto lg:h-[calc(100vh-250px)] relative pb-10 lg:pb-0">
              <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent hidden lg:block"></div>
 
@@ -1743,11 +1872,11 @@ export const LECTURES: Lecture[] = [
              </div>
           </div>
         `
-      },
-      {
-        id: 'lahar',
-        title: 'Lahars',
-        content: `
+         },
+         {
+            id: 'lahar',
+            title: 'Lahars',
+            content: `
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start h-auto lg:h-[calc(100vh-250px)] relative pb-10 lg:pb-0">
              <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent hidden lg:block"></div>
 
@@ -1826,11 +1955,11 @@ export const LECTURES: Lecture[] = [
              </div>
           </div>
         `
-      },
-      {
-        id: 'lava-flows',
-        title: 'Lava Flows',
-        content: `
+         },
+         {
+            id: 'lava-flows',
+            title: 'Lava Flows',
+            content: `
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start h-auto lg:h-[calc(100vh-250px)] relative pb-10 lg:pb-0">
              <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent hidden lg:block"></div>
 
@@ -1897,11 +2026,11 @@ export const LECTURES: Lecture[] = [
              </div>
           </div>
         `
-      },
-      {
-        id: 'volcanic-gases',
-        title: 'Volcanic Gases',
-        content: `
+         },
+         {
+            id: 'volcanic-gases',
+            title: 'Volcanic Gases',
+            content: `
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start h-auto lg:h-[calc(100vh-250px)] relative pb-10 lg:pb-0">
              <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent hidden lg:block"></div>
 
@@ -1968,11 +2097,11 @@ export const LECTURES: Lecture[] = [
              </div>
           </div>
         `
-      },
-      {
-        id: 'volcanic-tsunami',
-        title: 'Volcanic Tsunami',
-        content: `
+         },
+         {
+            id: 'volcanic-tsunami',
+            title: 'Volcanic Tsunami',
+            content: `
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start h-auto lg:h-[calc(100vh-250px)] relative pb-10 lg:pb-0">
              <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/20 to-transparent hidden lg:block"></div>
 
@@ -2039,57 +2168,57 @@ export const LECTURES: Lecture[] = [
              </div>
           </div>
         `
-      }
-    ],
-    refresherQuiz: [
-      { id: 'vq1', question: 'What is a pyroclastic flow?', options: ['Water flood', 'Hot gas & rock mix', 'Lava river', 'Ash cloud'], correctAnswer: 1 },
-      { id: 'vq2', question: 'Lahars are often triggered by?', options: ['Wind', 'Rain', 'Sun', 'Snow'], correctAnswer: 1 },
-      { id: 'vq3', question: 'What gas smells like rotten eggs?', options: ['Sulfur Dioxide', 'Oxygen', 'Carbon Dioxide', 'Helium'], correctAnswer: 0 }
-    ],
-    finalQuiz: [
-      { id: 'vfq1', question: 'Scientists observe increasing ground deformation and frequent volcanic quakes near Mt. Mayon. What does this most likely indicate?', options: ['The volcano is returning to its normal state.', 'Magma is moving upward, possibly leading to an eruption.', "Wind pressure is increasing on the volcano's slopes", 'The volcano is cooling down.'], correctAnswer: 1 },
-      { id: 'vfq2', question: 'Reisdents notice a strong sulfur smell and steam rising from a nearby crater. What should be done to forecast possible volcanic activity?', options: ['Dismiss it as normal gas emission.', 'Monitor and report the observation to PHIVOLCS', 'Evacuate immediately without confirmation.', 'Wait until ashfall occurs before acting.'], correctAnswer: 1 },
-      { id: 'vfq3', question: 'A viral post claims that "Mt. Taal will erupt this weekend." How can you verify the accuracy of this claim?', options: ['Check the latest PHIVOLCS bulletin and alert level.', "Believe it because it's trending online", 'Wait until someone nearby confirms an explosion.', 'Share it to warn others quickly'], correctAnswer: 0 },
-      { id: 'vfq4', question: "Your teacher says the volcano's alert level has changed from 1 to 3. What does this accurately mean?", options: ['The volcano has completely erupted.', 'There is an increased tendency toward hazardous eruption', 'The volcano is safe for tourism again.', 'The volcano has already stopped releasing gas.'], correctAnswer: 1 },
-      { id: 'vfq5', question: 'After a volcanic eruption, rivers nearby experience lahar flow when it rains heavily. What is the main cause of this hazard?', options: ['Cooling magma creates more rain.', 'Ash and debris mix with rainwater and flow downstream', 'Earthquakes push the water outward.', 'Forest fires loosen the soil.'], correctAnswer: 1 },
-      { id: 'vfq6', question: 'Villages near a volcano are buried in pyroclastic materials. What caused this type of destruction?', options: ['Fast-moving currents of hot gas and volcanic fragments.', 'Rising water levels from nearby river.', 'Lava solidifying near houses', 'Slow buildup of volcanic gases'], correctAnswer: 0 },
-      { id: 'vfq7', question: 'Scientists record a series of harmonic tremors followed by gas emission increases. What pattern do these data suggest?', options: ['The volcano is becoming dormant.', 'There is a potential eruption due to magma movement.', "The volcano's activity is decreasing", 'Weather changes are affecting the readings.'], correctAnswer: 1 },
-      { id: 'vfq8', question: 'Crater lake color change followed by eruption pattern. Imply?', options: ['Ignore', 'Early warning', 'Seasonal', 'Pollution'], correctAnswer: 1 },
-      { id: 'vfq9', question: 'Alert Level 4. You live 8km away. Action?', options: ['Stay alert', 'Evacuate', 'Wait for ash', 'Climb'], correctAnswer: 1 },
-      { id: 'vfq10', question: 'Tourist visit during Alert Level 2. Decision?', options: ['Allow', 'Limit & Wait', 'Promote', 'Ignore'], correctAnswer: 1 }
-    ]
-  }
+         }
+      ],
+      refresherQuiz: [
+         { id: 'vq1', question: 'What is a pyroclastic flow?', options: ['Water flood', 'Hot gas & rock mix', 'Lava river', 'Ash cloud'], correctAnswer: 1 },
+         { id: 'vq2', question: 'Lahars are often triggered by?', options: ['Wind', 'Rain', 'Sun', 'Snow'], correctAnswer: 1 },
+         { id: 'vq3', question: 'What gas smells like rotten eggs?', options: ['Sulfur Dioxide', 'Oxygen', 'Carbon Dioxide', 'Helium'], correctAnswer: 0 }
+      ],
+      finalQuiz: [
+         { id: 'vfq1', question: 'Scientists observe increasing ground deformation and frequent volcanic quakes near Mt. Mayon. What does this most likely indicate?', options: ['The volcano is returning to its normal state.', 'Magma is moving upward, possibly leading to an eruption.', "Wind pressure is increasing on the volcano's slopes", 'The volcano is cooling down.'], correctAnswer: 1 },
+         { id: 'vfq2', question: 'Reisdents notice a strong sulfur smell and steam rising from a nearby crater. What should be done to forecast possible volcanic activity?', options: ['Dismiss it as normal gas emission.', 'Monitor and report the observation to PHIVOLCS', 'Evacuate immediately without confirmation.', 'Wait until ashfall occurs before acting.'], correctAnswer: 1 },
+         { id: 'vfq3', question: 'A viral post claims that "Mt. Taal will erupt this weekend." How can you verify the accuracy of this claim?', options: ['Check the latest PHIVOLCS bulletin and alert level.', "Believe it because it's trending online", 'Wait until someone nearby confirms an explosion.', 'Share it to warn others quickly'], correctAnswer: 0 },
+         { id: 'vfq4', question: "Your teacher says the volcano's alert level has changed from 1 to 3. What does this accurately mean?", options: ['The volcano has completely erupted.', 'There is an increased tendency toward hazardous eruption', 'The volcano is safe for tourism again.', 'The volcano has already stopped releasing gas.'], correctAnswer: 1 },
+         { id: 'vfq5', question: 'After a volcanic eruption, rivers nearby experience lahar flow when it rains heavily. What is the main cause of this hazard?', options: ['Cooling magma creates more rain.', 'Ash and debris mix with rainwater and flow downstream', 'Earthquakes push the water outward.', 'Forest fires loosen the soil.'], correctAnswer: 1 },
+         { id: 'vfq6', question: 'Villages near a volcano are buried in pyroclastic materials. What caused this type of destruction?', options: ['Fast-moving currents of hot gas and volcanic fragments.', 'Rising water levels from nearby river.', 'Lava solidifying near houses', 'Slow buildup of volcanic gases'], correctAnswer: 0 },
+         { id: 'vfq7', question: 'Scientists record a series of harmonic tremors followed by gas emission increases. What pattern do these data suggest?', options: ['The volcano is becoming dormant.', 'There is a potential eruption due to magma movement.', "The volcano's activity is decreasing", 'Weather changes are affecting the readings.'], correctAnswer: 1 },
+         { id: 'vfq8', question: 'In the past 50 years, every time the crater lake of a certain volcano changes color, an eruption follows within weeks. What does this pattern imply? ', options: ['The lake color change can be ignored.', 'It may serve as an early warning indicator of volcanic activity.', 'The lake is affected only by seasonal rainfall.', 'It proves that eruptions are caused by lake pollution.'], correctAnswer: 1 },
+         { id: 'vfq9', question: 'PHIVOLCS raises the alert level to 4 for a nearby volcano. As a student living 8 km from the crater, what should you and your family do?', options: ['Continue normal activities but stay alert.', 'Pack essentials and evacuate following official instructions.', 'Wait for ashfall before leaving.', 'Climb the volcano to observe the eruption safely.'], correctAnswer: 1 },
+         { id: 'vfq10', question: 'Local officials plan to allow tourists to visit a volcano still under Alert Level 2. What is the most appropriate decision based on hazard forecasting? ', options: ['Allow it because the volcano is not yet erupting.', 'Limit access and wait for official downgrading to Alert Level 0.', 'Promote more tours for economic recovery.', 'Ignore PHIVOLCS advisories since it’s a minor alert.'], correctAnswer: 1 }
+      ]
+   }
 ];
 
 export const FLOOD_SCENARIOS: FloodScenario[] = [
-  {
-    id: '1',
-    text: 'Heavy rain causes rapid water rise. You are on the ground floor.',
-    isSafe: false,
-    explanation: 'Move to a higher floor or roof immediately. Ground floors flood quickly.',
-  },
-  {
-    id: '2',
-    text: 'You see water flowing over a road. It looks shallow.',
-    isSafe: false,
-    explanation: 'Never walk or drive through moving water. It can sweep you away.',
-  },
-  {
-    id: '3',
-    text: 'Floodwaters enter your home. You turn off the main power from a dry spot.',
-    isSafe: true,
-    explanation: 'Cutting power prevents electrocution, but ensure you are dry.',
-  },
-  {
-    id: '4',
-    text: 'You follow designated evacuation routes to higher ground.',
-    isSafe: true,
-    explanation: 'Designated routes are checked for safety. Shortcuts may be blocked.',
-  },
-  {
-    id: '5',
-    text: 'The rain stops. You return home immediately.',
-    isSafe: false,
-    explanation: 'Wait for official "All Clear". Hazards may persist.',
-  }
+   {
+      id: '1',
+      text: 'Heavy rain causes rapid water rise. You are on the ground floor.',
+      isSafe: false,
+      explanation: 'Move to a higher floor or roof immediately. Ground floors flood quickly.',
+   },
+   {
+      id: '2',
+      text: 'You see water flowing over a road. It looks shallow.',
+      isSafe: false,
+      explanation: 'Never walk or drive through moving water. It can sweep you away.',
+   },
+   {
+      id: '3',
+      text: 'Floodwaters enter your home. You turn off the main power from a dry spot.',
+      isSafe: true,
+      explanation: 'Cutting power prevents electrocution, but ensure you are dry.',
+   },
+   {
+      id: '4',
+      text: 'You follow designated evacuation routes to higher ground.',
+      isSafe: true,
+      explanation: 'Designated routes are checked for safety. Shortcuts may be blocked.',
+   },
+   {
+      id: '5',
+      text: 'The rain stops. You return home immediately.',
+      isSafe: false,
+      explanation: 'Wait for official "All Clear". Hazards may persist.',
+   }
 ];
