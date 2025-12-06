@@ -76,7 +76,7 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack, tutor
   const [showStartMenu, setShowStartMenu] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [previewImage, setPreviewImage] = useState<string | null>(null);
-  const [zoomLevel, setZoomLevel] = useState(1);
+  const [zoomLevel, setZoomLevel] = useState(1.5);
   
   const containerRef = useRef<HTMLDivElement>(null);
   const contentScrollRef = useRef<HTMLDivElement>(null);
@@ -108,7 +108,7 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack, tutor
   };
 
   const resetZoom = () => {
-    setZoomLevel(1);
+    setZoomLevel(1.5);
   };
 
   // Construct Virtual Slides Array
@@ -177,20 +177,51 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack, tutor
 
   useEffect(() => {
     const handleFullscreenChange = () => {
-      setIsFullscreen(!!document.fullscreenElement);
+      const doc = document as any;
+      setIsFullscreen(!!(doc.fullscreenElement || doc.webkitFullscreenElement || doc.mozFullScreenElement || doc.msFullscreenElement));
     };
     document.addEventListener('fullscreenchange', handleFullscreenChange);
-    return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
+    document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+    document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+    document.addEventListener('MSFullscreenChange', handleFullscreenChange);
+    
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+      document.removeEventListener('webkitfullscreenchange', handleFullscreenChange);
+      document.removeEventListener('mozfullscreenchange', handleFullscreenChange);
+      document.removeEventListener('MSFullscreenChange', handleFullscreenChange);
+    };
   }, []);
 
   const toggleFullscreen = () => {
-    if (!document.fullscreenElement) {
-      containerRef.current?.requestFullscreen().catch(err => {
-        console.error(`Error attempting to enable full-screen mode: ${err.message}`);
-      });
+    const doc = document as any;
+    const el = containerRef.current as any;
+    const isFullscreen = doc.fullscreenElement || doc.webkitFullscreenElement || doc.mozFullScreenElement || doc.msFullscreenElement;
+
+    if (!isFullscreen) {
+      if (el) {
+          // Robust check for vendor prefixes
+          if (el.requestFullscreen) {
+            el.requestFullscreen().catch((err: any) => {
+              console.error(`Error attempting to enable full-screen mode: ${err.message}`);
+            });
+          } else if (el.webkitRequestFullscreen) {
+            el.webkitRequestFullscreen();
+          } else if (el.mozRequestFullScreen) {
+            el.mozRequestFullScreen();
+          } else if (el.msRequestFullscreen) {
+            el.msRequestFullscreen();
+          }
+      }
     } else {
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
+      if (doc.exitFullscreen) {
+        doc.exitFullscreen();
+      } else if (doc.webkitExitFullscreen) {
+        doc.webkitExitFullscreen();
+      } else if (doc.mozCancelFullScreen) {
+        doc.mozCancelFullScreen();
+      } else if (doc.msExitFullscreen) {
+        doc.msExitFullscreen();
       }
     }
   };
@@ -393,12 +424,26 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack, tutor
                  <button
                   ref={initButtonRef}
                   onClick={() => {
-                     if (!document.fullscreenElement && containerRef.current) {
-                        containerRef.current.requestFullscreen().catch(() => {});
+                     // Try fullscreen safely - iOS often doesn't support element fullscreen, 
+                     // so we wrap this to prevent crashing the click handler
+                     try {
+                        const doc = document as any;
+                        const isFullscreen = doc.fullscreenElement || doc.webkitFullscreenElement || doc.mozFullScreenElement || doc.msFullscreenElement;
+                        
+                        if (!isFullscreen && containerRef.current) {
+                           const el = containerRef.current as any;
+                           if (el.requestFullscreen) {
+                              el.requestFullscreen().catch(() => {});
+                           } else if (el.webkitRequestFullscreen) {
+                              el.webkitRequestFullscreen();
+                           }
+                        }
+                     } catch (e) {
+                        // Ignore errors on devices that don't support it
                      }
                      setShowStartMenu(false);
                   }}
-                  className={`w-full group/btn relative overflow-hidden ${theme.buttonBg} ${theme.buttonHover} text-white font-black uppercase tracking-wider py-5 px-8 rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] flex items-center justify-center ${tutorialStep === 3 ? 'ring-4 ring-brand-500/50 shadow-[0_0_30px_rgba(14,165,233,0.5)] z-50' : ''}`}
+                  className={`w-full group/btn relative overflow-hidden ${theme.buttonBg} ${theme.buttonHover} text-white font-black uppercase tracking-wider py-5 px-8 rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] flex items-center justify-center cursor-pointer ${tutorialStep === 3 ? 'ring-4 ring-brand-500/50 shadow-[0_0_30px_rgba(14,165,233,0.5)] z-50' : ''}`}
                 >
                   <span className="relative z-10 flex items-center">
                     Initialize <Play className="w-5 h-5 ml-2 fill-current" />
