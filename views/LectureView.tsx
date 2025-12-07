@@ -571,11 +571,11 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack, tutor
         >
           <div style={{ zoom: zoomLevel }} className="h-full">
             {activeSlide.type === 'dashboard' ? (
-               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:h-full h-auto min-h-min">
+               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:h-full h-auto min-h-min w-full">
                   {/* Left Column Container - Explicitly defined to handle Flex distribution */}
-                  <div className="flex flex-col gap-6 lg:h-full h-auto lg:overflow-hidden order-1">
+                  <div className="flex flex-col gap-6 lg:h-full h-auto lg:overflow-hidden order-1 min-w-0">
                       {/* Objectives Section - Flex 1 to take remaining space, min-h-0 to allow scrolling inside */}
-                      <div className="bg-black/10 border border-white/10 rounded-3xl p-6 sm:p-8 backdrop-blur-sm flex-1 overflow-y-auto min-h-[300px] lg:min-h-0">
+                      <div className="bg-black/10 border border-white/10 rounded-3xl p-6 sm:p-8 backdrop-blur-sm flex-1 overflow-y-auto min-h-0">
                           <h2 className={`text-2xl sm:text-3xl font-black uppercase mb-6 ${theme.accentColor} tracking-tight`}>
                              {activeSlide.title}
                           </h2>
@@ -585,9 +585,9 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack, tutor
                           />
                       </div>
 
-                      {/* Game Section - Fixed height or natural height */}
-                      <div className="bg-black/20 border border-white/10 rounded-3xl p-4 sm:p-6 backdrop-blur-sm relative overflow-hidden flex flex-col min-h-[350px] flex-none">
-                          <div className="flex items-center justify-between mb-4 z-10">
+                      {/* Game Section - Flex 1 to split evenly with Objectives */}
+                      <div className="bg-black/20 border border-white/10 rounded-3xl p-4 sm:p-6 backdrop-blur-sm relative overflow-hidden flex flex-col flex-1 min-h-0">
+                          <div className="flex items-center justify-between mb-4 z-10 flex-none">
                             <h3 className="text-xl font-bold text-white flex items-center">
                                <Gamepad2 className={`w-5 h-5 mr-2 ${theme.accentColor}`} />
                                Simulation
@@ -595,7 +595,7 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack, tutor
                             <span className="text-[10px] uppercase font-bold bg-white/10 px-2 py-1 rounded text-slate-300">Interactive</span>
                           </div>
                           
-                          <div className="flex-1 relative z-10">
+                          <div className="flex-1 relative z-10 overflow-y-auto custom-scrollbar">
                              {lecture.gameType === 'earthquake-sim' && <EarthquakeGame />}
                              {lecture.gameType === 'flood-choice' && <FloodGame />}
                              {lecture.gameType === 'none' && (
@@ -608,7 +608,7 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack, tutor
                   </div>
 
                   {/* Right Column - Quiz */}
-                  <div className="lg:h-full h-auto min-h-[500px] lg:overflow-hidden order-2">
+                  <div className="lg:h-full h-auto min-h-[500px] lg:overflow-hidden order-2 min-w-0">
                      <QuizComponent questions={lecture.refresherQuiz || []} title="Refresher Quiz" mode="wizard" />
                   </div>
                </div>
