@@ -108,7 +108,7 @@ export const LectureView: React.FC<LectureViewProps> = ({ lecture, onBack, tutor
   };
 
   const resetZoom = () => {
-    setZoomLevel(1.5);
+    setZoomLevel(1.15);
   };
 
   // Construct Virtual Slides Array

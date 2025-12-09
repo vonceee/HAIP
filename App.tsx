@@ -73,7 +73,7 @@ const App: React.FC = () => {
       {currentView === 'home' && (
         <footer className="bg-white border-t border-slate-200 py-8">
           <div className="max-w-7xl mx-auto px-4 text-center text-slate-500 text-sm">
-            <p className="mb-2">HAIP - Hazard Awareness Interactive Portal</p>
+            <p className="mb-2">HAIP. - Hazard Awareness Interactive Portal</p>
             <p>© {new Date().getFullYear()} Disaster Education Initiative. Public Access.</p>
           </div>
         </footer>
